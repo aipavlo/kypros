@@ -142,7 +142,9 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
   const safeActiveIndex = activeIndex >= cards.length ? 0 : activeIndex;
   const activeCard = cards[safeActiveIndex];
   const activeCardState = activeCard ? cardStudyStates[activeCard.id] ?? "new" : "new";
-  const activeCardPronunciation = activeCard ? getFlashcardPronunciation(activeCard) : null;
+  const activeCardPronunciation = activeCard
+    ? getFlashcardPronunciation(activeCard, { includeStress: true })
+    : null;
   const knownCardCount = cards.filter((card) => cardStudyStates[card.id] === "known").length;
   const againLaterCardCount = cards.filter((card) => cardStudyStates[card.id] === "again_later").length;
   const difficultCardCount = cards.filter((card) => cardStudyStates[card.id] === "difficult").length;
@@ -256,8 +258,8 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
           </button>
         </div>
 
-        <div className="flashcards-focus-layout">
-          <div className="flashcards-main-column">
+        <div className="study-layout flashcards-focus-layout">
+          <div className="study-main-panel flashcards-main-column">
             <div className="flashcards-session-bar">
               <article className="flashcards-session-card flashcards-session-card-primary">
                 <p className="eyebrow">{sessionScope.eyebrow}</p>
@@ -278,6 +280,84 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
                   <span className="progress-fill" style={{ width: `${masteryProgressPercent}%` }} />
                 </div>
               </article>
+            </div>
+
+            <article className="flashcards-library-shell">
+              <div className="section-head">
+                <div>
+                  <p className="eyebrow">Библиотека сессии</p>
+                  <h2>Все карточки текущего набора</h2>
+                  <p className="section-copy">
+                    Слева можно быстро переходить к нужной карточке, а сама рабочая карточка всегда остаётся под рукой справа.
+                  </p>
+                </div>
+              </div>
+              <div className="flashcards-library-grid">
+                {cards.map((card, cardIndex) => {
+                  const cardState = cardStudyStates[card.id] ?? "new";
+                  const isActive = cardIndex === safeActiveIndex;
+                  const cardPronunciation = getFlashcardPronunciation(card, { includeStress: true });
+
+                  return (
+                    <button
+                      className={`flashcard-library-item ${isActive ? "flashcard-library-item-active" : ""} flashcard-library-item-${card.difficulty}`}
+                      key={card.id}
+                      onClick={() => openCard(cardIndex)}
+                      type="button"
+                    >
+                      <div className="flashcard-library-top">
+                        <span className="chip">{card.difficulty.toUpperCase()}</span>
+                        <span className={`flashcard-state-pill flashcard-state-pill-${cardState}`}>
+                          {STUDY_STATE_LABELS[cardState]}
+                        </span>
+                      </div>
+                      <strong>{card.front}</strong>
+                      {cardPronunciation ? (
+                        <p className="flashcard-library-pronunciation">Как читать: {cardPronunciation}</p>
+                      ) : null}
+                      <p>{card.back}</p>
+                      <span className="flashcard-library-index">Карточка {cardIndex + 1}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </article>
+          </div>
+
+          <aside className="study-sticky-panel flashcards-side-column">
+            <article className="study-sidecard flashcards-sidecard flashcards-summary-card">
+              <strong>Быстрые статусы</strong>
+              <div className="flashcards-metric-list">
+                <div className="flashcards-metric-item">
+                  <span>Знаю</span>
+                  <strong>{knownCardCount}</strong>
+                </div>
+                <div className="flashcards-metric-item">
+                  <span>Повторить позже</span>
+                  <strong>{againLaterCardCount}</strong>
+                </div>
+                <div className="flashcards-metric-item">
+                  <span>Сложные</span>
+                  <strong>{difficultCardCount}</strong>
+                </div>
+                <div className="flashcards-metric-item">
+                  <span>Уже отмечены</span>
+                  <strong>{studiedCardCount}</strong>
+                </div>
+              </div>
+            </article>
+
+            <div className="flashcards-status-actions flashcards-status-actions-top">
+              {STUDY_STATE_ACTIONS.map((action) => (
+                <button
+                  key={action.nextState}
+                  className={action.className}
+                  onClick={() => setCardStudyState(action.nextState)}
+                  type="button"
+                >
+                  {action.label}
+                </button>
+              ))}
             </div>
 
             <button className="flashcard flashcard-focus" onClick={() => setRevealed((value) => !value)} type="button">
@@ -311,45 +391,8 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
               </button>
             </div>
 
-            <div className="flashcards-status-actions">
-              {STUDY_STATE_ACTIONS.map((action) => (
-                <button
-                  key={action.nextState}
-                  className={action.className}
-                  onClick={() => setCardStudyState(action.nextState)}
-                  type="button"
-                >
-                  {action.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <aside className="flashcards-side-column">
-            <article className="flashcards-sidecard">
-              <strong>Быстрые статусы</strong>
-              <div className="flashcards-metric-list">
-                <div className="flashcards-metric-item">
-                  <span>Знаю</span>
-                  <strong>{knownCardCount}</strong>
-                </div>
-                <div className="flashcards-metric-item">
-                  <span>Повторить позже</span>
-                  <strong>{againLaterCardCount}</strong>
-                </div>
-                <div className="flashcards-metric-item">
-                  <span>Сложные</span>
-                  <strong>{difficultCardCount}</strong>
-                </div>
-                <div className="flashcards-metric-item">
-                  <span>Уже отмечены</span>
-                  <strong>{studiedCardCount}</strong>
-                </div>
-              </div>
-            </article>
-
             {activeModuleId ? (
-              <article className="flashcards-sidecard">
+              <article className="study-sidecard flashcards-sidecard">
                 <strong>{isLessonFlow ? "Учебный маршрут урока" : "Связь с модулем"}</strong>
                 <p>{activeModule?.title ?? activeModuleId}</p>
                 <p className="muted">
@@ -388,45 +431,6 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
               </article>
             ) : null}
           </aside>
-        </div>
-      </section>
-
-      <section className="panel flashcards-library-panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Библиотека сессии</p>
-            <h2>Все карточки текущего набора</h2>
-            <p className="section-copy">Ниже можно быстро перейти к нужной карточке и увидеть её статус.</p>
-          </div>
-        </div>
-        <div className="flashcards-library-grid">
-          {cards.map((card, cardIndex) => {
-            const cardState = cardStudyStates[card.id] ?? "new";
-            const isActive = cardIndex === safeActiveIndex;
-            const cardPronunciation = getFlashcardPronunciation(card);
-
-            return (
-              <button
-                className={`flashcard-library-item ${isActive ? "flashcard-library-item-active" : ""} flashcard-library-item-${card.difficulty}`}
-                key={card.id}
-                onClick={() => openCard(cardIndex)}
-                type="button"
-              >
-                <div className="flashcard-library-top">
-                  <span className="chip">{card.difficulty.toUpperCase()}</span>
-                  <span className={`flashcard-state-pill flashcard-state-pill-${cardState}`}>
-                    {STUDY_STATE_LABELS[cardState]}
-                  </span>
-                </div>
-                <strong>{card.front}</strong>
-                {cardPronunciation ? (
-                  <p className="flashcard-library-pronunciation">Как читать: {cardPronunciation}</p>
-                ) : null}
-                <p>{card.back}</p>
-                <span className="flashcard-library-index">Карточка {cardIndex + 1}</span>
-              </button>
-            );
-          })}
         </div>
       </section>
     </div>

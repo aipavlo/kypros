@@ -14,6 +14,7 @@ import {
   getQuizQuestionsByModule,
   getRecommendedQuizModeForLesson
 } from "@/src/content/quizData";
+import { transliterateGreekToLatin } from "@/src/content/transliteration";
 import { easyStartLessonIds } from "@/src/content/trails";
 import { getModuleCycleStatus } from "@/src/content/progress";
 import { LessonPreviewCard } from "@/src/components/shared-ui";
@@ -52,11 +53,26 @@ function renderBlockTitle(blockType: string) {
   return titles[blockType] ?? blockType;
 }
 
-function renderBlockItem(item: Record<string, string>) {
+function isBeginnerLesson(difficulty: string) {
+  return difficulty === "a0" || difficulty === "a1";
+}
+
+function renderGreekPhrase(value: string, showPronunciation: boolean) {
+  const pronunciation = showPronunciation ? transliterateGreekToLatin(value) : null;
+
+  return (
+    <>
+      <strong>{value}</strong>
+      {pronunciation ? <span className="muted">{pronunciation}</span> : null}
+    </>
+  );
+}
+
+function renderBlockItem(item: Record<string, string>, showPronunciation: boolean) {
   if (item.el && item.ru) {
     return (
       <>
-        <strong>{item.el}</strong>
+        {renderGreekPhrase(item.el, showPronunciation)}
         <span>{item.ru}</span>
       </>
     );
@@ -159,6 +175,7 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
   const lessonId = lesson.id;
   const nextLesson = getNextLesson(lesson.id);
   const isCompleted = props.completedLessonIds.includes(lesson.id);
+  const showLessonPronunciation = isBeginnerLesson(lesson.difficulty);
   const easyStartLessonIndex = easyStartLessonIds.indexOf(lesson.id as (typeof easyStartLessonIds)[number]);
   const nextEasyStartLessonId =
     easyStartLessonIndex >= 0 ? easyStartLessonIds[easyStartLessonIndex + 1] : undefined;
@@ -351,7 +368,7 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
               <div className="content-item-list lesson-content-items">
                 {block.items.map((item, itemIndex) => (
                   <div className="content-item" key={`${lesson.id}-${block.type}-${itemIndex}`}>
-                    {renderBlockItem(item)}
+                    {renderBlockItem(item, showLessonPronunciation)}
                   </div>
                 ))}
               </div>

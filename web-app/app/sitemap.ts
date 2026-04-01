@@ -1,20 +1,6 @@
 import type { MetadataRoute } from "next";
-import { lessons } from "@/src/content/catalogData";
-import { STATIC_ROUTE_PATHS } from "@/src/seo/routes";
-import { SITE_URL } from "@/src/seo/siteMetadata";
+import { getSitemapMetadata } from "@/src/seo/siteFiles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticEntries = STATIC_ROUTE_PATHS.map((route) => ({
-    url: `${SITE_URL}${route}`,
-    changeFrequency: route === "/" ? "weekly" : "monthly",
-    priority: route === "/" ? 1 : route === "/cyprus" || route === "/lessons" ? 0.9 : 0.7
-  })) satisfies MetadataRoute.Sitemap;
-
-  const lessonEntries = lessons.map((lesson) => ({
-    url: `${SITE_URL}/lessons/${lesson.id}`,
-    changeFrequency: "monthly",
-    priority: lesson.trackId === "cyprus_reality" ? 0.8 : 0.7
-  })) satisfies MetadataRoute.Sitemap;
-
-  return [...staticEntries, ...lessonEntries];
+  return getSitemapMetadata() satisfies MetadataRoute.Sitemap;
 }

@@ -1,0 +1,19 @@
+{
+  "name": "Kypros Path",
+  "short_name": "Kypros Path",
+  "description": "Греческий язык, Cyprus Reality, уроки, карточки и мини-проверки.",
+  "lang": "ru",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#f7f2e8",
+  "theme_color": "#f7f2e8",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

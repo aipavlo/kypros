@@ -27,17 +27,17 @@ export function LandingPage() {
       <section className="landing-hero panel">
         <div className="landing-copy">
           <p className="eyebrow">Kypros Path</p>
-          <h1>Греческий и Кипр без хаоса в голове</h1>
+          <h1>Греческий язык и подготовка по Кипру в одном месте</h1>
           <p className="lead">
-            Сервис помогает изучать греческий язык для жизни на Кипре и готовиться к Cyprus Reality:
-            история, культура, институты, экзаменационные факты, карточки и короткие проверки в одном месте.
+            Если не хочется разбираться, с чего начать, нажимай на дашборд. Там сайт сам покажет
+            следующий шаг: урок, карточки или мини-проверку.
           </p>
           <div className="actions-row">
             <Link className="primary-link-button" to="/dashboard">
-              Открыть главный дашборд
+              Открыть дашборд
             </Link>
             <Link className="secondary-link-button" to="/easy-start">
-              Начать с лёгкого старта
+              Я начинаю с нуля
             </Link>
           </div>
           <div className="landing-proof-row">
@@ -46,32 +46,14 @@ export function LandingPage() {
             <span className="meta-pill">{trailCount} готовых маршрутов</span>
           </div>
         </div>
-
-        <div className="landing-side">
-          <article className="landing-sidecard">
-            <TrailBadge icon="spark" label="Главный сценарий" tone="language" />
-            <h3>Как идти без перегрузки</h3>
-            <div className="landing-start-list">
-              <p><strong>1.</strong> Открой дашборд.</p>
-              <p><strong>2.</strong> Сделай один рекомендованный шаг.</p>
-              <p><strong>3.</strong> После урока перейди к карточкам и мини-проверке.</p>
-            </div>
-            <Link className="primary-link-button" to="/dashboard">
-              Перейти к дашборду
-            </Link>
-          </article>
-        </div>
       </section>
 
       <section className="panel landing-actions-panel">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Запасные входы</p>
-            <h2>Если нужен не главный сценарий</h2>
-            <p className="section-copy">
-              По умолчанию лучше идти через дашборд. Ниже отдельные входы для старта с нуля и для подготовки
-              к экзамену по истории и культуре Кипра.
-            </p>
+            <p className="eyebrow">Другие входы</p>
+            <h2>Или выбери раздел</h2>
+            <p className="section-copy">Два коротких пути: первый шаг по греческому или сразу по Кипру.</p>
           </div>
         </div>
 

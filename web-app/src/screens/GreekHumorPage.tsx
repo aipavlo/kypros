@@ -156,8 +156,8 @@ export function GreekHumorPage() {
         </div>
       </section>
 
-      <section className="humor-layout">
-        <section className="panel humor-list-panel">
+      <section className="study-layout humor-layout">
+        <section className="panel study-main-panel humor-list-panel">
           <div className="section-head">
             <div>
               <p className="eyebrow">Лента</p>
@@ -213,7 +213,7 @@ export function GreekHumorPage() {
         </section>
 
         {activeItem ? (
-          <section className="panel humor-detail-panel">
+          <section className="panel study-sticky-panel humor-detail-panel">
             <div className="section-head">
               <div>
                 <p className="eyebrow">Разбор</p>
@@ -227,7 +227,7 @@ export function GreekHumorPage() {
               </div>
             </div>
 
-            <article className="humor-hero-card">
+            <article className="study-feature-card humor-hero-card">
               <div className="humor-hero-copy">
                 <p className="humor-greek-line">{activeItem.greek}</p>
                 <div className="humor-reading-block">
@@ -239,7 +239,7 @@ export function GreekHumorPage() {
                   <p className="humor-translation">{activeItem.translation}</p>
                 </div>
               </div>
-              <div className="humor-actions-card">
+              <div className="study-action-card humor-actions-card">
                 <button className="primary-button" onClick={() => toggleSaved(activeItem.id)} type="button">
                   {isSaved(activeItem.id) ? "Убрать из повторения" : "В повторение"}
                 </button>

@@ -1,6 +1,6 @@
-# Project Structure
+# Kypros
 
-В корне проекта для повседневной работы важны две директории и общий `Makefile`.
+Сайт на `Next.js` для изучения греческого языка и подготовки по Кипру. Один код обслуживает два режима: основной hosted-вариант с backend/БД и статическую публикацию в `GitHub Pages`.
 
 ## Быстрый старт
 
@@ -15,32 +15,42 @@ make up
 Основные команды:
 
 - `make lint` — lint-проверка сайта
-- `make test` — прогон тестов сайта из `web-app`
-- `make test-e2e` — отдельный browser E2E прогон внутри web-контейнера
+- `make test` — unit и integration тесты из `web-app`
+- `make test-e2e` — browser E2E внутри web-контейнера
 - `make test-build` — только сборка test bundle
 - `make up` — локальный запуск `website + mysql`
 - `make down` — остановка локальной infra-среды
-- `make logs` — логи локальной infra-среды
-- `make ps` — статус локальной infra-среды
-- `make restart` — перезапуск локальной infra-среды
-- `make docker-build` — сборка локального docker-образа сайта
+- `make logs` — логи контейнеров
+- `make ps` — статус контейнеров
+- `make restart` — перезапуск локальной среды
+- `make docker-build` — пересборка локального docker-образа сайта
 
-## Два режима публикации
+Если менялись `package.json`, `package-lock.json`, `.npmrc` или версия `Node.js/npm` в Dockerfile, сначала пересобери образ:
 
-Проект поддерживает два совместимых режима развёртывания без отдельной кодовой базы:
+```bash
+make docker-build
+make up
+```
 
-- обычный хостинг с backend/runtime и БД;
-- статическая публикация на `GitHub Pages` через встроенный `GitHub Actions`.
+## Разделы сайта
 
-### 1. Хостинг с БД
+- `Учу греческий`
+- `Изучаю Кипр`
+- `Повторение карточек`
+- `Квиз: проверка знаний`
+- `Прогресс`
 
-Это основной runtime-сценарий проекта:
+## Режимы запуска
 
-- используется стандартная сборка `next build`;
-- остаются доступны `app/api/*`, сессии, cookies и серверные интеграции;
-- режим приложения можно переключать через `NEXT_PUBLIC_APP_MODE`, при `db` используется серверный клиент.
+### 1. Основной хостинг с БД
 
-Локально этот сценарий поднимается через:
+Это основной runtime-сценарий:
+
+- используется обычный `next build`
+- доступны `app/api/*`, cookies, сессии и серверные интеграции
+- в data-access слое работает `dbAppClient`
+
+Локально:
 
 ```bash
 make up
@@ -48,65 +58,101 @@ make up
 
 ### 2. GitHub Pages
 
-Для `GitHub Pages` используется отдельный export-режим сборки:
+Для `GitHub Pages` используется отдельный export-режим:
 
-- включается `NEXT_PUBLIC_DEPLOY_TARGET=github-pages`;
-- приложение автоматически переключается в `no-db`;
-- клиентский роутинг переводится на `HashRouter`, чтобы не ломаться на статическом хостинге;
-- `Next.js` собирает статический export без отказа от основной hosted-реализации.
+- включается `NEXT_PUBLIC_DEPLOY_TARGET=github-pages`
+- приложение переключается в `no-db`
+- используется `localAppClient`
+- клиентский роутинг переводится на `HashRouter`
+- после сборки дополнительно создаются `robots.txt` и `sitemap.xml`
 
-Локальная команда для такой сборки:
+Локальная проверка Pages-сборки:
 
 ```bash
 cd web-app
 NEXT_PUBLIC_BASE_PATH=/REPOSITORY_NAME \
 NEXT_PUBLIC_SITE_URL=https://USERNAME.github.io/REPOSITORY_NAME \
+NEXT_PUBLIC_APP_MODE=no-db \
+NEXT_PUBLIC_DEPLOY_TARGET=github-pages \
 npm run build:pages
 ```
 
-### Что переиспользуется в обоих режимах
+## GitHub Pages CI
 
-Одинаковыми остаются:
+Workflow: `.github/workflows/deploy-pages.yml`
 
-- все экраны из `web-app/src/screens`;
-- общий UI и layout;
-- контент из `app-content` и `web-app/app-content`;
-- клиентская логика прогресса, маршрутов, карточек, квизов и библиотеки контента.
+Что делает CI:
 
-Разница только в data-access слое:
+- запускается по push тега формата `v0.0.3`
+- использует `Node.js 20.9.0`
+- фиксирует `npm 9.2.0`
+- считает `basePath` под имя репозитория
+- запускает `lint`
+- запускает `test`
+- собирает `GitHub Pages`-вариант сайта
+- публикует артефакт в `GitHub Pages`
 
-- на хостинге с БД работает `dbAppClient`;
-- на `GitHub Pages` используется `localAppClient` и локальное хранение прогресса.
+Для репозитория `USERNAME/REPOSITORY_NAME` итоговый URL такой:
 
-## GitHub Actions для GitHub Pages
+```text
+https://USERNAME.github.io/REPOSITORY_NAME
+```
 
-workflow `.github/workflows/deploy-pages.yml`.
+Пример релиза:
 
-- запускается при push в `main`;
-- использует `Node.js 20.9.0`;
-- вычисляет `base path` под имя репозитория;
-- собирает сайт в export-режиме;
-- публикует артефакт в `GitHub Pages`.
+```bash
+git add .
+git commit -m "Release v0.0.3"
+git tag v0.0.3
+git push origin main
+git push origin v0.0.3
+```
 
-## `web-app`
+Следующий релиз:
 
-Основной сайт на `Next.js`.
+```bash
+git tag v0.0.4
+git push origin v0.0.4
+```
 
-Здесь находится:
+## Что общее для обоих режимов
 
-- runtime-код сайта;
-- `app`, `src`, `public`;
-- зафиксированные npm-зависимости и build-конфигурация.
+Переиспользуются:
 
-## `infra`
+- экраны из `web-app/src/screens`
+- общий UI и layout
+- контент из `app-content` и `web-app/app-content`
+- клиентская логика прогресса, маршрутов, карточек, квизов и библиотеки
 
-Локальная инфраструктурная обвязка для запуска и сопровождения сайта.
+Различается только слой доступа к данным:
 
-Здесь находится:
+- hosted-режим — `dbAppClient`
+- `GitHub Pages` — `localAppClient`
 
-- docker-compose и Dockerfile для локального окружения;
-- локальная docker-конфигурация, которую использует корневой `Makefile`;
-- локальная infra-конфигурация, вынесенная отдельно от runtime-кода сайта.
+## Структура проекта
+
+### `web-app`
+
+Основной сайт на `Next.js`:
+
+- `app`, `src`, `public`
+- runtime-код сайта
+- зависимости и build-конфигурация
+
+SEO и metadata лежат здесь:
+
+- `web-app/app/layout.tsx`
+- `web-app/src/seo/siteMetadata.ts`
+- `web-app/src/seo/siteFiles.ts`
+- `web-app/scripts/build-pages.mjs`
+
+### `infra`
+
+Локальная инфраструктура:
+
+- Dockerfile и `docker-compose`
+- локальная конфигурация для `make up`
+- отдельная infra-обвязка, вынесенная из runtime-кода
 
 ## Зафиксированные версии
 
@@ -114,6 +160,22 @@ workflow `.github/workflows/deploy-pages.yml`.
 - `npm 9.2.0`
 - `MySQL 8.4`
 
-`make up` использует локальную docker-обвязку из `infra/web-app-local` и поднимает сайт с той же закреплённой версией `npm 9.2.0`, что и в `web-app/package.json`.
-Для `Next.js` не нужно вручную фиксировать `NODE_ENV=development` в compose: `next dev` выставляет нужный режим сам, а `next build` должен выполняться в production-режиме.
-`make test` остаётся быстрым test-pass без browser E2E; для браузерного прогона используется отдельный `make test-e2e`.
+Важно:
+
+- `make up` использует docker-обвязку из `infra/web-app-local`
+- зависимости в локальном контейнере ставятся на этапе `docker build`, а не при каждом `docker compose up`
+- `next dev` сам работает в development-режиме, вручную фиксировать `NODE_ENV=development` не нужно
+
+## SEO
+
+Сайт уже поддерживает базовый SEO-набор и для hosted-режима, и для `GitHub Pages`:
+
+- `title`, `description`, `canonical`
+- `Open Graph` и `Twitter Card`
+- `robots.txt`
+- `sitemap.xml`
+- `site.webmanifest`
+- favicon/icon
+- `WebSite` JSON-LD
+
+Для `GitHub Pages` абсолютные URL, `canonical`, `og:url`, `manifest` и иконки собираются с учётом `basePath`, чтобы сайт корректно работал по адресу вида `/kypros`.

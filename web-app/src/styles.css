@@ -87,6 +87,10 @@ dd {
   align-items: center;
 }
 
+.sidebar-topbar {
+  display: contents;
+}
+
 .brand-link {
   color: inherit;
   text-decoration: none;
@@ -112,6 +116,22 @@ dd {
   background: linear-gradient(135deg, #d19d54, #f0d2a6);
   color: #21313b;
   font-weight: 700;
+}
+
+.sidebar-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid rgba(30, 49, 58, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #24353d;
+}
+
+.sidebar-sections {
+  display: contents;
 }
 
 .nav-group {
@@ -498,7 +518,7 @@ dd {
 
 .landing-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.75fr) minmax(260px, 0.8fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   width: 100%;
   max-width: none;
@@ -510,20 +530,22 @@ dd {
 }
 
 .landing-copy {
+  display: grid;
+  gap: 16px;
   max-width: 760px;
 }
 
 .landing-copy h1 {
-  margin: 0 0 16px;
-  font-size: clamp(34px, 4.6vw, 50px);
-  line-height: 1.06;
+  margin: 0;
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 1.08;
   letter-spacing: -0.04em;
   text-wrap: balance;
-  max-width: 11ch;
+  max-width: 24ch;
 }
 
 .landing-copy .lead {
-  margin: 14px 0 0;
+  margin: 0;
   color: #516168;
   line-height: 1.58;
 }
@@ -532,16 +554,10 @@ dd {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-top: 14px;
-}
-
-.landing-side {
-  display: flex;
-  align-items: stretch;
+  margin-top: 0;
 }
 
 .landing-sidecard {
-  width: 100%;
   display: grid;
   gap: 12px;
   padding: 20px;
@@ -549,6 +565,7 @@ dd {
   background: #f7f9fb;
   border: 1px solid rgba(30, 49, 58, 0.08);
   box-shadow: 0 10px 22px rgba(30, 49, 58, 0.05);
+  max-width: 560px;
 }
 
 .landing-sidecard h3,
@@ -792,6 +809,57 @@ dd {
 }
 
 .landing-stats-grid {
+}
+
+.landing-value-grid article.landing-value-card,
+.landing-stats-grid article.stat-card,
+.landing-info-grid article.landing-info-card {
+  border: 0;
+  box-shadow: none;
+  background:
+    linear-gradient(180deg, rgba(35, 64, 79, 0.028), rgba(35, 64, 79, 0.012)),
+    rgba(255, 251, 244, 0.56);
+}
+
+.landing-value-grid article.landing-value-card::before,
+.landing-stats-grid article.stat-card::before,
+.landing-info-grid article.landing-info-card::before {
+  display: none;
+}
+
+.landing-stats-grid article.stat-card {
+  padding: 16px 18px;
+  border-radius: 16px;
+}
+
+.landing-stats-grid article.stat-card strong {
+  font-size: 28px;
+}
+
+.landing-stats-grid article.stat-card .stat-card-hint {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #66737b;
+}
+
+.achievements-stats-grid article.stat-card {
+  border: 0;
+  box-shadow: none;
+  background:
+    linear-gradient(180deg, rgba(35, 64, 79, 0.018), rgba(35, 64, 79, 0.008)),
+    rgba(255, 251, 244, 0.32);
+}
+
+.achievements-stats-grid article.stat-card::before {
+  display: none;
+}
+
+.achievements-stats-grid article.stat-card strong {
+  font-size: 28px;
+}
+
+.achievements-stats-grid article.stat-card p {
+  color: #66737b;
 }
 
 .stat-card {
@@ -1500,6 +1568,87 @@ article.infographic-card:hover,
   text-wrap: pretty;
 }
 
+.study-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.study-main-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.study-sticky-panel {
+  display: grid;
+  gap: 18px;
+  align-self: start;
+  position: sticky;
+  top: 88px;
+}
+
+.study-sidecard {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 237, 223, 0.94) 100%);
+  border: 1px solid rgba(33, 49, 59, 0.08);
+  box-shadow: 0 12px 24px rgba(58, 48, 30, 0.06);
+}
+
+.study-sidecard p,
+.study-sidecard strong {
+  margin: 0;
+}
+
+.study-feature-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 18px;
+  padding: 24px;
+  border-radius: 24px;
+  background: linear-gradient(155deg, rgba(255, 247, 235, 0.98) 0%, rgba(245, 230, 202, 0.96) 100%);
+  border: 1px solid rgba(30, 49, 58, 0.08);
+  box-shadow: 0 16px 32px rgba(46, 39, 23, 0.07);
+}
+
+.study-action-card {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(30, 49, 58, 0.08);
+}
+
+.quiz-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.quiz-overview-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.quiz-modes-shell {
+  display: grid;
+  gap: 18px;
+}
+
+.quiz-question-panel {
+  display: grid;
+  gap: 18px;
+  align-self: start;
+  position: sticky;
+  top: 88px;
+}
+
 .quiz-mode-card-top {
   display: flex;
   justify-content: space-between;
@@ -2019,7 +2168,15 @@ article.infographic-card::before {
 }
 
 @media (max-width: 960px) {
+  .study-layout {
+    grid-template-columns: 1fr;
+  }
+
   .humor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-layout {
     grid-template-columns: 1fr;
   }
 
@@ -2030,9 +2187,28 @@ article.infographic-card::before {
     justify-content: flex-start;
   }
 
+  .study-sticky-panel {
+    position: static;
+    top: auto;
+  }
+
   .humor-detail-panel {
     position: static;
     top: auto;
+  }
+
+  .flashcards-side-column {
+    position: static;
+    top: auto;
+  }
+
+  .quiz-question-panel {
+    position: static;
+    top: auto;
+  }
+
+  .study-feature-card {
+    grid-template-columns: 1fr;
   }
 
   .humor-hero-card {
@@ -2156,6 +2332,36 @@ article.infographic-card::before {
   .sidebar {
     grid-template-columns: 1fr;
     padding: 16px;
+  }
+
+  .sidebar-topbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .sidebar-topbar .brand {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .sidebar-topbar .brand p {
+    display: none;
+  }
+
+  .sidebar-toggle {
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+
+  .sidebar-sections {
+    display: none;
+  }
+
+  .sidebar-sections.sidebar-sections-open {
+    display: grid;
+    gap: 16px;
   }
 
   .nav a.active,
@@ -2298,7 +2504,7 @@ article.infographic-card::before {
 
 .flashcards-focus-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 0.9fr);
+  grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.15fr);
   gap: 18px;
   align-items: start;
 }
@@ -2309,10 +2515,29 @@ article.infographic-card::before {
   gap: 16px;
 }
 
+.flashcards-side-column {
+  align-self: start;
+  position: sticky;
+  top: 88px;
+}
+
+.flashcards-status-actions-top {
+  margin-bottom: 2px;
+}
+
 .flashcards-session-bar {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(180px, 1fr));
   gap: 14px;
+}
+
+.flashcards-library-shell {
+  display: grid;
+  gap: 16px;
+}
+
+.flashcards-summary-card {
+  width: 100%;
 }
 
 .flashcards-session-card {
@@ -3225,6 +3450,16 @@ article.infographic-card::before {
   margin-top: 20px;
 }
 
+.quiz-text-with-pronunciation {
+  display: grid;
+  gap: 4px;
+}
+
+.quiz-inline-pronunciation {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 .progress-rail {
   width: 100%;
   height: 10px;
@@ -3494,21 +3729,38 @@ article.infographic-card::before {
   box-shadow: 0 10px 24px rgba(53, 42, 21, 0.05);
 }
 
-.achievement-link-card {
+.achievement-badge-static {
+  background:
+    linear-gradient(180deg, rgba(35, 64, 79, 0.035), rgba(35, 64, 79, 0.015)),
+    rgba(255, 251, 244, 0.72);
+  box-shadow: none;
+  border-color: rgba(30, 49, 58, 0.06);
+}
+
+.achievement-badge-linkable {
   display: block;
   color: inherit;
   text-decoration: none;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  border-color: rgba(201, 134, 53, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(201, 134, 53, 0.12);
 }
 
-.achievement-link-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 28px rgba(53, 42, 21, 0.08);
+.achievement-badge-linkable:hover {
+  border-color: rgba(201, 134, 53, 0.42);
+  box-shadow: inset 0 0 0 1px rgba(201, 134, 53, 0.2);
 }
 
 .achievement-badge-earned {
-  border-color: rgba(205, 154, 77, 0.34);
-  box-shadow: 0 16px 28px rgba(205, 154, 77, 0.14);
+  background:
+    linear-gradient(180deg, rgba(103, 164, 121, 0.14), rgba(103, 164, 121, 0.06)),
+    rgba(244, 252, 246, 0.96);
+  border-color: rgba(86, 168, 111, 0.22);
+  box-shadow: none;
+}
+
+.achievement-badge-earned p {
+  color: #2f6943;
+  font-weight: 600;
 }
 
 .achievement-badge-locked {
@@ -3536,6 +3788,19 @@ article.infographic-card::before {
   font-size: 13px;
   font-weight: 600;
   color: #8d5f26;
+}
+
+.achievement-actions {
+  margin-top: 14px;
+}
+
+.achievement-action-link {
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 600;
+  color: #8d5f26;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
 }
 
 .lesson-items {

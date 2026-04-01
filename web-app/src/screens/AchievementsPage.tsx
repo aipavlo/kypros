@@ -88,7 +88,7 @@ export function AchievementsPage(props: AchievementsPageProps) {
         </p>
       </section>
 
-      <section className="stats-grid">
+      <section className="stats-grid achievements-stats-grid">
         <StatCard label="XP" value={totalXp} />
         <StatCard label="Уроки A1" value={`${completedGreekA1Lessons}/${greekA1Lessons.length}`} />
         <StatCard label="Бейджи модулей" value={completedA1Modules.length} />
@@ -106,24 +106,31 @@ export function AchievementsPage(props: AchievementsPageProps) {
         </div>
 
         <div className="achievement-grid">
-          {milestoneBadges.map((badge) => (
-            <Link
-              className={
-                badge.earned
-                  ? "achievement-badge achievement-badge-earned achievement-link-card"
-                  : "achievement-badge achievement-link-card"
-              }
-              key={badge.id}
-              to={nextA1Lesson ? `/lessons/${nextA1Lesson.id}` : "/lessons?stage=a1&source=achievements"}
-            >
-              <span className="achievement-label">Этап</span>
-              <h3>{badge.title}</h3>
-              <p>{badge.earned ? "Заработано" : "Ещё не заработано"}</p>
-              <span className="achievement-action">
-                {badge.earned ? "Открыть следующий шаг" : "Перейти к нужным урокам"}
-              </span>
-            </Link>
-          ))}
+          {milestoneBadges.map((badge) =>
+            badge.earned ? (
+              <article
+                className="achievement-badge achievement-badge-static achievement-badge-earned"
+                key={badge.id}
+              >
+                <span className="achievement-label">Этап</span>
+                <h3>{badge.title}</h3>
+                <p>Заработано</p>
+              </article>
+            ) : (
+              <Link
+                className="achievement-badge achievement-badge-static achievement-badge-linkable"
+                key={badge.id}
+                to={nextA1Lesson ? `/lessons/${nextA1Lesson.id}` : "/lessons?stage=a1&source=achievements"}
+              >
+                <span className="achievement-label">Этап</span>
+                <h3>{badge.title}</h3>
+                <p>Ещё не заработано</p>
+                <div className="achievement-actions">
+                  <span className="achievement-action-link">Перейти к урокам</span>
+                </div>
+              </Link>
+            )
+          )}
         </div>
       </section>
 
@@ -147,39 +154,50 @@ export function AchievementsPage(props: AchievementsPageProps) {
             );
             const earned = moduleCycleStatus.completed;
             const unlocked = unlockedModules.includes(module.id);
+            const isAccessible = unlocked || earned;
             const previousUnlockedModuleId =
               index > 0 ? greekA1Modules[index - 1]?.id : module.id;
-            const targetModuleId = unlocked ? module.id : previousUnlockedModuleId;
+            const targetModuleId = isAccessible ? module.id : previousUnlockedModuleId;
+
+            if (earned) {
+              return (
+                <article
+                  className="achievement-badge achievement-badge-static achievement-badge-earned"
+                  key={module.id}
+                >
+                  <span className="achievement-label">Шаг {index + 1}</span>
+                  <h3>{getModuleBadgeLabel(module.title)}</h3>
+                  <p>Бейдж получен</p>
+                </article>
+              );
+            }
+
+            if (isAccessible) {
+              return (
+                <Link
+                  className="achievement-badge achievement-badge-static achievement-badge-linkable"
+                  key={module.id}
+                  to={`/lessons?stage=a1&module=${targetModuleId}&source=achievements`}
+                >
+                  <span className="achievement-label">Шаг {index + 1}</span>
+                  <h3>{getModuleBadgeLabel(module.title)}</h3>
+                  <p>{getModuleRemainingCopy(moduleCycleStatus)}</p>
+                  <div className="achievement-actions">
+                    <span className="achievement-action-link">Перейти к заданиям</span>
+                  </div>
+                </Link>
+              );
+            }
 
             return (
-              <Link
-                className={
-                  earned
-                    ? "achievement-badge achievement-badge-earned achievement-link-card"
-                    : unlocked
-                      ? "achievement-badge achievement-link-card"
-                      : "achievement-badge achievement-badge-locked achievement-link-card"
-                }
+              <article
+                className="achievement-badge achievement-badge-static achievement-badge-locked"
                 key={module.id}
-                to={`/lessons?stage=a1&module=${targetModuleId}&source=achievements`}
               >
                 <span className="achievement-label">Шаг {index + 1}</span>
                 <h3>{getModuleBadgeLabel(module.title)}</h3>
-                <p>
-                  {earned
-                    ? "Бейдж получен"
-                    : unlocked
-                      ? getModuleRemainingCopy(moduleCycleStatus)
-                      : "Пока заблокирован"}
-                </p>
-                <span className="achievement-action">
-                  {earned
-                    ? "Открыть модуль"
-                    : unlocked
-                      ? "Перейти к заданиям модуля"
-                      : "Открыть предыдущий обязательный модуль"}
-                </span>
-              </Link>
+                <p>Пока заблокирован</p>
+              </article>
             );
           })}
         </div>

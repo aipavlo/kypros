@@ -18,7 +18,7 @@ services:
       - ../../app-content:/workspace/app-content:ro
       - web_app_node_modules:/workspace/web-app/node_modules
       - web_app_next:/workspace/web-app/.next
-    command: sh -lc "npm ci && npm run dev -- --hostname 0.0.0.0"
+    command: npm run dev -- --hostname 0.0.0.0
 
   mysql:
     image: mysql:8.4

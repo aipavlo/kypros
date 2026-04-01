@@ -4,7 +4,8 @@ import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
   SITE_NAME,
-  SITE_URL
+  SITE_URL,
+  getAssetUrl
 } from "@/src/seo/siteMetadata";
 import "../src/styles.css";
 
@@ -17,6 +18,12 @@ export const metadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
   category: "education",
+  manifest: getAssetUrl("/site.webmanifest"),
+  icons: {
+    icon: getAssetUrl("/icon.svg"),
+    shortcut: getAssetUrl("/icon.svg"),
+    apple: getAssetUrl("/icon.svg")
+  },
   keywords: [
     "греческий язык",
     "история Кипра",

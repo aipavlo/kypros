@@ -3,9 +3,26 @@ import { getLessonById } from "@/src/content/catalogData";
 
 export const SITE_NAME = "Kypros Path";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kyprospath.app";
-export const DEFAULT_TITLE = "Греческий язык и Cyprus Reality для подготовки к экзамену | Kypros Path";
+const parsedSiteUrl = new URL(SITE_URL);
+export const SITE_BASE_PATH =
+  process.env.NEXT_PUBLIC_BASE_PATH ??
+  (parsedSiteUrl.pathname === "/" ? "" : parsedSiteUrl.pathname.replace(/\/$/, ""));
+export const DEFAULT_TITLE = "Греческий язык и Cyprus Reality для подготовки к экзамену";
 export const DEFAULT_DESCRIPTION =
   "Сайт для изучения греческого языка, истории и культуры Кипра: уроки, карточки, маршруты, мини-проверки и подготовка к Cyprus Reality.";
+
+export function getAbsoluteUrl(pathname = "/") {
+  const normalizedPath = pathname === "/" ? "" : pathname.replace(/\/+$/, "") || "";
+  const basePath = SITE_BASE_PATH || "";
+  const fullPath = `${basePath}${normalizedPath}` || "/";
+
+  return new URL(fullPath, `${parsedSiteUrl.origin}/`).toString();
+}
+
+export function getAssetUrl(assetPath: string) {
+  const normalizedAssetPath = assetPath.startsWith("/") ? assetPath : `/${assetPath}`;
+  return `${SITE_BASE_PATH}${normalizedAssetPath}`;
+}
 
 type RouteSeoEntry = {
   description: string;
@@ -27,7 +44,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/welcome": {
-    title: `О сервисе для греческого языка и Cyprus Reality | ${SITE_NAME}`,
+    title: "О сервисе для греческого языка и Cyprus Reality",
     description:
       "Как устроен Kypros Path: дашборд, уроки по греческому языку, программа Cyprus Reality, повторение карточками и мини-проверки.",
     keywords: [
@@ -37,7 +54,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/dashboard": {
-    title: `Дашборд обучения по греческому и Cyprus Reality | ${SITE_NAME}`,
+    title: "Дашборд обучения по греческому и Cyprus Reality",
     description:
       "Главный дашборд обучения: следующий урок по греческому языку, повторение, прогресс по модулям и короткие проверки по Кипру.",
     keywords: [
@@ -47,7 +64,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/easy-start": {
-    title: `Лёгкий старт по греческому языку на Кипре | ${SITE_NAME}`,
+    title: "Лёгкий старт по греческому языку на Кипре",
     description:
       "Пошаговый старт для изучения греческого языка на Кипре: первые уроки без лишнего выбора, понятный порядок тем и быстрый переход к повторению.",
     keywords: [
@@ -57,7 +74,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/lessons": {
-    title: `Уроки по греческому языку и Cyprus Reality | ${SITE_NAME}`,
+    title: "Уроки по греческому языку и Cyprus Reality",
     description:
       "Каталог уроков по греческому языку от A1 до C1 и отдельная программа Cyprus Reality по истории, культуре и государственному устройству Кипра.",
     keywords: [
@@ -67,7 +84,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/cyprus": {
-    title: `История, культура и устройство Кипра: Cyprus Reality | ${SITE_NAME}`,
+    title: "История, культура и устройство Кипра: Cyprus Reality",
     description:
       "Программа Cyprus Reality: история Кипра, государственное устройство, праздники, культура, общественная жизнь и подготовка к экзамену.",
     keywords: [
@@ -78,7 +95,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/tracks": {
-    title: `Программы обучения: греческий язык и Кипр | ${SITE_NAME}`,
+    title: "Программы обучения: греческий язык и Кипр",
     description:
       "Все программы Kypros Path: греческий язык по уровням, Cyprus Reality, разговорные маршруты, подготовка к экзамену и греческий юмор.",
     keywords: [
@@ -88,7 +105,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/trails": {
-    title: `Маршруты обучения по греческому и Кипру | ${SITE_NAME}`,
+    title: "Маршруты обучения по греческому и Кипру",
     description:
       "Готовые маршруты по греческому языку, сервисным ситуациям, истории Кипра и тематическому повторению перед экзаменом.",
     keywords: [
@@ -98,7 +115,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/flashcards": {
-    title: `Карточки для повторения греческого и Кипра | ${SITE_NAME}`,
+    title: "Карточки для повторения греческого и Кипра",
     description:
       "Карточки для повторения слов, фраз, дат, институтов и ключевых фактов по греческому языку и Cyprus Reality.",
     keywords: [
@@ -108,7 +125,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/quiz": {
-    title: `Мини-проверки по греческому языку и Cyprus Reality | ${SITE_NAME}`,
+    title: "Мини-проверки по греческому языку и Cyprus Reality",
     description:
       "Мини-проверки, повтор ошибок и короткие квизы по греческому языку, истории и культуре Кипра.",
     keywords: [
@@ -118,7 +135,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/content": {
-    title: `Библиотека уроков, квизов и маршрутов | ${SITE_NAME}`,
+    title: "Библиотека уроков, квизов и маршрутов",
     description:
       "Библиотека учебного контента: уроки по греческому языку, программа Cyprus Reality, маршруты, модули, квизы и греческий юмор.",
     keywords: [
@@ -128,7 +145,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/humor": {
-    title: `Греческий юмор, мемы и анекдоты для изучения языка | ${SITE_NAME}`,
+    title: "Греческий юмор, мемы и анекдоты для изучения языка",
     description:
       "Греческий юмор, мемы, бытовые шутки и анекдоты с пояснениями, переводом и культурным контекстом для изучения языка.",
     keywords: [
@@ -139,7 +156,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/achievements": {
-    title: `Прогресс, достижения и разблокировки | ${SITE_NAME}`,
+    title: "Прогресс, достижения и разблокировки",
     description:
       "Прогресс по модулям греческого языка и Cyprus Reality, достижения, бейджи и следующий учебный шаг.",
     keywords: [
@@ -162,8 +179,9 @@ function getMetadataForLesson(lessonId: string): Metadata | null {
       ? "Cyprus Reality: история и культура Кипра"
       : `Урок греческого языка ${lesson.difficulty.toUpperCase()}`;
 
-  const title = `${lesson.title} | ${trackLabel} | ${SITE_NAME}`;
+  const title = `${lesson.title} | ${trackLabel}`;
   const description = `${lesson.objective} Урок входит в программу ${trackLabel.toLowerCase()} и ведёт к карточкам и мини-проверке.`;
+  const pathname = `/lessons/${lessonId}`;
 
   return {
     title,
@@ -179,12 +197,15 @@ function getMetadataForLesson(lessonId: string): Metadata | null {
       title,
       description,
       type: "website",
-      url: `/lessons/${lessonId}`
+      url: getAbsoluteUrl(pathname)
     },
     twitter: {
       card: "summary",
       title,
       description
+    },
+    alternates: {
+      canonical: getAbsoluteUrl(pathname)
     }
   };
 }
@@ -210,12 +231,15 @@ export function getRouteMetadataFromSlug(slug: string[] = []): Metadata {
       title: routeSeo.title,
       description: routeSeo.description,
       type: "website",
-      url: pathname
+      url: getAbsoluteUrl(pathname)
     },
     twitter: {
       card: "summary",
       title: routeSeo.title,
       description: routeSeo.description
+    },
+    alternates: {
+      canonical: getAbsoluteUrl(pathname)
     }
   };
 }

@@ -7,10 +7,16 @@ import { LessonDetailPage } from "../../src/screens/LessonDetailPage.js";
 import { FlashcardsPage } from "../../src/screens/FlashcardsPage.js";
 import { QuizPage } from "../../src/screens/QuizPage.js";
 import { GreekHumorPage } from "../../src/screens/GreekHumorPage.js";
+import { AchievementsPage } from "../../src/screens/AchievementsPage.js";
+import { getLessonsByModule } from "../../src/content/catalogData.js";
+import { getModuleProgressKey } from "../../src/content/progress.js";
 import { renderRoute, countClass } from "../support/renderRoute.js";
 
 const greekLessonId = "gr_lesson_022";
+const greekA1LessonId = "gr_lesson_001";
+const greekA2LessonId = "gr_lesson_004";
 const greekModuleId = "gr_b1_core_grammar";
+const greekDailyLifeModuleId = "gr_b1_daily_life";
 const cyprusModuleId = "cy_intro_identity";
 const cyprusLessonId = "cy_lesson_008";
 
@@ -20,6 +26,11 @@ const emptyProgressProps = {
   passedModuleQuizIds: []
 };
 
+const greekDailyLifeA1LessonIds = getLessonsByModule(greekDailyLifeModuleId)
+  .filter((lesson) => lesson.difficulty === "a1")
+  .map((lesson) => lesson.id);
+const greekDailyLifeA1ProgressKey = getModuleProgressKey(greekDailyLifeModuleId, "greek_b1", "a1");
+
 test("LandingPage keeps the main dashboard scenario readable and leaves alternate entries secondary", () => {
   const markup = renderRoute({
     path: "/",
@@ -27,13 +38,14 @@ test("LandingPage keeps the main dashboard scenario readable and leaves alternat
     element: <LandingPage />
   });
 
-  assert.match(markup, /Греческий и Кипр без хаоса в голове/);
-  assert.match(markup, /Открыть главный дашборд/);
-  assert.match(markup, /Начать с лёгкого старта/);
+  assert.match(markup, /Греческий язык и подготовка по Кипру в одном месте/);
+  assert.match(markup, /Открыть дашборд/);
+  assert.match(markup, /Я начинаю с нуля/);
   assert.match(markup, /Открыть программу по Кипру/);
-  assert.match(markup, /Если нужен не главный сценарий/);
+  assert.match(markup, /Или выбери раздел/);
+  assert.match(markup, /Два коротких пути/);
   assert.match(markup, /уроков/);
-  assert.ok(countClass(markup, "primary-link-button") >= 2);
+  assert.ok(countClass(markup, "primary-link-button") >= 1);
 });
 
 test("HomePage gives a clear next step for a new user and switches to review mode when quiz mistakes exist", () => {
@@ -147,6 +159,56 @@ test("LessonDetailPage shows one current CTA and only reveals post-study actions
   assert.match(missingMarkup, /Урок не найден/);
 });
 
+test("AchievementsPage keeps a completed module badge accessible instead of showing it as locked", () => {
+  const markup = renderRoute({
+    path: "/achievements",
+    url: "/achievements",
+    element: (
+      <AchievementsPage
+        completedLessonIds={greekDailyLifeA1LessonIds}
+        reviewedModuleIds={[greekDailyLifeA1ProgressKey]}
+        passedModuleQuizIds={[greekDailyLifeA1ProgressKey]}
+      />
+    )
+  });
+
+  assert.match(markup, /Повседневная жизнь Badge/);
+  assert.match(markup, /Бейдж получен/);
+  assert.doesNotMatch(markup, /Повседневная жизнь Badge[\s\S]{0,120}Пока заблокирован/);
+  assert.doesNotMatch(
+    markup,
+    new RegExp(`/lessons\\?stage=a1&amp;module=${greekDailyLifeModuleId}&amp;source=achievements`)
+  );
+});
+
+test("LessonDetailPage adds soft english transliteration for beginner greek lessons only", () => {
+  const beginnerMarkup = renderRoute({
+    path: "/lessons/:lessonId",
+    url: `/lessons/${greekA1LessonId}`,
+    element: (
+      <LessonDetailPage
+        {...emptyProgressProps}
+        onToggleCompleted={() => undefined}
+      />
+    )
+  });
+  const nonBeginnerMarkup = renderRoute({
+    path: "/lessons/:lessonId",
+    url: `/lessons/${greekA2LessonId}`,
+    element: (
+      <LessonDetailPage
+        {...emptyProgressProps}
+        onToggleCompleted={() => undefined}
+      />
+    )
+  });
+
+  assert.match(beginnerMarkup, /Καλημέρα/);
+  assert.match(beginnerMarkup, /Kalimera/);
+  assert.match(beginnerMarkup, /class="muted"/);
+  assert.doesNotMatch(nonBeginnerMarkup, /Kalimera/);
+});
+
 test("FlashcardsPage keeps lesson context and exposes the lesson-flow actions", () => {
   const lessonFlowMarkup = renderRoute({
     path: "/flashcards",
@@ -210,6 +272,25 @@ test("QuizPage keeps lesson context in active state and shows stored progress co
   assert.match(progressAwareMarkup, /Последний результат/);
   assert.match(progressAwareMarkup, /80% · 1 попыток всего/);
   assert.match(progressAwareMarkup, /Повтор ошибок/);
+});
+
+test("QuizPage shows a soft pronunciation hint for greek text inside quiz prompts", () => {
+  const markup = renderRoute({
+    path: "/quiz",
+    url: "/quiz?mode=mode_greek_a1",
+    element: (
+      <QuizPage
+        {...emptyProgressProps}
+        quizProgress={{}}
+        onMarkModuleQuizPassed={() => undefined}
+        onQuizProgressChange={() => undefined}
+      />
+    )
+  });
+
+  assert.match(markup, /Как переводится слово &#x27;διαβατήριο&#x27;\?/);
+  assert.match(markup, /Как читать:/);
+  assert.match(markup, /diavati/);
 });
 
 test("QuizPage uses lesson-specific questions first in cyprus lesson-flow instead of repeating module-wide prompts", () => {

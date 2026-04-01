@@ -146,8 +146,7 @@ export function ContentPage() {
         <p className="eyebrow">Библиотека</p>
         <h1>Библиотека контента</h1>
         <p className="section-copy">
-          Здесь собран весь учебный слой сервиса: уроки по греческому языку, программа Cyprus Reality,
-          маршруты, модули, карточки, квизы и греческий юмор.
+          Все материалы в одном месте: уроки, модули, маршруты, карточки, квиз и юмор.
         </p>
       </section>
 
@@ -163,23 +162,23 @@ export function ContentPage() {
           <Link className="card card-link track-card track-card-language" to="/lessons?stage=a1&source=library">
             <p className="chip">Язык</p>
             <h3>Программа по греческому</h3>
-            <p>Уроки по уровням от A1 до B2 и дополнительный блок C1.</p>
+            <p>Уроки по уровням от A1 до B2.</p>
             <p className="muted">{getTrackCountCopy("greek_b1", tracks.find((track) => track.id === "greek_b1")?.moduleCount ?? 0, tracks.find((track) => track.id === "greek_b1")?.lessonCount ?? 0)}</p>
             <span className="action-link">Открыть программу</span>
           </Link>
           <Link className="card card-link track-card track-card-history" to="/cyprus">
             <p className="chip">Кипр</p>
             <h3>История и культура Кипра</h3>
-            <p>Отдельная программа по стране, экзамену и базовым фактам.</p>
+            <p>Отдельная программа по стране и экзамену.</p>
             <p className="muted">{getTrackCountCopy("cyprus_reality", tracks.find((track) => track.id === "cyprus_reality")?.moduleCount ?? 0, tracks.find((track) => track.id === "cyprus_reality")?.lessonCount ?? 0)}</p>
             <span className="action-link">Открыть программу</span>
           </Link>
           <Link className="card card-link track-card" to="/quiz">
             <p className="chip">Проверка</p>
-            <h3>Мини-проверки и пробные режимы</h3>
-            <p>Проверка по уровням, по Кипру и смешанные сессии.</p>
-            <p className="muted">Все основные режимы проверки в одном месте</p>
-            <span className="action-link">Открыть режимы проверки</span>
+            <h3>Квиз: проверка знаний</h3>
+            <p>Короткие проверки по языку и Кипру.</p>
+            <p className="muted">Все режимы в одном разделе</p>
+            <span className="action-link">Открыть квиз</span>
           </Link>
         </div>
       </section>
@@ -201,8 +200,8 @@ export function ContentPage() {
               <p className="chip">Маршрут</p>
               <h3>{path.title}</h3>
               <p>{path.description}</p>
-              <p className="muted">{path.steps.length} шагов в маршруте</p>
-              <span className="action-link">Перейти к маршруту</span>
+              <p className="muted">{path.steps.length} шагов</p>
+              <span className="action-link">Открыть маршрут</span>
             </Link>
           ))}
         </div>
@@ -236,7 +235,7 @@ export function ContentPage() {
                 <p className="muted">
                   {moduleLessons.length} уроков · порядок {module.order}
                 </p>
-                <span className="action-link">Открыть модуль</span>
+                <span className="action-link">Открыть</span>
               </Link>
             );
           })}
@@ -291,9 +290,9 @@ export function ContentPage() {
               <h3>{quiz.question}</h3>
               <p>{quiz.explanation}</p>
               <p className="muted">
-                Раздел: {quiz.trackId === "cyprus_reality" ? "Cyprus Reality" : "Подготовка к экзамену"}
+                {quiz.trackId === "cyprus_reality" ? "Cyprus Reality" : "Подготовка к экзамену"}
               </p>
-              <span className="action-link">Открыть режим проверки</span>
+              <span className="action-link">Открыть квиз</span>
             </Link>
           ))}
         </div>
@@ -316,8 +315,8 @@ export function ContentPage() {
               <p className="chip">Подборка</p>
               <h3>{theme.title}</h3>
               <p>{theme.description}</p>
-              <p className="muted">{theme.count} карточек в теме</p>
-              <span className="action-link">Смотреть подборку</span>
+              <p className="muted">{theme.count} материалов</p>
+              <span className="action-link">Открыть</span>
             </Link>
           ))}
         </div>

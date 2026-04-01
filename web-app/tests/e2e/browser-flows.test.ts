@@ -84,7 +84,7 @@ test("browser smoke flow keeps landing to lesson flow stable", async () => {
 
   try {
     await gotoPath(page, "/");
-    await waitForText(page, "Греческий и Кипр без хаоса в голове");
+    await waitForText(page, "Греческий язык и подготовка по Кипру в одном месте");
 
     await clickByText(page, "Открыть главный дашборд");
     await waitForText(page, "Ваш следующий шаг уже готов");
@@ -210,7 +210,7 @@ test("browser cyprus flow keeps cyprus navigation active through lesson path", a
     const activePrimaryNavLabel = await page.$eval(".nav a.active", (element) =>
       element.textContent?.trim() ?? ""
     );
-    assert.equal(activePrimaryNavLabel, "Кипр");
+    assert.equal(activePrimaryNavLabel, "Изучаю Кипр");
 
     const nextLessonLink = await getLinkHrefByText(
       page,

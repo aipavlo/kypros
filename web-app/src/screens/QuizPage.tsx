@@ -15,6 +15,7 @@ import {
   getReviewPlan,
   type StoredQuizProgress
 } from "@/src/content/review";
+import { transliterateGreekToLatinWithStress } from "@/src/content/transliteration";
 import {
   getModuleNextLearningAction,
   getModuleProgressKey,
@@ -23,6 +24,7 @@ import {
 import { getModuleStage } from "@/src/content/presentation";
 
 const MODULE_QUIZ_PASS_THRESHOLD = 60;
+const GREEK_FRAGMENT_PATTERN = /[Α-Ωα-ωΆ-Ώά-ώΈέΉήΊίΌόΎύΏώϊϋΐΰς]+(?:[\s,.;:!?'"«»()\-–—]+[Α-Ωα-ωΆ-Ώά-ώΈέΉήΊίΌόΎύΏώϊϋΐΰς]+)*/g;
 
 function getQuestionTagValue(tags: string[], prefix: string) {
   return tags.find((tag) => tag.startsWith(prefix))?.replace(prefix, "");
@@ -45,6 +47,30 @@ function getTopTagValues(questions: Array<{ tags: string[] }>, prefix: string, l
     .sort((left, right) => right[1] - left[1])
     .slice(0, limit)
     .map(([value]) => value);
+}
+
+function getGreekPronunciationHints(value: string) {
+  const matches = value.match(GREEK_FRAGMENT_PATTERN) ?? [];
+  const normalizedMatches = [...new Set(matches.map((match) => match.trim()).filter(Boolean))];
+
+  if (normalizedMatches.length === 0) {
+    return [];
+  }
+
+  return normalizedMatches.map((fragment) => transliterateGreekToLatinWithStress(fragment));
+}
+
+function renderTextWithPronunciation(value: string) {
+  const hints = getGreekPronunciationHints(value);
+
+  return (
+    <span className="quiz-text-with-pronunciation">
+      <span>{value}</span>
+      {hints.length > 0 ? (
+        <span className="quiz-inline-pronunciation muted">Как читать: {hints.join(" · ")}</span>
+      ) : null}
+    </span>
+  );
 }
 
 type QuizPageProps = {
@@ -455,211 +481,216 @@ export function QuizPage(props: QuizPageProps) {
 
   return (
     <div className="stack">
-      <section className="panel page-banner">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Проверка</p>
-            <h2>{activeMode.title}</h2>
-            <p className="section-copy">{activeMode.description}</p>
-            {isLessonFlow && requestedLesson ? (
-              <p className="trail-note">
-                Вы в шаге урока {requestedLesson.order}: <strong>{requestedLesson.title}</strong>.
-              </p>
-            ) : null}
-            {requestedModuleId ? (
-              <p className="trail-note">
-                Сейчас проверка сфокусирована на модуле <strong>{getModuleById(requestedModuleId)?.title ?? requestedModuleId}</strong>.
-              </p>
-            ) : null}
-          </div>
-          <span className="meta-pill">{progressLabel}</span>
-        </div>
-
-        {(activeMode.id === "mode_cyprus_reality" || activeMode.id === "mode_cyprus_summary") &&
-        mutableCyprusFacts.length > 0 ? (
-          <article className="info-note-card">
-            <p className="eyebrow">Изменяемые факты</p>
-            <h3>Перед запуском по Cyprus Reality перепроверь изменяемые данные</h3>
-            <p>
-              В этом режиме есть темы, где часть данных может меняться со временем.
-            </p>
-            <div className="module-step-pills">
-              {mutableCyprusFacts.map((fact) => (
-                <span className="badge-chip" key={fact.id}>
-                  {fact.title}
-                </span>
-              ))}
-            </div>
-          </article>
-        ) : null}
-
-        <div className="meta-inline">
-          <span className="meta-pill">Рекомендуемо: {activeMode.uiHints.recommendedQuestionCount} вопросов</span>
-          <span className="meta-pill">{activeQuestions.length} доступно в банке</span>
-          {isRetryMode ? <span className="meta-pill meta-pill-success">Повтор ошибок</span> : null}
-        </div>
-
-        {storedModeProgress ? (
-          <div className="quiz-review-grid">
-            <article className="trail-helper-card">
-              <strong>Последний результат</strong>
-              <p>{storedModeProgress.lastPercent}% · {storedModeProgress.attempts} попыток всего</p>
-            </article>
-            {storedModeProgress.weakModules.length > 0 ? (
-              <article className="trail-helper-card">
-                <strong>Слабые темы</strong>
-                <p>
-                  {storedModeProgress.weakModules
-                    .map((moduleId) => getModuleById(moduleId)?.title ?? moduleId)
-                    .join(" · ")}
+      <section className="study-layout quiz-layout">
+        <section className="panel page-banner study-main-panel quiz-overview-panel">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Проверка</p>
+              <h2>{activeMode.title}</h2>
+              <p className="section-copy">{activeMode.description}</p>
+              {isLessonFlow && requestedLesson ? (
+                <p className="trail-note">
+                  Вы в шаге урока {requestedLesson.order}: <strong>{requestedLesson.title}</strong>.
                 </p>
-              </article>
-            ) : null}
-            {storedModeProgress.wrongQuestionIds.length > 0 ? (
-              <article className="trail-helper-card">
-                <strong>Повтор ошибок</strong>
-                <p>{storedModeProgress.wrongQuestionIds.length} вопросов сохранено для повтора ошибок.</p>
-                <div className="actions-row">
-                  <Link className="secondary-link-button" to={`/quiz?mode=${activeMode.id}&retry=mistakes`}>
-                    Открыть только ошибки
-                  </Link>
-                </div>
-              </article>
-            ) : null}
+              ) : null}
+              {requestedModuleId ? (
+                <p className="trail-note">
+                  Сейчас проверка сфокусирована на модуле <strong>{getModuleById(requestedModuleId)?.title ?? requestedModuleId}</strong>.
+                </p>
+              ) : null}
+            </div>
+            <span className="meta-pill">{progressLabel}</span>
           </div>
-        ) : null}
 
-        <div className="progress-rail">
-          <span
-            className="progress-fill"
-            style={{
-              width: `${(Math.min(activeIndex + 1, activeQuestions.length) / activeQuestions.length) * 100}%`
-            }}
-          />
-        </div>
-
-        {isLessonFlow ? (
-          <div className="lesson-utility-links">
-            <Link className="inline-link" to={lessonBackLink}>
-              Назад к уроку
-            </Link>
-          </div>
-        ) : null}
-
-        <p className="section-copy">{activeQuiz.question}</p>
-
-        <div className="option-list">
-          {activeQuiz.options.map((option) => {
-            const isCorrect = option === activeQuiz.correctAnswer;
-            const isSelected = option === selectedAnswer;
-
-            let className = "option-button";
-
-            if (isAnswered && isCorrect) {
-              className += " option-correct";
-            } else if (isAnswered && isSelected) {
-              className += " option-wrong";
-            }
-
-            return (
-              <button
-                className={className}
-                key={option}
-                onClick={() => submitAnswer(option)}
-                type="button"
-              >
-                {option}
-              </button>
-            );
-          })}
-        </div>
-
-        {isAnswered ? (
-          <div className="feedback-box">
-            <p>
-              <strong>Правильный ответ:</strong> {activeQuiz.correctAnswer}
-            </p>
-            <p>{activeQuiz.explanation}</p>
-          </div>
-        ) : null}
-
-        <div className="actions-row">
-          <span className="muted">Текущий счёт: {score}</span>
-          <button
-            className="primary-button"
-            disabled={!isAnswered}
-            onClick={goNextQuestion}
-            type="button"
-          >
-            {activeIndex === activeQuestions.length - 1 ? "Завершить" : "Следующий вопрос"}
-          </button>
-        </div>
-      </section>
-
-      <section className="panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Режим</p>
-            <h2>Выбери режим проверки</h2>
-            <p className="section-copy">
-              Можно переключиться на короткую проверку по уровню, по Кипру или пробную сессию.
-            </p>
-          </div>
-        </div>
-
-        <div className="quiz-mode-grid">
-          {summarySessionModes.map((mode) => {
-            const modeQuestions = getQuizQuestionsByMode(mode.id);
-            const progress = props.quizProgress[mode.id];
-            const isCurrent = mode.id === activeMode.id;
-
-            return (
-              <button
-                className={`quiz-mode-card ${isCurrent ? "quiz-mode-card-active" : ""}`}
-                key={mode.id}
-                onClick={() => selectMode(mode.id)}
-                type="button"
-              >
-                <div className="quiz-mode-card-top">
-                  <p className="chip">{mode.title}</p>
-                  <span className="meta-pill">{modeQuestions.length} в сессии</span>
-                </div>
-                <h3>{mode.uiHints.recommendedFor}</h3>
-                <p>{mode.description}</p>
-                {progress ? (
-                  <span className="muted">
-                    {progress.bestPercent}% лучший · {progress.attempts} попыток
+          {(activeMode.id === "mode_cyprus_reality" || activeMode.id === "mode_cyprus_summary") &&
+          mutableCyprusFacts.length > 0 ? (
+            <article className="info-note-card">
+              <p className="eyebrow">Изменяемые факты</p>
+              <h3>Перед запуском по Cyprus Reality перепроверь изменяемые данные</h3>
+              <p>
+                В этом режиме есть темы, где часть данных может меняться со временем.
+              </p>
+              <div className="module-step-pills">
+                {mutableCyprusFacts.map((fact) => (
+                  <span className="badge-chip" key={fact.id}>
+                    {fact.title}
                   </span>
-                ) : (
-                  <span className="muted">Ещё не запускался</span>
-                )}
-              </button>
-            );
-          })}
-        </div>
+                ))}
+              </div>
+            </article>
+          ) : null}
 
-        <div className="quiz-mode-grid">
-          {quizModes.map((mode) => {
-            const modeQuestions = getQuizQuestionsByMode(mode.id);
-            const isCurrent = mode.id === activeMode.id;
+          <div className="meta-inline">
+            <span className="meta-pill">Рекомендуемо: {activeMode.uiHints.recommendedQuestionCount} вопросов</span>
+            <span className="meta-pill">{activeQuestions.length} доступно в банке</span>
+            {isRetryMode ? <span className="meta-pill meta-pill-success">Повтор ошибок</span> : null}
+          </div>
 
-            return (
-              <button
-                className={`quiz-mode-card ${isCurrent ? "quiz-mode-card-active" : ""}`}
-                key={mode.id}
-                onClick={() => selectMode(mode.id)}
-                type="button"
-              >
-                <div className="quiz-mode-card-top">
-                  <p className="chip">{mode.title}</p>
-                  <span className="meta-pill">{modeQuestions.length} в банке</span>
-                </div>
-                <h3>{mode.uiHints.recommendedFor}</h3>
-                <p>{mode.description}</p>
-              </button>
-            );
-          })}
-        </div>
+          {storedModeProgress ? (
+            <div className="quiz-review-grid">
+              <article className="trail-helper-card">
+                <strong>Последний результат</strong>
+                <p>{storedModeProgress.lastPercent}% · {storedModeProgress.attempts} попыток всего</p>
+              </article>
+              {storedModeProgress.weakModules.length > 0 ? (
+                <article className="trail-helper-card">
+                  <strong>Слабые темы</strong>
+                  <p>
+                    {storedModeProgress.weakModules
+                      .map((moduleId) => getModuleById(moduleId)?.title ?? moduleId)
+                      .join(" · ")}
+                  </p>
+                </article>
+              ) : null}
+              {storedModeProgress.wrongQuestionIds.length > 0 ? (
+                <article className="trail-helper-card">
+                  <strong>Повтор ошибок</strong>
+                  <p>{storedModeProgress.wrongQuestionIds.length} вопросов сохранено для повтора ошибок.</p>
+                  <div className="actions-row">
+                    <Link className="secondary-link-button" to={`/quiz?mode=${activeMode.id}&retry=mistakes`}>
+                      Открыть только ошибки
+                    </Link>
+                  </div>
+                </article>
+              ) : null}
+            </div>
+          ) : null}
+
+          {isLessonFlow ? (
+            <div className="lesson-utility-links">
+              <Link className="inline-link" to={lessonBackLink}>
+                Назад к уроку
+              </Link>
+            </div>
+          ) : null}
+
+          <section className="quiz-modes-shell">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Режим</p>
+                <h2>Выбери режим проверки</h2>
+                <p className="section-copy">
+                  Можно переключиться на короткую проверку по уровню, по Кипру или пробную сессию.
+                </p>
+              </div>
+            </div>
+
+            <div className="quiz-mode-grid">
+              {summarySessionModes.map((mode) => {
+                const modeQuestions = getQuizQuestionsByMode(mode.id);
+                const progress = props.quizProgress[mode.id];
+                const isCurrent = mode.id === activeMode.id;
+
+                return (
+                  <button
+                    className={`quiz-mode-card ${isCurrent ? "quiz-mode-card-active" : ""}`}
+                    key={mode.id}
+                    onClick={() => selectMode(mode.id)}
+                    type="button"
+                  >
+                    <div className="quiz-mode-card-top">
+                      <p className="chip">{mode.title}</p>
+                      <span className="meta-pill">{modeQuestions.length} в сессии</span>
+                    </div>
+                    <h3>{mode.uiHints.recommendedFor}</h3>
+                    <p>{mode.description}</p>
+                    {progress ? (
+                      <span className="muted">
+                        {progress.bestPercent}% лучший · {progress.attempts} попыток
+                      </span>
+                    ) : (
+                      <span className="muted">Ещё не запускался</span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="quiz-mode-grid">
+              {quizModes.map((mode) => {
+                const modeQuestions = getQuizQuestionsByMode(mode.id);
+                const isCurrent = mode.id === activeMode.id;
+
+                return (
+                  <button
+                    className={`quiz-mode-card ${isCurrent ? "quiz-mode-card-active" : ""}`}
+                    key={mode.id}
+                    onClick={() => selectMode(mode.id)}
+                    type="button"
+                  >
+                    <div className="quiz-mode-card-top">
+                      <p className="chip">{mode.title}</p>
+                      <span className="meta-pill">{modeQuestions.length} в банке</span>
+                    </div>
+                    <h3>{mode.uiHints.recommendedFor}</h3>
+                    <p>{mode.description}</p>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        </section>
+
+        <aside className="panel study-sticky-panel quiz-question-panel">
+          <div className="progress-rail progress-rail-inline">
+            <span
+              className="progress-fill"
+              style={{
+                width: `${(Math.min(activeIndex + 1, activeQuestions.length) / activeQuestions.length) * 100}%`
+              }}
+            />
+          </div>
+
+          <p className="eyebrow">Текущий вопрос</p>
+          <h2>{renderTextWithPronunciation(activeQuiz.question)}</h2>
+
+          <div className="option-list">
+            {activeQuiz.options.map((option) => {
+              const isCorrect = option === activeQuiz.correctAnswer;
+              const isSelected = option === selectedAnswer;
+
+              let className = "option-button";
+
+              if (isAnswered && isCorrect) {
+                className += " option-correct";
+              } else if (isAnswered && isSelected) {
+                className += " option-wrong";
+              }
+
+              return (
+                <button
+                  className={className}
+                  key={option}
+                  onClick={() => submitAnswer(option)}
+                  type="button"
+                >
+                  {renderTextWithPronunciation(option)}
+                </button>
+              );
+            })}
+          </div>
+
+          {isAnswered ? (
+            <div className="feedback-box">
+              <p>
+                <strong>Правильный ответ:</strong> {renderTextWithPronunciation(activeQuiz.correctAnswer)}
+              </p>
+              <p>{renderTextWithPronunciation(activeQuiz.explanation)}</p>
+            </div>
+          ) : null}
+
+          <div className="actions-row">
+            <span className="muted">Текущий счёт: {score}</span>
+            <button
+              className="primary-button"
+              disabled={!isAnswered}
+              onClick={goNextQuestion}
+              type="button"
+            >
+              {activeIndex === activeQuestions.length - 1 ? "Завершить" : "Следующий вопрос"}
+            </button>
+          </div>
+        </aside>
       </section>
     </div>
   );
