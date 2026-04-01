@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/0hl03feqhr8py.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"slug","param":{"type":"oc","key":"lessons/gr_lesson_049","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"wKbj0Uee-m1LYROoXJ8x6"}
