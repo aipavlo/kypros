@@ -36,6 +36,9 @@ jobs:
           cache: npm
           cache-dependency-path: web-app/package-lock.json
 
+      - name: Pin npm
+        run: npm install -g npm@9.2.0
+
       - name: Resolve Pages URLs
         id: pages
         shell: bash
