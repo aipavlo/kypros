@@ -1,0 +1,181 @@
+[
+  {
+    "id": "mode_greek_a1",
+    "title": "Greek A1",
+    "description": "Базовый режим для первых шагов: бытовая лексика, приветствия, простые формы, покупки, транспорт и короткие сервисные фразы.",
+    "questionStrategy": {
+      "trackTag": "track:greek_b1",
+      "difficulty": [
+        "a1"
+      ]
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 10,
+      "recommendedFor": "новый пользователь, который только начинает греческий"
+    }
+  },
+  {
+    "id": "mode_greek_a2",
+    "title": "Greek A2",
+    "description": "Режим на everyday stability: записи, расписание, короткие сообщения, общественные сообщения, бытовые объяснения и повседневная самостоятельность.",
+    "questionStrategy": {
+      "trackTag": "track:greek_b1",
+      "difficulty": [
+        "a2"
+      ]
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 12,
+      "recommendedFor": "пользователь, который уже прошёл A1 и хочет увереннее справляться с everyday Greek"
+    }
+  },
+  {
+    "id": "mode_greek_b1",
+    "title": "Greek B1",
+    "description": "Режим для полуформального Greek: документы, общественной жизни reading, объяснение мнения, более длинные фразы и связные ответы.",
+    "questionStrategy": {
+      "trackTag": "track:greek_b1",
+      "difficulty": [
+        "b1"
+      ]
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 12,
+      "recommendedFor": "пользователь, который готовится к более уверенному языку для натурализации и повседневной жизни"
+    }
+  },
+  {
+    "id": "mode_greek_b2",
+    "title": "Greek B2",
+    "description": "Режим-мост между B1 и C1: более длинные тексты, сравнение позиций, структурированные ответы и более уверенный дискурс.",
+    "questionStrategy": {
+      "trackTag": "track:greek_b1",
+      "difficulty": [
+        "b2"
+      ]
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 10,
+      "recommendedFor": "пользователь, который хочет уверенно перейти от B1 к продвинутому Greek без резкого скачка"
+    }
+  },
+  {
+    "id": "mode_greek_c1",
+    "title": "Greek C1",
+    "description": "Продвинутый режим на регистр, аргументацию, длинные тексты, продвинутый аудирование и более сложные академические или публичные форматы.",
+    "questionStrategy": {
+      "trackTag": "track:greek_b1",
+      "difficulty": [
+        "c1"
+      ]
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 8,
+      "recommendedFor": "продвинутый пользователь, который хочет выйти далеко за рамки citizenship minimum"
+    }
+  },
+  {
+    "id": "mode_cyprus_reality",
+    "title": "Cyprus Reality",
+    "description": "Отдельный режим по Кипру: институты, история, праздники, общественные даты, официальные языки и современная политическая и социальная реальность.",
+    "questionStrategy": {
+      "trackTag": "track:cyprus_reality"
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 15,
+      "recommendedFor": "пользователь, который готовится именно к гражданскому и историко-общественному блоку"
+    }
+  },
+  {
+    "id": "mode_greek_summary",
+    "title": "Сводная сессия по греческому",
+    "description": "Полноценная смешанная языковая сессия по уровням: от базовой лексики до более зрелой речи. Хорошо показывает общий языковой профиль, а не только одну тему.",
+    "questionStrategy": {
+      "mix": [
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a1",
+          "count": 4
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a2",
+          "count": 5
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b1",
+          "count": 6
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b2",
+          "count": 5
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "c1",
+          "count": 3
+        }
+      ]
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 23,
+      "recommendedFor": "пользователь, который хочет увидеть общую языковую картину и слабые уровни за одну сессию"
+    }
+  },
+  {
+    "id": "mode_cyprus_summary",
+    "title": "Сводная сессия по Cyprus Reality",
+    "description": "Экзаменационно-похожий прогон по истории, институтам, датам и общественной реальности Кипра. Подходит для цельной самопроверки перед повторением.",
+    "questionStrategy": {
+      "trackTag": "track:cyprus_reality"
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 20,
+      "recommendedFor": "пользователь, который хочет пройти Cyprus Reality как единую проверочную сессию"
+    }
+  },
+  {
+    "id": "mode_mixed_summary",
+    "title": "Сводная смешанная сессия",
+    "description": "Смешанный режим, который комбинирует язык и Cyprus Reality и лучше показывает общую готовность, чем узкий тематический режим повторения.",
+    "questionStrategy": {
+      "mix": [
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a1",
+          "count": 5
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a2",
+          "count": 7
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b1",
+          "count": 7
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b2",
+          "count": 7
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "c1",
+          "count": 4
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "count": 10
+        }
+      ]
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 40,
+      "recommendedFor": "пользователь, который хочет проверить общий прогресс в формате одной смешанной сессии"
+    }
+  }
+]

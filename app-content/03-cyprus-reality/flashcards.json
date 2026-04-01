@@ -1,0 +1,635 @@
+[
+  {
+    "id": "cy_card_001",
+    "trackId": "cyprus_reality",
+    "front": "Κυπριακή Δημοκρατία",
+    "back": "Республика Кипр",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_intro_identity",
+      "skill:institutions",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "cy_card_002",
+    "trackId": "cyprus_reality",
+    "front": "Λευκωσία",
+    "back": "Никосия",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_intro_identity",
+      "skill:geography",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "cy_card_003",
+    "trackId": "cyprus_reality",
+    "front": "επίσημη γλώσσα",
+    "back": "официальный язык",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_intro_identity",
+      "skill:institutions",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_004",
+    "trackId": "cyprus_reality",
+    "front": "Βουλή των Αντιπροσώπων",
+    "back": "Палата представителей",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_institutions",
+      "skill:institutions",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_005",
+    "trackId": "cyprus_reality",
+    "front": "Πρόεδρος της Δημοκρατίας",
+    "back": "Президент Республики",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_institutions",
+      "skill:institutions",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_006",
+    "trackId": "cyprus_reality",
+    "front": "ανεξαρτησία",
+    "back": "независимость",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_history_timeline",
+      "skill:history",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_007",
+    "trackId": "cyprus_reality",
+    "front": "16 августа 1960",
+    "back": "дата независимости Республики Кипр",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_history_timeline",
+      "skill:history",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_008",
+    "trackId": "cyprus_reality",
+    "front": "1959 agreements",
+    "back": "соглашения, подготовившие путь к независимости",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_history_timeline",
+      "skill:history",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_009",
+    "trackId": "cyprus_reality",
+    "front": "1974",
+    "back": "ключевой узел современной истории Кипра",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_history_timeline",
+      "skill:history",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_010",
+    "trackId": "cyprus_reality",
+    "front": "ευρωπαϊκή ένωση",
+    "back": "Европейский союз",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_key_dates",
+      "skill:institutions",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_011",
+    "trackId": "cyprus_reality",
+    "front": "1 мая 2004",
+    "back": "Кипр вступил в ЕС",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_key_dates",
+      "skill:history",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_012",
+    "trackId": "cyprus_reality",
+    "front": "1 января 2008",
+    "back": "Кипр присоединился к еврозоне",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_key_dates",
+      "skill:history",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_013",
+    "trackId": "cyprus_reality",
+    "front": "πολιτισμός",
+    "back": "культура",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_society_culture",
+      "skill:culture",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_014",
+    "trackId": "cyprus_reality",
+    "front": "παράδοση",
+    "back": "традиция",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_society_culture",
+      "skill:culture",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_015",
+    "trackId": "cyprus_reality",
+    "front": "κληρονομιά",
+    "back": "наследие",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_society_culture",
+      "skill:culture",
+      "skill:history",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_016",
+    "trackId": "cyprus_reality",
+    "front": "επαρχία",
+    "back": "округ, административный регион",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_geography_regions",
+      "skill:geography",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "cy_card_017",
+    "trackId": "cyprus_reality",
+    "front": "οροσειρά Τροόδους",
+    "back": "горный массив Троодос",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_geography_regions",
+      "skill:geography",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_018",
+    "trackId": "cyprus_reality",
+    "front": "παραλιακή πόλη",
+    "back": "прибрежный город",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_geography_regions",
+      "skill:geography",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_019",
+    "trackId": "cyprus_reality",
+    "front": "υπουργικό συμβούλιο",
+    "back": "Совет министров",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_institutions",
+      "skill:institutions",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_020",
+    "trackId": "cyprus_reality",
+    "front": "διάκριση των εξουσιών",
+    "back": "разделение властей",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_institutions",
+      "skill:institutions",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_021",
+    "trackId": "cyprus_reality",
+    "front": "αργία",
+    "back": "официальный выходной, праздничный день",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_society_culture",
+      "skill:culture",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_022",
+    "trackId": "cyprus_reality",
+    "front": "1 октября",
+    "back": "официальное празднование Дня независимости Республики Кипр",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_key_dates",
+      "skill:history",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_023",
+    "trackId": "cyprus_reality",
+    "front": "μεταβαλλόμενο στοιχείο",
+    "back": "изменяемый факт, который нужно перепроверять",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_exam_fundamentals",
+      "skill:exam",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_024",
+    "trackId": "cyprus_reality",
+    "front": "σταθερό γεγονός",
+    "back": "устойчивый факт, который не зависит от текущих должностей",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_exam_fundamentals",
+      "skill:exam",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_025",
+    "trackId": "cyprus_reality",
+    "front": "θεματική επανάληψη",
+    "back": "тематическое повторение, а не хаотичное заучивание",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_exam_fundamentals",
+      "skill:exam",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_026",
+    "trackId": "cyprus_reality",
+    "front": "προεδρική δημοκρατία",
+    "back": "президентская республика",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_intro_identity",
+      "skill:institutions",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "cy_card_027",
+    "trackId": "cyprus_reality",
+    "front": "κρατικό σύμβολο",
+    "back": "государственный символ",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_intro_identity",
+      "skill:culture",
+      "skill:institutions",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_028",
+    "trackId": "cyprus_reality",
+    "front": "εθνική σημαία",
+    "back": "государственный флаг",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_intro_identity",
+      "skill:culture",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_029",
+    "trackId": "cyprus_reality",
+    "front": "διοικητική περιφέρεια",
+    "back": "административный регион",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_geography_regions",
+      "skill:geography",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_030",
+    "trackId": "cyprus_reality",
+    "front": "Λεμεσός",
+    "back": "Лимассол",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_geography_regions",
+      "skill:geography",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "cy_card_031",
+    "trackId": "cyprus_reality",
+    "front": "κύρια πόλη",
+    "back": "крупный город, важный городской центр",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_geography_regions",
+      "skill:geography",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_032",
+    "trackId": "cyprus_reality",
+    "front": "κοινωνική ημερομηνία",
+    "back": "общественно значимая дата",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_society_culture",
+      "skill:culture",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_033",
+    "trackId": "cyprus_reality",
+    "front": "σταθερός πυρήνας",
+    "back": "устойчивое ядро фактов, которое нужно знать без перепроверки",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_exam_fundamentals",
+      "skill:exam",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_034",
+    "trackId": "cyprus_reality",
+    "front": "επανέλεγχος πριν από την εξέταση",
+    "back": "перепроверка перед экзаменом",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_exam_fundamentals",
+      "skill:exam",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_035",
+    "trackId": "cyprus_reality",
+    "front": "χαλούμι",
+    "back": "халлуми; один из самых узнаваемых культурных маркеров Кипра",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_public_life_culture",
+      "lesson:cy_lesson_032",
+      "skill:culture",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_036",
+    "trackId": "cyprus_reality",
+    "front": "κουμανταρία",
+    "back": "Commandaria; исторически известное кипрское вино",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_public_life_culture",
+      "lesson:cy_lesson_032",
+      "skill:culture",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_037",
+    "trackId": "cyprus_reality",
+    "front": "μοναστήρι",
+    "back": "монастырь; важная часть религиозного и культурного наследия",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_public_life_culture",
+      "lesson:cy_lesson_033",
+      "skill:culture",
+      "skill:history",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_038",
+    "trackId": "cyprus_reality",
+    "front": "πολιτιστική κληρονομιά",
+    "back": "культурное наследие",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_public_life_culture",
+      "lesson:cy_lesson_033",
+      "skill:culture",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "cy_card_039",
+    "trackId": "cyprus_reality",
+    "front": "δήμος",
+    "back": "муниципалитет, городской уровень местной жизни",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_public_life_culture",
+      "lesson:cy_lesson_034",
+      "skill:institutions",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_040",
+    "trackId": "cyprus_reality",
+    "front": "κοινότητα",
+    "back": "сообщество, местный уровень общественной жизни",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_public_life_culture",
+      "lesson:cy_lesson_034",
+      "skill:institutions",
+      "context:public_life",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_041",
+    "trackId": "cyprus_reality",
+    "front": "φεστιβάλ",
+    "back": "фестиваль, культурное или общественное событие",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_public_life_culture",
+      "lesson:cy_lesson_035",
+      "skill:culture",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_042",
+    "trackId": "cyprus_reality",
+    "front": "δημόσια ζωή",
+    "back": "общественная жизнь",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_public_life_culture",
+      "lesson:cy_lesson_035",
+      "skill:culture",
+      "context:public_life",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_043",
+    "trackId": "cyprus_reality",
+    "front": "1 Μαΐου 2004",
+    "back": "Кипр стал государством-членом Европейского союза.",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_key_dates",
+      "lesson:cy_lesson_006",
+      "skill:history",
+      "skill:institutions",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "cy_card_044",
+    "trackId": "cyprus_reality",
+    "front": "1 Ιανουαρίου 2008",
+    "back": "Кипр присоединился к еврозоне.",
+    "tags": [
+      "track:cyprus_reality",
+      "module:cy_key_dates",
+      "lesson:cy_lesson_006",
+      "skill:history",
+      "skill:institutions",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  }
+]

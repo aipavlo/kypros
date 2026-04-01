@@ -1,0 +1,58 @@
+[
+  {
+    "id": "cy_intro_identity",
+    "trackId": "cyprus_reality",
+    "title": "Республика Кипр",
+    "description": "Базовое понимание государства и его идентичности.",
+    "order": 1
+  },
+  {
+    "id": "cy_geography_regions",
+    "trackId": "cyprus_reality",
+    "title": "География и регионы",
+    "description": "Основная география, города и административные регионы.",
+    "order": 2
+  },
+  {
+    "id": "cy_history_timeline",
+    "trackId": "cyprus_reality",
+    "title": "Историческая линия",
+    "description": "Ключевые этапы истории Кипра в учебном формате.",
+    "order": 3
+  },
+  {
+    "id": "cy_institutions",
+    "trackId": "cyprus_reality",
+    "title": "Государственные институты",
+    "description": "Государственные институты и базовое устройство Республики Кипр.",
+    "order": 4
+  },
+  {
+    "id": "cy_society_culture",
+    "trackId": "cyprus_reality",
+    "title": "Общество и культура",
+    "description": "Праздники, традиции и общественная жизнь.",
+    "order": 5
+  },
+  {
+    "id": "cy_key_dates",
+    "trackId": "cyprus_reality",
+    "title": "Ключевые даты",
+    "description": "Ключевые даты современной истории и общественной жизни Кипра.",
+    "order": 6
+  },
+  {
+    "id": "cy_exam_fundamentals",
+    "trackId": "cyprus_reality",
+    "title": "Экзаменационная база",
+    "description": "Базовые темы, которые нужно уверенно знать перед пробным экзаменом.",
+    "order": 7
+  },
+  {
+    "id": "cy_public_life_culture",
+    "trackId": "cyprus_reality",
+    "title": "Культурные ориентиры и общественная жизнь",
+    "description": "Культурные маркеры, заметные места и базовая общественная жизнь, которые помогают увереннее проходить темы Cyprus Reality.",
+    "order": 8
+  }
+]

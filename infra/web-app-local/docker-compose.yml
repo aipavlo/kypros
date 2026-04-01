@@ -1,0 +1,45 @@
+services:
+  web:
+    build:
+      context: ../..
+      dockerfile: infra/web-app-local/Dockerfile
+    working_dir: /workspace/web-app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      PORT: 3000
+      NEXT_PUBLIC_APP_MODE: no-db
+      DATABASE_URL: mysql://kypros:kypros@mysql:3306/kypros_path
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../web-app:/workspace/web-app
+      - ../../app-content:/workspace/app-content:ro
+      - web_app_node_modules:/workspace/web-app/node_modules
+      - web_app_next:/workspace/web-app/.next
+    command: sh -lc "npm ci && npm run dev -- --hostname 0.0.0.0"
+
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: kypros_path
+      MYSQL_USER: kypros
+      MYSQL_PASSWORD: kypros
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - web_app_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+volumes:
+  web_app_node_modules:
+  web_app_next:
+  web_app_mysql_data:

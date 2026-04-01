@@ -1,0 +1,79 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  SITE_NAME,
+  SITE_URL
+} from "@/src/seo/siteMetadata";
+import "../src/styles.css";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s | ${SITE_NAME}`
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  category: "education",
+  keywords: [
+    "греческий язык",
+    "история Кипра",
+    "культура Кипра",
+    "Cyprus Reality",
+    "подготовка к экзамену Кипр"
+  ],
+  openGraph: {
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    siteName: SITE_NAME,
+    type: "website",
+    locale: "ru_RU",
+    url: SITE_URL
+  },
+  twitter: {
+    card: "summary",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION
+  },
+  alternates: {
+    canonical: SITE_URL
+  },
+  robots: {
+    index: true,
+    follow: true
+  }
+};
+
+export default function RootLayout({
+  children
+}: Readonly<{
+  children: ReactNode;
+}>) {
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: DEFAULT_DESCRIPTION,
+    inLanguage: "ru",
+    about: [
+      "Greek language learning",
+      "Cyprus history and culture",
+      "Cyprus Reality exam preparation"
+    ]
+  };
+
+  return (
+    <html lang="ru">
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        {children}
+      </body>
+    </html>
+  );
+}

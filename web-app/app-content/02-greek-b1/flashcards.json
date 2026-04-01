@@ -1,0 +1,2020 @@
+[
+  {
+    "id": "gr_card_001",
+    "trackId": "greek_b1",
+    "front": "αίτηση",
+    "back": "заявление",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:documents",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_002",
+    "trackId": "greek_b1",
+    "front": "διαβατήριο",
+    "back": "паспорт",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:citizenship",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_003",
+    "trackId": "greek_b1",
+    "front": "διεύθυνση",
+    "back": "адрес",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:documents",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_004",
+    "trackId": "greek_b1",
+    "front": "ιθαγένεια",
+    "back": "гражданство",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:citizenship",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_005",
+    "trackId": "greek_b1",
+    "front": "υπηκοότητα",
+    "back": "подданство, гражданство",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:citizenship",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_006",
+    "trackId": "greek_b1",
+    "front": "ωράριο",
+    "back": "график, расписание работы",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:work",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_007",
+    "trackId": "greek_b1",
+    "front": "Παρακαλώ",
+    "back": "Пожалуйста",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_008",
+    "trackId": "greek_b1",
+    "front": "Μένω στη Λάρνακα",
+    "back": "Я живу в Ларнаке",
+    "tags": [
+      "track:greek_b1",
+      "skill:speaking",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_009",
+    "trackId": "greek_b1",
+    "front": "οδός",
+    "back": "улица",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:documents",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_010",
+    "trackId": "greek_b1",
+    "front": "ταχυδρομικός κώδικας",
+    "back": "почтовый индекс",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:documents",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_011",
+    "trackId": "greek_b1",
+    "front": "ραντεβού",
+    "back": "встреча, запись",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:daily_life",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_012",
+    "trackId": "greek_b1",
+    "front": "πιστοποιητικό",
+    "back": "сертификат, свидетельство",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:citizenship",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_013",
+    "trackId": "greek_b1",
+    "front": "υπογραφή",
+    "back": "подпись",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:documents",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_014",
+    "trackId": "greek_b1",
+    "front": "Μιλάω λίγα ελληνικά",
+    "back": "Я немного говорю по-гречески",
+    "tags": [
+      "track:greek_b1",
+      "skill:speaking",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_015",
+    "trackId": "greek_b1",
+    "front": "σπίτι",
+    "back": "дом",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_016",
+    "trackId": "greek_b1",
+    "front": "δωμάτιο",
+    "back": "комната",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_017",
+    "trackId": "greek_b1",
+    "front": "Δευτέρα",
+    "back": "понедельник",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_018",
+    "trackId": "greek_b1",
+    "front": "πρωί",
+    "back": "утро",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_019",
+    "trackId": "greek_b1",
+    "front": "ψωμί",
+    "back": "хлеб",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_020",
+    "trackId": "greek_b1",
+    "front": "Πόσο κάνει;",
+    "back": "Сколько это стоит?",
+    "tags": [
+      "track:greek_b1",
+      "skill:speaking",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_021",
+    "trackId": "greek_b1",
+    "front": "λεωφορείο",
+    "back": "автобус",
+    "tags": [
+      "track:greek_b1",
+      "skill:vocabulary",
+      "context:transport",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_022",
+    "trackId": "greek_b1",
+    "front": "Πού είναι η στάση;",
+    "back": "Где остановка?",
+    "tags": [
+      "track:greek_b1",
+      "skill:speaking",
+      "context:transport",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_023",
+    "trackId": "greek_b1",
+    "front": "Είσοδος",
+    "back": "вход",
+    "tags": [
+      "track:greek_b1",
+      "skill:reading",
+      "context:daily_life",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_024",
+    "trackId": "greek_b1",
+    "front": "Επώνυμο",
+    "back": "фамилия",
+    "tags": [
+      "track:greek_b1",
+      "skill:reading",
+      "context:documents",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_025",
+    "trackId": "greek_b1",
+    "front": "Καλημέρα",
+    "back": "доброе утро",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_001",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_026",
+    "trackId": "greek_b1",
+    "front": "Με λένε Άννα",
+    "back": "меня зовут Анна",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_001",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_027",
+    "trackId": "greek_b1",
+    "front": "οικογένεια",
+    "back": "семья",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_006",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_028",
+    "trackId": "greek_b1",
+    "front": "Έχω δύο παιδιά",
+    "back": "у меня двое детей",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_006",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_029",
+    "trackId": "greek_b1",
+    "front": "είμαι",
+    "back": "я есть / я являюсь",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_022",
+      "skill:grammar",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_030",
+    "trackId": "greek_b1",
+    "front": "είσαι",
+    "back": "ты есть / ты являешься",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_022",
+      "skill:grammar",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_031",
+    "trackId": "greek_b1",
+    "front": "διαμέρισμα",
+    "back": "квартира",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_home_address",
+      "lesson:gr_lesson_011",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_032",
+    "trackId": "greek_b1",
+    "front": "κουζίνα",
+    "back": "кухня",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_home_address",
+      "lesson:gr_lesson_011",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_033",
+    "trackId": "greek_b1",
+    "front": "Η διεύθυνσή μου είναι ...",
+    "back": "мой адрес ...",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_home_address",
+      "lesson:gr_lesson_012",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_034",
+    "trackId": "greek_b1",
+    "front": "ταχυδρομικός κώδικας",
+    "back": "почтовый индекс",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_home_address",
+      "lesson:gr_lesson_012",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_035",
+    "trackId": "greek_b1",
+    "front": "Τετάρτη",
+    "back": "среда",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_013",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_036",
+    "trackId": "greek_b1",
+    "front": "βράδυ",
+    "back": "вечер",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_013",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_037",
+    "trackId": "greek_b1",
+    "front": "Το πρωί πηγαίνω στη δουλειά",
+    "back": "утром я иду на работу",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_014",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_038",
+    "trackId": "greek_b1",
+    "front": "Το βράδυ διαβάζω ελληνικά",
+    "back": "вечером я учу греческий",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_014",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_039",
+    "trackId": "greek_b1",
+    "front": "μήλο",
+    "back": "яблоко",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_015",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_040",
+    "trackId": "greek_b1",
+    "front": "τυρί",
+    "back": "сыр",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_015",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_041",
+    "trackId": "greek_b1",
+    "front": "Πόσο κάνει;",
+    "back": "сколько это стоит?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_016",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_042",
+    "trackId": "greek_b1",
+    "front": "Δύο ευρώ, παρακαλώ",
+    "back": "два евро, пожалуйста",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_016",
+      "skill:reading",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_043",
+    "trackId": "greek_b1",
+    "front": "Θα ήθελα έναν χυμό",
+    "back": "я бы хотел сок",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_017",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_044",
+    "trackId": "greek_b1",
+    "front": "Μπορώ να έχω ένα νερό;",
+    "back": "можно мне воды?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_017",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_045",
+    "trackId": "greek_b1",
+    "front": "στάση",
+    "back": "остановка",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_city_transport",
+      "lesson:gr_lesson_018",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_046",
+    "trackId": "greek_b1",
+    "front": "εισιτήριο",
+    "back": "билет",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_city_transport",
+      "lesson:gr_lesson_018",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_047",
+    "trackId": "greek_b1",
+    "front": "Πηγαίνετε ευθεία",
+    "back": "идите прямо",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_city_transport",
+      "lesson:gr_lesson_019",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_048",
+    "trackId": "greek_b1",
+    "front": "Στρίψτε αριστερά",
+    "back": "поверните налево",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_city_transport",
+      "lesson:gr_lesson_019",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_049",
+    "trackId": "greek_b1",
+    "front": "Ανοιχτό",
+    "back": "открыто",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_020",
+      "skill:reading",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_050",
+    "trackId": "greek_b1",
+    "front": "Απαγορεύεται",
+    "back": "запрещено",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_020",
+      "skill:reading",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_051",
+    "trackId": "greek_b1",
+    "front": "Όνομα",
+    "back": "имя",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_021",
+      "skill:reading",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_052",
+    "trackId": "greek_b1",
+    "front": "Τηλέφωνο",
+    "back": "телефон",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_021",
+      "skill:reading",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_053",
+    "trackId": "greek_b1",
+    "front": "έχω",
+    "back": "я имею / у меня есть",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_023",
+      "skill:grammar",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_054",
+    "trackId": "greek_b1",
+    "front": "Έχεις διαβατήριο;",
+    "back": "у тебя есть паспорт?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_023",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_055",
+    "trackId": "greek_b1",
+    "front": "Πού μένεις;",
+    "back": "где ты живешь?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_024",
+      "skill:speaking",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_056",
+    "trackId": "greek_b1",
+    "front": "Τι θα θέλατε;",
+    "back": "что бы вы хотели?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_024",
+      "skill:reading",
+      "level:a1",
+      "status:seed"
+    ],
+    "difficulty": "a1"
+  },
+  {
+    "id": "gr_card_057",
+    "trackId": "greek_b1",
+    "front": "λογαριασμός ρεύματος",
+    "back": "счёт за электричество",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_home_address",
+      "lesson:gr_lesson_025",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_058",
+    "trackId": "greek_b1",
+    "front": "υδραυλικός",
+    "back": "сантехник",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_home_address",
+      "lesson:gr_lesson_025",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_059",
+    "trackId": "greek_b1",
+    "front": "Δεν νιώθω καλά",
+    "back": "я плохо себя чувствую",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_026",
+      "skill:speaking",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_060",
+    "trackId": "greek_b1",
+    "front": "φάρμακο",
+    "back": "лекарство",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_026",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_061",
+    "trackId": "greek_b1",
+    "front": "ραντεβού",
+    "back": "встреча, запись",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_027",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_062",
+    "trackId": "greek_b1",
+    "front": "Μπορούμε να το αλλάξουμε;",
+    "back": "мы можем это перенести?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_027",
+      "skill:speaking",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_063",
+    "trackId": "greek_b1",
+    "front": "δάσκαλος",
+    "back": "учитель",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_work_society",
+      "lesson:gr_lesson_028",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_064",
+    "trackId": "greek_b1",
+    "front": "Το μάθημα αρχίζει στις οκτώ και μισή",
+    "back": "занятие начинается в восемь тридцать",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_work_society",
+      "lesson:gr_lesson_028",
+      "skill:reading",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_065",
+    "trackId": "greek_b1",
+    "front": "δικαιολογητικά",
+    "back": "подтверждающие документы",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_029",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_066",
+    "trackId": "greek_b1",
+    "front": "βεβαίωση κατοικίας",
+    "back": "справка о проживании",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_029",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_067",
+    "trackId": "greek_b1",
+    "front": "αρμοδιότητες",
+    "back": "обязанности",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_work_society",
+      "lesson:gr_lesson_030",
+      "skill:vocabulary",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_068",
+    "trackId": "greek_b1",
+    "front": "Πιστεύω ότι...",
+    "back": "я считаю, что...",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_work_society",
+      "lesson:gr_lesson_030",
+      "skill:speaking",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_069",
+    "trackId": "greek_b1",
+    "front": "παραδόσεις",
+    "back": "традиции",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_031",
+      "skill:vocabulary",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_070",
+    "trackId": "greek_b1",
+    "front": "οικογενειακή συγκέντρωση",
+    "back": "семейная встреча, семейное собрание",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_031",
+      "skill:vocabulary",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_071",
+    "trackId": "greek_b1",
+    "front": "ο δήμος ενημερώνει τους κατοίκους",
+    "back": "муниципалитет информирует жителей",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_032",
+      "skill:reading",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_072",
+    "trackId": "greek_b1",
+    "front": "πολιτιστική εκδήλωση",
+    "back": "культурное мероприятие",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_032",
+      "skill:reading",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_073",
+    "trackId": "greek_b1",
+    "front": "ιθαγένεια",
+    "back": "гражданство",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_033",
+      "skill:vocabulary",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_074",
+    "trackId": "greek_b1",
+    "front": "δημόσια ζωή",
+    "back": "общественная жизнь",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_033",
+      "skill:vocabulary",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_075",
+    "trackId": "greek_b1",
+    "front": "μισό κιλό",
+    "back": "полкило",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_034",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_076",
+    "trackId": "greek_b1",
+    "front": "φρέσκο",
+    "back": "свежий",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_034",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_077",
+    "trackId": "greek_b1",
+    "front": "διαδρομή",
+    "back": "маршрут, поездка",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_city_transport",
+      "lesson:gr_lesson_035",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_078",
+    "trackId": "greek_b1",
+    "front": "Χρειάζεται αλλαγή λεωφορείου;",
+    "back": "нужна пересадка?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_city_transport",
+      "lesson:gr_lesson_035",
+      "skill:speaking",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_079",
+    "trackId": "greek_b1",
+    "front": "έχει ήλιο",
+    "back": "солнечно",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_036",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_080",
+    "trackId": "greek_b1",
+    "front": "Αν βρέχει, θα μείνουμε σπίτι",
+    "back": "если будет дождь, мы останемся дома",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_036",
+      "skill:reading",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_081",
+    "trackId": "greek_b1",
+    "front": "επιβεβαιώνω το ραντεβού",
+    "back": "подтверждаю встречу / запись",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_037",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_082",
+    "trackId": "greek_b1",
+    "front": "μήνυμα",
+    "back": "сообщение",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_037",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_083",
+    "trackId": "greek_b1",
+    "front": "Χθες πήγα στο φαρμακείο",
+    "back": "вчера я ходил в аптеку",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_038",
+      "skill:grammar",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_084",
+    "trackId": "greek_b1",
+    "front": "γύρισα σπίτι",
+    "back": "я вернулся домой",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_038",
+      "skill:grammar",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_085",
+    "trackId": "greek_b1",
+    "front": "Προτιμώ το λεωφορείο",
+    "back": "я предпочитаю автобус",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_work_society",
+      "lesson:gr_lesson_039",
+      "skill:speaking",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_086",
+    "trackId": "greek_b1",
+    "front": "πιο πρακτικό",
+    "back": "более практично",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_work_society",
+      "lesson:gr_lesson_039",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_087",
+    "trackId": "greek_b1",
+    "front": "η κεντρική ιδέα",
+    "back": "основная идея",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_public_discourse",
+      "lesson:gr_lesson_044",
+      "skill:reading",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_088",
+    "trackId": "greek_b1",
+    "front": "το υπονοούμενο",
+    "back": "подтекст, скрытый смысл",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_public_discourse",
+      "lesson:gr_lesson_044",
+      "skill:reading",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_089",
+    "trackId": "greek_b1",
+    "front": "η επιχειρηματολογία",
+    "back": "аргументация",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_argumentation_writing",
+      "lesson:gr_lesson_047",
+      "skill:writing",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_090",
+    "trackId": "greek_b1",
+    "front": "να στηρίζω μια θέση",
+    "back": "обосновывать позицию",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_argumentation_writing",
+      "lesson:gr_lesson_047",
+      "skill:speaking",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_091",
+    "trackId": "greek_b1",
+    "front": "η συνοχή",
+    "back": "связность текста",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_argumentation_writing",
+      "lesson:gr_lesson_048",
+      "skill:writing",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_092",
+    "trackId": "greek_b1",
+    "front": "το ύφος",
+    "back": "стиль, регистр",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_register_culture",
+      "lesson:gr_lesson_050",
+      "skill:vocabulary",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_093",
+    "trackId": "greek_b1",
+    "front": "η απόχρωση",
+    "back": "оттенок смысла",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_register_culture",
+      "lesson:gr_lesson_050",
+      "skill:vocabulary",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_094",
+    "trackId": "greek_b1",
+    "front": "οι σταθερές εκφράσεις",
+    "back": "устойчивые выражения",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_register_culture",
+      "lesson:gr_lesson_051",
+      "skill:vocabulary",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_095",
+    "trackId": "greek_b1",
+    "front": "η δημόσια συζήτηση",
+    "back": "общественная дискуссия",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_public_discourse",
+      "lesson:gr_lesson_045",
+      "skill:reading",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_096",
+    "trackId": "greek_b1",
+    "front": "να συνοψίζω",
+    "back": "резюмировать",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_argumentation_writing",
+      "lesson:gr_lesson_049",
+      "skill:writing",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_097",
+    "trackId": "greek_b1",
+    "front": "η απόχρωση του τόνου",
+    "back": "оттенок тона",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_register_culture",
+      "lesson:gr_lesson_052",
+      "skill:vocabulary",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_098",
+    "trackId": "greek_b1",
+    "front": "με ακρίβεια και ευχέρεια",
+    "back": "точно и свободно",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_c1_register_culture",
+      "lesson:gr_lesson_052",
+      "skill:speaking",
+      "level:c1",
+      "status:seed"
+    ],
+    "difficulty": "c1"
+  },
+  {
+    "id": "gr_card_099",
+    "trackId": "greek_b1",
+    "front": "η ανακοίνωση",
+    "back": "объявление",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_public_life",
+      "lesson:gr_lesson_053",
+      "skill:reading",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_100",
+    "trackId": "greek_b1",
+    "front": "η διευκρίνιση",
+    "back": "уточнение",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_public_life",
+      "lesson:gr_lesson_054",
+      "skill:vocabulary",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_101",
+    "trackId": "greek_b1",
+    "front": "κατά τη γνώμη μου",
+    "back": "по моему мнению",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_public_life",
+      "lesson:gr_lesson_055",
+      "skill:speaking",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_102",
+    "trackId": "greek_b1",
+    "front": "σε σύγκριση με",
+    "back": "по сравнению с",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_public_life",
+      "lesson:gr_lesson_055",
+      "skill:speaking",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_103",
+    "trackId": "greek_b1",
+    "front": "επιβεβαιώνω το ραντεβού",
+    "back": "подтверждаю запись",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_review_bridge",
+      "lesson:gr_lesson_056",
+      "skill:listening",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_104",
+    "trackId": "greek_b1",
+    "front": "η βασική ιδέα",
+    "back": "основная идея",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_review_bridge",
+      "lesson:gr_lesson_057",
+      "skill:reading",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_105",
+    "trackId": "greek_b1",
+    "front": "το κύριο επιχείρημα",
+    "back": "основной аргумент",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_public_texts",
+      "lesson:gr_lesson_058",
+      "skill:reading",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_106",
+    "trackId": "greek_b1",
+    "front": "η υποστηρικτική λεπτομέρεια",
+    "back": "поддерживающая деталь",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_public_texts",
+      "lesson:gr_lesson_059",
+      "skill:reading",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_107",
+    "trackId": "greek_b1",
+    "front": "να συνοψίζω",
+    "back": "резюмировать",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_public_texts",
+      "lesson:gr_lesson_060",
+      "skill:writing",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_108",
+    "trackId": "greek_b1",
+    "front": "από τη μία πλευρά",
+    "back": "с одной стороны",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_argumentation_discussion",
+      "lesson:gr_lesson_061",
+      "skill:speaking",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_109",
+    "trackId": "greek_b1",
+    "front": "από την άλλη πλευρά",
+    "back": "с другой стороны",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_argumentation_discussion",
+      "lesson:gr_lesson_061",
+      "skill:speaking",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_110",
+    "trackId": "greek_b1",
+    "front": "ο αντίλογος",
+    "back": "контраргумент",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_argumentation_discussion",
+      "lesson:gr_lesson_062",
+      "skill:speaking",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_111",
+    "trackId": "greek_b1",
+    "front": "η αναπτυγμένη απάντηση",
+    "back": "развёрнутый ответ",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_argumentation_discussion",
+      "lesson:gr_lesson_063",
+      "skill:speaking",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_112",
+    "trackId": "greek_b1",
+    "front": "το αίτημα",
+    "back": "запрос",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_semi_formal_writing",
+      "lesson:gr_lesson_064",
+      "skill:writing",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_113",
+    "trackId": "greek_b1",
+    "front": "θα εκτιμούσα",
+    "back": "я был(а) бы признателен(а)",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_semi_formal_writing",
+      "lesson:gr_lesson_064",
+      "skill:writing",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_114",
+    "trackId": "greek_b1",
+    "front": "η προσδοκία",
+    "back": "ожидание",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_semi_formal_writing",
+      "lesson:gr_lesson_065",
+      "skill:writing",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_115",
+    "trackId": "greek_b1",
+    "front": "η συνέχεια επικοινωνίας",
+    "back": "последующее общение, follow-up",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_semi_formal_writing",
+      "lesson:gr_lesson_066",
+      "skill:writing",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_116",
+    "trackId": "greek_b1",
+    "front": "η δημόσια συζήτηση",
+    "back": "общественная дискуссия",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_culture_bridge",
+      "lesson:gr_lesson_067",
+      "skill:speaking",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_117",
+    "trackId": "greek_b1",
+    "front": "η απόχρωση",
+    "back": "оттенок смысла",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_culture_bridge",
+      "lesson:gr_lesson_068",
+      "skill:vocabulary",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_118",
+    "trackId": "greek_b1",
+    "front": "ο συνδετικός κρίκος",
+    "back": "связующее звено, мост",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_culture_bridge",
+      "lesson:gr_lesson_069",
+      "skill:vocabulary",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_119",
+    "trackId": "greek_b1",
+    "front": "επαγγελματική εμπειρία",
+    "back": "профессиональный опыт",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_work_society",
+      "lesson:gr_lesson_070",
+      "skill:vocabulary",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_120",
+    "trackId": "greek_b1",
+    "front": "ήμουν υπεύθυνος για...",
+    "back": "я отвечал за...",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_work_society",
+      "lesson:gr_lesson_070",
+      "skill:speaking",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_121",
+    "trackId": "greek_b1",
+    "front": "να κλείσω ραντεβού",
+    "back": "записаться на приём",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_071",
+      "skill:vocabulary",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_122",
+    "trackId": "greek_b1",
+    "front": "σε πόσες μέρες θα είναι έτοιμο;",
+    "back": "через сколько дней будет готово?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_071",
+      "skill:speaking",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_123",
+    "trackId": "greek_b1",
+    "front": "κατόπιν ραντεβού",
+    "back": "по предварительной записи",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_072",
+      "skill:reading",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_124",
+    "trackId": "greek_b1",
+    "front": "ελλιπή στοιχεία",
+    "back": "неполные данные",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_072",
+      "skill:reading",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_125",
+    "trackId": "greek_b1",
+    "front": "η γειτονιά",
+    "back": "район, neighbourhood",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_073",
+      "skill:vocabulary",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_126",
+    "trackId": "greek_b1",
+    "front": "μου αρέσει που όλα είναι κοντά",
+    "back": "мне нравится, что всё рядом",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_073",
+      "skill:speaking",
+      "level:b1",
+      "status:seed"
+    ],
+    "difficulty": "b1"
+  },
+  {
+    "id": "gr_card_127",
+    "trackId": "greek_b1",
+    "front": "η θέση του συντάκτη",
+    "back": "позиция автора",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_public_texts",
+      "lesson:gr_lesson_074",
+      "skill:reading",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_128",
+    "trackId": "greek_b1",
+    "front": "συνοπτικά",
+    "back": "кратко, в сжатом виде",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_public_texts",
+      "lesson:gr_lesson_074",
+      "skill:writing",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_129",
+    "trackId": "greek_b1",
+    "front": "το βασικό μου επιχείρημα",
+    "back": "мой главный аргумент",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_argumentation_discussion",
+      "lesson:gr_lesson_075",
+      "skill:speaking",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_130",
+    "trackId": "greek_b1",
+    "front": "συμπερασματικά",
+    "back": "в заключение, итогово",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_argumentation_discussion",
+      "lesson:gr_lesson_075",
+      "skill:speaking",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_131",
+    "trackId": "greek_b1",
+    "front": "να ζητήσω διευκρίνιση",
+    "back": "попросить уточнение",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_semi_formal_writing",
+      "lesson:gr_lesson_076",
+      "skill:writing",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_132",
+    "trackId": "greek_b1",
+    "front": "το επόμενο βήμα",
+    "back": "следующий шаг",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_semi_formal_writing",
+      "lesson:gr_lesson_076",
+      "skill:writing",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_133",
+    "trackId": "greek_b1",
+    "front": "το πολιτισμικό πλαίσιο",
+    "back": "культурный контекст",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_culture_bridge",
+      "lesson:gr_lesson_077",
+      "skill:vocabulary",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_134",
+    "trackId": "greek_b1",
+    "front": "ο δημόσιος σχολιασμός",
+    "back": "публичный комментарий, общественный комментарий",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b2_culture_bridge",
+      "lesson:gr_lesson_077",
+      "skill:speaking",
+      "level:b2",
+      "status:seed"
+    ],
+    "difficulty": "b2"
+  },
+  {
+    "id": "gr_card_135",
+    "trackId": "greek_b1",
+    "front": "Θέλετε απόδειξη;",
+    "back": "Вам нужен чек?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_041",
+      "skill:listening",
+      "context:daily_life",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  },
+  {
+    "id": "gr_card_136",
+    "trackId": "greek_b1",
+    "front": "Το ραντεβού είναι για αύριο το πρωί.",
+    "back": "Встреча назначена на завтра утром.",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_041",
+      "skill:listening",
+      "context:daily_life",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2"
+  }
+]

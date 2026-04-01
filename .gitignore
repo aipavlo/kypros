@@ -1,0 +1,15 @@
+.doc
+.codex
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# Web app: dependencies, build output, local env
+/web-app/node_modules/
+/web-app/.next/
+/web-app/.test-dist/
+/web-app/tsconfig.tsbuildinfo
+/web-app/.env
+/web-app/.env.*
+/web-app/npm-debug.log*
