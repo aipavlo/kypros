@@ -25,6 +25,69 @@ make up
 - `make restart` — перезапуск локальной infra-среды
 - `make docker-build` — сборка локального docker-образа сайта
 
+## Два режима публикации
+
+Проект поддерживает два совместимых режима развёртывания без отдельной кодовой базы:
+
+- обычный хостинг с backend/runtime и БД;
+- статическая публикация на `GitHub Pages` через встроенный `GitHub Actions`.
+
+### 1. Хостинг с БД
+
+Это основной runtime-сценарий проекта:
+
+- используется стандартная сборка `next build`;
+- остаются доступны `app/api/*`, сессии, cookies и серверные интеграции;
+- режим приложения можно переключать через `NEXT_PUBLIC_APP_MODE`, при `db` используется серверный клиент.
+
+Локально этот сценарий поднимается через:
+
+```bash
+make up
+```
+
+### 2. GitHub Pages
+
+Для `GitHub Pages` используется отдельный export-режим сборки:
+
+- включается `NEXT_PUBLIC_DEPLOY_TARGET=github-pages`;
+- приложение автоматически переключается в `no-db`;
+- клиентский роутинг переводится на `HashRouter`, чтобы не ломаться на статическом хостинге;
+- `Next.js` собирает статический export без отказа от основной hosted-реализации.
+
+Локальная команда для такой сборки:
+
+```bash
+cd web-app
+NEXT_PUBLIC_BASE_PATH=/REPOSITORY_NAME \
+NEXT_PUBLIC_SITE_URL=https://USERNAME.github.io/REPOSITORY_NAME \
+npm run build:pages
+```
+
+### Что переиспользуется в обоих режимах
+
+Одинаковыми остаются:
+
+- все экраны из `web-app/src/screens`;
+- общий UI и layout;
+- контент из `app-content` и `web-app/app-content`;
+- клиентская логика прогресса, маршрутов, карточек, квизов и библиотеки контента.
+
+Разница только в data-access слое:
+
+- на хостинге с БД работает `dbAppClient`;
+- на `GitHub Pages` используется `localAppClient` и локальное хранение прогресса.
+
+## GitHub Actions для GitHub Pages
+
+workflow `.github/workflows/deploy-pages.yml`.
+
+- запускается при push в `main`;
+- использует `Node.js 20.9.0`;
+- вычисляет `base path` под имя репозитория;
+- собирает сайт в export-режиме;
+- публикует артефакт в `GitHub Pages`.
+
 ## `web-app`
 
 Основной сайт на `Next.js`.

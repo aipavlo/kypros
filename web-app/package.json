@@ -7,6 +7,7 @@
     "ci:install": "npm ci",
     "dev": "next dev",
     "build": "next build",
+    "build:pages": "NEXT_PUBLIC_DEPLOY_TARGET=github-pages NEXT_PUBLIC_APP_MODE=no-db next build",
     "start": "next start",
     "lint:types": "tsc --noEmit",
     "lint:hygiene": "node ./scripts/lint-hygiene.mjs",
