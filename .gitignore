@@ -9,6 +9,7 @@ Thumbs.db
 /web-app/node_modules/
 /web-app/.next/
 /web-app/.test-dist/
+/web-app/out/
 /web-app/tsconfig.tsbuildinfo
 /web-app/.env
 /web-app/.env.*
