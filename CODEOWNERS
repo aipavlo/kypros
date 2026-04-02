@@ -1,0 +1,4 @@
+# Treat workflow and repo-policy files as production infrastructure.
+/.github/workflows/** @apavlov
+/.github/dependabot.yml @apavlov
+/CODEOWNERS @apavlov

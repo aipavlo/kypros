@@ -168,8 +168,6 @@ SEO и metadata лежат здесь:
 
 ## SEO
 
-Сайт уже поддерживает базовый SEO-набор и для hosted-режима, и для `GitHub Pages`:
-
 - `title`, `description`, `canonical`
 - `Open Graph` и `Twitter Card`
 - `robots.txt`
@@ -177,5 +175,3 @@ SEO и metadata лежат здесь:
 - `site.webmanifest`
 - favicon/icon
 - `WebSite` JSON-LD
-
-Для `GitHub Pages` абсолютные URL, `canonical`, `og:url`, `manifest` и иконки собираются с учётом `basePath`, чтобы сайт корректно работал по адресу вида `/kypros`.
