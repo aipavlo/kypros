@@ -86,6 +86,29 @@ export function ContentPage() {
   }
 
   const humorThemeCards = [...humorThemeMap.values()].filter((item) => item.count > 0);
+  const curatorCards = [
+    {
+      chip: "Самый простой вход",
+      description: "Если не хочется выбирать вручную, начни с готовой учебной линии и двигайся по одному следующему шагу.",
+      title: "Открыть программу по греческому",
+      to: "/lessons?stage=a1&source=library",
+      toneClass: "track-card-language"
+    },
+    {
+      chip: "Под задачу",
+      description: "Если нужен не каталог, а сценарий, переходи в маршруты: разговор, сервисы, история, тематический повтор.",
+      title: "Выбрать готовый маршрут",
+      to: "/trails",
+      toneClass: "track-card"
+    },
+    {
+      chip: "Быстрая проверка",
+      description: "Если хочешь не читать всё подряд, а проверить, что уже держится в голове, открой квиз.",
+      title: "Перейти к короткой проверке",
+      to: "/quiz",
+      toneClass: "track-card-history"
+    }
+  ];
 
   function getTrackLibraryLink(trackId: string) {
     if (trackId === "greek_b1") {
@@ -142,23 +165,39 @@ export function ContentPage() {
 
   return (
     <div className="stack">
-      <section className="panel page-banner">
+      <section className="panel page-banner content-hero-panel">
         <p className="eyebrow">Библиотека</p>
         <h1>Библиотека контента</h1>
         <p className="section-copy">
-          Все материалы в одном месте: уроки, модули, маршруты, карточки, квиз и юмор.
+          Это не страница “прочитай всё”. Здесь лучше выбрать один рабочий сценарий: программа,
+          маршрут или проверка.
         </p>
       </section>
 
-      <section className="panel">
+      <section className="panel content-curator-panel">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Быстрые входы</p>
-            <h2>С чего удобнее начать</h2>
+            <p className="eyebrow">Кураторский вход</p>
+            <h2>Что открыть первым</h2>
+            <p className="section-copy">
+              Выбери один тип движения. Всё остальное ниже остаётся библиотекой, а не обязательным
+              списком для просмотра.
+            </p>
           </div>
         </div>
 
-        <div className="grid">
+        <div className="grid spotlight-grid">
+          {curatorCards.map((card) => (
+            <Link className={`card card-link ${card.toneClass}`} key={card.title} to={card.to}>
+              <p className="chip">{card.chip}</p>
+              <h3>{card.title}</h3>
+              <p>{card.description}</p>
+              <span className="action-link">Открыть</span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="grid content-entry-grid">
           <Link className="card card-link track-card track-card-language" to="/lessons?stage=a1&source=library">
             <p className="chip">Язык</p>
             <h3>Программа по греческому</h3>
@@ -183,11 +222,14 @@ export function ContentPage() {
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel content-library-panel">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Маршруты</p>
-            <h2>Готовые сценарии</h2>
+            <p className="eyebrow">Обзор библиотеки</p>
+            <h2>Готовые маршруты</h2>
+            <p className="section-copy">
+              Маршруты удобны, когда нужна цель, а не просто список материалов.
+            </p>
           </div>
           <Link className="inline-link" to="/trails">
             Смотреть маршруты
@@ -207,11 +249,14 @@ export function ContentPage() {
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel content-library-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Модули</p>
             <h2>Модули программы</h2>
+            <p className="section-copy">
+              Это слой для точечного входа, если уже понятно, какую тему нужно открыть.
+            </p>
           </div>
           <Link className="inline-link" to="/lessons">
             Перейти к урокам
@@ -242,11 +287,14 @@ export function ContentPage() {
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel content-library-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Уроки</p>
             <h2>Примеры уроков</h2>
+            <p className="section-copy">
+              Ниже только срез библиотеки, а не рекомендуемый порядок прохождения.
+            </p>
           </div>
           <Link className="inline-link" to="/lessons">
             Смотреть все уроки
@@ -272,11 +320,14 @@ export function ContentPage() {
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel content-library-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Банк вопросов</p>
             <h2>Вопросы для проверки</h2>
+            <p className="section-copy">
+              Этот блок полезен, когда хочется быстро проверить себя, а не проходить маршрут целиком.
+            </p>
           </div>
           <Link className="inline-link" to="/quiz">
             Открыть проверку
@@ -298,11 +349,14 @@ export function ContentPage() {
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel content-library-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Юмор</p>
             <h2>Культурные подборки</h2>
+            <p className="section-copy">
+              Дополнительный слой для живого культурного контекста, а не основной маршрут старта.
+            </p>
           </div>
           <Link className="inline-link" to="/humor">
             Открыть раздел

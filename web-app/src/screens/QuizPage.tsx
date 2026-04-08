@@ -156,9 +156,6 @@ export function QuizPage(props: QuizPageProps) {
   const isAnswered = selectedAnswer !== null;
   const isFinished = activeIndex >= activeQuestions.length;
   const isRetryMode = retryQuestionIds !== null;
-  const summarySessionModes = quizModes.filter((mode) =>
-    ["mode_greek_summary", "mode_cyprus_summary", "mode_mixed_summary"].includes(mode.id)
-  );
   const storedModeProgress = props.quizProgress[activeMode.id];
   const requestedModule = requestedModuleId ? getModuleById(requestedModuleId) : undefined;
   const isLessonFlow = requestedSource === "lesson" && Boolean(requestedLessonId);
@@ -170,6 +167,38 @@ export function QuizPage(props: QuizPageProps) {
     requestedModuleId && requestedModule
       ? getModuleProgressKey(requestedModuleId, requestedModule.trackId, requestedModuleStageId)
       : null;
+  const recommendedModeIds = useMemo(() => {
+    if (requestedModule?.trackId === "cyprus_reality") {
+      return ["mode_cyprus_reality", "mode_cyprus_summary", "mode_mixed_summary"];
+    }
+
+    if (requestedModule?.trackId === "greek_b1") {
+      const focusedGreekModeId = requestedModuleStageId
+        ? `mode_greek_${requestedModuleStageId}`
+        : activeMode.id;
+
+      return [focusedGreekModeId, "mode_greek_summary", "mode_mixed_summary"];
+    }
+
+    if (requestedLesson?.trackId === "cyprus_reality") {
+      return ["mode_cyprus_reality", "mode_cyprus_summary", "mode_mixed_summary"];
+    }
+
+    if (requestedLesson?.trackId === "greek_b1") {
+      const focusedGreekModeId = `mode_greek_${requestedLesson.difficulty}`;
+      return [focusedGreekModeId, "mode_greek_summary", "mode_mixed_summary"];
+    }
+
+    return ["mode_mixed_summary", "mode_greek_summary", "mode_cyprus_summary"];
+  }, [activeMode.id, requestedLesson, requestedModule?.trackId, requestedModuleStageId]);
+  const recommendedModes = recommendedModeIds
+    .map((modeId) => getQuizModeById(modeId))
+    .filter((mode, index, current): mode is NonNullable<typeof mode> =>
+      Boolean(mode) && current.findIndex((item) => item?.id === mode?.id) === index
+    );
+  const remainingModes = quizModes.filter(
+    (mode) => !recommendedModes.some((recommendedMode) => recommendedMode.id === mode.id)
+  );
   const isModuleQuizPassed =
     requestedModuleId && requestedModule
       ? hasModuleProgress(
@@ -567,30 +596,31 @@ export function QuizPage(props: QuizPageProps) {
           <section className="quiz-modes-shell">
             <div className="section-head">
               <div>
-                <p className="eyebrow">Режим</p>
-                <h2>Выбери режим проверки</h2>
+                <p className="eyebrow">Рекомендовано</p>
+                <h2>Что открыть первым</h2>
                 <p className="section-copy">
-                  Можно переключиться на короткую проверку по уровню, по Кипру или пробную сессию.
+                  Сначала выбери один подходящий тип проверки. Полный каталог режимов остаётся ниже,
+                  если нужен более точный сценарий.
                 </p>
               </div>
             </div>
 
-            <div className="quiz-mode-grid">
-              {summarySessionModes.map((mode) => {
+            <div className="quiz-mode-grid quiz-mode-grid-recommended">
+              {recommendedModes.map((mode) => {
                 const modeQuestions = getQuizQuestionsByMode(mode.id);
                 const progress = props.quizProgress[mode.id];
                 const isCurrent = mode.id === activeMode.id;
 
                 return (
                   <button
-                    className={`quiz-mode-card ${isCurrent ? "quiz-mode-card-active" : ""}`}
+                    className={`quiz-mode-card quiz-mode-card-recommended ${isCurrent ? "quiz-mode-card-active" : ""}`}
                     key={mode.id}
                     onClick={() => selectMode(mode.id)}
                     type="button"
                   >
                     <div className="quiz-mode-card-top">
                       <p className="chip">{mode.title}</p>
-                      <span className="meta-pill">{modeQuestions.length} в сессии</span>
+                      <span className="meta-pill">{mode.uiHints.recommendedQuestionCount} вопросов</span>
                     </div>
                     <h3>{mode.uiHints.recommendedFor}</h3>
                     <p>{mode.description}</p>
@@ -606,8 +636,46 @@ export function QuizPage(props: QuizPageProps) {
               })}
             </div>
 
-            <div className="quiz-mode-grid">
-              {quizModes.map((mode) => {
+            <div className="quiz-entry-actions">
+              {storedModeProgress?.wrongQuestionIds.length ? (
+                <Link className="action-card" to={`/quiz?mode=${activeMode.id}&retry=mistakes`}>
+                  <p className="chip">Быстрое действие</p>
+                  <h3>Повторить только ошибки</h3>
+                  <p>{storedModeProgress.wrongQuestionIds.length} вопросов уже сохранено для повтора.</p>
+                  <span className="action-link">Открыть повтор</span>
+                </Link>
+              ) : null}
+              {isLessonFlow ? (
+                <Link className="action-card" to={lessonBackLink}>
+                  <p className="chip">Маршрут урока</p>
+                  <h3>Вернуться к уроку</h3>
+                  <p>Проверка встроена в flow урока, поэтому назад возвращаться тоже должно быть легко.</p>
+                  <span className="action-link">Открыть урок</span>
+                </Link>
+              ) : null}
+              {!isLessonFlow && activeMode.id !== "mode_mixed_summary" ? (
+                <button className="action-card quiz-action-card" onClick={() => selectMode("mode_mixed_summary")} type="button">
+                  <p className="chip">Общий срез</p>
+                  <h3>Открыть смешанную сессию</h3>
+                  <p>Подходит, когда нужен один общий прогон вместо узкого режима по теме.</p>
+                  <span className="action-link">Переключиться</span>
+                </button>
+              ) : null}
+            </div>
+
+            <div className="section-head quiz-catalog-head">
+              <div>
+                <p className="eyebrow">Все режимы</p>
+                <h2>Полный каталог проверок</h2>
+                <p className="section-copy">
+                  Этот блок нужен, если рекомендованный слой выше не подошёл или нужна точная
+                  проверка по уровню.
+                </p>
+              </div>
+            </div>
+
+            <div className="quiz-mode-grid quiz-mode-grid-secondary">
+              {remainingModes.map((mode) => {
                 const modeQuestions = getQuizQuestionsByMode(mode.id);
                 const isCurrent = mode.id === activeMode.id;
 
@@ -624,6 +692,7 @@ export function QuizPage(props: QuizPageProps) {
                     </div>
                     <h3>{mode.uiHints.recommendedFor}</h3>
                     <p>{mode.description}</p>
+                    <span className="muted">{modeQuestions.length} в банке</span>
                   </button>
                 );
               })}

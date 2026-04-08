@@ -24,17 +24,20 @@ export function getAssetUrl(assetPath: string) {
   return `${SITE_BASE_PATH}${normalizedAssetPath}`;
 }
 
-type RouteSeoEntry = {
+export type RouteSeoEntry = {
+  canonicalPathname?: string;
   description: string;
+  indexable: boolean;
   keywords: string[];
   title: string;
 };
 
-const ROUTE_SEO: Record<string, RouteSeoEntry> = {
+export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
   "/": {
     title: DEFAULT_TITLE,
     description:
       "Изучение греческого языка и подготовка к экзамену по истории и культуре Кипра: уроки, маршруты, карточки, мини-проверки и Cyprus Reality.",
+    indexable: true,
     keywords: [
       "греческий язык",
       "история Кипра",
@@ -44,9 +47,11 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/welcome": {
-    title: "О сервисе для греческого языка и Cyprus Reality",
+    title: "О сервисе Kypros Path",
     description:
-      "Как устроен Kypros Path: дашборд, уроки по греческому языку, программа Cyprus Reality, повторение карточками и мини-проверки.",
+      "Как устроен Kypros Path: греческий язык, Cyprus Reality, маршруты, повторение карточками и мини-проверки в одном сервисе.",
+    canonicalPathname: "/",
+    indexable: false,
     keywords: [
       "сервис для изучения греческого",
       "курсы по Кипру",
@@ -57,6 +62,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     title: "Дашборд обучения по греческому и Cyprus Reality",
     description:
       "Главный дашборд обучения: следующий урок по греческому языку, повторение, прогресс по модулям и короткие проверки по Кипру.",
+    indexable: false,
     keywords: [
       "дашборд обучения греческому",
       "прогресс по урокам Кипр",
@@ -64,9 +70,10 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/easy-start": {
-    title: "Лёгкий старт по греческому языку на Кипре",
+    title: "Греческий язык с нуля на Кипре: лёгкий старт",
     description:
-      "Пошаговый старт для изучения греческого языка на Кипре: первые уроки без лишнего выбора, понятный порядок тем и быстрый переход к повторению.",
+      "Пошаговый старт для изучения греческого языка с нуля на Кипре: первые уроки без лишнего выбора, понятный порядок тем и быстрый переход к повторению.",
+    indexable: true,
     keywords: [
       "греческий язык для начинающих",
       "легкий старт греческий",
@@ -74,19 +81,21 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/lessons": {
-    title: "Уроки по греческому языку и Cyprus Reality",
+    title: "Греческий язык для жизни на Кипре: уроки от A1 до B2",
     description:
-      "Каталог уроков по греческому языку от A1 до C1 и отдельная программа Cyprus Reality по истории, культуре и государственному устройству Кипра.",
+      "Полная программа по греческому языку для жизни на Кипре: уроки от A1 до B2, дополнительный C1, карточки и мини-проверки по каждому модулю.",
+    indexable: true,
     keywords: [
       "уроки греческого языка",
-      "уроки Cyprus Reality",
-      "история и культура Кипра уроки"
+      "греческий язык на Кипре",
+      "греческий язык A1 A2 B1 B2"
     ]
   },
   "/cyprus": {
-    title: "История, культура и устройство Кипра: Cyprus Reality",
+    title: "Cyprus Reality: история, культура и устройство Кипра",
     description:
       "Программа Cyprus Reality: история Кипра, государственное устройство, праздники, культура, общественная жизнь и подготовка к экзамену.",
+    indexable: true,
     keywords: [
       "история Кипра",
       "культура Кипра",
@@ -95,9 +104,10 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   },
   "/tracks": {
-    title: "Программы обучения: греческий язык и Кипр",
+    title: "Программы и подборки Kypros Path",
     description:
-      "Все программы Kypros Path: греческий язык по уровням, Cyprus Reality, разговорные маршруты, подготовка к экзамену и греческий юмор.",
+      "Обзор программ и подборок Kypros Path: языковая линия, Cyprus Reality, маршруты, подготовка к экзамену и греческий юмор.",
+    indexable: false,
     keywords: [
       "программа по греческому языку",
       "программа Cyprus Reality",
@@ -107,7 +117,8 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
   "/trails": {
     title: "Маршруты обучения по греческому и Кипру",
     description:
-      "Готовые маршруты по греческому языку, сервисным ситуациям, истории Кипра и тематическому повторению перед экзаменом.",
+      "Готовые маршруты по греческому языку, сервисным ситуациям, истории Кипра и тематическому повторению перед экзаменом без лишнего выбора.",
+    indexable: true,
     keywords: [
       "маршруты обучения греческий",
       "сценарии подготовки Кипр",
@@ -118,6 +129,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     title: "Карточки для повторения греческого и Кипра",
     description:
       "Карточки для повторения слов, фраз, дат, институтов и ключевых фактов по греческому языку и Cyprus Reality.",
+    indexable: false,
     keywords: [
       "карточки греческий язык",
       "карточки история Кипра",
@@ -128,6 +140,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     title: "Мини-проверки по греческому языку и Cyprus Reality",
     description:
       "Мини-проверки, повтор ошибок и короткие квизы по греческому языку, истории и культуре Кипра.",
+    indexable: false,
     keywords: [
       "квиз по греческому языку",
       "проверка по истории Кипра",
@@ -138,6 +151,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     title: "Библиотека уроков, квизов и маршрутов",
     description:
       "Библиотека учебного контента: уроки по греческому языку, программа Cyprus Reality, маршруты, модули, квизы и греческий юмор.",
+    indexable: false,
     keywords: [
       "библиотека уроков греческий",
       "контент Cyprus Reality",
@@ -148,6 +162,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     title: "Греческий юмор, мемы и анекдоты для изучения языка",
     description:
       "Греческий юмор, мемы, бытовые шутки и анекдоты с пояснениями, переводом и культурным контекстом для изучения языка.",
+    indexable: true,
     keywords: [
       "греческий юмор",
       "греческие мемы",
@@ -159,6 +174,7 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     title: "Прогресс, достижения и разблокировки",
     description:
       "Прогресс по модулям греческого языка и Cyprus Reality, достижения, бейджи и следующий учебный шаг.",
+    indexable: false,
     keywords: [
       "прогресс обучения греческий",
       "достижения Cyprus Reality",
@@ -166,6 +182,15 @@ const ROUTE_SEO: Record<string, RouteSeoEntry> = {
     ]
   }
 };
+
+export const ALL_STATIC_ROUTE_PATHS = Object.keys(ROUTE_SEO) as Array<keyof typeof ROUTE_SEO>;
+export const INDEXABLE_STATIC_ROUTE_PATHS = ALL_STATIC_ROUTE_PATHS.filter(
+  (pathname) => ROUTE_SEO[pathname].indexable
+);
+
+export function getRouteSeoEntry(pathname: string) {
+  return ROUTE_SEO[pathname] ?? ROUTE_SEO["/"];
+}
 
 function getMetadataForLesson(lessonId: string): Metadata | null {
   const lesson = getLessonById(lessonId);
@@ -206,6 +231,10 @@ function getMetadataForLesson(lessonId: string): Metadata | null {
     },
     alternates: {
       canonical: getAbsoluteUrl(pathname)
+    },
+    robots: {
+      index: true,
+      follow: true
     }
   };
 }
@@ -221,7 +250,8 @@ export function getRouteMetadataFromSlug(slug: string[] = []): Metadata {
     }
   }
 
-  const routeSeo = ROUTE_SEO[pathname] ?? ROUTE_SEO["/"];
+  const routeSeo = getRouteSeoEntry(pathname);
+  const canonicalPathname = routeSeo.canonicalPathname ?? pathname;
 
   return {
     title: routeSeo.title,
@@ -231,7 +261,7 @@ export function getRouteMetadataFromSlug(slug: string[] = []): Metadata {
       title: routeSeo.title,
       description: routeSeo.description,
       type: "website",
-      url: getAbsoluteUrl(pathname)
+      url: getAbsoluteUrl(canonicalPathname)
     },
     twitter: {
       card: "summary",
@@ -239,7 +269,11 @@ export function getRouteMetadataFromSlug(slug: string[] = []): Metadata {
       description: routeSeo.description
     },
     alternates: {
-      canonical: getAbsoluteUrl(pathname)
+      canonical: getAbsoluteUrl(canonicalPathname)
+    },
+    robots: {
+      index: routeSeo.indexable,
+      follow: true
     }
   };
 }

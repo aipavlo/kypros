@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { localHumorStatsAdapter } from "@/src/adapters/localHumorStatsAdapter";
 import { localHumorStudyAdapter } from "@/src/adapters/localHumorStudyAdapter";
 import { getHumorItems, HUMOR_ITEM_COUNT } from "@/src/content/humorData";
@@ -153,6 +154,14 @@ export function GreekHumorPage() {
               {filter.label}
             </button>
           ))}
+        </div>
+        <div className="actions-row">
+          <Link className="secondary-link-button" to="/lessons?stage=a1&source=humor">
+            Вернуться к урокам
+          </Link>
+          <Link className="secondary-link-button" to="/trails">
+            Открыть маршруты
+          </Link>
         </div>
       </section>
 

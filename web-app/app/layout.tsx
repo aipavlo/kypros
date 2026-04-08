@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import type { ReactNode } from "react";
+import { GOOGLE_TAG_ID } from "@/src/analytics/googleAnalytics";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
@@ -75,6 +77,19 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_TAG_ID}', { send_page_view: false });
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}

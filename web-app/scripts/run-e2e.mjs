@@ -1,7 +1,21 @@
 import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
 import { createServer } from "node:net";
 
-const E2E_CHROME_PATH = process.env.E2E_CHROME_PATH ?? "/usr/bin/chromium";
+function getChromePath() {
+  const candidates = [
+    process.env.E2E_CHROME_PATH,
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+    "/usr/bin/google-chrome",
+    "/usr/bin/google-chrome-stable",
+    "/usr/bin/chromium",
+    "/usr/bin/chromium-browser"
+  ].filter(Boolean);
+
+  return candidates.find((candidate) => existsSync(candidate)) ?? candidates[0] ?? "/usr/bin/google-chrome";
+}
+
+const E2E_CHROME_PATH = getChromePath();
 
 function runCommand(command, args, options = {}) {
   return new Promise((resolve, reject) => {
@@ -103,7 +117,7 @@ async function main() {
       "--experimental-loader",
       "./tests/support/alias-loader.mjs",
       "--test",
-      "./.test-dist/tests/e2e"
+      "./.test-dist/tests/e2e/browser-flows.test.js"
     ], {
       env: {
         ...process.env,

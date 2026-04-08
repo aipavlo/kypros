@@ -7,9 +7,10 @@ import {
   FLASHCARD_TOTAL_COUNT,
   HUMOR_ITEM_COUNT,
   LESSON_TOTAL_COUNT,
-  QUIZ_TOTAL_COUNT
+  QUIZ_TOTAL_COUNT,
+  TRAIL_TOTAL_COUNT
 } from "@/src/content/contentCounts";
-import { easyStartLessonIds, trailDefinitions } from "@/src/content/trails";
+import { easyStartLessonIds } from "@/src/content/trails";
 import { TrailBadge, TrailMiniArt } from "@/src/components/shared-ui";
 
 export function LandingPage() {
@@ -18,7 +19,7 @@ export function LandingPage() {
   const easyStartCount = easyStartLessonIds.length;
   const cyprusRealityCount = getLessonsByTrack("cyprus_reality").length;
   const humorCount = HUMOR_ITEM_COUNT;
-  const trailCount = trailDefinitions.length;
+  const trailCount = TRAIL_TOTAL_COUNT;
   const languageLessonCount = getLessonsByTrack("greek_b1").length;
   const trackCount = tracks.length;
 
@@ -73,25 +74,37 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="landing-value-grid">
-        <article className="panel landing-value-card">
-          <TrailBadge icon="chat" label="Язык" tone="language" />
-          <h3>Греческий для реальной жизни</h3>
-          <p>{greekTrack?.description}</p>
-          <TrailMiniArt art="speech" tone="language" />
-        </article>
-        <article className="panel landing-value-card">
-          <TrailBadge icon="map" label="Кипр" tone="history" />
-          <h3>Кипр: история, институты и культура</h3>
-          <p>{cyprusTrack?.description}</p>
-          <TrailMiniArt art="mosaic" tone="history" />
-        </article>
-        <article className="panel landing-value-card">
-          <TrailBadge icon="document" label="Проверка" tone="mixed" />
-          <h3>Короткие проверки и повторение</h3>
-          <p>После урока можно сразу закрепить материал карточками и мини-проверкой.</p>
-          <TrailMiniArt art="stamp" tone="mixed" />
-        </article>
+      <section className="panel landing-overview-panel">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Что внутри</p>
+            <h2>Три опорных слоя сервиса</h2>
+            <p className="section-copy">
+              Это обзор, а не точки входа. Основное действие остаётся сверху: дашборд или лёгкий старт.
+            </p>
+          </div>
+        </div>
+
+        <div className="landing-value-grid landing-value-grid-secondary">
+          <article className="panel landing-value-card landing-value-card-secondary">
+            <TrailBadge icon="chat" label="Язык" tone="language" />
+            <h3>Греческий для реальной жизни</h3>
+            <p>{greekTrack?.description}</p>
+            <TrailMiniArt art="speech" tone="language" />
+          </article>
+          <article className="panel landing-value-card landing-value-card-secondary">
+            <TrailBadge icon="map" label="Кипр" tone="history" />
+            <h3>Кипр: история, институты и культура</h3>
+            <p>{cyprusTrack?.description}</p>
+            <TrailMiniArt art="mosaic" tone="history" />
+          </article>
+          <article className="panel landing-value-card landing-value-card-secondary">
+            <TrailBadge icon="document" label="Проверка" tone="mixed" />
+            <h3>Короткие проверки и повторение</h3>
+            <p>После урока можно сразу закрепить материал карточками и мини-проверкой.</p>
+            <TrailMiniArt art="stamp" tone="mixed" />
+          </article>
+        </div>
       </section>
 
       <section className="panel landing-cta-panel">
@@ -125,7 +138,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel landing-summary-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Объём материалов</p>
@@ -170,7 +183,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel landing-outcomes-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Результат</p>

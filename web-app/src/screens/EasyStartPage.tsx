@@ -42,7 +42,7 @@ export function EasyStartPage(props: EasyStartPageProps) {
       <section className="easy-start-hero panel">
         <div className="easy-start-primary">
           <p className="eyebrow">Лёгкий старт</p>
-          <h1>Открой следующий урок</h1>
+          <h1>Греческий язык с нуля: открой следующий урок</h1>
           <p className="section-copy">
             Это стартовый маршрут для изучения греческого языка на Кипре без лишнего выбора:
             сначала один ближайший урок, затем карточки, мини-проверка и следующий шаг.
@@ -59,6 +59,12 @@ export function EasyStartPage(props: EasyStartPageProps) {
                 Открыть следующий урок
               </Link>
             ) : null}
+            <Link className="secondary-link-button" to="/lessons">
+              Вся программа Greek Core
+            </Link>
+            <Link className="secondary-link-button" to="/trails">
+              Готовые маршруты
+            </Link>
           </div>
           {nextLesson ? (
             <p className="easy-start-current-line">
@@ -121,7 +127,7 @@ export function EasyStartPage(props: EasyStartPageProps) {
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel easy-start-overview-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Весь маршрут</p>

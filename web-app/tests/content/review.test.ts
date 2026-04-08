@@ -46,7 +46,7 @@ test("getReviewSummaries filters empty entries and sorts by retry weight", () =>
     summaries.map((summary) => summary.modeId),
     ["mode_greek_a1", "mode_cyprus_reality"]
   );
-  assert.equal(summaries[0].title, "Greek A1");
+  assert.equal(summaries[0].title, "Греческий A1");
   assert.equal(summaries[0].weakModules[0], greekModule.id);
 });
 

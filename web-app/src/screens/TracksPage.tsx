@@ -17,7 +17,7 @@ export function TracksPage() {
   const cyprusTrack = tracks.find((track) => track.id === "cyprus_reality");
   const cyprusModules = getModulesByTrack("cyprus_reality");
   const mutableCyprusFacts = getMutableCyprusFacts();
-  const actualTrackIds = new Set(["greek_b1", "cyprus_reality", "exam_prep"]);
+  const supportingTracks = tracks.filter((track) => !["greek_b1", "cyprus_reality"].includes(track.id));
   const curatedTrackCards: Record<
     string,
     Array<{ title: string; description: string; to: string; pill: string; action: string }>
@@ -84,9 +84,43 @@ export function TracksPage() {
         <p className="eyebrow">Программы</p>
         <h1>Учебные программы и подборки</h1>
         <p className="section-copy">
-          Здесь собраны основные программы по греческому языку, истории и культуре Кипра, а также
-          дополнительные маршруты для подготовки к Cyprus Reality и разговорной практике.
+          Эта страница нужна для выбора правильной линии. Проходить язык лучше в `lessons`, а
+          Cyprus Reality лучше вести через отдельную страницу `cyprus`.
         </p>
+      </section>
+
+      <section className="panel tracks-role-panel">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Роли страниц</p>
+            <h2>Что открывать и зачем</h2>
+            <p className="section-copy">
+              Здесь не нужно учиться внутри карточек. Это навигационный слой: выбрать программу,
+              понять её роль и перейти в правильную рабочую страницу.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid spotlight-grid">
+          <Link className="card card-link track-card track-card-language" to="/lessons">
+            <p className="chip">lessons</p>
+            <h3>Проходить языковую программу</h3>
+            <p>Рабочая страница для Greek Core: модуль, уроки, карточки и мини-проверка.</p>
+            <span className="action-link">Открыть язык</span>
+          </Link>
+          <Link className="card card-link track-card track-card-history" to="/cyprus">
+            <p className="chip">cyprus</p>
+            <h3>Изучать Cyprus Reality отдельно</h3>
+            <p>Отдельная учебная линия по Кипру: факты, история, государство, повторение и экзаменационный ритм.</p>
+            <span className="action-link">Открыть Cyprus Reality</span>
+          </Link>
+          <Link className="card card-link track-card" to="/quiz">
+            <p className="chip">quiz</p>
+            <h3>Проверить знания</h3>
+            <p>Отдельный слой самопроверки, а не вход в программы. Сюда лучше идти после учебного шага.</p>
+            <span className="action-link">Открыть проверку</span>
+          </Link>
+        </div>
       </section>
 
       <section className="panel dual-track-panel">
@@ -237,11 +271,11 @@ export function TracksPage() {
         </div>
       </section>
 
-      {tracks.map((track) => {
+      {supportingTracks.map((track) => {
         const trackModules = getModulesByTrack(track.id);
         const trackPresentation = getTrackPresentation(track.id);
         const curatedCards = curatedTrackCards[track.id] ?? [];
-        const isCuratedOnly = !actualTrackIds.has(track.id);
+        const isCuratedOnly = trackModules.length === 0;
 
         return (
           <section className={`panel track-section ${trackPresentation.themeClass}`} key={track.id}>
@@ -297,11 +331,12 @@ export function TracksPage() {
                   </Link>
                 ))
               ) : (
-                <article className="card">
+                <Link className="card card-link track-card" to="/quiz">
                   <p className="chip">Раздел</p>
                   <h3>Банк экзаменационных вопросов</h3>
-                  <p>Этот раздел сейчас представлен набором тренировочных вопросов.</p>
-                </article>
+                  <p>Эта линия живёт не как программа модулей, а как самостоятельный слой проверок.</p>
+                  <span className="action-link">Открыть quiz</span>
+                </Link>
               )}
             </div>
           </section>

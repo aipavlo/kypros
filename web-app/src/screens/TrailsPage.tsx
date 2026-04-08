@@ -27,26 +27,74 @@ export function TrailsPage(props: TrailsPageProps) {
       nextLesson
     };
   });
+  const recommendedTrailIds = [
+    "trail_souvlaki_starter",
+    "trail_kep_survival_mode",
+    "trail_fact_not_panic"
+  ] as const;
+  const recommendedTrails = recommendedTrailIds
+    .map((trailId) => trails.find((trail) => trail.id === trailId))
+    .filter((trail): trail is NonNullable<(typeof trails)[number]> => Boolean(trail));
 
   return (
     <div className="stack">
-      <section className="panel page-banner">
+      <section className="panel page-banner trails-hero-panel">
         <p className="eyebrow">Маршруты</p>
         <h1>Готовые маршруты обучения</h1>
         <p className="section-copy">
-          Здесь собраны готовые маршруты по греческому языку, сервисным ситуациям, истории Кипра,
-          культуре и тематическому повторению перед экзаменом.
+          Эта страница нужна не для сравнения всех вариантов подряд, а для выбора одного маршрута
+          под текущую цель.
         </p>
+        <div className="actions-row">
+          <Link className="primary-link-button" to="/lessons">
+            Открыть языковую программу
+          </Link>
+          <Link className="secondary-link-button" to="/cyprus">
+            Открыть Cyprus Reality
+          </Link>
+        </div>
       </section>
 
-      <section className="panel">
+      <section className="panel trails-recommended-panel">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Зачем это работает</p>
-            <h2>Почему маршруты помогают учиться быстрее</h2>
+            <p className="eyebrow">Рекомендовано</p>
+            <h2>С чего начать по самой частой задаче</h2>
             <p className="section-copy">
-              Маршрут сразу даёт полезный порядок уроков. Не нужно собирать путь вручную.
+              Это короткий shortlist вместо полного каталога. Если задача типовая, лучше начать
+              отсюда и не сравнивать все trail’ы вручную.
             </p>
+          </div>
+        </div>
+
+        <div className="trail-catalog-grid trails-recommended-grid">
+          {recommendedTrails.map((trail) => (
+            <a
+              className={`trail-catalog-card trail-catalog-card-${trail.tone} trails-recommended-card`}
+              href={`#${trail.id}`}
+              key={trail.id}
+            >
+              <div className="trail-catalog-top">
+                <TrailBadge icon={trail.icon} label="Лучший вход" tone={trail.tone} />
+                <span className="meta-pill meta-pill-success">{trail.percent}% пройдено</span>
+              </div>
+              <h3>{trail.title}</h3>
+              <p className="trail-subtitle">{trail.subtitle}</p>
+              <p>{trail.result}</p>
+              <p className="muted">
+                {trail.completedCount} / {trail.lessons.length} уроков пройдено
+              </p>
+              <span className="action-link">Открыть маршрут</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="panel trails-principles-panel">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Почему это работает</p>
+            <h2>Маршрут убирает лишний выбор</h2>
           </div>
         </div>
 
@@ -59,7 +107,7 @@ export function TrailsPage(props: TrailsPageProps) {
             tone="mixed"
           />
           <InfographicCard
-            description="Пользователь видит, что изучится по итогу, поэтому меньше риск выбрать красивый, но неуместный маршрут."
+            description="Пользователь заранее видит, какой микрорезультат получит, и меньше тратит силы на сравнение похожих вариантов."
             icon="spark"
             metric="Ясность"
             title="Меньше лишнего выбора"
@@ -72,17 +120,10 @@ export function TrailsPage(props: TrailsPageProps) {
             title="Проще идти дальше"
             tone="history"
           />
-          <InfographicCard
-            description="Маршрут можно пройти целиком и получить полезный микрорезультат, не дожидаясь конца всей программы."
-            icon="chat"
-            metric="Результат"
-            title="Быстрые полезные победы"
-            tone="language"
-          />
         </div>
       </section>
 
-      <section className="panel dual-track-panel">
+      <section className="panel dual-track-panel trails-lanes-panel">
         <div className="track-lane-grid">
           <article className="track-lane-card track-lane-card-language">
             <p className="track-lane-label">Языковые маршруты</p>
@@ -97,11 +138,14 @@ export function TrailsPage(props: TrailsPageProps) {
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel trails-catalog-panel">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Каталог маршрутов</p>
-            <h2>Выбери маршрут по цели</h2>
+            <p className="eyebrow">Полный каталог</p>
+            <h2>Все маршруты по цели</h2>
+            <p className="section-copy">
+              Полный каталог полезен, если shortlist выше не подошёл или нужна более точная тема.
+            </p>
           </div>
         </div>
 
