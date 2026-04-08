@@ -76,16 +76,73 @@ export function AchievementsPage(props: AchievementsPageProps) {
     { id: "finisher", title: "A1 Finisher", earned: completedGreekA1Lessons >= greekA1Lessons.length }
   ];
   const nextA1Lesson = getNextIncompleteLesson(greekA1Lessons, props.completedLessonIds);
+  const nextA1LessonPreview =
+    greekA1Lessons.find((lesson) => lesson.id === nextA1Lesson?.id) ?? greekA1Lessons[0];
+  const earnedMilestoneCount = milestoneBadges.filter((badge) => badge.earned).length;
+  const nextMilestone =
+    milestoneBadges.find((badge) => !badge.earned) ?? milestoneBadges[milestoneBadges.length - 1];
+  const a1ProgressPercent =
+    greekA1Lessons.length > 0 ? Math.round((completedGreekA1Lessons / greekA1Lessons.length) * 100) : 0;
+  const nextMilestoneCopy =
+    nextMilestone.id === "starter"
+      ? "Нужен первый завершённый урок A1."
+      : nextMilestone.id === "builder"
+        ? "Нужно дойти до 6 завершённых уроков A1."
+        : nextMilestone.id === "explorer"
+          ? "Нужно дойти до 12 завершённых уроков A1."
+          : nextMilestone.id === "finisher"
+            ? "Нужно закрыть весь A1-цикл."
+            : "Следующий этап уже близко.";
 
   return (
     <div className="stack">
-      <section className="panel page-banner">
-        <p className="eyebrow">Achievements</p>
-        <h1>Достижения и разблокировки</h1>
-        <p className="section-copy">
-          Здесь видно, как растёт прогресс по греческому языку и Cyprus Reality:
-          завершённые уроки, открытые модули, бейджи и следующий учебный шаг.
-        </p>
+      <section className="panel page-banner achievements-hero-panel">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Achievements</p>
+            <h1>Достижения и разблокировки</h1>
+            <p className="section-copy">
+              Здесь прогресс должен ощущаться как реальный подъём: уже заработанные этапы, следующий
+              трофей и ближайший ход к нему.
+            </p>
+          </div>
+          <div className="achievements-hero-sidecard">
+            <span className="achievement-label">Следующая цель</span>
+            <strong>{nextMilestone.title}</strong>
+            <p>{nextMilestoneCopy}</p>
+            <div className="progress-rail progress-rail-hero">
+              <span className="progress-fill" style={{ width: `${a1ProgressPercent}%` }} />
+            </div>
+            <p className="muted">{completedGreekA1Lessons} из {greekA1Lessons.length} уроков A1 уже закрыто</p>
+            {nextA1Lesson ? (
+              <Link className="primary-link-button" to={`/lessons/${nextA1Lesson.id}`}>
+                Продолжить к следующему бейджу
+              </Link>
+            ) : (
+              <Link className="primary-link-button" to="/lessons?stage=a1&source=achievements">
+                Открыть программу A1
+              </Link>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="achievement-strip">
+        <article className="achievement-card achievement-card-highlight">
+          <span className="achievement-label">Этапы</span>
+          <strong>{earnedMilestoneCount} / {milestoneBadges.length}</strong>
+          <p>Основные milestone-бейджи уже заработаны по A1.</p>
+        </article>
+        <article className="achievement-card achievement-card-highlight achievement-card-language">
+          <span className="achievement-label">Следующий ход</span>
+          <strong>{nextA1LessonPreview ? `${nextA1LessonPreview.order}. ${nextA1LessonPreview.title}` : "A1 путь собран"}</strong>
+          <p>{nextA1Lesson ? "Открой ближайший урок и забери следующий видимый прогресс." : "Можно переходить к следующему языковому этапу."}</p>
+        </article>
+        <article className="achievement-card achievement-card-highlight achievement-card-history">
+          <span className="achievement-label">Cyprus Reality</span>
+          <strong>{totalCyprusCompletedModules}</strong>
+          <p>Отдельные модульные победы по Кипру тоже уже накапливаются как самостоятельный слой.</p>
+        </article>
       </section>
 
       <section className="stats-grid achievements-stats-grid">
@@ -97,11 +154,15 @@ export function AchievementsPage(props: AchievementsPageProps) {
         <StatCard label="Закрыто модулей Cyprus" value={totalCyprusCompletedModules} />
       </section>
 
-      <section className="panel">
+      <section className="panel achievements-milestones-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Этапы</p>
             <h2>Основные бейджи пути</h2>
+            <p className="section-copy">
+              Это не просто список. Здесь видно, какие этапы уже закрыты и какой milestone сейчас
+              реально ближайший.
+            </p>
           </div>
         </div>
 
@@ -116,29 +177,42 @@ export function AchievementsPage(props: AchievementsPageProps) {
                 <h3>{badge.title}</h3>
                 <p>Заработано</p>
               </article>
-            ) : (
+            ) : badge.id === nextMilestone.id ? (
               <Link
-                className="achievement-badge achievement-badge-static achievement-badge-linkable"
+                className="achievement-badge achievement-badge-static achievement-badge-linkable achievement-badge-next"
                 key={badge.id}
                 to={nextA1Lesson ? `/lessons/${nextA1Lesson.id}` : "/lessons?stage=a1&source=achievements"}
               >
                 <span className="achievement-label">Этап</span>
                 <h3>{badge.title}</h3>
-                <p>Ещё не заработано</p>
+                <p>{nextMilestoneCopy}</p>
                 <div className="achievement-actions">
-                  <span className="achievement-action-link">Перейти к урокам</span>
+                  <span className="achievement-action-link">Забрать следующий этап</span>
                 </div>
               </Link>
+            ) : (
+              <article
+                className="achievement-badge achievement-badge-static achievement-badge-locked"
+                key={badge.id}
+              >
+                <span className="achievement-label">Этап</span>
+                <h3>{badge.title}</h3>
+                <p>Откроется после ближайшего milestone.</p>
+              </article>
             )
           )}
         </div>
       </section>
 
-      <section className="panel">
+      <section className="panel achievements-modules-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Бейджи модулей</p>
             <h2>Бейдж за каждый модуль</h2>
+            <p className="section-copy">
+              Здесь уже виден ритм пути: полученные бейджи, следующий доступный модуль и ещё
+              заблокированные награды впереди.
+            </p>
           </div>
         </div>
 
@@ -175,7 +249,7 @@ export function AchievementsPage(props: AchievementsPageProps) {
             if (isAccessible) {
               return (
                 <Link
-                  className="achievement-badge achievement-badge-static achievement-badge-linkable"
+                  className="achievement-badge achievement-badge-static achievement-badge-linkable achievement-badge-next"
                   key={module.id}
                   to={`/lessons?stage=a1&module=${targetModuleId}&source=achievements`}
                 >

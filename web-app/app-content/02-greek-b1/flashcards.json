@@ -11,7 +11,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_002",
@@ -25,7 +27,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_003",
@@ -39,7 +43,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_004",
@@ -53,7 +59,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_005",
@@ -67,7 +75,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_006",
@@ -81,7 +91,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_007",
@@ -95,7 +107,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_008",
@@ -109,7 +123,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_009",
@@ -123,7 +139,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_010",
@@ -137,7 +155,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_011",
@@ -151,7 +171,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_012",
@@ -165,7 +187,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_013",
@@ -179,7 +203,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_014",
@@ -193,7 +219,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_015",
@@ -207,7 +235,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_016",
@@ -221,7 +251,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_017",
@@ -233,9 +265,13 @@
       "skill:vocabulary",
       "context:daily_life",
       "level:a1",
-      "status:seed"
+      "status:seed",
+      "topic:numbers_time"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Defte'ra"
   },
   {
     "id": "gr_card_018",
@@ -249,7 +285,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_019",
@@ -263,7 +301,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_020",
@@ -275,9 +315,14 @@
       "skill:speaking",
       "context:daily_life",
       "level:a1",
-      "status:seed"
+      "status:seed",
+      "topic:numbers_time",
+      "topic:question_patterns"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Po'so ka'ni?"
   },
   {
     "id": "gr_card_021",
@@ -291,7 +336,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_022",
@@ -303,9 +350,13 @@
       "skill:speaking",
       "context:transport",
       "level:a1",
-      "status:seed"
+      "status:seed",
+      "topic:question_patterns"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Pou' i'ne i sta'si?"
   },
   {
     "id": "gr_card_023",
@@ -319,7 +370,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_024",
@@ -333,7 +386,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_025",
@@ -348,7 +403,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_026",
@@ -363,7 +420,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_027",
@@ -378,7 +437,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_028",
@@ -393,7 +454,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_029",
@@ -408,7 +471,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_030",
@@ -423,7 +488,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_031",
@@ -438,7 +505,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_032",
@@ -453,7 +522,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_033",
@@ -468,7 +539,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_034",
@@ -483,7 +556,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_035",
@@ -496,9 +571,13 @@
       "lesson:gr_lesson_013",
       "skill:vocabulary",
       "level:a1",
-      "status:seed"
+      "status:seed",
+      "topic:numbers_time"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Te'tarti"
   },
   {
     "id": "gr_card_036",
@@ -513,7 +592,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_037",
@@ -528,7 +609,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_038",
@@ -543,7 +626,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_039",
@@ -558,7 +643,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_040",
@@ -573,7 +660,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_041",
@@ -586,9 +675,14 @@
       "lesson:gr_lesson_016",
       "skill:speaking",
       "level:a1",
-      "status:seed"
+      "status:seed",
+      "topic:numbers_time",
+      "topic:question_patterns"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Po'so ka'ni?"
   },
   {
     "id": "gr_card_042",
@@ -601,9 +695,13 @@
       "lesson:gr_lesson_016",
       "skill:reading",
       "level:a1",
-      "status:seed"
+      "status:seed",
+      "topic:numbers_time"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Di'o e'vro, parakalo'"
   },
   {
     "id": "gr_card_043",
@@ -618,7 +716,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_044",
@@ -633,7 +733,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_045",
@@ -648,7 +750,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_046",
@@ -663,7 +767,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_047",
@@ -678,7 +784,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_048",
@@ -693,7 +801,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_049",
@@ -708,7 +818,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_050",
@@ -723,7 +835,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_051",
@@ -738,7 +852,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_052",
@@ -753,7 +869,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_053",
@@ -768,7 +886,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_054",
@@ -783,7 +903,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_055",
@@ -796,9 +918,13 @@
       "lesson:gr_lesson_024",
       "skill:speaking",
       "level:a1",
-      "status:seed"
+      "status:seed",
+      "topic:question_patterns"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Pou' me'nis?"
   },
   {
     "id": "gr_card_056",
@@ -813,7 +939,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_057",
@@ -828,7 +956,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_058",
@@ -843,7 +973,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_059",
@@ -858,7 +990,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_060",
@@ -873,7 +1007,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_061",
@@ -888,7 +1024,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_062",
@@ -903,7 +1041,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_063",
@@ -918,7 +1058,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_064",
@@ -933,7 +1075,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_065",
@@ -948,7 +1092,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_066",
@@ -963,7 +1109,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_067",
@@ -978,7 +1126,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_068",
@@ -993,7 +1143,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_069",
@@ -1008,7 +1160,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_070",
@@ -1023,7 +1177,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_071",
@@ -1038,7 +1194,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_072",
@@ -1053,7 +1211,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_073",
@@ -1068,7 +1228,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_074",
@@ -1083,7 +1245,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_075",
@@ -1098,7 +1262,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_076",
@@ -1113,7 +1279,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_077",
@@ -1128,7 +1296,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_078",
@@ -1143,7 +1313,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_079",
@@ -1158,7 +1330,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_080",
@@ -1173,7 +1347,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_081",
@@ -1188,7 +1364,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_082",
@@ -1203,7 +1381,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_083",
@@ -1218,7 +1398,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_084",
@@ -1233,7 +1415,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_085",
@@ -1248,7 +1432,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_086",
@@ -1263,7 +1449,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_087",
@@ -1278,7 +1466,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_088",
@@ -1293,7 +1483,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_089",
@@ -1308,7 +1500,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_090",
@@ -1323,7 +1517,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_091",
@@ -1338,7 +1534,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_092",
@@ -1353,7 +1551,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_093",
@@ -1368,7 +1568,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_094",
@@ -1383,7 +1585,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_095",
@@ -1398,7 +1602,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_096",
@@ -1413,7 +1619,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_097",
@@ -1428,7 +1636,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_098",
@@ -1443,7 +1653,9 @@
       "level:c1",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_099",
@@ -1458,7 +1670,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_100",
@@ -1473,7 +1687,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_101",
@@ -1488,7 +1704,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_102",
@@ -1503,7 +1721,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_103",
@@ -1518,7 +1738,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_104",
@@ -1533,7 +1755,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_105",
@@ -1548,7 +1772,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_106",
@@ -1563,7 +1789,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_107",
@@ -1578,7 +1806,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_108",
@@ -1593,7 +1823,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_109",
@@ -1608,7 +1840,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_110",
@@ -1623,7 +1857,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_111",
@@ -1638,7 +1874,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_112",
@@ -1653,7 +1891,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_113",
@@ -1668,7 +1908,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_114",
@@ -1683,13 +1925,15 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_115",
     "trackId": "greek_b1",
     "front": "η συνέχεια επικοινωνίας",
-    "back": "последующее общение, follow-up",
+    "back": "последующее общение, уточняющий",
     "tags": [
       "track:greek_b1",
       "module:gr_b2_semi_formal_writing",
@@ -1698,7 +1942,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_116",
@@ -1713,7 +1959,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_117",
@@ -1728,7 +1976,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_118",
@@ -1743,7 +1993,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_119",
@@ -1758,7 +2010,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_120",
@@ -1773,7 +2027,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_121",
@@ -1788,7 +2044,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_122",
@@ -1803,7 +2061,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_123",
@@ -1818,7 +2078,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_124",
@@ -1833,7 +2095,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_125",
@@ -1848,7 +2112,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_126",
@@ -1863,7 +2129,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_127",
@@ -1878,7 +2146,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_128",
@@ -1893,7 +2163,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_129",
@@ -1908,7 +2180,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_130",
@@ -1923,7 +2197,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_131",
@@ -1938,7 +2214,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_132",
@@ -1953,7 +2231,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_133",
@@ -1968,7 +2248,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_134",
@@ -1983,7 +2265,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_135",
@@ -1999,7 +2283,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   },
   {
     "id": "gr_card_136",
@@ -2015,6 +2301,236 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
+  },
+  {
+    "id": "gr_card_137",
+    "trackId": "greek_b1",
+    "front": "στις τρεις",
+    "back": "в три часа",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_078",
+      "skill:speaking",
+      "level:a1",
+      "status:seed",
+      "topic:numbers_time"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "sti's trei's"
+  },
+  {
+    "id": "gr_card_138",
+    "trackId": "greek_b1",
+    "front": "Ο αριθμός μου είναι δέκα.",
+    "back": "Мой номер — десять.",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_078",
+      "skill:reading",
+      "level:a1",
+      "status:seed",
+      "topic:numbers_time"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "O arithmo's mou i'ne de'ka."
+  },
+  {
+    "id": "gr_card_139",
+    "trackId": "greek_b1",
+    "front": "δύο συναντήσεις",
+    "back": "две встречи",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_078",
+      "skill:vocabulary",
+      "level:a1",
+      "status:seed",
+      "topic:numbers_time"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "di'o synanti'seis"
+  },
+  {
+    "id": "gr_card_140",
+    "trackId": "greek_b1",
+    "front": "Πότε;",
+    "back": "когда?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_079",
+      "skill:grammar",
+      "level:a1",
+      "status:seed",
+      "topic:question_patterns"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Po'te?"
+  },
+  {
+    "id": "gr_card_141",
+    "trackId": "greek_b1",
+    "front": "Γιατί;",
+    "back": "почему?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_079",
+      "skill:grammar",
+      "level:a1",
+      "status:seed",
+      "topic:question_patterns"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Giati'?"
+  },
+  {
+    "id": "gr_card_142",
+    "trackId": "greek_b1",
+    "front": "Πόσα εισιτήρια θέλετε;",
+    "back": "Сколько билетов вам нужно?",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_079",
+      "skill:speaking",
+      "level:a1",
+      "status:seed",
+      "topic:question_patterns"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "Po'saisitiri'a the'lete?"
+  },
+  {
+    "id": "gr_card_143",
+    "trackId": "greek_b1",
+    "front": "ο καφές",
+    "back": "кофе с артиклем мужского рода",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_080",
+      "skill:grammar",
+      "level:a1",
+      "status:seed",
+      "topic:gender_articles"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "o kafe's"
+  },
+  {
+    "id": "gr_card_144",
+    "trackId": "greek_b1",
+    "front": "η τσάντα",
+    "back": "сумка с артиклем женского рода",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_080",
+      "skill:grammar",
+      "level:a1",
+      "status:seed",
+      "topic:gender_articles"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "i tsa'nta"
+  },
+  {
+    "id": "gr_card_145",
+    "trackId": "greek_b1",
+    "front": "το σπίτι",
+    "back": "дом с артиклем среднего рода",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_080",
+      "skill:grammar",
+      "level:a1",
+      "status:seed",
+      "topic:gender_articles"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "to spi'ti"
+  },
+  {
+    "id": "gr_card_146",
+    "trackId": "greek_b1",
+    "front": "καλός φίλος",
+    "back": "хороший друг",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_081",
+      "skill:grammar",
+      "level:a2",
+      "status:seed",
+      "topic:agreement"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "kalo's fi'los"
+  },
+  {
+    "id": "gr_card_147",
+    "trackId": "greek_b1",
+    "front": "καλή ιδέα",
+    "back": "хорошая идея",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_081",
+      "skill:grammar",
+      "level:a2",
+      "status:seed",
+      "topic:agreement"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "kali' ide'a"
+  },
+  {
+    "id": "gr_card_148",
+    "trackId": "greek_b1",
+    "front": "καλό σπίτι",
+    "back": "хороший дом",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_081",
+      "skill:grammar",
+      "level:a2",
+      "status:seed",
+      "topic:agreement"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
+    "transliteration": "kalo' spi'ti"
   }
 ]

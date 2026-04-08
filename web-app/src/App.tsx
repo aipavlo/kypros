@@ -1,6 +1,7 @@
 import { Suspense, lazy, type ComponentType } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AppShell } from "@/src/components/AppShell";
+import { AnalyticsPageTracker } from "@/src/components/AnalyticsPageTracker";
 import { RouteLoading } from "@/src/components/RouteLoading";
 import { ScrollToTop } from "@/src/components/ScrollToTop";
 import { useLearningProgressState } from "@/src/hooks/useLearningProgressState";
@@ -41,6 +42,7 @@ export function App() {
 
   return (
     <AppShell>
+      <AnalyticsPageTracker />
       <ScrollToTop />
       <Suspense fallback={<RouteLoading />}>
         <Routes>

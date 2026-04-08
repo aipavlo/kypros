@@ -1,6 +1,12 @@
 export type Difficulty = "a1" | "a2" | "b1" | "b2" | "c1" | string;
+export type SourceStatus = "official" | "editorial" | "draft" | string;
 
-export interface ModuleItem {
+interface ProvenanceFields {
+  sourceStatus: SourceStatus;
+  sourceNote?: string;
+}
+
+export interface ModuleItem extends ProvenanceFields {
   id: string;
   trackId: string;
   title: string;
@@ -8,7 +14,7 @@ export interface ModuleItem {
   order: number;
 }
 
-export interface LessonItem {
+export interface LessonItem extends ProvenanceFields {
   id: string;
   trackId: string;
   moduleId: string;
@@ -24,7 +30,7 @@ export interface LessonItem {
   }>;
 }
 
-export interface QuizQuestionItem {
+export interface QuizQuestionItem extends ProvenanceFields {
   id: string;
   trackId: string;
   question: string;
@@ -35,7 +41,7 @@ export interface QuizQuestionItem {
   difficulty: Difficulty;
 }
 
-export interface QuizModeItem {
+export interface QuizModeItem extends ProvenanceFields {
   id: string;
   title: string;
   description: string;
@@ -54,7 +60,7 @@ export interface QuizModeItem {
   };
 }
 
-export interface FlashcardItem {
+export interface FlashcardItem extends ProvenanceFields {
   id: string;
   trackId: string;
   front: string;
@@ -64,13 +70,11 @@ export interface FlashcardItem {
   difficulty: Difficulty;
 }
 
-export interface FactItem {
+export interface FactItem extends ProvenanceFields {
   id: string;
   trackId: string;
   title: string;
   statement: string;
-  sourceStatus: string;
-  sourceNote: string;
 }
 
 export interface TrackSummary {
@@ -81,7 +85,7 @@ export interface TrackSummary {
   moduleCount: number;
 }
 
-export interface HumorItem {
+export interface HumorItem extends ProvenanceFields {
   id: string;
   trackId: string;
   type: "meme" | "joke" | "anecdote" | string;

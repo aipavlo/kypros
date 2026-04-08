@@ -8,7 +8,9 @@ import { FlashcardsPage } from "../../src/screens/FlashcardsPage.js";
 import { QuizPage } from "../../src/screens/QuizPage.js";
 import { GreekHumorPage } from "../../src/screens/GreekHumorPage.js";
 import { AchievementsPage } from "../../src/screens/AchievementsPage.js";
+import { ContentPage } from "../../src/screens/ContentPage.js";
 import { getLessonsByModule } from "../../src/content/catalogData.js";
+import { getQuizQuestionsByMode } from "../../src/content/quizData.js";
 import { getModuleProgressKey } from "../../src/content/progress.js";
 import { renderRoute, countClass } from "../support/renderRoute.js";
 
@@ -30,6 +32,7 @@ const greekDailyLifeA1LessonIds = getLessonsByModule(greekDailyLifeModuleId)
   .filter((lesson) => lesson.difficulty === "a1")
   .map((lesson) => lesson.id);
 const greekDailyLifeA1ProgressKey = getModuleProgressKey(greekDailyLifeModuleId, "greek_b1", "a1");
+const cyprusRetryQuestionId = getQuizQuestionsByMode("mode_cyprus_reality")[0]?.id ?? "quiz_cy_001";
 
 test("LandingPage keeps the main dashboard scenario readable and leaves alternate entries secondary", () => {
   const markup = renderRoute({
@@ -105,9 +108,10 @@ test("LessonsPage renders one main CTA per visible program and keeps cyprus bann
     element: <LessonsPage {...emptyProgressProps} forcedTrackId="cyprus_reality" />
   });
 
-  assert.match(lessonsMarkup, /Программы и модули/);
+  assert.match(lessonsMarkup, /Языковая программа Greek Core/);
+  assert.match(lessonsMarkup, /Активный модуль/);
   assert.match(lessonsMarkup, /Открыть урок:/);
-  assert.equal(countClass(lessonsMarkup, "primary-link-button"), 2);
+  assert.equal(countClass(lessonsMarkup, "primary-link-button"), 1);
 
   assert.match(cyprusMarkup, /Программа Cyprus Reality/);
   assert.doesNotMatch(cyprusMarkup, /Линейная языковая траектория/);
@@ -179,6 +183,20 @@ test("AchievementsPage keeps a completed module badge accessible instead of show
     markup,
     new RegExp(`/lessons\\?stage=a1&amp;module=${greekDailyLifeModuleId}&amp;source=achievements`)
   );
+});
+
+test("AchievementsPage keeps the next milestone visible for a new learner instead of collapsing into an empty trophy wall", () => {
+  const markup = renderRoute({
+    path: "/achievements",
+    url: "/achievements",
+    element: <AchievementsPage {...emptyProgressProps} />
+  });
+
+  assert.match(markup, /Следующая цель/);
+  assert.match(markup, /A1 Starter/);
+  assert.match(markup, /Нужен первый завершённый урок A1\./);
+  assert.match(markup, /Продолжить к следующему бейджу/);
+  assert.match(markup, /Бейдж за каждый модуль/);
 });
 
 test("LessonDetailPage adds soft english transliteration for beginner greek lessons only", () => {
@@ -264,7 +282,7 @@ test("QuizPage keeps lesson context in active state and shows stored progress co
   });
 
   assert.match(activeMarkup, /Вы в шаге урока/);
-  assert.match(activeMarkup, /Greek A1/);
+  assert.match(activeMarkup, /Греческий A1/);
   assert.match(activeMarkup, /Текущий счёт: 0/);
   assert.match(activeMarkup, /Как переводится форма/);
   assert.match(activeMarkup, /Назад к уроку/);
@@ -272,6 +290,35 @@ test("QuizPage keeps lesson context in active state and shows stored progress co
   assert.match(progressAwareMarkup, /Последний результат/);
   assert.match(progressAwareMarkup, /80% · 1 попыток всего/);
   assert.match(progressAwareMarkup, /Повтор ошибок/);
+});
+
+test("QuizPage can reopen in retry mistakes mode without losing the focused retry state", () => {
+  const markup = renderRoute({
+    path: "/quiz",
+    url: "/quiz?mode=mode_cyprus_reality&retry=mistakes",
+    element: (
+      <QuizPage
+        {...emptyProgressProps}
+        quizProgress={{
+          mode_cyprus_reality: {
+            attempts: 2,
+            bestPercent: 80,
+            lastPercent: 50,
+            wrongQuestionIds: [cyprusRetryQuestionId],
+            weakModules: ["cy_intro_identity"],
+            weakSkills: ["facts"]
+          }
+        }}
+        onMarkModuleQuizPassed={() => undefined}
+        onQuizProgressChange={() => undefined}
+      />
+    )
+  });
+
+  assert.match(markup, /Повтор ошибок/);
+  assert.match(markup, /1 \/ 83|1 \/ 20|1 \/ 1/);
+  assert.match(markup, /Последний результат/);
+  assert.match(markup, /Открыть только ошибки/);
 });
 
 test("QuizPage shows a soft pronunciation hint for greek text inside quiz prompts", () => {
@@ -382,4 +429,67 @@ test("GreekHumorPage keeps one focused material with compact filters and study a
   const whyFunnyIndex = markup.indexOf("Почему это смешно");
 
   assert.ok(saveActionIndex >= 0 && whyFunnyIndex >= 0 && saveActionIndex < whyFunnyIndex);
+});
+
+test("ContentPage leads with one curated decision before dropping into the wider library", () => {
+  const markup = renderRoute({
+    path: "/content",
+    url: "/content",
+    element: <ContentPage />
+  });
+
+  assert.match(markup, /Библиотека контента/);
+  assert.match(markup, /Что открыть первым/);
+  assert.match(markup, /Открыть программу по греческому/);
+  assert.match(markup, /Выбрать готовый маршрут/);
+  assert.match(markup, /Перейти к короткой проверке/);
+  assert.match(markup, /Готовые маршруты/);
+  assert.match(markup, /Модули программы/);
+
+  const curatedEntryIndex = markup.indexOf("Что открыть первым");
+  const libraryIndex = markup.indexOf("Готовые маршруты");
+
+  assert.ok(curatedEntryIndex >= 0 && libraryIndex >= 0 && curatedEntryIndex < libraryIndex);
+});
+
+test("HomePage keeps review-heavy and non-empty learner state readable without losing the main next step", () => {
+  const markup = renderRoute({
+    path: "/dashboard",
+    url: "/dashboard",
+    element: (
+      <HomePage
+        completedLessonIds={["gr_lesson_001", "gr_lesson_002", "gr_lesson_003", "gr_lesson_022"]}
+        reviewedModuleIds={[]}
+        passedModuleQuizIds={[]}
+        quizProgress={{
+          mode_greek_a1: {
+            attempts: 3,
+            bestPercent: 70,
+            lastPercent: 40,
+            wrongQuestionIds: ["quiz_gr_012", "quiz_gr_014"],
+            weakModules: [greekModuleId],
+            weakSkills: ["grammar"]
+          },
+          mode_cyprus_reality: {
+            attempts: 1,
+            bestPercent: 50,
+            lastPercent: 50,
+            wrongQuestionIds: ["quiz_cy_001"],
+            weakModules: [cyprusModuleId],
+            weakSkills: ["facts"]
+          }
+        }}
+      />
+    )
+  });
+
+  assert.match(markup, /Пора повторить/);
+  assert.match(markup, /Повторить/);
+  assert.match(markup, /Пройдено/);
+  assert.match(markup, />4 \/ \d+</);
+  assert.match(markup, /На повторении/);
+  assert.match(markup, /3 вопросов/);
+  assert.match(markup, /Главный повтор/);
+  assert.match(markup, /Общий сигнал/);
+  assert.match(markup, /Что уже собрано по полному циклу/);
 });

@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { lessons } from "@/src/content/catalogData";
-import { STATIC_ROUTE_PATHS } from "@/src/seo/routes";
-import { getAbsoluteUrl } from "@/src/seo/siteMetadata";
+import { INDEXABLE_STATIC_ROUTE_PATHS, getAbsoluteUrl } from "@/src/seo/siteMetadata";
 
 export function getRobotsMetadata(): MetadataRoute.Robots {
   return {
@@ -14,10 +13,17 @@ export function getRobotsMetadata(): MetadataRoute.Robots {
 }
 
 export function getSitemapMetadata(): MetadataRoute.Sitemap {
-  const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTE_PATHS.map((route) => ({
+  const staticEntries: MetadataRoute.Sitemap = INDEXABLE_STATIC_ROUTE_PATHS.map((route) => ({
     url: getAbsoluteUrl(route),
     changeFrequency: route === "/" ? ("weekly" as const) : ("monthly" as const),
-    priority: route === "/" ? 1 : route === "/cyprus" || route === "/lessons" ? 0.9 : 0.7
+    priority:
+      route === "/"
+        ? 1
+        : route === "/cyprus" || route === "/lessons"
+          ? 0.9
+          : route === "/easy-start" || route === "/trails" || route === "/humor"
+            ? 0.8
+            : 0.7
   }));
 
   const lessonEntries: MetadataRoute.Sitemap = lessons.map((lesson) => ({

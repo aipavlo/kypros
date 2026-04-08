@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AppEntry } from "@/src/AppEntry";
+import { getPageStructuredData } from "@/src/seo/pageSchema";
 import { getAllRouteSlugs } from "@/src/seo/routes";
 import { getRouteMetadataFromSlug } from "@/src/seo/siteMetadata";
 
@@ -18,6 +19,20 @@ export function generateStaticParams() {
   return getAllRouteSlugs().map((slug) => ({ slug }));
 }
 
-export default function CatchAllPage() {
-  return <AppEntry />;
+export default async function CatchAllPage({ params }: CatchAllPageProps) {
+  const { slug = [] } = await params;
+  const structuredData = getPageStructuredData(slug);
+
+  return (
+    <>
+      {structuredData.map((entry, index) => (
+        <script
+          key={`${slug.join("/") || "root"}-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(entry) }}
+        />
+      ))}
+      <AppEntry />
+    </>
+  );
 }

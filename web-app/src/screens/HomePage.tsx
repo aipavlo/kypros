@@ -228,13 +228,13 @@ export function HomePage(props: HomePageProps) {
 
   return (
     <div className="stack">
-      <section className="hero-panel">
+      <section className="hero-panel dashboard-hero">
         <div className="hero-copy">
           <p className="eyebrow">Дашборд</p>
           <h1>Ваш следующий шаг уже готов</h1>
           <p className="lead">
-            Здесь остаётся только то, что нужно прямо сейчас: продолжить путь, увидеть прогресс,
-            вернуться в повторение и открыть ближайшие уроки.
+            Сначала сделай одно ближайшее действие. Прогресс, повторение и следующие уроки остаются
+            ниже, чтобы не спорить с главным шагом.
           </p>
           <div className="actions-row">
             {nextStepCard ? (
@@ -250,7 +250,7 @@ export function HomePage(props: HomePageProps) {
           </div>
         </div>
 
-        <div className="hero-sidebar">
+        <div className="hero-sidebar dashboard-hero-sidebar">
           <div className="hero-badge">
             <span className="hero-step-status">{nextStepCard?.status ?? "Учёба"}</span>
             <strong>{nextStepCard?.title ?? "Открой программу"}</strong>
@@ -274,17 +274,20 @@ export function HomePage(props: HomePageProps) {
                 <strong>{totalWrongQuestions}</strong>
               </div>
             </div>
-            <p className="hero-goal-text">{nextStepCard?.result ?? "Открой следующий учебный шаг"}</p>
+            <div className="hero-goal-block">
+              <span className="hero-gamification-label">После шага</span>
+              <p className="hero-goal-text">{nextStepCard?.result ?? "Открой следующий учебный шаг"}</p>
+            </div>
             {nextStepCard ? (
-              <Link className="hero-link-button hero-link-button-strong" to={nextStepCard.ctaTo}>
-                {nextStepCard.ctaLabel}
+              <Link className="text-link-button dashboard-hero-link" to={nextStepCard.secondaryTo}>
+                {nextStepCard.secondaryLabel}
               </Link>
             ) : null}
           </div>
         </div>
       </section>
 
-      <section className="stats-grid">
+      <section className="stats-grid dashboard-stats-grid">
         <StatCard
           label="Текущий уровень"
           value={currentLevelLabel}

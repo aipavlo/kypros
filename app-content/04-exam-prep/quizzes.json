@@ -19,7 +19,9 @@
       "context:citizenship",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_002",
@@ -40,7 +42,9 @@
       "skill:geography",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_001",
@@ -62,7 +66,9 @@
       "context:documents",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_002",
@@ -84,7 +90,9 @@
       "context:documents",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_003",
@@ -105,7 +113,9 @@
       "skill:institutions",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_004",
@@ -126,7 +136,9 @@
       "skill:history",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_005",
@@ -147,7 +159,9 @@
       "skill:history",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_006",
@@ -169,7 +183,9 @@
       "context:government",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_007",
@@ -190,7 +206,9 @@
       "skill:culture",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_008",
@@ -211,7 +229,9 @@
       "skill:institutions",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_009",
@@ -232,7 +252,9 @@
       "skill:institutions",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_003",
@@ -254,7 +276,9 @@
       "context:documents",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_004",
@@ -276,7 +300,9 @@
       "context:daily_life",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_005",
@@ -298,7 +324,9 @@
       "context:daily_life",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_006",
@@ -320,7 +348,9 @@
       "context:daily_life",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_007",
@@ -342,7 +372,9 @@
       "context:transport",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_008",
@@ -364,7 +396,9 @@
       "context:documents",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_009",
@@ -387,7 +421,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_010",
@@ -410,7 +446,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_011",
@@ -433,7 +471,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_012",
@@ -456,7 +496,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_013",
@@ -479,7 +521,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_014",
@@ -502,7 +546,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_015",
@@ -525,7 +571,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_016",
@@ -548,7 +596,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_017",
@@ -571,7 +621,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_018",
@@ -594,7 +646,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_019",
@@ -617,7 +671,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_020",
@@ -640,7 +696,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_021",
@@ -663,7 +721,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_022",
@@ -686,7 +746,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_023",
@@ -709,7 +771,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_024",
@@ -732,7 +796,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_025",
@@ -755,7 +821,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_026",
@@ -778,7 +846,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_027",
@@ -801,7 +871,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_028",
@@ -824,7 +896,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_029",
@@ -847,7 +921,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_030",
@@ -870,7 +946,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_031",
@@ -893,7 +971,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_032",
@@ -916,7 +996,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_033",
@@ -939,7 +1021,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_010",
@@ -960,7 +1044,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_011",
@@ -982,7 +1068,9 @@
       "module:cy_key_dates",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_012",
@@ -1004,7 +1092,9 @@
       "module:cy_intro_identity",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_013",
@@ -1025,7 +1115,9 @@
       "module:cy_institutions",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_014",
@@ -1046,7 +1138,9 @@
       "module:cy_society_culture",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_015",
@@ -1067,7 +1161,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_034",
@@ -1090,7 +1186,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_035",
@@ -1113,7 +1211,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_036",
@@ -1136,7 +1236,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_037",
@@ -1159,7 +1261,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_038",
@@ -1182,7 +1286,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_039",
@@ -1205,7 +1311,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_016",
@@ -1226,7 +1334,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_017",
@@ -1248,7 +1358,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_018",
@@ -1269,7 +1381,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_019",
@@ -1290,12 +1404,14 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_020",
     "trackId": "exam_prep",
-    "question": "Какой подход лучше всего подходит для подготовки по истории Кипра?",
+    "question": "Какой подход лучше всего помогает готовиться по истории Кипра?",
     "options": [
       "Учить только отдельные даты без контекста",
       "Видеть связь между историей, культурой, институтами и современной реальностью",
@@ -1312,7 +1428,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_040",
@@ -1334,12 +1452,14 @@
       "lesson:gr_lesson_040",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_041",
     "trackId": "exam_prep",
-    "question": "Какой подход лучше всего подходит для понимания коротких быстрых бытовых реплик?",
+    "question": "Какой подход лучше всего помогает понимать короткие бытовые реплики?",
     "options": [
       "Переводить каждое слово по отдельности",
       "Сначала ловить цель реплики: время, цена, место или действие",
@@ -1356,7 +1476,9 @@
       "lesson:gr_lesson_041",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_042",
@@ -1378,7 +1500,9 @@
       "lesson:gr_lesson_042",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_021",
@@ -1401,7 +1525,9 @@
       "lesson:cy_lesson_029",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_022",
@@ -1423,7 +1549,9 @@
       "lesson:cy_lesson_030",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_023",
@@ -1444,7 +1572,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_024",
@@ -1466,7 +1596,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_025",
@@ -1487,7 +1619,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_026",
@@ -1508,7 +1642,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_027",
@@ -1529,7 +1665,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_028",
@@ -1550,7 +1688,9 @@
       "module:cy_history_timeline",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_029",
@@ -1572,7 +1712,9 @@
       "module:cy_exam_fundamentals",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_043",
@@ -1594,7 +1736,9 @@
       "lesson:gr_lesson_043",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_044",
@@ -1615,12 +1759,14 @@
       "module:gr_b1_work_society",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_045",
     "trackId": "exam_prep",
-    "question": "Какой ответ лучше всего подходит для короткого service scenario на греческом?",
+    "question": "Какой ответ лучше всего подходит для короткого сервисного сценария на греческом?",
     "options": [
       "Δεν ξέρω τίποτα",
       "Θα ήθελα ένα ραντεβού για αύριο, αν γίνεται",
@@ -1636,7 +1782,9 @@
       "module:gr_b1_documents_services",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_046",
@@ -1658,7 +1806,9 @@
       "lesson:gr_lesson_032",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_047",
@@ -1679,7 +1829,9 @@
       "module:gr_b1_work_society",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_030",
@@ -1700,7 +1852,9 @@
       "module:cy_intro_identity",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_031",
@@ -1721,7 +1875,9 @@
       "module:cy_institutions",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_032",
@@ -1743,7 +1899,9 @@
       "module:cy_society_culture",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_033",
@@ -1765,7 +1923,9 @@
       "module:cy_key_dates",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_034",
@@ -1786,7 +1946,9 @@
       "module:cy_intro_identity",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_035",
@@ -1807,7 +1969,9 @@
       "module:cy_exam_fundamentals",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_048",
@@ -1815,11 +1979,11 @@
     "question": "Какой тип текста чаще всего встречается в официальных sample tasks по греческому на уровнях A2-B1?",
     "options": [
       "Только длинные литературные рассказы",
-      "Короткие объявления, notices и everyday messages",
+      "Короткие объявления, объявленииs и повседневный messages",
       "Только академические статьи",
       "Только юридические договоры"
     ],
-    "correctAnswer": "Короткие объявления, notices и everyday messages",
+    "correctAnswer": "Короткие объявления, объявленииs и повседневный messages",
     "explanation": "Официальные образцы регулярно используют короткие практические тексты из повседневной и общественной жизни.",
     "tags": [
       "track:exam_prep",
@@ -1829,12 +1993,14 @@
       "source:official_sample",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "official",
+    "sourceNote": "Вопрос опирается на официальный экзаменационный образец или формат; смысл и проверяемая рамка должны оставаться совместимыми с источником."
   },
   {
     "id": "quiz_gr_049",
     "trackId": "exam_prep",
-    "question": "Какой навык особенно проверяется, когда ученик читает короткое notice и должен выбрать правильный вывод?",
+    "question": "Какой навык особенно проверяется, когда ученик читает короткое объявлении и должен выбрать правильный вывод?",
     "options": [
       "Чистое переписывание слов",
       "Понимание главной мысли и нужной детали",
@@ -1851,12 +2017,14 @@
       "source:official_sample",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "official",
+    "sourceNote": "Вопрос опирается на официальный экзаменационный образец или формат; смысл и проверяемая рамка должны оставаться совместимыми с источником."
   },
   {
     "id": "quiz_gr_050",
     "trackId": "exam_prep",
-    "question": "Какой everyday scenario особенно хорошо соответствует официальной A2-B1 экзаменационной логике?",
+    "question": "Какой повседневный scenario особенно хорошо соответствует официальной A2-B1 экзаменационной логике?",
     "options": [
       "Анализ древнегреческой трагедии",
       "Чтение объявления, запись на встречу или реакция на сервисное сообщение",
@@ -1874,7 +2042,9 @@
       "source:official_sample",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "official",
+    "sourceNote": "Вопрос опирается на официальный экзаменационный образец или формат; смысл и проверяемая рамка должны оставаться совместимыми с источником."
   },
   {
     "id": "quiz_gr_051",
@@ -1896,7 +2066,9 @@
       "source:official_sample",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "official",
+    "sourceNote": "Вопрос опирается на официальный экзаменационный образец или формат; смысл и проверяемая рамка должны оставаться совместимыми с источником."
   },
   {
     "id": "quiz_cy_036",
@@ -1920,7 +2092,9 @@
       "source:official_exam_format",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "official",
+    "sourceNote": "Вопрос опирается на официальный экзаменационный образец или формат; смысл и проверяемая рамка должны оставаться совместимыми с источником."
   },
   {
     "id": "quiz_cy_037",
@@ -1943,7 +2117,9 @@
       "source:official_exam_format",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "official",
+    "sourceNote": "Вопрос опирается на официальный экзаменационный образец или формат; смысл и проверяемая рамка должны оставаться совместимыми с источником."
   },
   {
     "id": "quiz_cy_038",
@@ -1966,7 +2142,9 @@
       "source:official_exam_format",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "official",
+    "sourceNote": "Вопрос опирается на официальный экзаменационный образец или формат; смысл и проверяемая рамка должны оставаться совместимыми с источником."
   },
   {
     "id": "quiz_cy_039",
@@ -1988,7 +2166,9 @@
       "source:official_exam_format",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "official",
+    "sourceNote": "Вопрос опирается на официальный экзаменационный образец или формат; смысл и проверяемая рамка должны оставаться совместимыми с источником."
   },
   {
     "id": "quiz_gr_052",
@@ -2009,7 +2189,9 @@
       "module:gr_c1_public_discourse",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_053",
@@ -2030,7 +2212,9 @@
       "module:gr_c1_argumentation_writing",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_054",
@@ -2052,7 +2236,9 @@
       "module:gr_c1_register_culture",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_055",
@@ -2073,7 +2259,9 @@
       "module:gr_c1_argumentation_writing",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_056",
@@ -2094,7 +2282,9 @@
       "module:gr_c1_register_culture",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_057",
@@ -2115,7 +2305,9 @@
       "module:gr_c1_public_discourse",
       "status:seed"
     ],
-    "difficulty": "c1"
+    "difficulty": "c1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_040",
@@ -2138,7 +2330,9 @@
       "source:official_exam_format",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "official",
+    "sourceNote": "Вопрос опирается на официальный экзаменационный образец или формат; смысл и проверяемая рамка должны оставаться совместимыми с источником."
   },
   {
     "id": "quiz_cy_041",
@@ -2160,7 +2354,9 @@
       "context:eu",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_042",
@@ -2182,7 +2378,9 @@
       "context:holidays",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_043",
@@ -2192,7 +2390,7 @@
       "1 April",
       "1 October",
       "28 October",
-      "16 August 1960"
+      "16 августа 1960"
     ],
     "correctAnswer": "1 April",
     "explanation": "1 апреля является важной национальной общественной датой и входит в официальный список праздничных дней.",
@@ -2204,7 +2402,9 @@
       "context:holidays",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_044",
@@ -2226,7 +2426,9 @@
       "context:government",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_045",
@@ -2248,7 +2450,9 @@
       "context:government",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_046",
@@ -2270,7 +2474,9 @@
       "context:exam_strategy",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_058",
@@ -2292,7 +2498,9 @@
       "context:home",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_059",
@@ -2314,7 +2522,9 @@
       "context:services",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_060",
@@ -2336,7 +2546,9 @@
       "context:public_life",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_061",
@@ -2358,19 +2570,21 @@
       "context:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_047",
     "trackId": "exam_prep",
     "question": "Какая дата связана со вступлением Кипра в еврозону?",
     "options": [
-      "1 January 2008",
-      "1 May 2004",
-      "16 August 1960",
-      "1 October 1960"
+      "1 января 2008",
+      "1 мая 2004",
+      "16 августа 1960",
+      "1 октября 1960"
     ],
-    "correctAnswer": "1 January 2008",
+    "correctAnswer": "1 января 2008",
     "explanation": "Кипр присоединился к еврозоне 1 января 2008 года.",
     "tags": [
       "track:exam_prep",
@@ -2380,7 +2594,9 @@
       "context:eu",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_048",
@@ -2402,7 +2618,9 @@
       "context:government",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_049",
@@ -2424,7 +2642,9 @@
       "context:exam_strategy",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_062",
@@ -2446,7 +2666,9 @@
       "context:public_life",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_063",
@@ -2468,7 +2690,9 @@
       "context:services",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_064",
@@ -2490,7 +2714,9 @@
       "context:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_065",
@@ -2512,7 +2738,9 @@
       "context:services",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_066",
@@ -2534,12 +2762,14 @@
       "context:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_067",
     "trackId": "exam_prep",
-    "question": "Что обычно требуется при summary на уровне B2?",
+    "question": "Что обычно требуется при резюме на уровне B2?",
     "options": [
       "Переписать текст слово в слово",
       "Выделить главное и передать его короче и организованно",
@@ -2556,7 +2786,9 @@
       "context:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_068",
@@ -2578,7 +2810,9 @@
       "context:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_069",
@@ -2600,7 +2834,9 @@
       "context:services",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_070",
@@ -2622,7 +2858,9 @@
       "context:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_071",
@@ -2630,12 +2868,12 @@
     "question": "Почему уровень B2 полезен как мост к C1?",
     "options": [
       "Потому что он отменяет необходимость B1",
-      "Потому что он делает переход к advanced discourse менее резким",
+      "Потому что он делает переход к более сложному общественному дискурсу менее резким",
       "Потому что на B2 не нужно читать",
       "Потому что после B2 язык больше не нужен"
     ],
-    "correctAnswer": "Потому что он делает переход к advanced discourse менее резким",
-    "explanation": "B2 заполняет разрыв между functional B1 и более сложным discourse-level C1.",
+    "correctAnswer": "Потому что он делает переход к более сложному общественному дискурсу менее резким",
+    "explanation": "B2 заполняет разрыв между функциональным B1 и более сложным дискурсивным C1.",
     "tags": [
       "track:exam_prep",
       "track:greek_b1",
@@ -2644,7 +2882,9 @@
       "context:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_072",
@@ -2668,12 +2908,14 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_073",
     "trackId": "exam_prep",
-    "question": "Что делает summary на B2 действительно сильным?",
+    "question": "Что делает резюме на B2 действительно сильным?",
     "options": [
       "Повторение всех деталей без отбора",
       "Короткая передача главной мысли и 1-2 опорных деталей",
@@ -2692,7 +2934,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_074",
@@ -2716,7 +2960,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_075",
@@ -2740,7 +2986,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_076",
@@ -2764,7 +3012,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_077",
@@ -2788,7 +3038,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_078",
@@ -2812,12 +3064,14 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_079",
     "trackId": "exam_prep",
-    "question": "Почему культурные темы полезны именно на B2?",
+    "question": "Почему культурные темы особенно полезны на B2?",
     "options": [
       "Потому что на этом уровне уже можно дольше обсуждать идеи, привычки и оттенки смысла",
       "Потому что грамматика больше не нужна",
@@ -2836,7 +3090,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_080",
@@ -2849,7 +3105,7 @@
       "Только разговор о погоде"
     ],
     "correctAnswer": "Общественные сообщения, сервисные уточнения и развёрнутый ответ с причиной",
-    "explanation": "Это именно тот мост, который помогает перейти от базовой функциональности к более собранному B2-уровню.",
+    "explanation": "Это тот переход, который помогает уйти от базовой функциональности к более собранному уровню B2.",
     "tags": [
       "track:exam_prep",
       "track:greek_b1",
@@ -2860,7 +3116,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_081",
@@ -2873,7 +3131,7 @@
       "Лишь последнюю строчку"
     ],
     "correctAnswer": "Главную цель, важную деталь и действие, которое нужно сделать",
-    "explanation": "Именно такой functional reading готовит к публичной и экзаменационной коммуникации следующего уровня.",
+    "explanation": "Именно такое функциональное чтение готовит к публичной и экзаменационной коммуникации следующего уровня.",
     "tags": [
       "track:exam_prep",
       "track:greek_b1",
@@ -2884,7 +3142,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_082",
@@ -2908,7 +3168,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_083",
@@ -2932,12 +3194,14 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_050",
     "trackId": "exam_prep",
-    "question": "Какое официальное название государства используется в базовом civic-контексте на Кипре?",
+    "question": "Какое официальное название государства используется в базовом гражданскому-контексте на Кипре?",
     "options": [
       "Эллинская Республика",
       "Республика Кипр",
@@ -2956,7 +3220,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_051",
@@ -2980,7 +3246,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_052",
@@ -3004,7 +3272,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_053",
@@ -3028,7 +3298,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_054",
@@ -3052,7 +3324,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_055",
@@ -3065,7 +3339,7 @@
       "Игнорировать внутренние регионы острова"
     ],
     "correctAnswer": "Различать столицу, крупные города и административные регионы без хаотичного смешения",
-    "explanation": "Модуль нужен именно для уверенного ориентирования в общественно-географической карте Кипра.",
+    "explanation": "Модуль нужен для уверенного ориентирования в общественно-географической карте Кипра.",
     "tags": [
       "track:exam_prep",
       "track:cyprus_reality",
@@ -3076,12 +3350,14 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_056",
     "trackId": "exam_prep",
-    "question": "Почему 16 August 1960 нужно помнить особенно уверенно?",
+    "question": "Почему 16 августа 1960 нужно помнить особенно уверенно?",
     "options": [
       "Это дата вступления в еврозону",
       "Это дата независимости Республики Кипр",
@@ -3100,7 +3376,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_057",
@@ -3124,7 +3402,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_058",
@@ -3148,7 +3428,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_059",
@@ -3172,7 +3454,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_060",
@@ -3196,7 +3480,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_061",
@@ -3220,7 +3506,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_062",
@@ -3244,7 +3532,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_063",
@@ -3268,7 +3558,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_064",
@@ -3292,20 +3584,22 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_065",
     "trackId": "exam_prep",
     "question": "Какая дата связана с вступлением Кипра в Европейский союз?",
     "options": [
-      "16 August 1960",
-      "1 May 2004",
-      "1 January 2008",
-      "1 April 1955"
+      "16 августа 1960",
+      "1 мая 2004",
+      "1 января 2008",
+      "1 апреля 1955"
     ],
-    "correctAnswer": "1 May 2004",
-    "explanation": "Это одна из трёх ключевых современных дат, которые полезно уверенно различать: независимость, вступление в ЕС и переход на евро.",
+    "correctAnswer": "1 мая 2004",
+    "explanation": "Это одна из трёх ключевых современных дат: независимость, вступление в ЕС и переход на евро.",
     "tags": [
       "track:exam_prep",
       "track:cyprus_reality",
@@ -3316,12 +3610,14 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_066",
     "trackId": "exam_prep",
-    "question": "Что произошло 1 January 2008?",
+    "question": "Что произошло 1 января 2008?",
     "options": [
       "Кипр вступил в ЕС",
       "Кипр присоединился к еврозоне",
@@ -3340,7 +3636,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_067",
@@ -3364,7 +3662,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_068",
@@ -3388,7 +3688,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_069",
@@ -3397,11 +3699,11 @@
     "options": [
       "Она заставляет хаотично прыгать между фактами",
       "Она помогает собирать историю, институты и культуру в устойчивые блоки",
-      "Она отменяет необходимость проверять mutable facts",
+      "Она отменяет необходимость проверять изменяемые факты",
       "Она полезна только для A1"
     ],
     "correctAnswer": "Она помогает собирать историю, институты и культуру в устойчивые блоки",
-    "explanation": "Тематическое повторение лучше поддерживает извлечение знаний и делает подготовку ближе к современным рекомендациям по second-language и civic learning.",
+    "explanation": "Тематическое повторение лучше помогает извлекать знания и делает подготовку ближе к современным рекомендациям по языковому и гражданскому обучению.",
     "tags": [
       "track:exam_prep",
       "track:cyprus_reality",
@@ -3412,7 +3714,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_070",
@@ -3436,7 +3740,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_071",
@@ -3460,7 +3766,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_072",
@@ -3473,7 +3781,7 @@
       "Как форму правления"
     ],
     "correctAnswer": "Как округ или административный регион",
-    "explanation": "Это базовый географический термин, который полезно уверенно узнавать в учебном и экзаменационном контексте.",
+    "explanation": "Это базовый географический термин, который полезно уверенно распознавать в учебном и экзаменационном контексте.",
     "tags": [
       "track:exam_prep",
       "track:cyprus_reality",
@@ -3484,12 +3792,14 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_073",
     "trackId": "exam_prep",
-    "question": "Что лучше всего относится к базовому civic-ядру Республики Кипр?",
+    "question": "Что лучше всего относится к базовому гражданскому-ядру Республики Кипр?",
     "options": [
       "Случайные бытовые детали без структуры",
       "Официальное название государства, столица и президентская республика",
@@ -3497,7 +3807,7 @@
       "Только современные должности"
     ],
     "correctAnswer": "Официальное название государства, столица и президентская республика",
-    "explanation": "Именно с этой краткой civic-связки удобно начинать Cyprus Reality как самостоятельный трек.",
+    "explanation": "Именно с этой краткой гражданской связки удобно начинать Cyprus Reality как самостоятельный трек.",
     "tags": [
       "track:exam_prep",
       "track:cyprus_reality",
@@ -3508,7 +3818,9 @@
       "level:a1",
       "status:seed"
     ],
-    "difficulty": "a1"
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_074",
@@ -3518,10 +3830,10 @@
       "Потому что они заменяют весь исторический материал",
       "Потому что они помогают связывать официальную идентичность, государство и общественный контекст",
       "Потому что нужны только дизайнерам",
-      "Потому что они не связаны с civic-подготовкой"
+      "Потому что они не связаны с гражданскому-подготовкой"
     ],
     "correctAnswer": "Потому что они помогают связывать официальную идентичность, государство и общественный контекст",
-    "explanation": "Символы полезны не как декоративный факт, а как часть устойчивой civic-рамки трека.",
+    "explanation": "Символы полезны не как декоративный факт, а как часть устойчивой гражданскому-рамки трека.",
     "tags": [
       "track:exam_prep",
       "track:cyprus_reality",
@@ -3533,7 +3845,9 @@
       "level:a2",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_075",
@@ -3557,7 +3871,9 @@
       "level:b1",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_084",
@@ -3579,9 +3895,12 @@
       "quiz:mini",
       "skill:speaking",
       "level:b1",
-      "status:seed"
+      "status:seed",
+      "topic:numbers_time"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_085",
@@ -3603,9 +3922,12 @@
       "quiz:mini",
       "skill:speaking",
       "level:b1",
-      "status:seed"
+      "status:seed",
+      "topic:numbers_time"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_086",
@@ -3618,7 +3940,7 @@
       "Πόσο κοστίζει ο καφές;"
     ],
     "correctAnswer": "Σε πόσες μέρες θα είναι έτοιμο το έγγραφο;",
-    "explanation": "Это логичный follow-up вопрос про срок, который естественно продолжает сервисный диалог уровня B1.",
+    "explanation": "Это логичный уточняющий вопрос про срок, который естественно продолжает сервисный диалог уровня B1.",
     "tags": [
       "track:exam_prep",
       "track:greek_b1",
@@ -3628,9 +3950,12 @@
       "skill:speaking",
       "skill:reading",
       "level:b1",
-      "status:seed"
+      "status:seed",
+      "topic:question_patterns"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_087",
@@ -3652,9 +3977,12 @@
       "quiz:mini",
       "skill:speaking",
       "level:b1",
-      "status:seed"
+      "status:seed",
+      "topic:question_patterns"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_088",
@@ -3676,14 +4004,17 @@
       "quiz:mini",
       "skill:reading",
       "level:b1",
-      "status:seed"
+      "status:seed",
+      "topic:gender_articles"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_089",
     "trackId": "exam_prep",
-    "question": "Что означает `κατόπιν ραντεβού` в общественном notice?",
+    "question": "Что означает `κατόπιν ραντεβού` в общественном объявлении?",
     "options": [
       "Без записи, в любое время",
       "После объявления праздника",
@@ -3700,9 +4031,12 @@
       "quiz:mini",
       "skill:reading",
       "level:b1",
-      "status:seed"
+      "status:seed",
+      "topic:gender_articles"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_090",
@@ -3724,9 +4058,12 @@
       "quiz:mini",
       "skill:speaking",
       "level:b1",
-      "status:seed"
+      "status:seed",
+      "topic:agreement"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_091",
@@ -3748,14 +4085,17 @@
       "quiz:mini",
       "skill:speaking",
       "level:b1",
-      "status:seed"
+      "status:seed",
+      "topic:agreement"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_092",
     "trackId": "exam_prep",
-    "question": "Что отличает B2-summary от простого пересказа темы?",
+    "question": "Что отличает B2-резюме от простого пересказа темы?",
     "options": [
       "Он только повторяет заголовок текста",
       "Он включает тему, позицию автора и 2-3 смысловые опоры",
@@ -3763,7 +4103,7 @@
       "Он полностью уходит в личное мнение"
     ],
     "correctAnswer": "Он включает тему, позицию автора и 2-3 смысловые опоры",
-    "explanation": "На B2 summary должен быть компактным, но структурным: не только о чём текст, а как устроена его логика.",
+    "explanation": "На B2 резюме должен быть компактным, но структурным: не только о чём текст, а как устроена его логика.",
     "tags": [
       "track:exam_prep",
       "track:greek_b1",
@@ -3775,7 +4115,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_093",
@@ -3788,7 +4130,7 @@
       "Полный отказ от вывода"
     ],
     "correctAnswer": "Уступка другой позиции, затем аргумент и уверенный вывод",
-    "explanation": "Такая структура делает B2-speaking более зрелым: ты показываешь, что видишь обе стороны и умеешь собрать собственную линию.",
+    "explanation": "Такая структура делает устную речь на B2 более зрелой: ты показываешь, что видишь обе стороны и умеешь собрать собственную линию.",
     "tags": [
       "track:exam_prep",
       "track:greek_b1",
@@ -3799,19 +4141,21 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_094",
     "trackId": "exam_prep",
-    "question": "Что делает semi-formal письмо на B2 более полным?",
+    "question": "Что делает полуформальное письмо на B2 более полным?",
     "options": [
       "Только приветствие и одно предложение",
-      "Проблема, запрос, ожидание и follow-up вопрос",
+      "Проблема, запрос, ожидание и уточняющий вопрос",
       "Только жалоба без структуры",
       "Только длинный эмоциональный монолог"
     ],
-    "correctAnswer": "Проблема, запрос, ожидание и follow-up вопрос",
+    "correctAnswer": "Проблема, запрос, ожидание и уточняющий вопрос",
     "explanation": "На B2 письмо уже должно держать структуру и показывать, что ты умеешь вести коммуникацию дальше, а не только описывать проблему.",
     "tags": [
       "track:exam_prep",
@@ -3823,20 +4167,22 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_gr_095",
     "trackId": "exam_prep",
-    "question": "Что показывает, что B2 уже работает как самостоятельный уровень, а не только мост к C1?",
+    "question": "Что показывает, что B2 уже работает как самостоятельный уровень, а не только как переход к C1?",
     "options": [
-      "Ученик либо говорит слишком просто, либо сразу пытается звучать как advanced",
+      "Ученик либо говорит слишком просто, либо сразу пытается звучать как C1",
       "Ученик может держать связный общественный комментарий на ясном и уверенном уровне",
       "Ученик знает только отдельные культурные слова",
       "Ученик избегает любых общественных тем"
     ],
     "correctAnswer": "Ученик может держать связный общественный комментарий на ясном и уверенном уровне",
-    "explanation": "Именно это делает B2 самостоятельным: не advanced nuance ради нюанса, а уверенный связный комментарий на общественную тему.",
+    "explanation": "Именно это делает B2 самостоятельным: не нюансы ради нюансов, а уверенный связный комментарий на общественную тему.",
     "tags": [
       "track:exam_prep",
       "track:greek_b1",
@@ -3848,7 +4194,9 @@
       "level:b2",
       "status:seed"
     ],
-    "difficulty": "b2"
+    "difficulty": "b2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_076",
@@ -3871,12 +4219,14 @@
       "quiz:mini",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_077",
     "trackId": "exam_prep",
-    "question": "Что такое Commandaria в кипрском культурном контексте?",
+    "question": "Что такое Коммандария в кипрском культурном контексте?",
     "options": [
       "традиционное вино",
       "горный район",
@@ -3884,7 +4234,7 @@
       "государственный праздник"
     ],
     "correctAnswer": "традиционное вино",
-    "explanation": "Commandaria — исторически известное кипрское вино и культурный ориентир.",
+    "explanation": "Коммандария — исторически известное кипрское вино и культурный ориентир.",
     "tags": [
       "track:exam_prep",
       "track:cyprus_reality",
@@ -3894,7 +4244,9 @@
       "quiz:mini",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_078",
@@ -3918,7 +4270,9 @@
       "quiz:mini",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_079",
@@ -3941,7 +4295,9 @@
       "quiz:mini",
       "status:seed"
     ],
-    "difficulty": "a2"
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_080",
@@ -3965,7 +4321,9 @@
       "quiz:mini",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_081",
@@ -3989,7 +4347,9 @@
       "quiz:mini",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_082",
@@ -4013,7 +4373,9 @@
       "quiz:mini",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   },
   {
     "id": "quiz_cy_083",
@@ -4036,6 +4398,224 @@
       "quiz:mini",
       "status:seed"
     ],
-    "difficulty": "b1"
+    "difficulty": "b1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_084",
+    "trackId": "exam_prep",
+    "question": "Как лучше перевести фразу 'Το μάθημα είναι στις τρεις';",
+    "options": [
+      "Урок в три часа",
+      "Урок в четверг",
+      "Урок стоит три евро",
+      "У меня три билета"
+    ],
+    "correctAnswer": "Урок в три часа",
+    "explanation": "Связка 'στις τρεις' нужна, чтобы назвать время встречи или урока.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_078",
+      "quiz:mini",
+      "skill:reading",
+      "level:a1",
+      "status:seed",
+      "topic:numbers_time"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_085",
+    "trackId": "exam_prep",
+    "question": "Какой вариант лучше показывает рабочее владение числами и днями недели?",
+    "options": [
+      "Την Τρίτη έχω δύο συναντήσεις.",
+      "Η Τρίτη είναι σπίτι.",
+      "Δύο είναι καφές.",
+      "Το μάθημα έχει Τρίτη."
+    ],
+    "correctAnswer": "Την Τρίτη έχω δύο συναντήσεις.",
+    "explanation": "Здесь число и день недели уже работают внутри живой бытовой фразы, а не как отдельный словарь.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_time_routine",
+      "lesson:gr_lesson_078",
+      "quiz:mini",
+      "skill:speaking",
+      "level:a1",
+      "status:seed",
+      "topic:numbers_time"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_086",
+    "trackId": "exam_prep",
+    "question": "Какое вопросительное слово лучше всего подходит к ответу 'Στη Λάρνακα';",
+    "options": [
+      "Πού;",
+      "Πότε;",
+      "Γιατί;",
+      "Πόσα;"
+    ],
+    "correctAnswer": "Πού;",
+    "explanation": "Ответ про место требует вопроса 'Где?'.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_079",
+      "quiz:mini",
+      "skill:grammar",
+      "level:a1",
+      "status:seed",
+      "topic:question_patterns"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_087",
+    "trackId": "exam_prep",
+    "question": "Какой вопрос лучше всего подходит к ответу 'Δύο εισιτήρια';",
+    "options": [
+      "Πόσα εισιτήρια θέλετε;",
+      "Πού είναι τα εισιτήρια;",
+      "Γιατί θέλετε εισιτήρια;",
+      "Πότε είναι το εισιτήριο;"
+    ],
+    "correctAnswer": "Πόσα εισιτήρια θέλετε;",
+    "explanation": "Если в ответе есть количество, нужен вопрос с 'Сколько?'.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_079",
+      "quiz:mini",
+      "skill:speaking",
+      "level:a1",
+      "status:seed",
+      "topic:question_patterns"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_088",
+    "trackId": "exam_prep",
+    "question": "Какой вариант правильно показывает средний род?",
+    "options": [
+      "το σπίτι",
+      "η σπίτι",
+      "ο σπίτι",
+      "τους σπίτι"
+    ],
+    "correctAnswer": "το σπίτι",
+    "explanation": "Слово σπίτι на старте важно запоминать вместе с артиклем среднего рода: το σπίτι.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_080",
+      "quiz:mini",
+      "skill:grammar",
+      "level:a1",
+      "status:seed",
+      "topic:gender_articles"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_089",
+    "trackId": "exam_prep",
+    "question": "Что лучше всего помогает увидеть род существительного на раннем этапе?",
+    "options": [
+      "запоминать слово сразу с артиклем",
+      "учить только перевод без формы",
+      "игнорировать артикль до уровня B1",
+      "запоминать только окончание на русском"
+    ],
+    "correctAnswer": "запоминать слово сразу с артиклем",
+    "explanation": "На старте полезно держать в памяти не отдельное слово, а готовую пару вроде ο καφές, η τσάντα, το σπίτι.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_080",
+      "quiz:mini",
+      "skill:grammar",
+      "level:a1",
+      "status:seed",
+      "topic:gender_articles"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_090",
+    "trackId": "exam_prep",
+    "question": "Какая пара согласована правильно?",
+    "options": [
+      "καλή φίλη",
+      "καλός φίλη",
+      "καλό φίλη",
+      "καλή φίλος"
+    ],
+    "correctAnswer": "καλή φίλη",
+    "explanation": "Для женского рода здесь нужна форма прилагательного καλή и существительное φίλη.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_081",
+      "quiz:mini",
+      "skill:grammar",
+      "level:a2",
+      "status:seed",
+      "topic:agreement"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_091",
+    "trackId": "exam_prep",
+    "question": "Какой вариант лучше показывает согласование среднего рода?",
+    "options": [
+      "καλό σπίτι",
+      "καλός σπίτι",
+      "καλή σπίτι",
+      "καλές σπίτι"
+    ],
+    "correctAnswer": "καλό σπίτι",
+    "explanation": "В этой связке и существительное, и прилагательное должны звучать как форма среднего рода.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_core_grammar",
+      "lesson:gr_lesson_081",
+      "quiz:mini",
+      "skill:grammar",
+      "level:a2",
+      "status:seed",
+      "topic:agreement"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   }
 ]

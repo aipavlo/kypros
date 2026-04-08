@@ -32,7 +32,9 @@ test("getFlashcardPronunciation prefers explicit transliteration and skips non-g
       back: "паспорт",
       transliteration: "diavatirio",
       tags: [],
-      difficulty: "a1"
+      difficulty: "a1",
+      sourceStatus: "editorial",
+      sourceNote: "Тестовая карточка."
     }),
     "diavatirio"
   );
@@ -44,7 +46,9 @@ test("getFlashcardPronunciation prefers explicit transliteration and skips non-g
       front: "1959 agreements",
       back: "соглашения",
       tags: [],
-      difficulty: "b1"
+      difficulty: "b1",
+      sourceStatus: "editorial",
+      sourceNote: "Тестовая карточка."
     }),
     null
   );
@@ -57,7 +61,9 @@ test("getFlashcardPronunciation prefers explicit transliteration and skips non-g
         front: "Παρακαλώ",
         back: "пожалуйста",
         tags: [],
-        difficulty: "a1"
+        difficulty: "a1",
+        sourceStatus: "editorial",
+        sourceNote: "Тестовая карточка."
       },
       { includeStress: true }
     ),

@@ -150,7 +150,7 @@ export function LessonsPage(props: LessonsPageProps) {
   const groupedTracks = tracks.filter((track) =>
     props.forcedTrackId
       ? track.id === props.forcedTrackId
-      : ["greek_b1", "cyprus_reality"].includes(track.id)
+      : track.id === "greek_b1"
   );
   const initialStage = searchParams.get("stage") ?? "a1";
   const requestedModuleId =
@@ -242,13 +242,13 @@ export function LessonsPage(props: LessonsPageProps) {
 
   return (
     <div className="stack">
-      <section className="panel page-banner">
+      <section className={`panel page-banner ${props.forcedTrackId === "cyprus_reality" ? "cyprus-hero-panel" : "lessons-hero-panel"}`}>
         <p className="eyebrow">{props.forcedTrackId === "cyprus_reality" ? "Кипр" : "Уроки"}</p>
-        <h1>{props.forcedTrackId === "cyprus_reality" ? "Программа Cyprus Reality" : "Программы и модули"}</h1>
+        <h1>{props.forcedTrackId === "cyprus_reality" ? "Программа Cyprus Reality" : "Языковая программа Greek Core"}</h1>
         <p className="section-copy">
           {props.forcedTrackId === "cyprus_reality"
             ? "Здесь собраны уроки по истории Кипра, культуре, институтам, общественной жизни и экзаменационным темам Cyprus Reality."
-            : "Здесь собраны уроки по греческому языку по уровням A1-C1: бытовые ситуации, документы, общественная жизнь, повторение и мини-проверки."}
+            : "Здесь проходит именно языковая линия: уровень, модуль, урок, карточки и мини-проверка без смешивания с отдельной программой по Кипру."}
         </p>
         {navigationSource ? (
           <div className="source-callout">
@@ -256,6 +256,66 @@ export function LessonsPage(props: LessonsPageProps) {
             <p>Нужный модуль уже выбран ниже. Можно сразу продолжать.</p>
           </div>
         ) : null}
+      </section>
+
+      <section className={`panel ${props.forcedTrackId === "cyprus_reality" ? "cyprus-role-panel" : "lessons-role-panel"}`}>
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Роль страницы</p>
+            <h2>{props.forcedTrackId === "cyprus_reality" ? "Здесь изучают Кипр, а не выбирают программу" : "Здесь проходят язык, а не выбирают все линии сразу"}</h2>
+            <p className="section-copy">
+              {props.forcedTrackId === "cyprus_reality"
+                ? "Если нужен обзор всех линий, открой tracks. Если нужна именно языковая программа, открой lessons."
+                : "Если нужен обзор линий и подборок, открой tracks. Если нужен отдельный трек Cyprus Reality, открой cyprus."}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid spotlight-grid">
+          {props.forcedTrackId === "cyprus_reality" ? (
+            <>
+              <Link className="card card-link track-card track-card-history" to="/tracks">
+                <p className="chip">tracks</p>
+                <h3>Выбрать или сравнить линии</h3>
+                <p>Навигационный слой с программами, подборками и маршрутами без погружения в рабочий модуль.</p>
+                <span className="action-link">Открыть обзор</span>
+              </Link>
+              <Link className="card card-link track-card track-card-language" to="/lessons">
+                <p className="chip">lessons</p>
+                <h3>Вернуться к языковой программе</h3>
+                <p>Отдельная рабочая страница для Greek Core, если сейчас нужен не Кипр, а язык.</p>
+                <span className="action-link">Открыть язык</span>
+              </Link>
+              <Link className="card card-link track-card" to="/trails#trail_fact_not_panic">
+                <p className="chip">trails</p>
+                <h3>Открыть маршрут повтора по Кипру</h3>
+                <p>Если нужен не полный каталог модулей, а готовый сценарий повтора перед экзаменом.</p>
+                <span className="action-link">Открыть маршрут</span>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link className="card card-link track-card track-card-language" to="/tracks">
+                <p className="chip">tracks</p>
+                <h3>Посмотреть все линии и подборки</h3>
+                <p>Обзорный слой для выбора программы, маршрута или вспомогательной коллекции.</p>
+                <span className="action-link">Открыть обзор</span>
+              </Link>
+              <Link className="card card-link track-card track-card-history" to="/cyprus">
+                <p className="chip">cyprus</p>
+                <h3>Перейти в Cyprus Reality</h3>
+                <p>Отдельная самостоятельная программа по Кипру без смешивания с языковой линией.</p>
+                <span className="action-link">Открыть Cyprus Reality</span>
+              </Link>
+              <Link className="card card-link track-card" to="/trails#trail_souvlaki_starter">
+                <p className="chip">trails</p>
+                <h3>Открыть маршрут под задачу</h3>
+                <p>Если нужен не полный курс, а короткий сценарий под разговор, сервисы или повторение.</p>
+                <span className="action-link">Открыть маршрут</span>
+              </Link>
+            </>
+          )}
+        </div>
       </section>
 
       {groupedTracks.map((track) => (
@@ -410,86 +470,6 @@ export function LessonsPage(props: LessonsPageProps) {
                   </article>
                 ) : null}
 
-                <div className="module-overview-grid">
-                  {modulesForTrack.map((module) => {
-                    const moduleCycleStatus = getModuleCycleStatus(
-                      module.id,
-                      props.completedLessonIds,
-                      props.reviewedModuleIds,
-                      props.passedModuleQuizIds,
-                      track.id,
-                      track.id === "greek_b1" ? selectedLanguageStage : undefined
-                    );
-                    const moduleProgressPercent = moduleCycleStatus.progressPercent;
-                    const isUnlocked = unlockedModuleIds.includes(module.id);
-                    const isCompletedModule = moduleCycleStatus.completed;
-                    const isActiveModule = module.id === activeModule?.id;
-                    const moduleStateLabel = getModuleStateLabel(
-                      moduleCycleStatus,
-                      isUnlocked,
-                      isActiveModule
-                    );
-                    const moduleStatusTone = getModuleStatusTone(
-                      moduleCycleStatus,
-                      isUnlocked,
-                      isActiveModule
-                    );
-
-                    return (
-                      <button
-                        className={
-                          isActiveModule
-                            ? isUnlocked
-                              ? openedFromExternalFlow && requestedModuleId === module.id
-                                ? `module-overview-card module-overview-card-active module-overview-card-opened module-overview-card-${moduleStatusTone}`
-                                : `module-overview-card module-overview-card-active module-overview-card-${moduleStatusTone}`
-                              : "module-overview-card module-overview-card-locked"
-                            : isUnlocked
-                              ? `module-overview-card module-overview-card-${moduleStatusTone}`
-                              : "module-overview-card module-overview-card-locked"
-                        }
-                        disabled={!isUnlocked}
-                        key={module.id}
-                        onClick={() => {
-                          if (!isUnlocked) {
-                            return;
-                          }
-                          selectModule(track.id, module.id);
-                        }}
-                        type="button"
-                      >
-                        <div className="module-overview-meta">
-                          <span className={`module-status-badge module-status-badge-${moduleStatusTone}`}>
-                            {moduleStateLabel}
-                          </span>
-                          <span className="meta-pill">Модуль</span>
-                        </div>
-                        <h3>{module.title}</h3>
-                        <p>{module.description}</p>
-                        <p className="module-overview-status">
-                          {getModuleStatusSummary(moduleCycleStatus, isUnlocked)}
-                        </p>
-                        <div className="progress-rail module-progress-rail">
-                          <span
-                            className="progress-fill"
-                            style={{ width: `${moduleProgressPercent}%` }}
-                          />
-                        </div>
-                        <div className="module-badge-line">
-                          <span className="module-progress-note">
-                            {isUnlocked ? `${moduleProgressPercent}% по модулю` : "Откроется по порядку"}
-                          </span>
-                          {isCompletedModule ? (
-                            <span className="badge-chip badge-chip-earned">
-                              {getModuleBadgeLabel(module.title)}
-                            </span>
-                          ) : null}
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-
                 {activeModule && activeModuleCycleStatus && nextAction ? (
                   <article className="lesson-module lesson-module-active">
                     <header className="lesson-module-head">
@@ -588,6 +568,98 @@ export function LessonsPage(props: LessonsPageProps) {
                     </div>
                   </article>
                 ) : null}
+
+                <div className="lesson-program-secondary-block">
+                  <div className="section-head lesson-program-secondary-head">
+                    <div>
+                      <p className="eyebrow">Все модули</p>
+                      <h3>Каталог программы</h3>
+                      <p className="section-copy">
+                        Ниже полный обзор модулей. Сначала лучше закончить активный шаг выше.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="module-overview-grid module-overview-grid-secondary">
+                    {modulesForTrack.map((module) => {
+                      const moduleCycleStatus = getModuleCycleStatus(
+                        module.id,
+                        props.completedLessonIds,
+                        props.reviewedModuleIds,
+                        props.passedModuleQuizIds,
+                        track.id,
+                        track.id === "greek_b1" ? selectedLanguageStage : undefined
+                      );
+                      const moduleProgressPercent = moduleCycleStatus.progressPercent;
+                      const isUnlocked = unlockedModuleIds.includes(module.id);
+                      const isCompletedModule = moduleCycleStatus.completed;
+                      const isActiveModule = module.id === activeModule?.id;
+                      const moduleStateLabel = getModuleStateLabel(
+                        moduleCycleStatus,
+                        isUnlocked,
+                        isActiveModule
+                      );
+                      const moduleStatusTone = getModuleStatusTone(
+                        moduleCycleStatus,
+                        isUnlocked,
+                        isActiveModule
+                      );
+
+                      return (
+                        <button
+                          className={
+                            isActiveModule
+                              ? isUnlocked
+                                ? openedFromExternalFlow && requestedModuleId === module.id
+                                  ? `module-overview-card module-overview-card-active module-overview-card-opened module-overview-card-${moduleStatusTone}`
+                                  : `module-overview-card module-overview-card-active module-overview-card-${moduleStatusTone}`
+                                : "module-overview-card module-overview-card-locked"
+                              : isUnlocked
+                                ? `module-overview-card module-overview-card-${moduleStatusTone}`
+                                : "module-overview-card module-overview-card-locked"
+                          }
+                          disabled={!isUnlocked}
+                          key={module.id}
+                          onClick={() => {
+                            if (!isUnlocked) {
+                              return;
+                            }
+                            selectModule(track.id, module.id);
+                          }}
+                          type="button"
+                        >
+                          <div className="module-overview-meta">
+                            <span className={`module-status-badge module-status-badge-${moduleStatusTone}`}>
+                              {moduleStateLabel}
+                            </span>
+                            <span className="meta-pill">Модуль</span>
+                          </div>
+                          <h3>{module.title}</h3>
+                          <p>{module.description}</p>
+                          <p className="module-overview-status">
+                            {getModuleStatusSummary(moduleCycleStatus, isUnlocked)}
+                          </p>
+                          <div className="progress-rail module-progress-rail">
+                            <span
+                              className="progress-fill"
+                              style={{ width: `${moduleProgressPercent}%` }}
+                            />
+                          </div>
+                          <div className="module-badge-line">
+                            <span className="module-progress-note">
+                              {isUnlocked ? `${moduleProgressPercent}% по модулю` : "Откроется по порядку"}
+                            </span>
+                            {isCompletedModule ? (
+                              <span className="badge-chip badge-chip-earned">
+                                {getModuleBadgeLabel(module.title)}
+                              </span>
+                            ) : null}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               </>
             );
           })()}

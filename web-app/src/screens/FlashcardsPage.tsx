@@ -282,44 +282,65 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
               </article>
             </div>
 
-            <article className="flashcards-library-shell">
+            <article className="flashcards-focus-shell">
               <div className="section-head">
                 <div>
-                  <p className="eyebrow">Библиотека сессии</p>
-                  <h2>Все карточки текущего набора</h2>
+                  <p className="eyebrow">Текущая карточка</p>
+                  <h2>Один шаг повторения без лишнего шума</h2>
                   <p className="section-copy">
-                    Слева можно быстро переходить к нужной карточке, а сама рабочая карточка всегда остаётся под рукой справа.
+                    Сначала попробуй ответить, потом открой обратную сторону и сразу зафиксируй статус карточки.
                   </p>
                 </div>
+                <div className="flashcards-focus-meta">
+                  <span className="meta-pill meta-pill-strong">{safeActiveIndex + 1} / {cards.length}</span>
+                  <span className={`flashcard-state-pill flashcard-state-pill-${activeCardState}`}>
+                    {STUDY_STATE_LABELS[activeCardState]}
+                  </span>
+                </div>
               </div>
-              <div className="flashcards-library-grid">
-                {cards.map((card, cardIndex) => {
-                  const cardState = cardStudyStates[card.id] ?? "new";
-                  const isActive = cardIndex === safeActiveIndex;
-                  const cardPronunciation = getFlashcardPronunciation(card, { includeStress: true });
 
-                  return (
-                    <button
-                      className={`flashcard-library-item ${isActive ? "flashcard-library-item-active" : ""} flashcard-library-item-${card.difficulty}`}
-                      key={card.id}
-                      onClick={() => openCard(cardIndex)}
-                      type="button"
-                    >
-                      <div className="flashcard-library-top">
-                        <span className="chip">{card.difficulty.toUpperCase()}</span>
-                        <span className={`flashcard-state-pill flashcard-state-pill-${cardState}`}>
-                          {STUDY_STATE_LABELS[cardState]}
-                        </span>
-                      </div>
-                      <strong>{card.front}</strong>
-                      {cardPronunciation ? (
-                        <p className="flashcard-library-pronunciation">Как читать: {cardPronunciation}</p>
-                      ) : null}
-                      <p>{card.back}</p>
-                      <span className="flashcard-library-index">Карточка {cardIndex + 1}</span>
-                    </button>
-                  );
-                })}
+              <button className="flashcard flashcard-focus" onClick={() => setRevealed((value) => !value)} type="button">
+                <div className="flashcard-topline">
+                  <p className="chip">{activeCard.difficulty.toUpperCase()}</p>
+                  <span className={`flashcard-state-pill flashcard-state-pill-${activeCardState}`}>
+                    {STUDY_STATE_LABELS[activeCardState]}
+                  </span>
+                </div>
+                <p className="flashcard-face-label">{revealed ? "Ответ" : "Вопрос"}</p>
+                <h3>{revealed ? activeCard.back : activeCard.front}</h3>
+                {activeCardPronunciation ? (
+                  <p className="flashcard-pronunciation">Как читать: {activeCardPronunciation}</p>
+                ) : null}
+                <p className="flashcard-helper-copy">
+                  {revealed
+                    ? "Ответ открыт. Теперь реши: знаешь карточку, оставить её на потом или отметить как сложную."
+                    : "Сначала попробуй ответить сам, потом открой обратную сторону."}
+                </p>
+              </button>
+
+              <div className="flashcards-primary-actions">
+                <button className="primary-button flashcards-next-button" onClick={goNext} type="button">
+                  Следующая
+                </button>
+                <button className="secondary-button flashcards-answer-button" onClick={() => setRevealed((value) => !value)} type="button">
+                  {revealed ? "Скрыть ответ" : "Показать ответ"}
+                </button>
+                <button className="secondary-button flashcards-prev-button" onClick={goPrev} type="button">
+                  Предыдущая
+                </button>
+              </div>
+
+              <div className="flashcards-status-actions flashcards-status-actions-focus">
+                {STUDY_STATE_ACTIONS.map((action) => (
+                  <button
+                    key={action.nextState}
+                    className={action.className}
+                    onClick={() => setCardStudyState(action.nextState)}
+                    type="button"
+                  >
+                    {action.label}
+                  </button>
+                ))}
               </div>
             </article>
           </div>
@@ -347,52 +368,8 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
               </div>
             </article>
 
-            <div className="flashcards-status-actions flashcards-status-actions-top">
-              {STUDY_STATE_ACTIONS.map((action) => (
-                <button
-                  key={action.nextState}
-                  className={action.className}
-                  onClick={() => setCardStudyState(action.nextState)}
-                  type="button"
-                >
-                  {action.label}
-                </button>
-              ))}
-            </div>
-
-            <button className="flashcard flashcard-focus" onClick={() => setRevealed((value) => !value)} type="button">
-              <div className="flashcard-topline">
-                <p className="chip">{activeCard.difficulty.toUpperCase()}</p>
-                <span className={`flashcard-state-pill flashcard-state-pill-${activeCardState}`}>
-                  {STUDY_STATE_LABELS[activeCardState]}
-                </span>
-              </div>
-              <p className="flashcard-face-label">{revealed ? "Ответ" : "Вопрос"}</p>
-              <h3>{revealed ? activeCard.back : activeCard.front}</h3>
-              {activeCardPronunciation ? (
-                <p className="flashcard-pronunciation">Как читать: {activeCardPronunciation}</p>
-              ) : null}
-              <p className="flashcard-helper-copy">
-                {revealed
-                  ? "Ответ открыт. Теперь реши: знаешь карточку, оставить её на потом или отметить как сложную."
-                  : "Сначала попробуй ответить сам, потом открой обратную сторону."}
-              </p>
-            </button>
-
-            <div className="flashcards-primary-actions">
-              <button className="primary-button flashcards-next-button" onClick={goNext} type="button">
-                Следующая
-              </button>
-              <button className="secondary-button flashcards-answer-button" onClick={() => setRevealed((value) => !value)} type="button">
-                {revealed ? "Скрыть ответ" : "Показать ответ"}
-              </button>
-              <button className="secondary-button flashcards-prev-button" onClick={goPrev} type="button">
-                Предыдущая
-              </button>
-            </div>
-
             {activeModuleId ? (
-              <article className="study-sidecard flashcards-sidecard">
+              <article className="study-sidecard flashcards-sidecard flashcards-route-card">
                 <strong>{isLessonFlow ? "Учебный маршрут урока" : "Связь с модулем"}</strong>
                 <p>{activeModule?.title ?? activeModuleId}</p>
                 <p className="muted">
@@ -432,6 +409,47 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
             ) : null}
           </aside>
         </div>
+
+        <article className="flashcards-library-shell flashcards-library-shell-secondary">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Весь набор</p>
+              <h2>Библиотека карточек текущей сессии</h2>
+              <p className="section-copy">
+                Это вторичный слой: быстрые переходы по карточкам и обзор уже отмеченных статусов.
+              </p>
+            </div>
+          </div>
+          <div className="flashcards-library-grid">
+            {cards.map((card, cardIndex) => {
+              const cardState = cardStudyStates[card.id] ?? "new";
+              const isActive = cardIndex === safeActiveIndex;
+              const cardPronunciation = getFlashcardPronunciation(card, { includeStress: true });
+
+              return (
+                <button
+                  className={`flashcard-library-item ${isActive ? "flashcard-library-item-active" : ""} flashcard-library-item-${card.difficulty}`}
+                  key={card.id}
+                  onClick={() => openCard(cardIndex)}
+                  type="button"
+                >
+                  <div className="flashcard-library-top">
+                    <span className="chip">{card.difficulty.toUpperCase()}</span>
+                    <span className={`flashcard-state-pill flashcard-state-pill-${cardState}`}>
+                      {STUDY_STATE_LABELS[cardState]}
+                    </span>
+                  </div>
+                  <strong>{card.front}</strong>
+                  {cardPronunciation ? (
+                    <p className="flashcard-library-pronunciation">Как читать: {cardPronunciation}</p>
+                  ) : null}
+                  <p>{card.back}</p>
+                  <span className="flashcard-library-index">Карточка {cardIndex + 1}</span>
+                </button>
+              );
+            })}
+          </div>
+        </article>
       </section>
     </div>
   );

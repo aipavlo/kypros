@@ -423,6 +423,7 @@ dd {
 .hero-badge strong,
 .hero-badge p {
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .hero-badge strong {
@@ -516,6 +517,18 @@ dd {
   font-size: 14px;
 }
 
+.hero-goal-block {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-goal-block .hero-goal-text {
+  margin: 0;
+}
+
 .landing-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -568,6 +581,14 @@ dd {
   max-width: 560px;
 }
 
+.landing-overview-panel,
+.landing-summary-panel,
+.landing-outcomes-panel {
+  background:
+    linear-gradient(180deg, rgba(250, 248, 244, 0.84) 0%, rgba(255, 255, 255, 0.94) 100%);
+  box-shadow: 0 10px 22px rgba(30, 49, 58, 0.04);
+}
+
 .landing-sidecard h3,
 .landing-sidecard p {
   margin: 0;
@@ -592,6 +613,11 @@ dd {
   display: grid;
   gap: 14px;
   max-width: none;
+}
+
+.landing-value-card-secondary {
+  padding: 18px 20px;
+  border-radius: 20px;
 }
 
 .landing-value-card h3,
@@ -728,6 +754,65 @@ dd {
   color: #5f6c74;
 }
 
+.dashboard-hero {
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 390px);
+}
+
+.dashboard-hero .hero-copy {
+  gap: 16px;
+}
+
+.dashboard-hero-sidebar {
+  align-items: flex-start;
+}
+
+.dashboard-hero .hero-badge {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 244, 0.98) 0%, rgba(242, 236, 224, 0.96) 100%);
+  color: #21313b;
+  border: 1px solid rgba(30, 49, 58, 0.1);
+  box-shadow: 0 14px 26px rgba(58, 48, 30, 0.08);
+}
+
+.dashboard-hero .hero-badge p {
+  color: #516168;
+}
+
+.dashboard-hero .hero-step-status {
+  background: rgba(35, 64, 79, 0.1);
+  color: #23404f;
+}
+
+.dashboard-hero .hero-step-meta .badge-chip {
+  background: rgba(35, 64, 79, 0.08);
+  color: #23404f;
+}
+
+.dashboard-hero .hero-gamification-card,
+.dashboard-hero .hero-goal-block {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(30, 49, 58, 0.08);
+}
+
+.dashboard-hero .hero-gamification-label {
+  color: #6d5a3f;
+}
+
+.dashboard-hero-link {
+  min-height: 0;
+  color: #23404f;
+}
+
+.dashboard-stats-grid .stat-card {
+  padding: 16px 18px 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 247, 0.88) 0%, rgba(249, 240, 224, 0.76) 100%);
+}
+
+.dashboard-stats-grid .stat-card strong {
+  font-size: 28px;
+}
+
 .a1-panel {
   background: linear-gradient(180deg, rgba(248, 250, 251, 0.98) 0%, rgba(255, 255, 255, 1) 100%);
 }
@@ -751,6 +836,25 @@ dd {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(30, 49, 58, 0.08);
+}
+
+.achievement-card-highlight {
+  background:
+    radial-gradient(circle at top right, rgba(201, 134, 53, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(255, 252, 247, 0.98) 0%, rgba(245, 236, 220, 0.94) 100%);
+  box-shadow: 0 14px 28px rgba(58, 48, 30, 0.08);
+}
+
+.achievement-card-language {
+  background:
+    radial-gradient(circle at top right, rgba(201, 134, 53, 0.1), transparent 32%),
+    linear-gradient(180deg, rgba(255, 248, 236, 0.99) 0%, rgba(244, 230, 201, 0.96) 100%);
+}
+
+.achievement-card-history {
+  background:
+    radial-gradient(circle at top right, rgba(59, 138, 160, 0.1), transparent 32%),
+    linear-gradient(180deg, rgba(247, 252, 253, 0.99) 0%, rgba(228, 241, 245, 0.96) 100%);
 }
 
 .achievement-card strong,
@@ -860,6 +964,38 @@ dd {
 
 .achievements-stats-grid article.stat-card p {
   color: #66737b;
+}
+
+.achievements-hero-panel,
+.achievements-milestones-panel,
+.achievements-modules-panel {
+  background:
+    linear-gradient(180deg, rgba(250, 248, 244, 0.84) 0%, rgba(255, 255, 255, 0.94) 100%);
+  box-shadow: 0 10px 22px rgba(30, 49, 58, 0.04);
+}
+
+.achievements-hero-sidecard {
+  display: grid;
+  gap: 12px;
+  max-width: 360px;
+  padding: 20px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(201, 134, 53, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(255, 251, 244, 0.98) 0%, rgba(242, 236, 224, 0.96) 100%);
+  border: 1px solid rgba(30, 49, 58, 0.1);
+  box-shadow: 0 14px 26px rgba(58, 48, 30, 0.08);
+}
+
+.achievements-hero-sidecard strong,
+.achievements-hero-sidecard p {
+  margin: 0;
+}
+
+.achievements-hero-sidecard strong {
+  font-size: clamp(24px, 2.2vw, 30px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
 .stat-card {
@@ -1261,6 +1397,16 @@ article.infographic-card:hover,
   background: linear-gradient(180deg, rgba(250, 254, 255, 0.98) 0%, rgba(233, 245, 248, 0.94) 100%);
 }
 
+.tracks-role-panel,
+.lessons-role-panel,
+.cyprus-role-panel,
+.lessons-hero-panel,
+.cyprus-hero-panel {
+  background:
+    linear-gradient(180deg, rgba(250, 248, 244, 0.84) 0%, rgba(255, 255, 255, 0.94) 100%);
+  box-shadow: 0 10px 22px rgba(30, 49, 58, 0.04);
+}
+
 .trail-catalog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -1294,6 +1440,28 @@ article.infographic-card:hover,
 
 .trail-catalog-card-mixed {
   background: linear-gradient(155deg, rgba(250, 245, 237, 0.98) 0%, rgba(235, 234, 219, 0.96) 100%);
+}
+
+.content-hero-panel,
+.content-library-panel,
+.trails-hero-panel,
+.trails-principles-panel,
+.trails-lanes-panel,
+.trails-catalog-panel {
+  background:
+    linear-gradient(180deg, rgba(250, 248, 244, 0.84) 0%, rgba(255, 255, 255, 0.94) 100%);
+  box-shadow: 0 10px 22px rgba(30, 49, 58, 0.04);
+}
+
+.content-curator-panel,
+.trails-recommended-panel {
+  background:
+    radial-gradient(circle at top right, rgba(201, 134, 53, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(255, 252, 247, 0.98) 0%, rgba(245, 236, 220, 0.94) 100%);
+}
+
+.content-entry-grid {
+  margin-top: 18px;
 }
 
 .trail-catalog-top {
@@ -1416,6 +1584,17 @@ article.infographic-card:hover,
   scroll-margin-top: 24px;
 }
 
+.trails-recommended-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.trails-recommended-card {
+  gap: 12px;
+  padding: 24px;
+  border-radius: 26px;
+  box-shadow: 0 18px 34px rgba(46, 39, 23, 0.1);
+}
+
 .trail-detail-panel-language {
   background: linear-gradient(180deg, rgba(255, 252, 246, 0.96) 0%, rgba(248, 238, 216, 0.94) 100%);
 }
@@ -1460,6 +1639,10 @@ article.infographic-card:hover,
   align-items: flex-start;
 }
 
+.section-head > * {
+  min-width: 0;
+}
+
 .section-copy {
   max-width: 720px;
 }
@@ -1490,7 +1673,9 @@ article.infographic-card:hover,
   border-radius: 999px;
   padding: 6px 10px;
   font-size: 12px;
-  line-height: 1;
+  line-height: 1.2;
+  white-space: normal;
+  text-align: center;
 }
 
 .meta-pill {
@@ -1591,6 +1776,7 @@ article.infographic-card:hover,
 .study-sidecard {
   display: grid;
   gap: 12px;
+  min-width: 0;
   padding: 18px;
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 237, 223, 0.94) 100%);
@@ -1601,6 +1787,7 @@ article.infographic-card:hover,
 .study-sidecard p,
 .study-sidecard strong {
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .study-feature-card {
@@ -1641,6 +1828,23 @@ article.infographic-card:hover,
   gap: 18px;
 }
 
+.quiz-mode-grid-recommended {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.quiz-mode-grid-secondary {
+  padding: 22px 24px 24px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(250, 248, 244, 0.84) 0%, rgba(255, 255, 255, 0.94) 100%);
+  box-shadow: 0 10px 22px rgba(30, 49, 58, 0.04);
+}
+
+.quiz-mode-card-recommended {
+  padding: 22px;
+  border-radius: 24px;
+  box-shadow: 0 18px 34px rgba(53, 42, 21, 0.1);
+}
+
 .quiz-question-panel {
   display: grid;
   gap: 18px;
@@ -1648,6 +1852,23 @@ article.infographic-card:hover,
   position: sticky;
   top: 88px;
 }
+
+.quiz-entry-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.quiz-action-card {
+  border: 0;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.quiz-catalog-head {
+  margin-top: 4px;
+ }
 
 .quiz-mode-card-top {
   display: flex;
@@ -2167,6 +2388,20 @@ article.infographic-card::before {
   background: linear-gradient(180deg, rgba(249, 255, 250, 0.98) 0%, rgba(231, 245, 233, 0.94) 100%);
 }
 
+.easy-start-overview-panel {
+  background:
+    linear-gradient(180deg, rgba(250, 248, 244, 0.84) 0%, rgba(255, 255, 255, 0.94) 100%);
+  box-shadow: 0 10px 22px rgba(30, 49, 58, 0.04);
+}
+
+.easy-start-overview-panel .easy-start-mini-card {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.easy-start-overview-panel .easy-start-mini-card-current {
+  background: rgba(237, 245, 249, 0.9);
+}
+
 @media (max-width: 960px) {
   .study-layout {
     grid-template-columns: 1fr;
@@ -2325,6 +2560,35 @@ article.infographic-card::before {
     border-radius: 22px;
   }
 
+  .stack {
+    gap: 16px;
+  }
+
+  .section-copy,
+  .lead {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .hero-copy,
+  .landing-copy,
+  .easy-start-primary,
+  .quiz-overview-panel,
+  .quiz-modes-shell,
+  .study-main-panel,
+  .study-sticky-panel,
+  .lesson-program-shell,
+  .lesson-program-secondary-block,
+  .content-block-list {
+    gap: 14px;
+  }
+
+  .grid,
+  .content-item-list,
+  .achievement-grid {
+    gap: 14px;
+  }
+
   .main {
     padding: 16px;
   }
@@ -2398,6 +2662,97 @@ article.infographic-card::before {
     grid-template-columns: 1fr;
   }
 
+  .dashboard-stats-grid .stat-card,
+  .landing-value-card-secondary,
+  .achievement-card,
+  .track-card,
+  .trail-catalog-card,
+  .quiz-mode-card,
+  .flashcard-library-item,
+  .module-overview-card,
+  .content-block-card,
+  .easy-start-card,
+  .easy-start-mini-card,
+  .trail-helper-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .stat-card {
+    padding: 16px 18px 18px;
+  }
+
+  .content-item {
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+
+  .achievement-badge {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .tracks-role-panel,
+  .lessons-role-panel,
+  .cyprus-role-panel,
+  .content-curator-panel,
+  .trails-recommended-panel,
+  .achievements-hero-panel,
+  .achievements-milestones-panel,
+  .achievements-modules-panel,
+  .quiz-mode-grid-secondary,
+  .flashcards-focus-shell,
+  .flashcards-library-shell-secondary,
+  .landing-overview-panel,
+  .landing-summary-panel,
+  .landing-outcomes-panel,
+  .easy-start-overview-panel {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .achievements-hero-sidecard {
+    max-width: none;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .achievements-hero-sidecard strong,
+  .hero-badge strong {
+    font-size: clamp(22px, 7vw, 28px);
+  }
+
+  .achievement-card strong,
+  .achievement-badge h3 {
+    font-size: 20px;
+    line-height: 1.16;
+  }
+
+  .quiz-entry-actions,
+  .achievement-grid,
+  .achievement-strip {
+    gap: 12px;
+  }
+
+  .quiz-mode-grid-secondary,
+  .flashcards-library-shell-secondary {
+    gap: 14px;
+  }
+
+  .flashcards-session-card,
+  .flashcards-sidecard {
+    padding: 16px;
+  }
+
+  .flashcards-primary-actions,
+  .flashcards-status-actions,
+  .flashcards-side-actions,
+  .module-step-pills,
+  .meta-inline,
+  .landing-proof-row {
+    gap: 8px;
+  }
+
   .trail-lesson-item {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -2432,6 +2787,50 @@ article.infographic-card::before {
   .secondary-button {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 960px) {
+  .panel,
+  .hero-panel,
+  .landing-hero,
+  .easy-start-hero,
+  .lesson-detail-hero {
+    padding: 22px;
+  }
+
+  .content-library-panel .grid,
+  .content-entry-grid,
+  .spotlight-grid,
+  .achievement-grid,
+  .achievement-strip,
+  .stats-grid {
+    gap: 14px;
+  }
+
+  .content-library-panel .card,
+  .content-curator-panel .card,
+  .achievement-card,
+  .achievement-badge,
+  .stat-card {
+    padding: 18px;
+  }
+
+  .content-library-panel h3,
+  .content-curator-panel h3,
+  .achievement-card strong,
+  .achievement-badge h3 {
+    line-height: 1.18;
+  }
+}
+
+@media (max-width: 1180px) {
+  .flashcards-session-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flashcards-session-card-primary {
+    grid-column: 1 / -1;
   }
 }
 
@@ -2536,6 +2935,25 @@ article.infographic-card::before {
   gap: 16px;
 }
 
+.flashcards-focus-shell {
+  display: grid;
+  gap: 18px;
+  padding: 22px 24px 24px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top right, rgba(201, 134, 53, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(255, 252, 247, 0.98) 0%, rgba(245, 236, 220, 0.94) 100%);
+  border: 1px solid rgba(33, 49, 59, 0.08);
+  box-shadow: 0 16px 34px rgba(58, 48, 30, 0.08);
+}
+
+.flashcards-focus-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .flashcards-summary-card {
   width: 100%;
 }
@@ -2543,6 +2961,7 @@ article.infographic-card::before {
 .flashcards-session-card {
   display: grid;
   gap: 8px;
+  min-width: 0;
   padding: 16px 18px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.82);
@@ -2558,6 +2977,11 @@ article.infographic-card::before {
 .flashcards-session-card p,
 .flashcards-session-card strong {
   margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.flashcards-session-card h3 {
+  line-height: 1.18;
 }
 
 .progress-rail-compact {
@@ -2641,6 +3065,10 @@ article.infographic-card::before {
   flex-wrap: wrap;
 }
 
+.flashcards-status-actions-focus {
+  padding-top: 4px;
+}
+
 .flashcards-next-button {
   min-width: 180px;
 }
@@ -2675,6 +3103,7 @@ article.infographic-card::before {
 .flashcards-sidecard {
   display: grid;
   gap: 12px;
+  min-width: 0;
   padding: 18px;
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 237, 223, 0.94) 100%);
@@ -2685,6 +3114,11 @@ article.infographic-card::before {
 .flashcards-sidecard p,
 .flashcards-sidecard strong {
   margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.flashcards-route-card {
+  background: linear-gradient(180deg, rgba(248, 252, 253, 0.98) 0%, rgba(230, 241, 245, 0.95) 100%);
 }
 
 .flashcards-metric-list {
@@ -2710,6 +3144,13 @@ article.infographic-card::before {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
+}
+
+.flashcards-library-shell-secondary {
+  padding: 22px 24px 24px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(250, 248, 244, 0.84) 0%, rgba(255, 255, 255, 0.94) 100%);
+  box-shadow: 0 10px 22px rgba(30, 49, 58, 0.04);
 }
 
 .flashcard-library-item {
@@ -2888,6 +3329,9 @@ article.infographic-card::before {
   cursor: pointer;
   font: inherit;
   font-weight: 600;
+  line-height: 1.25;
+  white-space: normal;
+  text-align: center;
 }
 
 .stage-chip-active {
@@ -2944,6 +3388,24 @@ article.infographic-card::before {
 .lesson-program-progress p {
   margin-top: 6px;
   color: #42515a;
+}
+
+.lesson-program-secondary-block {
+  display: grid;
+  gap: 14px;
+}
+
+.lesson-program-secondary-head {
+  margin-bottom: 0;
+}
+
+.lesson-program-secondary-head h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.lesson-program-secondary-head .section-copy {
+  max-width: 58ch;
 }
 
 .module-overview-card {
@@ -3698,6 +4160,10 @@ article.infographic-card::before {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .source-callout {
@@ -3758,13 +4224,23 @@ article.infographic-card::before {
   box-shadow: none;
 }
 
+.achievement-badge-next {
+  background:
+    radial-gradient(circle at top right, rgba(201, 134, 53, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(255, 250, 242, 0.99) 0%, rgba(245, 232, 206, 0.96) 100%);
+  border-color: rgba(201, 134, 53, 0.32);
+  box-shadow: 0 16px 30px rgba(201, 134, 53, 0.12);
+}
+
 .achievement-badge-earned p {
   color: #2f6943;
   font-weight: 600;
 }
 
 .achievement-badge-locked {
-  opacity: 0.65;
+  opacity: 0.72;
+  background:
+    linear-gradient(180deg, rgba(242, 241, 237, 0.96) 0%, rgba(235, 233, 227, 0.94) 100%);
 }
 
 .achievement-badge h3,
@@ -3820,6 +4296,41 @@ p {
   margin-top: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+strong,
+.stat-card-hint,
+.action-link,
+.achievement-action-link,
+.inline-link {
+  overflow-wrap: anywhere;
+}
+
+.card,
+.stat-card,
+.achievement-card,
+.achievement-badge,
+.content-block-card,
+.content-item,
+.track-card,
+.landing-info-card,
+.landing-value-card,
+.trail-catalog-card,
+.module-overview-card,
+.lesson-preview-card,
+.flashcard-library-item,
+.hero-copy,
+.hero-sidebar,
+.trail-lesson-body,
+.lesson-preview-top,
+.lesson-module-head,
+.flashcards-main-column,
+.flashcards-side-column {
+  min-width: 0;
+}
+
 code {
   padding: 2px 6px;
   border-radius: 6px;
@@ -3839,6 +4350,43 @@ code {
   .flashcards-focus-layout,
   .flashcards-session-bar {
     grid-template-columns: 1fr;
+  }
+
+  .flashcards-focus-shell,
+  .flashcards-library-shell-secondary {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .tracks-role-panel .grid,
+  .lessons-role-panel .grid,
+  .cyprus-role-panel .grid,
+  .content-curator-panel .grid,
+  .trails-recommended-grid,
+  .quiz-entry-actions,
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievements-hero-sidecard,
+  .flashcards-focus-meta,
+  .quiz-mode-card-top {
+    width: 100%;
+  }
+
+  .dashboard-stats-grid,
+  .achievement-strip {
+    gap: 12px;
+  }
+
+  .lesson-program-shell {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .achievements-hero-sidecard,
+  .quiz-mode-grid-secondary {
+    padding: 18px;
   }
 
   .section-head,
