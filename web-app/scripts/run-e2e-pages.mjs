@@ -127,18 +127,25 @@ async function resolveStaticFile(urlPathname) {
 async function main() {
   const e2ePort = await getAvailablePort();
   const pagesBaseUrl = process.env.E2E_PAGES_BASE_URL ?? `http://127.0.0.1:${e2ePort}${BASE_PATH}`;
-  const siteUrl = pagesBaseUrl.replace(/\/$/, "");
+  const canonicalSiteUrl =
+    process.env.E2E_PAGES_SITE_URL ??
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    `https://aipavlo.github.io${BASE_PATH}`;
+  const shouldSkipBuild = process.env.E2E_PAGES_SKIP_BUILD === "1";
 
   await runCommand("npm", ["run", "test:build"]);
-  await runCommand("npm", ["run", "build:pages"], {
-    env: {
-      ...process.env,
-      NEXT_PUBLIC_APP_MODE: "no-db",
-      NEXT_PUBLIC_DEPLOY_TARGET: "github-pages",
-      NEXT_PUBLIC_BASE_PATH: BASE_PATH,
-      NEXT_PUBLIC_SITE_URL: siteUrl
-    }
-  });
+
+  if (!shouldSkipBuild) {
+    await runCommand("npm", ["run", "build:pages"], {
+      env: {
+        ...process.env,
+        NEXT_PUBLIC_APP_MODE: "no-db",
+        NEXT_PUBLIC_DEPLOY_TARGET: "github-pages",
+        NEXT_PUBLIC_BASE_PATH: BASE_PATH,
+        NEXT_PUBLIC_SITE_URL: canonicalSiteUrl
+      }
+    });
+  }
 
   const server = createHttpServer(async (request, response) => {
     const pathname = new URL(request.url ?? "/", "http://127.0.0.1").pathname;

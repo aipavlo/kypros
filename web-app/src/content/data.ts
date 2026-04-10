@@ -8,6 +8,13 @@ import cyprusFactsJson from "@content/03-cyprus-reality/facts.json";
 import examQuizzes from "@content/04-exam-prep/quizzes.json";
 import quizModesJson from "@content/04-exam-prep/quiz-modes.json";
 import humorItemsJson from "@content/06-greek-humor/items.json";
+import {
+  getSentenceReviewClusterById,
+  getSentenceReviewClustersByLessonId,
+  getSentenceReviewClustersByModuleId,
+  getSentenceReviewClustersByTrack,
+  sentenceReviewClusters
+} from "@/src/content/sentenceReviewData";
 import type {
   FactItem,
   FlashcardItem,
@@ -31,6 +38,7 @@ export const flashcards = [
   ...(cyprusFlashcards as FlashcardItem[])
 ];
 export const humorItems = humorItemsJson as HumorItem[];
+export const sentenceReviewItems = sentenceReviewClusters;
 
 const trackMeta: Record<string, Omit<TrackSummary, "lessonCount" | "moduleCount">> = {
   greek_b1: {
@@ -219,6 +227,13 @@ export function getFlashcardsByModule(moduleId: string, difficulty?: string) {
     return matchesModule && matchesDifficulty;
   });
 }
+
+export {
+  getSentenceReviewClusterById,
+  getSentenceReviewClustersByLessonId,
+  getSentenceReviewClustersByModuleId,
+  getSentenceReviewClustersByTrack
+};
 
 export function getQuizQuestionsByLesson(lessonId: string, difficulty?: string) {
   return quizzes.filter((question) => {

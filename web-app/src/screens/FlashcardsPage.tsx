@@ -9,6 +9,7 @@ import {
   getFlashcardsByModule,
   getFlashcardsByTrack
 } from "@/src/content/flashcardData";
+import { getSentenceReviewPackByLesson } from "@/src/content/sentenceReview";
 import { getFlashcardPronunciation } from "@/src/content/transliteration";
 import type { FlashcardItem } from "@/src/content/types";
 import { getModuleStage } from "@/src/content/presentation";
@@ -43,6 +44,11 @@ const STUDY_STATE_ACTIONS: Array<{
   { className: "flashcard-mark-button", label: "Повторить позже", nextState: "again_later" },
   { className: "flashcard-mark-button flashcard-mark-button-success", label: "Знаю", nextState: "known" }
 ];
+
+const SENTENCE_EXERCISE_TYPE_LABELS = {
+  cloze: "Заполни пропуск",
+  rebuild: "Собери фразу"
+} as const;
 
 function getSessionScope(
   cards: FlashcardItem[],
@@ -85,6 +91,7 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
   const requestedLessonId = searchParams.get("lesson");
   const requestedModuleId = searchParams.get("module");
   const requestedSource = searchParams.get("source");
+  const requestedTrailId = searchParams.get("trail");
   const requestedLesson = requestedLessonId ? getLessonById(requestedLessonId) : undefined;
   const isLessonFlow = requestedSource === "lesson" && Boolean(requestedLessonId);
   const trackFromParams =
@@ -124,8 +131,8 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
       : false;
   const activeModuleQuizLink = activeModuleId
     ? activeModule?.trackId === "cyprus_reality"
-      ? `/quiz?mode=mode_cyprus_reality&module=${activeModuleId}${requestedLessonId ? `&lesson=${requestedLessonId}` : ""}${isLessonFlow ? "&source=lesson" : ""}`
-      : `/quiz?mode=mode_greek_${getModuleStage(activeModuleId)}&module=${activeModuleId}${requestedLessonId ? `&lesson=${requestedLessonId}` : ""}${isLessonFlow ? "&source=lesson" : ""}`
+      ? `/quiz?mode=mode_cyprus_reality&module=${activeModuleId}${requestedLessonId ? `&lesson=${requestedLessonId}` : ""}${isLessonFlow ? "&source=lesson" : ""}${requestedTrailId ? `&trail=${requestedTrailId}` : ""}`
+      : `/quiz?mode=mode_greek_${getModuleStage(activeModuleId)}&module=${activeModuleId}${requestedLessonId ? `&lesson=${requestedLessonId}` : ""}${isLessonFlow ? "&source=lesson" : ""}${requestedTrailId ? `&trail=${requestedTrailId}` : ""}`
     : "/quiz";
   const activeLoopAction =
     activeModuleId && activeModule
@@ -153,7 +160,22 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
   const sessionProgressPercent = cards.length > 0 ? Math.round((visitedCardCount / cards.length) * 100) : 0;
   const masteryProgressPercent = cards.length > 0 ? Math.round((knownCardCount / cards.length) * 100) : 0;
   const sessionScope = getSessionScope(cards, selectedTrack, requestedLesson?.title, activeModule?.title);
-  const lessonBackLink = requestedLessonId ? `/lessons/${requestedLessonId}${requestedSource ? `?source=${requestedSource}` : ""}` : "/lessons";
+  const lessonBackLink = requestedLessonId
+    ? `/lessons/${requestedLessonId}?${new URLSearchParams(
+        Object.fromEntries(
+          [
+            requestedSource ? ["source", requestedSource] : null,
+            requestedTrailId ? ["trail", requestedTrailId] : null
+          ].filter((entry): entry is [string, string] => Boolean(entry))
+        )
+      ).toString()}`
+    : "/lessons";
+  const sentenceReviewPack =
+    selectedTrack === "greek_b1" && requestedLessonId
+      ? getSentenceReviewPackByLesson(requestedLessonId)
+      : undefined;
+  const [revealedSentenceIds, setRevealedSentenceIds] = useState<string[]>([]);
+  const [selectedSentenceOptions, setSelectedSentenceOptions] = useState<Record<string, string>>({});
 
   useEffect(() => {
     setSelectedTrack(trackFromParams);
@@ -164,6 +186,11 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
     setRevealed(false);
     setVisitedCardIds(cards[0] ? [cards[0].id] : []);
   }, [selectedTrack, requestedLessonId, requestedModuleId]);
+
+  useEffect(() => {
+    setRevealedSentenceIds([]);
+    setSelectedSentenceOptions({});
+  }, [requestedLessonId, requestedModuleId, selectedTrack]);
 
   useEffect(() => {
     if (!activeCard) {
@@ -203,6 +230,21 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
     setCardStudyStates((current) => ({
       ...current,
       [activeCard.id]: nextState
+    }));
+  }
+
+  function toggleSentenceAnswer(exerciseId: string) {
+    setRevealedSentenceIds((current) =>
+      current.includes(exerciseId)
+        ? current.filter((id) => id !== exerciseId)
+        : [...current, exerciseId]
+    );
+  }
+
+  function selectSentenceOption(exerciseId: string, option: string) {
+    setSelectedSentenceOptions((current) => ({
+      ...current,
+      [exerciseId]: option
     }));
   }
 
@@ -409,6 +451,125 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
             ) : null}
           </aside>
         </div>
+
+        {sentenceReviewPack ? (
+          <article className="flashcards-library-shell sentence-review-shell">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Sentence review</p>
+                <h2>Закрепи карточки в коротких фразах перед мини-проверкой</h2>
+                <p className="section-copy">
+                  Здесь слова уже собираются в рабочие фразы. Это лёгкий bridge между
+                  карточками и quiz, чтобы повтор не оставался на уровне отдельных единиц.
+                </p>
+              </div>
+              <div className="flashcards-focus-meta">
+                <span className="meta-pill meta-pill-strong">
+                  {sentenceReviewPack.exercises.length} упражнения
+                </span>
+              </div>
+            </div>
+
+            <article className="sentence-review-pack">
+              <div className="sentence-review-pack-head">
+                <div>
+                  <strong>{sentenceReviewPack.title}</strong>
+                  <p>{sentenceReviewPack.focus}</p>
+                </div>
+                <span className="meta-pill">{sentenceReviewPack.difficulty.toUpperCase()}</span>
+              </div>
+
+              <div className="sentence-review-grid">
+                {sentenceReviewPack.exercises.map((exercise, index) => {
+                  const selectedOption = selectedSentenceOptions[exercise.id];
+                  const isAnswerVisible = revealedSentenceIds.includes(exercise.id);
+                  const isCorrectChoice = selectedOption === exercise.answer;
+
+                  return (
+                    <article className="sentence-review-card" key={exercise.id}>
+                      <div className="sentence-review-card-top">
+                        <p className="eyebrow">Шаг {index + 1}</p>
+                        <span className="meta-pill">
+                          {SENTENCE_EXERCISE_TYPE_LABELS[exercise.type]}
+                        </span>
+                      </div>
+                      <h3>{exercise.prompt}</h3>
+                      <p className="muted">{exercise.translation}</p>
+
+                      {exercise.options ? (
+                        <div className="sentence-review-options">
+                          {exercise.options.map((option) => (
+                            <button
+                              className={`sentence-review-option ${
+                                selectedOption === option ? "sentence-review-option-active" : ""
+                              }`}
+                              key={option}
+                              onClick={() => selectSentenceOption(exercise.id, option)}
+                              type="button"
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      ) : null}
+
+                      {exercise.parts ? (
+                        <div className="sentence-review-parts">
+                          {exercise.parts.map((part) => (
+                            <span className="chip" key={part}>
+                              {part}
+                            </span>
+                          ))}
+                        </div>
+                      ) : null}
+
+                      {selectedOption ? (
+                        <p
+                          className={`sentence-review-feedback ${
+                            isCorrectChoice
+                              ? "sentence-review-feedback-correct"
+                              : "sentence-review-feedback-soft"
+                          }`}
+                        >
+                          {isCorrectChoice
+                            ? "Хорошо: опорный ответ совпал."
+                            : "Неплохо: теперь открой опорный ответ и проговори фразу целиком."}
+                        </p>
+                      ) : null}
+
+                      {exercise.note ? <p>{exercise.note}</p> : null}
+
+                      {isAnswerVisible ? (
+                        <div className="sentence-review-answer">
+                          <strong>Опорный ответ</strong>
+                          <p>{exercise.answer}</p>
+                        </div>
+                      ) : null}
+
+                      <button
+                        className="secondary-button"
+                        onClick={() => toggleSentenceAnswer(exercise.id)}
+                        type="button"
+                      >
+                        {isAnswerVisible ? "Скрыть опорный ответ" : "Показать опорный ответ"}
+                      </button>
+                    </article>
+                  );
+                })}
+              </div>
+
+              <div className="sentence-review-actions">
+                <p className="muted">
+                  Сначала собери 2-3 фразы вслух, затем переходи к мини-проверке, пока
+                  sentence pattern ещё держится в памяти.
+                </p>
+                <Link className="secondary-link-button" to={activeModuleQuizLink}>
+                  К мини-проверке после sentence review
+                </Link>
+              </div>
+            </article>
+          </article>
+        ) : null}
 
         <article className="flashcards-library-shell flashcards-library-shell-secondary">
           <div className="section-head">

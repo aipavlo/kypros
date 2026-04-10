@@ -27,7 +27,7 @@ export function TracksPage() {
         title: "No English, Please",
         description:
           "Маршрут про разговор под давлением, удержание разговора на греческом и живое восприятие речи.",
-        to: "/trails#trail_no_english_pls",
+        to: "/trails?trail=trail_no_english_pls",
         pill: "Разговорный маршрут",
         action: "Перейти к маршруту"
       },
@@ -35,7 +35,7 @@ export function TracksPage() {
         title: "Athena Small Talk Forge",
         description:
           "Стартовый разговорный маршрут: представиться, рассказать о себе и спокойно поддержать простой диалог.",
-        to: "/trails#trail_athena_small_talk",
+        to: "/trails?trail=trail_athena_small_talk",
         pill: "Стартовый маршрут",
         action: "Перейти к маршруту"
       }
@@ -45,7 +45,7 @@ export function TracksPage() {
         title: "KEP Survival Mode",
         description:
           "Маршрут по заявлениям, формам, записи, курсам и сервисным сценариям вокруг документов и услуг.",
-        to: "/trails#trail_kep_survival_mode",
+        to: "/trails?trail=trail_kep_survival_mode",
         pill: "Сервисный маршрут",
         action: "Перейти к маршруту"
       },
@@ -53,7 +53,7 @@ export function TracksPage() {
         title: "Fact, Not Panic",
         description:
           "Маршрут по тематическому повторению Cyprus Reality и перепроверке изменяемых фактов перед экзаменом.",
-        to: "/trails#trail_fact_not_panic",
+        to: "/trails?trail=trail_fact_not_panic",
         pill: "Экзаменационная стратегия",
         action: "Перейти к маршруту"
       }
@@ -265,7 +265,7 @@ export function TracksPage() {
           <Link className="secondary-link-button" to="/quiz?mode=mode_cyprus_reality">
             Открыть мини-проверку программы
           </Link>
-          <Link className="secondary-link-button" to="/trails#trail_fact_not_panic">
+          <Link className="secondary-link-button" to="/trails?trail=trail_fact_not_panic">
             Открыть маршрут повтора
           </Link>
         </div>

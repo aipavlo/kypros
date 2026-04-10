@@ -48,6 +48,9 @@ export interface QuizModeItem extends ProvenanceFields {
   questionStrategy: {
     trackTag?: string;
     difficulty?: string[] | string;
+    includeTags?: string[];
+    excludeTags?: string[];
+    limit?: number;
     mix?: Array<{
       trackTag: string;
       difficulty?: string;
@@ -102,5 +105,74 @@ export interface HumorItem extends ProvenanceFields {
     greek: string;
     transliteration: string;
   }>;
+  tags: string[];
+}
+
+export interface ScenarioPackPhraseItem {
+  greek: string;
+  translation: string;
+  transliteration?: string;
+}
+
+export interface ScenarioPackLinks {
+  easyStartLessonIds: string[];
+  trailIds: string[];
+  lessonIds: string[];
+}
+
+export interface ScenarioPackItem extends ProvenanceFields {
+  id: string;
+  trackId: string;
+  title: string;
+  intent: string;
+  scenario: string;
+  difficulty: Difficulty;
+  phrasePack: ScenarioPackPhraseItem[];
+  productionPrompt: string;
+  selfCheck: string;
+  links: ScenarioPackLinks;
+  tags: string[];
+}
+
+export interface SentenceReviewExerciseItem {
+  id: string;
+  type: "cloze" | "rebuild";
+  prompt: string;
+  translation: string;
+  answer: string;
+  options?: string[];
+  parts?: string[];
+  note?: string;
+}
+
+export interface SentenceReviewPackItem extends ProvenanceFields {
+  id: string;
+  trackId: string;
+  moduleId: string;
+  lessonId: string;
+  title: string;
+  focus: string;
+  difficulty: Difficulty;
+  exercises: SentenceReviewExerciseItem[];
+}
+
+export interface SentenceReviewSentenceItem {
+  greek: string;
+  translation: string;
+  transliteration?: string;
+}
+
+export interface SentenceReviewItem extends ProvenanceFields {
+  id: string;
+  trackId: string;
+  title: string;
+  summary: string;
+  difficulty: Difficulty;
+  estimatedMinutes: number;
+  lessonIds: string[];
+  moduleIds: string[];
+  sentences: SentenceReviewSentenceItem[];
+  selfCheck: string;
+  productionPrompt: string;
   tags: string[];
 }

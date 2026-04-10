@@ -1,6 +1,4 @@
-import { getHumorItems } from "@/src/content/humorData";
 import { getLessonById } from "@/src/content/catalogData";
-import { trailDefinitions } from "@/src/content/trails";
 import {
   SITE_NAME,
   SITE_URL,
@@ -51,9 +49,57 @@ function buildCourseSchema(
   };
 }
 
+function buildWebPageSchema(
+  pathname: string,
+  name: string,
+  description: string,
+  extra: StructuredData = {}
+): StructuredData {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    description,
+    url: getAbsoluteUrl(pathname),
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: SITE_URL
+    },
+    ...extra
+  };
+}
+
+function buildCollectionPageSchema(pathname: string, name: string, description: string): StructuredData {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url: getAbsoluteUrl(pathname),
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: SITE_URL
+    }
+  };
+}
+
 export function getPageStructuredData(slug: string[] = []): StructuredData[] {
   const pathname = getPagePathname(slug);
   const routeSeo = getRouteSeoEntry(pathname);
+
+  if (pathname === "/") {
+    return [
+      buildWebPageSchema(pathname, routeSeo.title, routeSeo.description, {
+        about: [
+          "Greek language learning",
+          "Cyprus Reality",
+          "Cyprus history and culture"
+        ]
+      })
+    ];
+  }
 
   if (slug[0] === "lessons" && slug[1]) {
     const lesson = getLessonById(slug[1]);
@@ -92,7 +138,7 @@ export function getPageStructuredData(slug: string[] = []): StructuredData[] {
     ];
   }
 
-  if (!routeSeo.indexable || pathname === "/") {
+  if (!routeSeo.indexable) {
     return [];
   }
 
@@ -117,25 +163,34 @@ export function getPageStructuredData(slug: string[] = []): StructuredData[] {
   if (pathname === "/easy-start") {
     return [
       breadcrumb,
-      buildCourseSchema(
+      buildWebPageSchema(
         pathname,
         "Лёгкий старт: греческий язык с нуля на Кипре",
         routeSeo.description,
-        ["первый бытовой греческий", "представление", "простые вопросы", "базовые диалоги"],
-        "A1"
+        {
+          about: ["первый бытовой греческий", "представление", "простые вопросы", "базовые диалоги"]
+        }
       )
+    ];
+  }
+
+  if (pathname === "/phrasebook") {
+    return [
+      breadcrumb,
+      buildCollectionPageSchema(pathname, routeSeo.title, routeSeo.description)
     ];
   }
 
   if (pathname === "/cyprus") {
     return [
       breadcrumb,
-      buildCourseSchema(
+      buildWebPageSchema(
         pathname,
         "Cyprus Reality: история, культура и устройство Кипра",
         routeSeo.description,
-        ["история Кипра", "институты", "культура", "подготовка к экзамену"],
-        "Exam prep"
+        {
+          about: ["история Кипра", "институты", "культура", "подготовка к экзамену"]
+        }
       )
     ];
   }
@@ -143,46 +198,14 @@ export function getPageStructuredData(slug: string[] = []): StructuredData[] {
   if (pathname === "/trails") {
     return [
       breadcrumb,
-      {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        name: routeSeo.title,
-        description: routeSeo.description,
-        url: getAbsoluteUrl(pathname),
-        mainEntity: {
-          "@type": "ItemList",
-          itemListElement: trailDefinitions.slice(0, 8).map((trail, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            name: trail.title,
-            url: getAbsoluteUrl(`/trails#${trail.id}`)
-          }))
-        }
-      }
+      buildCollectionPageSchema(pathname, routeSeo.title, routeSeo.description)
     ];
   }
 
   if (pathname === "/humor") {
-    const humorItems = getHumorItems();
-
     return [
       breadcrumb,
-      {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        name: routeSeo.title,
-        description: routeSeo.description,
-        url: getAbsoluteUrl(pathname),
-        mainEntity: {
-          "@type": "ItemList",
-          itemListElement: humorItems.slice(0, 10).map((item, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            name: item.title,
-            url: getAbsoluteUrl("/humor")
-          }))
-        }
-      }
+      buildCollectionPageSchema(pathname, routeSeo.title, routeSeo.description)
     ];
   }
 

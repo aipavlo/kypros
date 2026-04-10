@@ -36,22 +36,44 @@ export function EasyStartPage(props: EasyStartPageProps) {
     ? easyLessons.findIndex((lesson) => lesson.id === nextLesson.id)
     : 0;
   const upcomingLessons = easyLessons.slice(nextLessonIndex, nextLessonIndex + 3);
+  const easyStartPromises = [
+    {
+      label: "Один урок без каталога и без выбора модулей",
+      value: `${nextLesson?.estimatedMinutes ?? 7} минут`
+    },
+    {
+      label: "Следующий шаг уже задан и не теряется в меню",
+      value: "Карточки"
+    },
+    {
+      label: "Потом быстрый self-check без лишних режимов",
+      value: "Мини-проверка"
+    }
+  ];
 
   return (
     <div className="stack">
       <section className="easy-start-hero panel">
         <div className="easy-start-primary">
           <p className="eyebrow">Лёгкий старт</p>
-          <h1>Греческий язык с нуля: открой следующий урок</h1>
+          <h1>Открой один короткий шаг и не выбирай маршрут вручную</h1>
           <p className="section-copy">
-            Это стартовый маршрут для изучения греческого языка на Кипре без лишнего выбора:
-            сначала один ближайший урок, затем карточки, мини-проверка и следующий шаг.
+            Это стартовый путь для первого захода: сначала один урок, затем карточки, потом мини-проверка
+            и только после этого следующий шаг.
           </p>
           <div className="easy-start-progress-line">
             <div className="progress-rail progress-rail-hero">
               <span className="progress-fill" style={{ width: `${progressPercent}%` }} />
             </div>
             <p>{completedCount} из {easyLessons.length} шагов пройдено</p>
+          </div>
+          <div className="easy-start-promise-grid">
+            {easyStartPromises.map((item) => (
+              <article className="easy-start-promise-card" key={item.label}>
+                <strong>{item.value}</strong>
+                <p>{item.label}</p>
+              </article>
+            ))}
           </div>
           <div className="actions-row easy-start-primary-actions">
             {nextLesson ? (
@@ -62,15 +84,18 @@ export function EasyStartPage(props: EasyStartPageProps) {
             <Link className="secondary-link-button" to="/lessons">
               Вся программа Greek Core
             </Link>
-            <Link className="secondary-link-button" to="/trails">
-              Готовые маршруты
-            </Link>
           </div>
           {nextLesson ? (
             <p className="easy-start-current-line">
               Сейчас: шаг {nextLessonIndex + 1} · {nextLesson.title}
             </p>
           ) : null}
+          <Link className="inline-link easy-start-secondary-link" to="/trails">
+            Если нужен не стартовый путь, а сценарий под задачу, открой готовые маршруты
+          </Link>
+          <Link className="inline-link easy-start-secondary-link" to="/phrasebook?pack=scenario_001_greet_introduce">
+            Если нужен быстрый бытовой сценарий, открой compact phrasebook layer
+          </Link>
         </div>
       </section>
 

@@ -1,0 +1,578 @@
+[
+  {
+    "id": "scenario_001_greet_introduce",
+    "trackId": "speaking_practice",
+    "title": "Поздороваться и представиться",
+    "intent": "Начать короткий разговор и назвать себя",
+    "scenario": "Входишь в магазин, на курс или встречаешь соседа.",
+    "difficulty": "a1",
+    "phrasePack": [
+      {
+        "greek": "Γεια σας",
+        "translation": "Здравствуйте"
+      },
+      {
+        "greek": "Καλημέρα",
+        "translation": "Доброе утро"
+      },
+      {
+        "greek": "Με λένε Άννα",
+        "translation": "Меня зовут Анна"
+      },
+      {
+        "greek": "Είμαι από τη Ρωσία",
+        "translation": "Я из России"
+      }
+    ],
+    "productionPrompt": "Скажи три фразы о себе: приветствие, имя и страну. Потом замени имя и страну на свои.",
+    "selfCheck": "Можешь ли ты поздороваться, назвать имя и страну за одну короткую реплику?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_001",
+        "gr_lesson_006",
+        "cy_lesson_001"
+      ],
+      "trailIds": [
+        "trail_souvlaki_starter",
+        "trail_athena_small_talk",
+        "trail_copper_island_crash"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:greeting",
+      "context:daily_life",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_002_speak_slowly",
+    "trackId": "speaking_practice",
+    "title": "Сказать, что говоришь немного по-гречески",
+    "intent": "Попросить говорить медленнее и дать себе время понять",
+    "scenario": "Собеседник говорит слишком быстро, а тебе нужен чуть более мягкий темп.",
+    "difficulty": "a1",
+    "phrasePack": [
+      {
+        "greek": "Μιλάω λίγα ελληνικά",
+        "translation": "Я немного говорю по-гречески"
+      },
+      {
+        "greek": "Μπορείτε να μιλήσετε πιο αργά;",
+        "translation": "Можете говорить медленнее?"
+      },
+      {
+        "greek": "Δεν καταλαβαίνω καλά",
+        "translation": "Я понимаю не очень хорошо"
+      },
+      {
+        "greek": "Μιλάτε αγγλικά;",
+        "translation": "Вы говорите по-английски?"
+      }
+    ],
+    "productionPrompt": "Собери одну мягкую просьбу на греческом: что ты понимаешь мало и хочешь более медленный темп.",
+    "selfCheck": "Можешь ли ты попросить говорить медленнее, не переходя на английский сразу?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_006",
+        "gr_lesson_022",
+        "gr_lesson_023"
+      ],
+      "trailIds": [
+        "trail_athena_small_talk",
+        "trail_no_english_pls"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:clarification",
+      "context:conversation",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_003_family_small_talk",
+    "trackId": "speaking_practice",
+    "title": "Семья и кто с тобой",
+    "intent": "Коротко ответить про семью и домашний контекст",
+    "scenario": "Разговор про семью, когда нужно быстро ответить без длинных объяснений.",
+    "difficulty": "a1",
+    "phrasePack": [
+      {
+        "greek": "Έχω δύο παιδιά",
+        "translation": "У меня двое детей"
+      },
+      {
+        "greek": "Έχω έναν γιο και μία κόρη",
+        "translation": "У меня есть сын и дочь"
+      },
+      {
+        "greek": "Η οικογένειά μου μένει στη Λεμεσό",
+        "translation": "Моя семья живёт в Лимассоле"
+      },
+      {
+        "greek": "Μένω με την οικογένειά μου",
+        "translation": "Я живу с семьёй"
+      }
+    ],
+    "productionPrompt": "Скажи две фразы о семье и одну фразу о том, где вы живёте.",
+    "selfCheck": "Можешь ли ты сказать две короткие фразы про семью без долгой подготовки?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_006",
+        "gr_lesson_013",
+        "gr_lesson_014"
+      ],
+      "trailIds": [
+        "trail_souvlaki_starter"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:family",
+      "context:daily_life",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_004_where_is_it",
+    "trackId": "speaking_practice",
+    "title": "Спросить, где находится место",
+    "intent": "Найти улицу, вход, офис или остановку",
+    "scenario": "Нужно найти место в городе и не зависнуть на первом же вопросе.",
+    "difficulty": "a1",
+    "phrasePack": [
+      {
+        "greek": "Πού είναι το ...;",
+        "translation": "Где находится ...?"
+      },
+      {
+        "greek": "Πώς πάω στο ...;",
+        "translation": "Как пройти к ...?"
+      },
+      {
+        "greek": "Είναι κοντά;",
+        "translation": "Это близко?"
+      },
+      {
+        "greek": "Μπορείτε να μου δείξετε στο χάρτη;",
+        "translation": "Можете показать мне на карте?"
+      }
+    ],
+    "productionPrompt": "Скажи одну фразу про дорогу и одну фразу про карту, подставив своё место назначения.",
+    "selfCheck": "Можешь ли ты спросить дорогу к нужному месту, не расписывая целую историю?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_012",
+        "gr_lesson_017",
+        "gr_lesson_019"
+      ],
+      "trailIds": [
+        "trail_souvlaki_starter",
+        "trail_taverna_ninja"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:navigation",
+      "context:city",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_005_transport_and_taxi",
+    "trackId": "speaking_practice",
+    "title": "Сесть на автобус или такси",
+    "intent": "Понять, куда ехать, и быстро попросить транспорт",
+    "scenario": "Ты в городе и хочешь добраться без лишних объяснений.",
+    "difficulty": "a1",
+    "phrasePack": [
+      {
+        "greek": "Ποιο λεωφορείο πάει στο κέντρο;",
+        "translation": "Какой автобус идёт в центр?"
+      },
+      {
+        "greek": "Πού είναι η στάση;",
+        "translation": "Где остановка?"
+      },
+      {
+        "greek": "Θέλω ταξί, παρακαλώ",
+        "translation": "Мне нужно такси, пожалуйста"
+      },
+      {
+        "greek": "Στο κέντρο, παρακαλώ",
+        "translation": "В центр, пожалуйста"
+      }
+    ],
+    "productionPrompt": "Собери короткий транспортный запрос: куда тебе ехать и каким способом.",
+    "selfCheck": "Можешь ли ты попросить автобус или такси, не смешивая всё в одну длинную фразу?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_018",
+        "gr_lesson_035",
+        "cy_lesson_002",
+        "cy_lesson_010"
+      ],
+      "trailIds": [
+        "trail_taverna_ninja",
+        "trail_copper_island_crash"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:transport",
+      "context:city",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_006_coffee_order",
+    "trackId": "speaking_practice",
+    "title": "Заказать кофе",
+    "intent": "Сделать короткий заказ в кафе",
+    "scenario": "Заходишь в кафе и хочешь заказать без длинного диалога.",
+    "difficulty": "a1",
+    "phrasePack": [
+      {
+        "greek": "Έναν κυπριακό καφέ, παρακαλώ",
+        "translation": "Один кипрский кофе, пожалуйста"
+      },
+      {
+        "greek": "Χωρίς ζάχαρη",
+        "translation": "Без сахара"
+      },
+      {
+        "greek": "Για εδώ ή για έξω;",
+        "translation": "Здесь или с собой?"
+      },
+      {
+        "greek": "Μόνο έναν καφέ, ευχαριστώ",
+        "translation": "Только один кофе, спасибо"
+      }
+    ],
+    "productionPrompt": "Произнеси заказ из трёх частей: напиток, сахар и формат подачи.",
+    "selfCheck": "Можешь ли ты заказать кофе и сразу уточнить, нужен ли он с собой?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_015",
+        "gr_lesson_017",
+        "gr_lesson_018"
+      ],
+      "trailIds": [
+        "trail_taverna_ninja"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:cafe",
+      "context:food",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_007_groceries_market",
+    "trackId": "speaking_practice",
+    "title": "Купить продукты",
+    "intent": "Спросить про продукты и сделать покупку",
+    "scenario": "На рынке, в киоске или в магазине у дома.",
+    "difficulty": "a1",
+    "phrasePack": [
+      {
+        "greek": "Θέλω ένα κιλό ντομάτες",
+        "translation": "Хочу килограмм помидоров"
+      },
+      {
+        "greek": "Έχετε φρέσκα λαχανικά;",
+        "translation": "У вас есть свежие овощи?"
+      },
+      {
+        "greek": "Μου δίνετε μια σακούλα;",
+        "translation": "Дадите мне пакет?"
+      },
+      {
+        "greek": "Πόσο κάνει αυτό;",
+        "translation": "Сколько это стоит?"
+      }
+    ],
+    "productionPrompt": "Собери короткую покупку: продукт, количество и вопрос о цене.",
+    "selfCheck": "Можешь ли ты назвать продукт, количество и цену в одной маленькой сцене?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_015",
+        "gr_lesson_016",
+        "gr_lesson_017"
+      ],
+      "trailIds": [
+        "trail_taverna_ninja"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:shopping",
+      "context:food",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_008_price_and_quantity",
+    "trackId": "speaking_practice",
+    "title": "Спросить цену и количество",
+    "intent": "Точно понять стоимость и попросить нужное число",
+    "scenario": "Нужно сравнить цену и попросить ровно столько, сколько нужно.",
+    "difficulty": "a1",
+    "phrasePack": [
+      {
+        "greek": "Πόσο κοστίζει αυτό;",
+        "translation": "Сколько это стоит?"
+      },
+      {
+        "greek": "Θέλω δύο τεμάχια",
+        "translation": "Мне нужно два штуки"
+      },
+      {
+        "greek": "Είναι λίγο πιο φτηνό;",
+        "translation": "Есть что-то чуть дешевле?"
+      },
+      {
+        "greek": "Μόνο αυτό, ευχαριστώ",
+        "translation": "Только это, спасибо"
+      }
+    ],
+    "productionPrompt": "Скажи одну фразу про цену и одну фразу про нужное количество.",
+    "selfCheck": "Можешь ли ты спросить цену и сразу уточнить количество без повторов?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_016",
+        "gr_lesson_017",
+        "gr_lesson_018"
+      ],
+      "trailIds": [
+        "trail_taverna_ninja"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:shopping",
+      "context:market",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_009_appointment_service",
+    "trackId": "speaking_practice",
+    "title": "Записаться в сервис или прийти по записи",
+    "intent": "Коротко объяснить, что у тебя есть запись или что нужна новая",
+    "scenario": "У стойки сервиса, в ΚΕΠ или в похожем месте.",
+    "difficulty": "a2",
+    "phrasePack": [
+      {
+        "greek": "Έχω ραντεβού",
+        "translation": "У меня запись"
+      },
+      {
+        "greek": "Μπορώ να κλείσω ραντεβού;",
+        "translation": "Могу записаться?"
+      },
+      {
+        "greek": "Ποια είναι η σειρά μου;",
+        "translation": "Какая у меня очередь?"
+      },
+      {
+        "greek": "Χρειάζομαι βοήθεια",
+        "translation": "Мне нужна помощь"
+      }
+    ],
+    "productionPrompt": "Собери короткий сервисный сценарий: запись, очередь или просьба о помощи.",
+    "selfCheck": "Можешь ли ты назвать запись и очередь, не переключаясь на длинные объяснения?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_021",
+        "gr_lesson_029",
+        "cy_lesson_023"
+      ],
+      "trailIds": [
+        "trail_zeus_vs_paperwork",
+        "trail_kep_survival_mode",
+        "trail_ministry_maze_any_percent"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:services",
+      "context:paperwork",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_010_pharmacy_health",
+    "trackId": "speaking_practice",
+    "title": "Сходить к врачу или в аптеку",
+    "intent": "Коротко объяснить, что плохо себя чувствуешь",
+    "scenario": "Ты в аптеке или у врача и хочешь назвать симптом без лишней драматизации.",
+    "difficulty": "a2",
+    "phrasePack": [
+      {
+        "greek": "Δεν αισθάνομαι καλά",
+        "translation": "Я неважно себя чувствую"
+      },
+      {
+        "greek": "Πονάει το κεφάλι μου",
+        "translation": "У меня болит голова"
+      },
+      {
+        "greek": "Χρειάζομαι φαρμακείο",
+        "translation": "Мне нужна аптека"
+      },
+      {
+        "greek": "Έχετε κάτι για το κρυολόγημα;",
+        "translation": "У вас есть что-то от простуды?"
+      }
+    ],
+    "productionPrompt": "Скажи один симптом и одну короткую просьбу в аптеке или у врача.",
+    "selfCheck": "Можешь ли ты назвать своё самочувствие и попросить помощь одной-двумя фразами?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_026",
+        "gr_lesson_027",
+        "gr_lesson_054"
+      ],
+      "trailIds": [
+        "trail_doctor_pharmacy_follow_up",
+        "trail_moussaka_to_b1"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:health",
+      "context:medical",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_011_reschedule_plan",
+    "trackId": "speaking_practice",
+    "title": "Перенести встречу",
+    "intent": "Уточнить время и спокойно перенести договорённость",
+    "scenario": "Нужно поменять время встречи или разговора без лишнего напряжения.",
+    "difficulty": "a2",
+    "phrasePack": [
+      {
+        "greek": "Πότε σας βολεύει;",
+        "translation": "Когда вам удобно?"
+      },
+      {
+        "greek": "Να το αφήσουμε για αύριο;",
+        "translation": "Оставим на завтра?"
+      },
+      {
+        "greek": "Μπορούμε το απόγευμα;",
+        "translation": "Можем вечером?"
+      },
+      {
+        "greek": "Θα σας πάρω αργότερα",
+        "translation": "Я перезвоню позже"
+      }
+    ],
+    "productionPrompt": "Скажи, что тебе подходит другое время, и предложи новый вариант без длинных объяснений.",
+    "selfCheck": "Можешь ли ты вежливо перенести встречу и предложить новое время?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_027",
+        "gr_lesson_030",
+        "gr_lesson_031",
+        "gr_lesson_032"
+      ],
+      "trailIds": [
+        "trail_moussaka_to_b1"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:scheduling",
+      "context:conversation",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  },
+  {
+    "id": "scenario_012_ask_repeat_clarify",
+    "trackId": "speaking_practice",
+    "title": "Попросить повторить",
+    "intent": "Мягко попросить повтор и уточнение",
+    "scenario": "Собеседник говорит быстро, и тебе нужен более понятный повтор.",
+    "difficulty": "a1",
+    "phrasePack": [
+      {
+        "greek": "Δεν κατάλαβα",
+        "translation": "Я не понял(а)"
+      },
+      {
+        "greek": "Μπορείτε να το πείτε πιο αργά;",
+        "translation": "Можете сказать медленнее?"
+      },
+      {
+        "greek": "Μπορείτε να το επαναλάβετε;",
+        "translation": "Можете повторить?"
+      },
+      {
+        "greek": "Γράψτε το, παρακαλώ",
+        "translation": "Напишите, пожалуйста"
+      }
+    ],
+    "productionPrompt": "Собери одну мягкую просьбу о повторе и одну просьбу написать фразу.",
+    "selfCheck": "Можешь ли ты попросить повторить и написать фразу, не теряя вежливость?",
+    "links": {
+      "lessonIds": [
+        "gr_lesson_022",
+        "gr_lesson_023",
+        "gr_lesson_041",
+        "gr_lesson_042"
+      ],
+      "trailIds": [
+        "trail_athena_small_talk",
+        "trail_no_english_pls"
+      ]
+    },
+    "tags": [
+      "track:speaking_practice",
+      "layer:scenario_pack",
+      "scenario:clarification",
+      "context:conversation",
+      "status:seed"
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный scenario pack для everyday Greek; фразы служат учебной опорой и связаны с действующими уроками и trail-маршрутами."
+  }
+]

@@ -42,6 +42,7 @@ const SECONDARY_NAVIGATION_ITEMS: NavigationItem[] = [
     to: "/easy-start",
     isActive: (pathname, search) => isEasyStartContext(pathname, search)
   },
+  { label: "Сценарии", to: "/phrasebook", isActive: (pathname) => pathname.startsWith("/phrasebook") },
   { label: "Маршруты", to: "/trails", isActive: (pathname) => pathname.startsWith("/trails") },
   { label: "Программа", to: "/tracks", isActive: (pathname) => pathname.startsWith("/tracks") },
   { label: "О сервисе", to: "/welcome", isActive: (pathname) => pathname.startsWith("/welcome") }

@@ -1,0 +1,26 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="32" fill="#F6EFE1"/>
+  <rect x="34" y="34" width="1132" height="562" rx="28" fill="url(#bg)"/>
+  <circle cx="1012" cy="136" r="118" fill="#D7E8EC" fill-opacity="0.95"/>
+  <circle cx="184" cy="520" r="148" fill="#F0D7AA" fill-opacity="0.85"/>
+  <path d="M155 426C254 335 404 301 547 305C688 309 834 349 962 435" stroke="#B97A2C" stroke-width="14" stroke-linecap="round"/>
+  <path d="M253 470C351 405 474 380 583 385C715 392 830 438 933 512" stroke="#2E778C" stroke-width="10" stroke-linecap="round" stroke-opacity="0.9"/>
+  <rect x="110" y="110" width="174" height="54" rx="27" fill="#FFF8EA"/>
+  <text x="146" y="145" fill="#7B5420" font-family="Verdana, Arial, sans-serif" font-size="24" font-weight="700">Kypros Path</text>
+  <text x="110" y="246" fill="#23353D" font-family="Verdana, Arial, sans-serif" font-size="64" font-weight="700">Greek lessons and</text>
+  <text x="110" y="324" fill="#23353D" font-family="Verdana, Arial, sans-serif" font-size="64" font-weight="700">Cyprus Reality</text>
+  <text x="110" y="390" fill="#42545E" font-family="Verdana, Arial, sans-serif" font-size="28">Learning paths, flashcards, quizzes and practical routes for Cyprus.</text>
+  <rect x="110" y="450" width="220" height="56" rx="28" fill="#FFFDF8"/>
+  <rect x="350" y="450" width="220" height="56" rx="28" fill="#FFFDF8"/>
+  <rect x="590" y="450" width="220" height="56" rx="28" fill="#FFFDF8"/>
+  <text x="151" y="485" fill="#7B5420" font-family="Verdana, Arial, sans-serif" font-size="24" font-weight="700">Lessons</text>
+  <text x="414" y="485" fill="#2E778C" font-family="Verdana, Arial, sans-serif" font-size="24" font-weight="700">Trails</text>
+  <text x="654" y="485" fill="#5F603A" font-family="Verdana, Arial, sans-serif" font-size="24" font-weight="700">Cyprus Reality</text>
+  <defs>
+    <linearGradient id="bg" x1="34" y1="34" x2="1080" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9EE"/>
+      <stop offset="0.5" stop-color="#F4E7C9"/>
+      <stop offset="1" stop-color="#E6F0F3"/>
+    </linearGradient>
+  </defs>
+</svg>

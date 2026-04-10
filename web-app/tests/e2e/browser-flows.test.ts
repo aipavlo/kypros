@@ -297,10 +297,11 @@ test("browser quiz flow can retry only saved mistakes without losing the focused
     await clickByText(page, "Завершить");
 
     await waitForText(page, "Результат");
-    await waitForText(page, "Повторить только ошибки");
-    await clickByText(page, "Повторить только ошибки");
+    await waitForText(page, "Открыть compact retry");
+    await clickByText(page, "Открыть compact retry");
 
-    await waitForText(page, "Повтор ошибок");
+    await waitForText(page, "Compact retry");
+    await waitForText(page, "Self-check before retry");
     await waitForText(page, "1 / 1");
     await waitForText(page, String(cyprusRetryQuestion.question));
   } finally {

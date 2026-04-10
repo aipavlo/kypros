@@ -259,63 +259,44 @@ export function LessonsPage(props: LessonsPageProps) {
       </section>
 
       <section className={`panel ${props.forcedTrackId === "cyprus_reality" ? "cyprus-role-panel" : "lessons-role-panel"}`}>
-        <div className="section-head">
+        <article className="info-note-card lessons-role-compact">
           <div>
-            <p className="eyebrow">Роль страницы</p>
-            <h2>{props.forcedTrackId === "cyprus_reality" ? "Здесь изучают Кипр, а не выбирают программу" : "Здесь проходят язык, а не выбирают все линии сразу"}</h2>
+            <p className="eyebrow">Навигация рядом</p>
+            <h2>{props.forcedTrackId === "cyprus_reality" ? "Здесь лучше сразу продолжать модуль" : "Здесь лучше сразу идти к активному модулю"}</h2>
             <p className="section-copy">
               {props.forcedTrackId === "cyprus_reality"
-                ? "Если нужен обзор всех линий, открой tracks. Если нужна именно языковая программа, открой lessons."
-                : "Если нужен обзор линий и подборок, открой tracks. Если нужен отдельный трек Cyprus Reality, открой cyprus."}
+                ? "Для обзора всех линий держим отдельный navigation layer. Здесь оставляем только рабочий вход и ближайшие переходы."
+                : "Для выбора между линиями есть отдельный обзор. Здесь оставляем компактные выходы, чтобы не спорить с next action внутри программы."}
             </p>
           </div>
-        </div>
-
-        <div className="grid spotlight-grid">
+          <div className="actions-row">
           {props.forcedTrackId === "cyprus_reality" ? (
             <>
-              <Link className="card card-link track-card track-card-history" to="/tracks">
-                <p className="chip">tracks</p>
-                <h3>Выбрать или сравнить линии</h3>
-                <p>Навигационный слой с программами, подборками и маршрутами без погружения в рабочий модуль.</p>
-                <span className="action-link">Открыть обзор</span>
+              <Link className="secondary-link-button" to="/tracks">
+                Открыть обзор линий
               </Link>
-              <Link className="card card-link track-card track-card-language" to="/lessons">
-                <p className="chip">lessons</p>
-                <h3>Вернуться к языковой программе</h3>
-                <p>Отдельная рабочая страница для Greek Core, если сейчас нужен не Кипр, а язык.</p>
-                <span className="action-link">Открыть язык</span>
+              <Link className="secondary-link-button" to="/lessons">
+                Вернуться к Greek Core
               </Link>
-              <Link className="card card-link track-card" to="/trails#trail_fact_not_panic">
-                <p className="chip">trails</p>
-                <h3>Открыть маршрут повтора по Кипру</h3>
-                <p>Если нужен не полный каталог модулей, а готовый сценарий повтора перед экзаменом.</p>
-                <span className="action-link">Открыть маршрут</span>
+              <Link className="action-link" to="/trails?trail=trail_fact_not_panic">
+                Маршрут повтора по Кипру
               </Link>
             </>
           ) : (
             <>
-              <Link className="card card-link track-card track-card-language" to="/tracks">
-                <p className="chip">tracks</p>
-                <h3>Посмотреть все линии и подборки</h3>
-                <p>Обзорный слой для выбора программы, маршрута или вспомогательной коллекции.</p>
-                <span className="action-link">Открыть обзор</span>
+              <Link className="secondary-link-button" to="/tracks">
+                Посмотреть все линии
               </Link>
-              <Link className="card card-link track-card track-card-history" to="/cyprus">
-                <p className="chip">cyprus</p>
-                <h3>Перейти в Cyprus Reality</h3>
-                <p>Отдельная самостоятельная программа по Кипру без смешивания с языковой линией.</p>
-                <span className="action-link">Открыть Cyprus Reality</span>
+              <Link className="secondary-link-button" to="/cyprus">
+                Перейти в Cyprus Reality
               </Link>
-              <Link className="card card-link track-card" to="/trails#trail_souvlaki_starter">
-                <p className="chip">trails</p>
-                <h3>Открыть маршрут под задачу</h3>
-                <p>Если нужен не полный курс, а короткий сценарий под разговор, сервисы или повторение.</p>
-                <span className="action-link">Открыть маршрут</span>
+              <Link className="action-link" to="/trails?trail=trail_souvlaki_starter">
+                Guided маршрут под задачу
               </Link>
             </>
           )}
-        </div>
+          </div>
+        </article>
       </section>
 
       {groupedTracks.map((track) => (
@@ -529,7 +510,7 @@ export function LessonsPage(props: LessonsPageProps) {
                             Мини-проверка
                           </Link>
                           {track.id === "cyprus_reality" ? (
-                            <Link className="action-link" to="/trails#trail_fact_not_panic">
+                            <Link className="action-link" to="/trails?trail=trail_fact_not_panic">
                               Маршрут тематического повтора
                             </Link>
                           ) : null}

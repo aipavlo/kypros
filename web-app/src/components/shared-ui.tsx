@@ -55,6 +55,7 @@ type ActionCardProps = {
   title: string;
   description: string;
   actionLabel: string;
+  className?: string;
 };
 
 type LessonPreviewCardProps = {
@@ -89,6 +90,7 @@ type TrailLessonItemProps = {
   difficulty: string;
   estimatedMinutes: number;
   completed?: boolean;
+  to?: string;
   variant?: "default" | "compact";
 };
 
@@ -342,9 +344,9 @@ export function StatCard({ hint, label, to, value }: StatCardProps) {
   );
 }
 
-export function ActionCard({ actionLabel, description, eyebrow, title, to }: ActionCardProps) {
+export function ActionCard({ actionLabel, className, description, eyebrow, title, to }: ActionCardProps) {
   return (
-    <Link className="action-card" to={to}>
+    <Link className={className ? `action-card ${className}` : "action-card"} to={to}>
       <p className="eyebrow">{eyebrow}</p>
       <h3>{title}</h3>
       <p>{description}</p>
@@ -444,11 +446,12 @@ export function TrailLessonItem({
   id,
   objective,
   order,
+  to,
   title,
   variant = "default"
 }: TrailLessonItemProps) {
   return (
-    <Link className={`trail-lesson-item trail-lesson-item-${variant}`} to={`/lessons/${id}`}>
+    <Link className={`trail-lesson-item trail-lesson-item-${variant}`} to={to ?? `/lessons/${id}`}>
       <div className="trail-lesson-side">
         <span className="lesson-order-badge lesson-order-badge-large">{order}</span>
       </div>

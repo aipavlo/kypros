@@ -1,6 +1,18 @@
 import type { MetadataRoute } from "next";
 import { lessons } from "@/src/content/catalogData";
-import { INDEXABLE_STATIC_ROUTE_PATHS, getAbsoluteUrl } from "@/src/seo/siteMetadata";
+import indexableStaticRoutes from "./indexableStaticRoutes.json";
+import { getAbsoluteUrl } from "@/src/seo/siteMetadata";
+
+type IndexableStaticRouteEntry = {
+  pathname: string;
+  changeFrequency: "weekly" | "monthly";
+  priority: number;
+};
+
+const indexableStaticRouteEntries = indexableStaticRoutes as IndexableStaticRouteEntry[];
+
+export const INDEXABLE_STATIC_ROUTE_PATHS = indexableStaticRouteEntries.map((entry) => entry.pathname);
+export const INDEXABLE_STATIC_ROUTE_ENTRIES = indexableStaticRouteEntries;
 
 export function getRobotsMetadata(): MetadataRoute.Robots {
   return {
@@ -13,17 +25,10 @@ export function getRobotsMetadata(): MetadataRoute.Robots {
 }
 
 export function getSitemapMetadata(): MetadataRoute.Sitemap {
-  const staticEntries: MetadataRoute.Sitemap = INDEXABLE_STATIC_ROUTE_PATHS.map((route) => ({
-    url: getAbsoluteUrl(route),
-    changeFrequency: route === "/" ? ("weekly" as const) : ("monthly" as const),
-    priority:
-      route === "/"
-        ? 1
-        : route === "/cyprus" || route === "/lessons"
-          ? 0.9
-          : route === "/easy-start" || route === "/trails" || route === "/humor"
-            ? 0.8
-            : 0.7
+  const staticEntries: MetadataRoute.Sitemap = INDEXABLE_STATIC_ROUTE_ENTRIES.map((entry) => ({
+    url: getAbsoluteUrl(entry.pathname),
+    changeFrequency: entry.changeFrequency,
+    priority: entry.priority
   }));
 
   const lessonEntries: MetadataRoute.Sitemap = lessons.map((lesson) => ({
