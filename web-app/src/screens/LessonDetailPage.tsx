@@ -15,7 +15,7 @@ import {
   getRecommendedQuizModeForLesson
 } from "@/src/content/quizData";
 import { transliterateGreekToLatin } from "@/src/content/transliteration";
-import { easyStartLessonIds } from "@/src/content/trails";
+import { easyStartLessonIds, trailDefinitions } from "@/src/content/trails";
 import { getModuleCycleStatus } from "@/src/content/progress";
 import { LessonPreviewCard } from "@/src/components/shared-ui";
 
@@ -30,6 +30,17 @@ type LessonDetailPageProps = {
 };
 
 type LessonFlowStep = "study" | "flashcards" | "quiz" | "next_lesson" | "done";
+type LessonContentBlock = {
+  type: string;
+  items: Array<Record<string, string>>;
+};
+
+type SentenceReviewItem = {
+  label: string;
+  prompt: string;
+  answer: string;
+  note: string;
+};
 
 function renderBlockTitle(blockType: string) {
   const titles: Record<string, string> = {
@@ -121,6 +132,52 @@ function renderBlockItem(item: Record<string, string>, showPronunciation: boolea
   return <span>{Object.values(item).join(" · ")}</span>;
 }
 
+function getSentenceReviewItems(contentBlocks: LessonContentBlock[]) {
+  const items: SentenceReviewItem[] = [];
+
+  for (const block of contentBlocks) {
+    if (block.type === "phrase_set") {
+      for (const item of block.items) {
+        if (!item.el || !item.ru) {
+          continue;
+        }
+
+        items.push({
+          label: "Фраза",
+          prompt: item.ru,
+          answer: item.el,
+          note: "Переведи и скажи вслух по памяти."
+        });
+
+        if (items.length >= 3) {
+          return items;
+        }
+      }
+    }
+
+    if (block.type === "micro_dialogue") {
+      for (const item of block.items) {
+        if (!item.el || !item.ru) {
+          continue;
+        }
+
+        items.push({
+          label: "Диалог",
+          prompt: item.ru,
+          answer: item.el,
+          note: "Восстанови короткий диалог целиком."
+        });
+
+        if (items.length >= 4) {
+          return items;
+        }
+      }
+    }
+  }
+
+  return items;
+}
+
 function getLessonFlowStep(
   isLessonCompleted: boolean,
   isReviewDone: boolean,
@@ -151,7 +208,11 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
   const [searchParams] = useSearchParams();
   const lesson = params.lessonId ? getLessonById(params.lessonId) : undefined;
   const source = searchParams.get("source");
+  const trailId = searchParams.get("trail");
+  const trail = trailDefinitions.find((item) => item.id === trailId);
   const isEasyStartSource = source === "easy_start";
+  const isTrailSource = source === "trail" && Boolean(trail);
+  const isCyprusLesson = lesson?.trackId === "cyprus_reality";
 
   if (!lesson) {
     return (
@@ -191,11 +252,11 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
   const recommendedQuizMode = getRecommendedQuizModeForLesson(lesson.id);
   const flashcardsLink =
     relatedLessonFlashcards.length > 0
-      ? `/flashcards?track=${lesson.trackId}&lesson=${lesson.id}&source=lesson&returnTo=${lesson.id}`
-      : `/flashcards?track=${lesson.trackId}&module=${lesson.moduleId}&lesson=${lesson.id}&source=lesson&returnTo=${lesson.id}`;
+      ? `/flashcards?track=${lesson.trackId}&lesson=${lesson.id}&source=lesson&returnTo=${lesson.id}${trail ? `&trail=${trail.id}` : ""}`
+      : `/flashcards?track=${lesson.trackId}&module=${lesson.moduleId}&lesson=${lesson.id}&source=lesson&returnTo=${lesson.id}${trail ? `&trail=${trail.id}` : ""}`;
   const quizLink = recommendedQuizMode
-    ? `/quiz?mode=${recommendedQuizMode.id}&module=${lesson.moduleId}&lesson=${lesson.id}&source=lesson`
-    : `/quiz?lesson=${lesson.id}&source=lesson`;
+    ? `/quiz?mode=${recommendedQuizMode.id}&module=${lesson.moduleId}&lesson=${lesson.id}&source=lesson${trail ? `&trail=${trail.id}` : ""}`
+    : `/quiz?lesson=${lesson.id}&source=lesson${trail ? `&trail=${trail.id}` : ""}`;
   const moduleCycleStatus = module
     ? getModuleCycleStatus(
         module.id,
@@ -210,11 +271,21 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
   const isQuizDone = moduleCycleStatus?.quizDone ?? false;
   const lessonFlowStep = getLessonFlowStep(isCompleted, isReviewDone, isQuizDone, Boolean(nextLesson));
   const returnToEasyStartLink = "/easy-start";
-  const backToScenarioLink = isEasyStartSource ? returnToEasyStartLink : "/lessons";
+  const backToScenarioLink = isEasyStartSource
+    ? returnToEasyStartLink
+    : isTrailSource && trail
+      ? `/trails?trail=${trail.id}`
+      : isCyprusLesson
+        ? "/cyprus"
+        : "/lessons";
   const nextEasyStartStepLink = nextEasyStartLesson
     ? `/lessons/${nextEasyStartLesson.id}?source=easy_start`
     : returnToEasyStartLink;
+  const nextTrailStepLink =
+    isTrailSource && trail && nextLesson ? `/lessons/${nextLesson.id}?trail=${trail.id}&source=trail` : null;
   const nextContextLesson = isEasyStartSource ? nextEasyStartLesson : nextLesson;
+  const sentenceReviewItems =
+    lesson.trackId === "greek_b1" ? getSentenceReviewItems(lesson.contentBlocks) : [];
   const feedbackSubject = `Kypros Path: обратная связь по уроку ${lesson.order}. ${lesson.title}`;
   const feedbackBody = [
     "Здравствуйте!",
@@ -305,6 +376,22 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
               <span>→</span>
               <span>Урок</span>
             </div>
+          ) : isTrailSource && trail ? (
+            <div className="lesson-context-breadcrumb">
+              <Link className="inline-link" to={`/trails?trail=${trail.id}`}>
+                {trail.title}
+              </Link>
+              <span>→</span>
+              <span>Урок маршрута</span>
+            </div>
+          ) : isCyprusLesson ? (
+            <div className="lesson-context-breadcrumb">
+              <Link className="inline-link" to="/cyprus">
+                Cyprus Reality
+              </Link>
+              <span>→</span>
+              <span>Урок программы</span>
+            </div>
           ) : null}
           <p className="eyebrow">Урок</p>
           <h1>{lesson.title}</h1>
@@ -340,7 +427,13 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
 
           <div className="lesson-utility-links">
             <Link className="inline-link" to={backToScenarioLink}>
-              {isEasyStartSource ? "← Вернуться в Лёгкий старт" : "Все уроки"}
+              {isEasyStartSource
+                ? "← Вернуться в Лёгкий старт"
+                : isTrailSource
+                  ? "← Вернуться к маршруту"
+                  : isCyprusLesson
+                    ? "← Вернуться в Cyprus Reality"
+                    : "← Все уроки"}
             </Link>
             {isCompleted ? (
               <button className="lesson-utility-button" onClick={handleToggleCompleted} type="button">
@@ -377,6 +470,40 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
         </div>
       </section>
 
+      {sentenceReviewItems.length > 0 ? (
+        <section className="panel lesson-sentence-review-panel">
+          <div className="section-head lesson-sentence-review-head">
+            <div>
+              <p className="eyebrow">Sentence review</p>
+              <h2>Повтори целые фразы, а не только отдельные слова</h2>
+              <p className="section-copy">
+                Это лёгкий recall-слой поверх ключевых Greek lessons: сначала держишь в голове
+                смысл, затем собираешь греческую фразу целиком.
+              </p>
+            </div>
+            <div className="lesson-sentence-review-actions">
+              <Link className="secondary-link-button" to={flashcardsLink}>
+                Открыть карточки урока
+              </Link>
+              <Link className="primary-link-button" to={quizLink}>
+                Открыть ближайшую self-check
+              </Link>
+            </div>
+          </div>
+
+          <div className="sentence-review-grid">
+            {sentenceReviewItems.map((item, index) => (
+              <article className="sentence-review-card" key={`${lesson.id}-${item.label}-${index}`}>
+                <p className="eyebrow">{item.label}</p>
+                <strong>{item.prompt}</strong>
+                <div className="sentence-review-answer">{renderGreekPhrase(item.answer, showLessonPronunciation)}</div>
+                <p className="sentence-review-note">{item.note}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       {isCompleted ? (
         <section className="panel lesson-after-study-panel">
           <div className="section-head">
@@ -384,7 +511,7 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
               <p className="eyebrow">Следующий шаг</p>
               <h2>Продолжай этот учебный шаг</h2>
               <p className="section-copy">
-                После материала маршрут всегда один: карточки урока, потом мини-проверка, потом следующий урок.
+                После материала маршрут всегда один: карточки урока, потом ближайшая self-check, потом следующий урок.
               </p>
             </div>
           </div>
@@ -410,17 +537,17 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
 
             <article className={isQuizDone ? "card lesson-next-step-card lesson-next-step-card-complete" : "card lesson-next-step-card"}>
               <p className="eyebrow">Шаг 3</p>
-              <h3>Мини-проверка урока</h3>
+              <h3>Ближайшая self-check</h3>
               <p>
                 {relatedQuizQuestions.length > 0
-                  ? `${relatedQuizQuestions.length} вопроса для быстрой проверки понимания.`
-                  : `Если отдельного набора нет, используй режим ${recommendedQuizMode?.title ?? "проверки"}.`}
+                  ? `${relatedQuizQuestions.length} вопроса для короткой проверки понимания.`
+                  : `Если отдельного набора нет, используй режим ${recommendedQuizMode?.title ?? "проверки"} как ближайшую self-check.`}
               </p>
               <div className="lesson-next-step-footer">
                 <span>{isQuizDone ? "Завершено" : `Для зачёта нужен результат от ${MODULE_QUIZ_PASS_THRESHOLD}%`}</span>
                 {isReviewDone && !isQuizDone ? (
                   <Link className="primary-link-button" to={quizLink}>
-                    Открыть мини-проверку урока
+                    Открыть ближайшую self-check
                   </Link>
                 ) : null}
               </div>
@@ -438,9 +565,13 @@ export function LessonDetailPage(props: LessonDetailPageProps) {
               {nextContextLesson ? (
                 <Link
                   className="primary-link-button"
-                  to={isEasyStartSource ? nextEasyStartStepLink : `/lessons/${nextContextLesson.id}`}
+                  to={isEasyStartSource ? nextEasyStartStepLink : nextTrailStepLink ?? `/lessons/${nextContextLesson.id}`}
                 >
-                  {isEasyStartSource ? "Следующий шаг Лёгкого старта" : "Открыть следующий урок"}
+                  {isEasyStartSource
+                    ? "Следующий шаг Лёгкого старта"
+                    : isTrailSource
+                      ? "Открыть следующий шаг маршрута"
+                      : "Открыть следующий урок"}
                 </Link>
               ) : null}
             </div>

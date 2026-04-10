@@ -4,10 +4,13 @@ import type { ReactNode } from "react";
 import { GOOGLE_TAG_ID } from "@/src/analytics/googleAnalytics";
 import {
   DEFAULT_DESCRIPTION,
+  DEFAULT_SOCIAL_IMAGE_PATH,
   DEFAULT_TITLE,
   SITE_NAME,
   SITE_URL,
-  getAssetUrl
+  getAbsoluteUrl,
+  getAssetUrl,
+  getSocialImageMetadata
 } from "@/src/seo/siteMetadata";
 import "../src/styles.css";
 
@@ -39,12 +42,14 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     type: "website",
     locale: "ru_RU",
-    url: SITE_URL
+    url: SITE_URL,
+    images: getSocialImageMetadata()
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION
+    description: DEFAULT_DESCRIPTION,
+    images: [getAbsoluteUrl(DEFAULT_SOCIAL_IMAGE_PATH)]
   },
   alternates: {
     canonical: SITE_URL
@@ -73,6 +78,14 @@ export default function RootLayout({
       "Cyprus Reality exam preparation"
     ]
   };
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: getAbsoluteUrl("/icon.svg"),
+    description: DEFAULT_DESCRIPTION
+  };
 
   return (
     <html lang="ru">
@@ -93,6 +106,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         {children}
       </body>

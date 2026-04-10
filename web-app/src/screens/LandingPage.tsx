@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import {
+  getLessonById,
   getLessonsByTrack,
   tracks
 } from "@/src/content/catalogData";
@@ -16,6 +17,9 @@ import { TrailBadge, TrailMiniArt } from "@/src/components/shared-ui";
 export function LandingPage() {
   const greekTrack = tracks.find((track) => track.id === "greek_b1");
   const cyprusTrack = tracks.find((track) => track.id === "cyprus_reality");
+  const firstGreekLesson = getLessonsByTrack("greek_b1")[0];
+  const firstCyprusLesson = getLessonsByTrack("cyprus_reality")[0];
+  const firstEasyStartLesson = easyStartLessonIds[0] ? getLessonById(easyStartLessonIds[0]) : undefined;
   const easyStartCount = easyStartLessonIds.length;
   const cyprusRealityCount = getLessonsByTrack("cyprus_reality").length;
   const humorCount = HUMOR_ITEM_COUNT;
@@ -28,17 +32,17 @@ export function LandingPage() {
       <section className="landing-hero panel">
         <div className="landing-copy">
           <p className="eyebrow">Kypros Path</p>
-          <h1>Греческий язык и подготовка по Кипру в одном месте</h1>
+          <h1>Начни с одного короткого шага и не блуждай по разделам</h1>
           <p className="lead">
-            Если не хочется разбираться, с чего начать, нажимай на дашборд. Там сайт сам покажет
-            следующий шаг: урок, карточки или мини-проверку.
+            Если это первый заход, лучше идти через Лёгкий старт: один короткий урок, затем
+            карточки и мини-проверка. Если прогресс уже есть, дашборд сразу покажет ближайший возврат.
           </p>
           <div className="actions-row">
-            <Link className="primary-link-button" to="/dashboard">
-              Открыть дашборд
+            <Link className="primary-link-button" to="/easy-start">
+              Начать с короткого шага
             </Link>
-            <Link className="secondary-link-button" to="/easy-start">
-              Я начинаю с нуля
+            <Link className="secondary-link-button" to="/dashboard">
+              У меня уже есть прогресс
             </Link>
           </div>
           <div className="landing-proof-row">
@@ -46,30 +50,110 @@ export function LandingPage() {
             <span className="meta-pill">{QUIZ_TOTAL_COUNT} вопросов</span>
             <span className="meta-pill">{trailCount} готовых маршрутов</span>
           </div>
+          <div className="decision-grid landing-session-grid">
+            <article className="decision-card decision-card-primary">
+              <p className="decision-card-kicker">Первый шаг</p>
+              <h3>{firstEasyStartLesson ? `${firstEasyStartLesson.order}. ${firstEasyStartLesson.title}` : "Один короткий урок"}</h3>
+              <p>Старт без выбора модулей и без каталога на первом экране.</p>
+              <span className="decision-card-meta">{firstEasyStartLesson?.estimatedMinutes ?? 7} минут</span>
+            </article>
+            <article className="decision-card">
+              <p className="decision-card-kicker">После урока</p>
+              <h3>Сразу к карточкам</h3>
+              <p>Следующий шаг уже задан: не нужно решать, куда идти дальше.</p>
+              <span className="decision-card-meta">6 минут</span>
+            </article>
+            <article className="decision-card">
+              <p className="decision-card-kicker">Потом</p>
+              <h3>Короткая мини-проверка</h3>
+              <p>Быстрый self-check вместо длинного меню режимов.</p>
+              <span className="decision-card-meta">4-6 минут</span>
+            </article>
+          </div>
         </div>
       </section>
 
       <section className="panel landing-actions-panel">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Другие входы</p>
-            <h2>Или выбери раздел</h2>
-            <p className="section-copy">Два коротких пути: первый шаг по греческому или сразу по Кипру.</p>
+            <p className="eyebrow">Если сценарий другой</p>
+            <h2>Два альтернативных входа</h2>
+            <p className="section-copy">
+              Здесь только другие короткие сценарии: вернуться к своему прогрессу или сразу открыть Cyprus Reality.
+            </p>
+          </div>
+        </div>
+
+        <div className="landing-cta-grid">
+          <Link className="landing-cta-card card-link-panel" to="/dashboard">
+            <p className="chip">Если уже что-то проходил</p>
+            <h3>Вернуться к одному следующему действию</h3>
+            <p>Дашборд покажет ближайший полезный возврат: продолжение, повтор или слабую тему.</p>
+            <span className="action-link">Открыть дашборд</span>
+          </Link>
+          <Link className="landing-cta-card card-link-panel" to="/cyprus">
+            <p className="chip">Если нужен трек по Кипру</p>
+            <h3>История, культура и устройство страны</h3>
+            <p>Отдельная программа по Кипру: даты, институты, праздники и базовые факты.</p>
+            <span className="action-link">Открыть программу по Кипру</span>
+          </Link>
+        </div>
+      </section>
+
+      <section className="panel landing-search-links-panel">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Важные страницы</p>
+            <h2>Короткие входы в основные разделы</h2>
+            <p className="section-copy">
+              Ниже собраны priority URLs, к которым стоит вести и пользователя, и поисковый вход без
+              длинного блуждания по каталогу.
+            </p>
           </div>
         </div>
 
         <div className="landing-cta-grid">
           <Link className="landing-cta-card card-link-panel" to="/easy-start">
-            <p className="chip">Для первого захода</p>
-            <h3>Лёгкий старт без выбора модулей</h3>
-            <p>Открой первый шаг и просто иди дальше по готовому пути.</p>
-            <span className="action-link">Начать сейчас</span>
+            <p className="chip">Старт</p>
+            <h3>Лёгкий старт по греческому</h3>
+            <p>Первый учебный вход без перегрузки и без ручного выбора модуля.</p>
+            <span className="action-link">Открыть easy start</span>
+          </Link>
+          <Link className="landing-cta-card card-link-panel" to="/lessons">
+            <p className="chip">Язык</p>
+            <h3>Полная программа Greek Core</h3>
+            <p>Уроки по уровням, карточки и мини-проверки для жизни на Кипре.</p>
+            <span className="action-link">Открыть lessons</span>
           </Link>
           <Link className="landing-cta-card card-link-panel" to="/cyprus">
-            <p className="chip">Если нужен экзамен по Кипру</p>
-            <h3>История, культура и устройство страны</h3>
-            <p>Отдельная программа по Кипру: даты, институты, праздники и базовые факты.</p>
-            <span className="action-link">Открыть программу по Кипру</span>
+            <p className="chip">Кипр</p>
+            <h3>Программа Cyprus Reality</h3>
+            <p>История, культура, институты и база для экзаменационной подготовки.</p>
+            <span className="action-link">Открыть cyprus</span>
+          </Link>
+          <Link className="landing-cta-card card-link-panel" to="/trails">
+            <p className="chip">Маршруты</p>
+            <h3>Guided сценарии под задачу</h3>
+            <p>Разговор, сервисы, бытовые ситуации и тематический повтор без лишнего выбора.</p>
+            <span className="action-link">Открыть trails</span>
+          </Link>
+          <Link className="landing-cta-card card-link-panel" to="/phrasebook">
+            <p className="chip">Фразы</p>
+            <h3>Практические бытовые сценарии</h3>
+            <p>Компактный phrasebook-layer: приветствие, кафе, магазин, дорога и сервисные фразы.</p>
+            <span className="action-link">Открыть phrasebook</span>
+          </Link>
+          <Link className="landing-cta-card card-link-panel" to={firstGreekLesson ? `/lessons/${firstGreekLesson.id}` : "/lessons"}>
+            <p className="chip">Урок</p>
+            <h3>{firstGreekLesson ? `${firstGreekLesson.order}. ${firstGreekLesson.title}` : "Первый урок греческого"}</h3>
+            <p>{firstGreekLesson?.objective ?? "Базовый вход в языковую программу."}</p>
+            <span className="action-link">Открыть lesson page</span>
+          </Link>
+          <Link className="landing-cta-card card-link-panel" to={firstCyprusLesson ? `/lessons/${firstCyprusLesson.id}` : "/cyprus"}>
+            <p className="chip">Cyprus lesson</p>
+            <h3>{firstCyprusLesson ? `${firstCyprusLesson.order}. ${firstCyprusLesson.title}` : "Первый урок по Кипру"}</h3>
+            <p>{firstCyprusLesson?.objective ?? "Прямой вход в базовый урок по Cyprus Reality."}</p>
+            <span className="action-link">Открыть lesson page</span>
           </Link>
         </div>
       </section>
@@ -104,6 +188,12 @@ export function LandingPage() {
             <p>После урока можно сразу закрепить материал карточками и мини-проверкой.</p>
             <TrailMiniArt art="stamp" tone="mixed" />
           </article>
+          <article className="panel landing-value-card landing-value-card-secondary">
+            <TrailBadge icon="spark" label="Сценарии" tone="language" />
+            <h3>Everyday Greek для быстрых бытовых ситуаций</h3>
+            <p>Короткие фразы и practical scenarios, которые можно открыть до длинного урока и сразу проговорить вслух.</p>
+            <TrailMiniArt art="steps" tone="language" />
+          </article>
         </div>
       </section>
 
@@ -117,24 +207,27 @@ export function LandingPage() {
               для подготовки по истории, культуре и устройству страны.
             </p>
           </div>
+          <Link className="inline-link" to="/tracks">
+            Открыть каталог программ
+          </Link>
         </div>
 
         <div className="landing-level-stats-grid">
-          <Link className="landing-level-stat card-link-panel" to="/lessons?stage=a1&source=start">
+          <article className="landing-level-stat">
             <p className="chip">Греческий язык</p>
             <h3>{languageLessonCount} уроков от A1 до B2 + дополнительный C1</h3>
             <p>От простых бытовых тем до уверенной речи, текстов, аргументации и дополнительного продвинутого блока.</p>
-          </Link>
-          <Link className="landing-level-stat card-link-panel" to="/cyprus">
+          </article>
+          <article className="landing-level-stat">
             <p className="chip">Трек по Кипру</p>
             <h3>{cyprusRealityCount} уроков по стране</h3>
             <p>История, институты, праздники, культура и базовые экзаменационные темы.</p>
-          </Link>
-          <Link className="landing-level-stat card-link-panel" to="/trails">
+          </article>
+          <article className="landing-level-stat">
             <p className="chip">Маршруты</p>
             <h3>{trailCount} готовых сценариев</h3>
             <p>Разговор, сервисы, повторение, история и другие маршруты под конкретную задачу.</p>
-          </Link>
+          </article>
         </div>
       </section>
 
@@ -210,12 +303,11 @@ export function LandingPage() {
             <h3>Понятный следующий шаг</h3>
             <p>Меньше времени уходит на выбор, что открыть дальше.</p>
           </article>
-          <Link className="landing-info-card card-link-panel" to="/easy-start">
+          <article className="landing-info-card landing-info-card-compact">
             <p className="chip">Первый шаг</p>
             <h3>{easyStartCount} шагов в лёгком старте</h3>
             <p>Если хочется начать без долгого выбора, здесь уже собран готовый путь.</p>
-            <span className="action-link">Перейти к лёгкому старту</span>
-          </Link>
+          </article>
         </div>
       </section>
     </div>

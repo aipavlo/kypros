@@ -15,6 +15,10 @@ function questionHasTag(question: QuizQuestionItem, tag: string) {
   return question.tags.includes(tag);
 }
 
+function questionHasAnyTag(question: QuizQuestionItem, tags: string[]) {
+  return tags.some((tag) => questionHasTag(question, tag));
+}
+
 function normalizeDifficultyList(value?: string[] | string) {
   if (!value) {
     return [];
@@ -57,17 +61,23 @@ export function getQuizQuestionsByMode(modeId: string) {
   }
 
   const { questionStrategy } = mode;
+  const includeTags = questionStrategy.includeTags ?? [];
+  const excludeTags = questionStrategy.excludeTags ?? [];
+  const limit = questionStrategy.limit;
+  const matchesTagFilters = (question: QuizQuestionItem) =>
+    (includeTags.length === 0 || questionHasAnyTag(question, includeTags)) &&
+    (excludeTags.length === 0 || !questionHasAnyTag(question, excludeTags));
+  let selectedQuestions: QuizQuestionItem[];
 
   if (questionStrategy.mix) {
-    const selectedQuestions: QuizQuestionItem[] = [];
+    selectedQuestions = [];
     const usedIds = new Set<string>();
 
     for (const chunk of questionStrategy.mix) {
       const matchingQuestions = quizzes.filter((question) => {
         const matchesTrack = questionHasTag(question, chunk.trackTag);
         const matchesDifficulty = chunk.difficulty ? question.difficulty === chunk.difficulty : true;
-
-        return matchesTrack && matchesDifficulty && !usedIds.has(question.id);
+        return matchesTrack && matchesDifficulty && matchesTagFilters(question) && !usedIds.has(question.id);
       });
 
       for (const question of matchingQuestions.slice(0, chunk.count)) {
@@ -75,21 +85,20 @@ export function getQuizQuestionsByMode(modeId: string) {
         selectedQuestions.push(question);
       }
     }
+  } else {
+    const difficultyList = normalizeDifficultyList(questionStrategy.difficulty);
 
-    return selectedQuestions;
+    selectedQuestions = quizzes.filter((question) => {
+      const matchesTrack = questionStrategy.trackTag
+        ? questionHasTag(question, questionStrategy.trackTag)
+        : true;
+      const matchesDifficulty =
+        difficultyList.length > 0 ? difficultyList.includes(question.difficulty) : true;
+      return matchesTrack && matchesDifficulty && matchesTagFilters(question);
+    });
   }
 
-  const difficultyList = normalizeDifficultyList(questionStrategy.difficulty);
-
-  return quizzes.filter((question) => {
-    const matchesTrack = questionStrategy.trackTag
-      ? questionHasTag(question, questionStrategy.trackTag)
-      : true;
-    const matchesDifficulty =
-      difficultyList.length > 0 ? difficultyList.includes(question.difficulty) : true;
-
-    return matchesTrack && matchesDifficulty;
-  });
+  return typeof limit === "number" ? selectedQuestions.slice(0, limit) : selectedQuestions;
 }
 
 export function getQuizQuestionsByLesson(lessonId: string, difficulty?: string) {

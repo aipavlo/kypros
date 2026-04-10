@@ -195,5 +195,331 @@
     },
     "sourceStatus": "editorial",
     "sourceNote": "Редакционный режим сессии; описывает подбор вопросов и не является внешним нормативным источником."
+  },
+  {
+    "id": "mode_greek_retry_core",
+    "title": "Греческий corrective pass",
+    "description": "Сжатый corrective pass по ключевым греческим модулям: меньше объёма, больше плотности и меньше буквального повторения.",
+    "questionStrategy": {
+      "trackTag": "track:greek_b1",
+      "difficulty": [
+        "a1",
+        "a2",
+        "b1",
+        "b2"
+      ],
+      "includeTags": [
+        "module:gr_b1_daily_life",
+        "module:gr_b1_home_address",
+        "module:gr_b1_time_routine",
+        "module:gr_b1_food_shopping",
+        "module:gr_b1_documents_services",
+        "module:gr_b1_work_society",
+        "module:gr_b1_city_transport",
+        "module:gr_b1_exam_reading",
+        "module:gr_b1_public_life",
+        "module:gr_b1_review_bridge"
+      ],
+      "mix": [
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a1",
+          "count": 3
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a2",
+          "count": 3
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b1",
+          "count": 2
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b2",
+          "count": 1
+        }
+      ],
+      "limit": 8
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 8,
+      "recommendedFor": "короткого corrective pass после ошибок в ключевых греческих уроках"
+    },
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный режим сессии; описывает корректирующий повтор с узким срезом вопросов и не является внешним нормативным источником."
+  },
+  {
+    "id": "mode_greek_self_check_core",
+    "title": "Греческий self-check",
+    "description": "Короткая самопроверка по тем же темам, но в более сжатой форме, чтобы ответить без повторения один в один.",
+    "questionStrategy": {
+      "trackTag": "track:greek_b1",
+      "difficulty": [
+        "a1",
+        "a2",
+        "b1",
+        "b2"
+      ],
+      "includeTags": [
+        "module:gr_b1_daily_life",
+        "module:gr_b1_home_address",
+        "module:gr_b1_time_routine",
+        "module:gr_b1_food_shopping",
+        "module:gr_b1_documents_services",
+        "module:gr_b1_work_society",
+        "module:gr_b1_city_transport",
+        "module:gr_b1_exam_reading",
+        "module:gr_b1_public_life",
+        "module:gr_b1_review_bridge"
+      ],
+      "mix": [
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a1",
+          "count": 2
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a2",
+          "count": 2
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b1",
+          "count": 1
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b2",
+          "count": 1
+        }
+      ],
+      "limit": 6
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 6,
+      "recommendedFor": "короткой self-check проверки перед новым проходом"
+    },
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный режим сессии; описывает короткую самопроверку поверх ключевых греческих тем и не является внешним нормативным источником."
+  },
+  {
+    "id": "mode_cyprus_retry_core",
+    "title": "Cyprus Reality corrective pass",
+    "description": "Сжатый corrective pass по ключевым Cyprus Reality темам: меньше длинного банка, больше точечного возврата к слабым зонам.",
+    "questionStrategy": {
+      "trackTag": "track:cyprus_reality",
+      "includeTags": [
+        "module:cy_intro_identity",
+        "module:cy_geography_regions",
+        "module:cy_history_timeline",
+        "module:cy_institutions",
+        "module:cy_society_culture",
+        "module:cy_key_dates",
+        "module:cy_exam_fundamentals",
+        "module:cy_public_life_culture"
+      ],
+      "mix": [
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "a1",
+          "count": 3
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "a2",
+          "count": 2
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "b1",
+          "count": 2
+        }
+      ],
+      "limit": 7
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 7,
+      "recommendedFor": "короткого corrective pass по Cyprus Reality"
+    },
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный режим сессии; описывает корректирующий повтор по Cyprus Reality и не является внешним нормативным источником."
+  },
+  {
+    "id": "mode_cyprus_self_check_core",
+    "title": "Cyprus Reality self-check",
+    "description": "Сжатая самопроверка по Cyprus Reality: короткий проход, чтобы ответ не копировал исходный банк дословно.",
+    "questionStrategy": {
+      "trackTag": "track:cyprus_reality",
+      "includeTags": [
+        "module:cy_intro_identity",
+        "module:cy_geography_regions",
+        "module:cy_history_timeline",
+        "module:cy_institutions",
+        "module:cy_society_culture",
+        "module:cy_key_dates",
+        "module:cy_exam_fundamentals",
+        "module:cy_public_life_culture"
+      ],
+      "mix": [
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "a1",
+          "count": 2
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "a2",
+          "count": 2
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "b1",
+          "count": 2
+        }
+      ],
+      "limit": 6
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 6,
+      "recommendedFor": "короткой self-check проверки по Cyprus Reality"
+    },
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный режим сессии; описывает короткую самопроверку поверх Cyprus Reality и не является внешним нормативным источником."
+  },
+  {
+    "id": "mode_mixed_retry_core",
+    "title": "Mixed corrective pass",
+    "description": "Короткий corrective pass по смешанному банку, чтобы вернуть форму после ошибок без буквального дубля.",
+    "questionStrategy": {
+      "includeTags": [
+        "module:gr_b1_daily_life",
+        "module:gr_b1_home_address",
+        "module:gr_b1_time_routine",
+        "module:gr_b1_food_shopping",
+        "module:gr_b1_documents_services",
+        "module:gr_b1_work_society",
+        "module:gr_b1_city_transport",
+        "module:gr_b1_exam_reading",
+        "module:gr_b1_public_life",
+        "module:gr_b1_review_bridge",
+        "module:cy_intro_identity",
+        "module:cy_geography_regions",
+        "module:cy_history_timeline",
+        "module:cy_institutions",
+        "module:cy_society_culture",
+        "module:cy_key_dates",
+        "module:cy_exam_fundamentals",
+        "module:cy_public_life_culture"
+      ],
+      "mix": [
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a1",
+          "count": 2
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a2",
+          "count": 2
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b1",
+          "count": 1
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "a1",
+          "count": 1
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "a2",
+          "count": 1
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "b1",
+          "count": 1
+        }
+      ],
+      "limit": 8
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 8,
+      "recommendedFor": "смешанного corrective pass после ошибок в разных темах"
+    },
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный режим сессии; описывает корректирующий повтор по смешанному банку и не является внешним нормативным источником."
+  },
+  {
+    "id": "mode_mixed_self_check_core",
+    "title": "Mixed self-check",
+    "description": "Короткая mixed self-check сессия, чтобы сверить слабые места без дословного повтора исходного набора.",
+    "questionStrategy": {
+      "includeTags": [
+        "module:gr_b1_daily_life",
+        "module:gr_b1_home_address",
+        "module:gr_b1_time_routine",
+        "module:gr_b1_food_shopping",
+        "module:gr_b1_documents_services",
+        "module:gr_b1_work_society",
+        "module:gr_b1_city_transport",
+        "module:gr_b1_exam_reading",
+        "module:gr_b1_public_life",
+        "module:gr_b1_review_bridge",
+        "module:cy_intro_identity",
+        "module:cy_geography_regions",
+        "module:cy_history_timeline",
+        "module:cy_institutions",
+        "module:cy_society_culture",
+        "module:cy_key_dates",
+        "module:cy_exam_fundamentals",
+        "module:cy_public_life_culture"
+      ],
+      "mix": [
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a1",
+          "count": 1
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "a2",
+          "count": 1
+        },
+        {
+          "trackTag": "track:greek_b1",
+          "difficulty": "b1",
+          "count": 1
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "a1",
+          "count": 1
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "a2",
+          "count": 1
+        },
+        {
+          "trackTag": "track:cyprus_reality",
+          "difficulty": "b1",
+          "count": 1
+        }
+      ],
+      "limit": 6
+    },
+    "uiHints": {
+      "recommendedQuestionCount": 6,
+      "recommendedFor": "короткой mixed self-check проверки"
+    },
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный режим сессии; описывает короткую mixed self-check сессию и не является внешним нормативным источником."
   }
 ]

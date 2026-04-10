@@ -3,7 +3,6 @@ import learningPathsJson from "@content/05-seed-data/learning-paths.json";
 import {
   getLessonsByModule,
   getModuleById,
-  getModulesByTrack,
   lessons,
   modules,
   tracks
@@ -86,6 +85,9 @@ export function ContentPage() {
   }
 
   const humorThemeCards = [...humorThemeMap.values()].filter((item) => item.count > 0);
+  const previewPaths = learningPaths.slice(0, 4);
+  const previewModules = modules.slice(0, 4);
+  const previewHumorThemes = humorThemeCards.slice(0, 4);
   const curatorCards = [
     {
       chip: "Самый простой вход",
@@ -102,6 +104,13 @@ export function ContentPage() {
       toneClass: "track-card"
     },
     {
+      chip: "Быстрые фразы",
+      description: "Если нужен practical entry без длинного урока, открой бытовые сценарии с transliteration и short self-check.",
+      title: "Открыть phrasebook-сценарии",
+      to: "/phrasebook",
+      toneClass: "track-card-language"
+    },
+    {
       chip: "Быстрая проверка",
       description: "Если хочешь не читать всё подряд, а проверить, что уже держится в голове, открой квиз.",
       title: "Перейти к короткой проверке",
@@ -110,32 +119,51 @@ export function ContentPage() {
     }
   ];
 
-  function getTrackLibraryLink(trackId: string) {
-    if (trackId === "greek_b1") {
-      return "/lessons?stage=a1&source=tracks";
+  const libraryShelves = [
+    {
+      chip: "Маршруты",
+      description: "Готовые сценарии под разговор, сервисы, Cyprus Reality и бытовые задачи.",
+      title: "Открыть guided catalog",
+      to: "/trails",
+      toneClass: "track-card",
+      meta: `${learningPaths.length} готовых входов`
+    },
+    {
+      chip: "Фразы",
+      description: "Компактные бытовые intents: приветствие, кафе, магазин, дорога, документы и короткие сервисные сценарии.",
+      title: "Открыть practical scenarios",
+      to: "/phrasebook",
+      toneClass: "track-card-language",
+      meta: "12 сценариев"
+    },
+    {
+      chip: "Модули",
+      description: "Точечный вход, если уже известно, какую тему или уровень нужно открыть.",
+      title: "Перейти к модулям программы",
+      to: "/lessons",
+      toneClass: "track-card-language",
+      meta: `${modules.length} модулей в библиотеке`
+    },
+    {
+      chip: "Проверка",
+      description: "Короткая самопроверка после учебного шага без долгого просмотра каталога.",
+      title: "Открыть банк вопросов",
+      to: "/quiz",
+      toneClass: "track-card-history",
+      meta: `${previewQuizzes.length}+ быстрых вопросов`
+    },
+    {
+      chip: "Культура",
+      description: "Лёгкий дополнительный слой: юмор, разговорные наблюдения и культурные заметки.",
+      title: "Открыть культурные подборки",
+      to: "/humor",
+      toneClass: "track-card-language",
+      meta: `${humorThemeCards.length} тематических подборок`
     }
+  ];
 
-    if (trackId === "cyprus_reality") {
-      return "/cyprus";
-    }
-
-    if (trackId === "exam_prep") {
-      return "/quiz";
-    }
-
-    if (trackId === "greek_humor") {
-      return "/humor";
-    }
-
-    if (trackId === "speaking_practice") {
-      return "/trails#trail_no_english_pls";
-    }
-
-    if (trackId === "citizenship_strategy") {
-      return "/trails#trail_kep_survival_mode";
-    }
-
-    return "/tracks";
+  function getTrailLibraryLink(trailId: string) {
+    return `/trails?trail=${trailId}`;
   }
 
   function getModuleLibraryLink(moduleId: string, trackId: string) {
@@ -147,16 +175,32 @@ export function ContentPage() {
   }
 
   function getPathLibraryLink(pathId: string, steps: string[]) {
+    if (pathId === "path_home_setup_no_drama") {
+      return getTrailLibraryLink("trail_home_setup_no_drama");
+    }
+
+    if (pathId === "path_doctor_pharmacy_follow_up") {
+      return getTrailLibraryLink("trail_doctor_pharmacy_follow_up");
+    }
+
+    if (pathId === "path_kep_to_resolution") {
+      return getTrailLibraryLink("trail_kep_to_resolution");
+    }
+
+    if (pathId === "path_quick_orders_and_prices") {
+      return getTrailLibraryLink("trail_taverna_ninja");
+    }
+
     if (pathId === "path_speaking_under_pressure") {
-      return "/trails#trail_no_english_pls";
+      return getTrailLibraryLink("trail_no_english_pls");
     }
 
     if (pathId === "path_courses_and_services") {
-      return "/trails#trail_kep_survival_mode";
+      return getTrailLibraryLink("trail_kep_survival_mode");
     }
 
     if (pathId === "path_cyprus_reality_by_topics") {
-      return "/trails#trail_fact_not_panic";
+      return getTrailLibraryLink("trail_fact_not_panic");
     }
 
     const firstLessonStep = steps.find((step) => step.startsWith("gr_") || step.startsWith("cy_"));
@@ -169,8 +213,8 @@ export function ContentPage() {
         <p className="eyebrow">Библиотека</p>
         <h1>Библиотека контента</h1>
         <p className="section-copy">
-          Это не страница “прочитай всё”. Здесь лучше выбрать один рабочий сценарий: программа,
-          маршрут или проверка.
+          Начни с одного рабочего входа: программа, маршрут или проверка. Остальная библиотека ниже
+          остаётся вторичным каталогом, а не обязательным полотном.
         </p>
       </section>
 
@@ -222,157 +266,135 @@ export function ContentPage() {
         </div>
       </section>
 
-      <section className="panel content-library-panel">
+      <section className="panel content-library-map-panel">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Обзор библиотеки</p>
-            <h2>Готовые маршруты</h2>
+            <p className="eyebrow">Вторичные разделы</p>
+            <h2>Что открыть, если главный вход уже понятен</h2>
             <p className="section-copy">
-              Маршруты удобны, когда нужна цель, а не просто список материалов.
+              Ниже не полный каталог на первом экране, а четыре понятных направления для точечного
+              перехода.
             </p>
           </div>
-          <Link className="inline-link" to="/trails">
-            Смотреть маршруты
-          </Link>
         </div>
 
-        <div className="grid">
-          {learningPaths.map((path) => (
-            <Link className="card card-link" key={path.id} to={getPathLibraryLink(path.id, path.steps)}>
-              <p className="chip">Маршрут</p>
-              <h3>{path.title}</h3>
-              <p>{path.description}</p>
-              <p className="muted">{path.steps.length} шагов</p>
-              <span className="action-link">Открыть маршрут</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="panel content-library-panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Модули</p>
-            <h2>Модули программы</h2>
-            <p className="section-copy">
-              Это слой для точечного входа, если уже понятно, какую тему нужно открыть.
-            </p>
-          </div>
-          <Link className="inline-link" to="/lessons">
-            Перейти к урокам
-          </Link>
-        </div>
-
-        <div className="grid">
-          {modules.map((module) => {
-            const moduleLessons = getLessonsByModule(module.id);
-            const presentation = getTrackPresentation(module.trackId);
-
-            return (
-              <Link
-                className={`card card-link track-card ${presentation.themeClass === "track-language" ? "track-card-language" : presentation.themeClass === "track-history" ? "track-card-history" : ""}`}
-                key={module.id}
-                to={getModuleLibraryLink(module.id, module.trackId)}
-              >
-                <p className="chip">{presentation.shortLabel}</p>
-                <h3>{module.title}</h3>
-                <p>{module.description}</p>
-                <p className="muted">
-                  {moduleLessons.length} уроков · порядок {module.order}
-                </p>
-                <span className="action-link">Открыть</span>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="panel content-library-panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Уроки</p>
-            <h2>Примеры уроков</h2>
-            <p className="section-copy">
-              Ниже только срез библиотеки, а не рекомендуемый порядок прохождения.
-            </p>
-          </div>
-          <Link className="inline-link" to="/lessons">
-            Смотреть все уроки
-          </Link>
-        </div>
-
-        <div className="grid">
-          {previewLessons.map((lesson) => (
-            <Link className="card card-link" key={lesson.id} to={`/lessons/${lesson.id}`}>
-              <p className="chip">
-                {lesson.trackId === "cyprus_reality" ? "Cyprus Reality" : lesson.difficulty.toUpperCase()}
-              </p>
-              <h3>
-                {lesson.order}. {lesson.title}
-              </h3>
-              <p>{lesson.objective}</p>
-              <p className="muted">
-                {lesson.estimatedMinutes} min · модуль {getModuleById(lesson.moduleId)?.title ?? lesson.moduleId}
-              </p>
-              <span className="action-link">Открыть урок</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="panel content-library-panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Банк вопросов</p>
-            <h2>Вопросы для проверки</h2>
-            <p className="section-copy">
-              Этот блок полезен, когда хочется быстро проверить себя, а не проходить маршрут целиком.
-            </p>
-          </div>
-          <Link className="inline-link" to="/quiz">
-            Открыть проверку
-          </Link>
-        </div>
-
-        <div className="grid">
-          {previewQuizzes.map((quiz) => (
-            <Link className="card card-link" key={quiz.id} to="/quiz">
-              <p className="chip">{quiz.difficulty.toUpperCase()}</p>
-              <h3>{quiz.question}</h3>
-              <p>{quiz.explanation}</p>
-              <p className="muted">
-                {quiz.trackId === "cyprus_reality" ? "Cyprus Reality" : "Подготовка к экзамену"}
-              </p>
-              <span className="action-link">Открыть квиз</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="panel content-library-panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Юмор</p>
-            <h2>Культурные подборки</h2>
-            <p className="section-copy">
-              Дополнительный слой для живого культурного контекста, а не основной маршрут старта.
-            </p>
-          </div>
-          <Link className="inline-link" to="/humor">
-            Открыть раздел
-          </Link>
-        </div>
-
-        <div className="grid">
-          {humorThemeCards.map((theme) => (
-            <Link className="card card-link track-card track-card-language" key={theme.title} to="/humor">
-              <p className="chip">Подборка</p>
-              <h3>{theme.title}</h3>
-              <p>{theme.description}</p>
-              <p className="muted">{theme.count} материалов</p>
+        <div className="grid content-entry-grid">
+          {libraryShelves.map((card) => (
+            <Link className={`card card-link ${card.toneClass}`} key={card.title} to={card.to}>
+              <p className="chip">{card.chip}</p>
+              <h3>{card.title}</h3>
+              <p>{card.description}</p>
+              <p className="muted">{card.meta}</p>
               <span className="action-link">Открыть</span>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="panel content-preview-panel">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Быстрый просмотр</p>
+            <h2>Разверни только тот слой библиотеки, который нужен сейчас</h2>
+            <p className="section-copy">
+              Примеры и превью оставлены on-demand, чтобы страница не превращалась в длинный
+              inventory-scroll.
+            </p>
+          </div>
+        </div>
+
+        <div className="content-disclosure-list">
+          <details className="content-disclosure">
+            <summary>Показать примеры маршрутов</summary>
+            <div className="content-disclosure-body grid">
+              {previewPaths.map((path) => (
+                <Link className="card card-link" key={path.id} to={getPathLibraryLink(path.id, path.steps)}>
+                  <p className="chip">Маршрут</p>
+                  <h3>{path.title}</h3>
+                  <p>{path.description}</p>
+                  <p className="muted">{path.steps.length} шагов</p>
+                  <span className="action-link">Открыть маршрут</span>
+                </Link>
+              ))}
+            </div>
+          </details>
+
+          <details className="content-disclosure">
+            <summary>Показать модули программы</summary>
+            <div className="content-disclosure-body grid">
+              {previewModules.map((module) => {
+                const moduleLessons = getLessonsByModule(module.id);
+                const presentation = getTrackPresentation(module.trackId);
+
+                return (
+                  <Link
+                    className={`card card-link track-card ${presentation.themeClass === "track-language" ? "track-card-language" : presentation.themeClass === "track-history" ? "track-card-history" : ""}`}
+                    key={module.id}
+                    to={getModuleLibraryLink(module.id, module.trackId)}
+                  >
+                    <p className="chip">{presentation.shortLabel}</p>
+                    <h3>{module.title}</h3>
+                    <p>{module.description}</p>
+                    <p className="muted">
+                      {moduleLessons.length} уроков · порядок {module.order}
+                    </p>
+                    <span className="action-link">Открыть</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </details>
+
+          <details className="content-disclosure">
+            <summary>Показать примеры уроков и проверок</summary>
+            <div className="content-disclosure-body stack">
+              <div className="grid">
+                {previewLessons.slice(0, 4).map((lesson) => (
+                  <Link className="card card-link" key={lesson.id} to={`/lessons/${lesson.id}`}>
+                    <p className="chip">
+                      {lesson.trackId === "cyprus_reality" ? "Cyprus Reality" : lesson.difficulty.toUpperCase()}
+                    </p>
+                    <h3>
+                      {lesson.order}. {lesson.title}
+                    </h3>
+                    <p>{lesson.objective}</p>
+                    <p className="muted">
+                      {lesson.estimatedMinutes} min · модуль {getModuleById(lesson.moduleId)?.title ?? lesson.moduleId}
+                    </p>
+                    <span className="action-link">Открыть урок</span>
+                  </Link>
+                ))}
+              </div>
+              <div className="grid">
+                {previewQuizzes.slice(0, 4).map((quiz) => (
+                  <Link className="card card-link" key={quiz.id} to="/quiz">
+                    <p className="chip">{quiz.difficulty.toUpperCase()}</p>
+                    <h3>{quiz.question}</h3>
+                    <p>{quiz.explanation}</p>
+                    <p className="muted">
+                      {quiz.trackId === "cyprus_reality" ? "Cyprus Reality" : "Подготовка к экзамену"}
+                    </p>
+                    <span className="action-link">Открыть квиз</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </details>
+
+          <details className="content-disclosure">
+            <summary>Показать культурные подборки</summary>
+            <div className="content-disclosure-body grid">
+              {previewHumorThemes.map((theme) => (
+                <Link className="card card-link track-card track-card-language" key={theme.title} to="/humor">
+                  <p className="chip">Подборка</p>
+                  <h3>{theme.title}</h3>
+                  <p>{theme.description}</p>
+                  <p className="muted">{theme.count} материалов</p>
+                  <span className="action-link">Открыть</span>
+                </Link>
+              ))}
+            </div>
+          </details>
         </div>
       </section>
     </div>

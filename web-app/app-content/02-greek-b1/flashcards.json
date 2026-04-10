@@ -2532,5 +2532,73 @@
     "sourceStatus": "editorial",
     "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником.",
     "transliteration": "kalo' spi'ti"
+  },
+  {
+    "id": "gr_card_149",
+    "trackId": "greek_b1",
+    "front": "ταυτότητα",
+    "back": "удостоверение личности",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_002",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
+  },
+  {
+    "id": "gr_card_150",
+    "trackId": "greek_b1",
+    "front": "αίτηση με σωστή διεύθυνση",
+    "back": "заявление с правильным адресом",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_002",
+      "skill:reading",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
+  },
+  {
+    "id": "gr_card_151",
+    "trackId": "greek_b1",
+    "front": "τόπος διαμονής",
+    "back": "место проживания",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_007",
+      "skill:vocabulary",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
+  },
+  {
+    "id": "gr_card_152",
+    "trackId": "greek_b1",
+    "front": "Η οδός είναι Δημοκρατίας",
+    "back": "улица называется Демократии",
+    "tags": [
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_007",
+      "skill:reading",
+      "level:a2",
+      "status:seed"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционная карточка для повторения языка; служит учебной опорой и не считается отдельным нормативным источником."
   }
 ]

@@ -76,6 +76,20 @@ jobs:
           NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.site_url }}
         run: npm run build:pages
 
+      - name: Verify exported Pages artifact
+        working-directory: web-app
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.site_url }}
+        run: npm run test:pages:artifacts:run
+
+      - name: Pages browser smoke
+        working-directory: web-app
+        env:
+          E2E_PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          E2E_PAGES_SKIP_BUILD: "1"
+        run: npm run test:e2e:pages
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
         with:

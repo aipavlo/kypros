@@ -74,6 +74,36 @@ async function clickByText(page: Page, text: string) {
   assert.equal(clicked, true, `Expected clickable element with text: ${text}`);
 }
 
+async function getComputedPosition(page: Page, selector: string) {
+  await page.waitForSelector(selector);
+  return page.$eval(selector, (element) => getComputedStyle(element).position);
+}
+
+async function assertViewportHasNoHorizontalOverflow(page: Page, selector: string) {
+  const overflowingElements = await page.$$eval(selector, (elements) =>
+    elements
+      .map((element) => {
+        const htmlElement = element as HTMLElement;
+        const rect = htmlElement.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const overflowsViewport = rect.right > viewportWidth + 1 || rect.left < -1;
+        const overflowsOwnBox = htmlElement.scrollWidth > htmlElement.clientWidth + 1;
+
+        if (!overflowsViewport && !overflowsOwnBox) {
+          return null;
+        }
+
+        return {
+          className: htmlElement.className,
+          text: htmlElement.textContent?.trim().slice(0, 80) ?? ""
+        };
+      })
+      .filter(Boolean)
+  );
+
+  assert.deepEqual(overflowingElements, []);
+}
+
 async function getPrimaryProgressLabel(page: Page) {
   return page.$$eval(".hero-gamification-card strong", (elements) =>
     elements[0]?.textContent?.trim() ?? ""
@@ -87,9 +117,12 @@ test("pages-mode smoke keeps hash dashboard to lesson flow stable", async () => 
   try {
     await gotoHashPath(page, "/dashboard");
     await waitForText(page, "Ваш следующий шаг уже готов");
-    await waitForText(page, "Продолжить");
+    await waitForText(page, "Открыть лёгкий старт");
 
-    await clickByText(page, "Продолжить");
+    await clickByText(page, "Открыть лёгкий старт");
+    await waitForText(page, "Открыть следующий урок");
+
+    await clickByText(page, "Открыть следующий урок");
     await waitForText(page, "Материал изучен");
 
     await clickByText(page, "Материал изучен");
@@ -135,6 +168,57 @@ test("pages-mode keeps hash deep links and local progress stable across reload",
     await page.reload({ waitUntil: "networkidle2" });
     await waitForText(page, "Ваш следующий шаг уже готов");
     assert.match(await getPrimaryProgressLabel(page), /^1 \/ \d+$/);
+  } finally {
+    await closeIsolatedPage(context);
+    await browser.close();
+  }
+});
+
+test("pages-mode keeps sticky study surfaces only on desktop and releases them on mobile", async () => {
+  const browser = await launchBrowser();
+  const { context, page } = await createIsolatedPage(browser);
+
+  try {
+    await gotoHashPath(page, `/flashcards?track=greek_b1&module=gr_b1_core_grammar&lesson=${GREEK_LESSON_ID}&source=lesson&returnTo=${GREEK_LESSON_ID}`);
+    await waitForText(page, "Быстрое повторение по греческому");
+    assert.equal(await getComputedPosition(page, ".study-sticky-panel"), "sticky");
+
+    await page.setViewport({ width: 390, height: 844 });
+    await page.reload({ waitUntil: "networkidle2" });
+    await waitForText(page, "Быстрое повторение по греческому");
+    assert.equal(await getComputedPosition(page, ".study-sticky-panel"), "static");
+
+    await gotoHashPath(page, "/humor");
+    await waitForText(page, "Подборка для разбора");
+    assert.equal(await getComputedPosition(page, ".humor-detail-panel"), "static");
+  } finally {
+    await closeIsolatedPage(context);
+    await browser.close();
+  }
+});
+
+test("pages-mode keeps pill and chip surfaces inside the viewport on narrow mobile widths", async () => {
+  const browser = await launchBrowser();
+  const { context, page } = await createIsolatedPage(browser);
+
+  try {
+    await page.setViewport({ width: 390, height: 844 });
+
+    await gotoHashPath(page, "/lessons?stage=a1&module=gr_b1_core_grammar");
+    await waitForText(page, "Языковая программа Greek Core");
+    await assertViewportHasNoHorizontalOverflow(page, ".stage-chip, .meta-pill, .badge-chip, .source-pill");
+
+    await gotoHashPath(page, `/flashcards?track=greek_b1&module=gr_b1_core_grammar&lesson=${GREEK_LESSON_ID}&source=lesson&returnTo=${GREEK_LESSON_ID}`);
+    await waitForText(page, "Быстрое повторение по греческому");
+    await assertViewportHasNoHorizontalOverflow(page, ".stage-chip, .meta-pill, .flashcard-state-pill, .chip");
+
+    await gotoHashPath(page, "/quiz?mode=mode_greek_a1&module=gr_b1_core_grammar&lesson=gr_lesson_022&source=lesson");
+    await waitForText(page, "Что открыть первым");
+    await assertViewportHasNoHorizontalOverflow(page, ".meta-pill, .badge-chip, .chip");
+
+    await gotoHashPath(page, "/humor");
+    await waitForText(page, "Подборка для разбора");
+    await assertViewportHasNoHorizontalOverflow(page, ".humor-filter-chip, .meta-pill, .chip");
   } finally {
     await closeIsolatedPage(context);
     await browser.close();

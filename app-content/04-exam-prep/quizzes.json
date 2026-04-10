@@ -4617,5 +4617,194 @@
     "difficulty": "a2",
     "sourceStatus": "editorial",
     "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_099",
+    "trackId": "exam_prep",
+    "question": "Что означает поле 'ταχυδρομικός κώδικας' в адресе?",
+    "options": [
+      "номер паспорта",
+      "почтовый индекс",
+      "номер квартиры",
+      "место рождения"
+    ],
+    "correctAnswer": "почтовый индекс",
+    "explanation": "В адресных данных 'ταχυδρομικός κώδικας' означает почтовый индекс.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_home_address",
+      "lesson:gr_lesson_012",
+      "quiz:mini",
+      "skill:reading",
+      "level:a1",
+      "context:documents",
+      "status:seed"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_100",
+    "trackId": "exam_prep",
+    "question": "Какой вопрос лучше всего подходит, если нужно узнать цену?",
+    "options": [
+      "Πού μένεις;",
+      "Πόσο κάνει;",
+      "Τι ώρα είναι;",
+      "Πώς σε λένε;"
+    ],
+    "correctAnswer": "Πόσο κάνει;",
+    "explanation": "Фраза 'Πόσο κάνει;' нужна в магазине или на рынке, когда ты спрашиваешь цену.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_016",
+      "quiz:mini",
+      "skill:speaking",
+      "level:a1",
+      "context:daily_life",
+      "status:seed"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_101",
+    "trackId": "exam_prep",
+    "question": "Какая фраза подходит для вежливого заказа в кафе?",
+    "options": [
+      "Στρίψτε αριστερά",
+      "Θα ήθελα έναν χυμό",
+      "Η διεύθυνσή μου είναι...",
+      "Έχω ραντεβού στις δέκα"
+    ],
+    "correctAnswer": "Θα ήθελα έναν χυμό",
+    "explanation": "Для простого вежливого заказа на старте лучше всего работает модель 'Θα ήθελα ...'.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_food_shopping",
+      "lesson:gr_lesson_017",
+      "quiz:mini",
+      "skill:speaking",
+      "level:a1",
+      "context:daily_life",
+      "status:seed"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_102",
+    "trackId": "exam_prep",
+    "question": "Что означает фраза 'Στρίψτε αριστερά';",
+    "options": [
+      "Идите прямо",
+      "Поверните налево",
+      "Остановка рядом",
+      "Где автобус?"
+    ],
+    "correctAnswer": "Поверните налево",
+    "explanation": "Это одна из базовых реплик для направления в городе.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_city_transport",
+      "lesson:gr_lesson_019",
+      "quiz:mini",
+      "skill:reading",
+      "level:a1",
+      "context:transport",
+      "status:seed"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_103",
+    "trackId": "exam_prep",
+    "question": "Какой ответ лучше всего подходит для короткой самопрезентации?",
+    "options": [
+      "Με λένε Άννα",
+      "Πόσο κάνει;",
+      "Χρειάζομαι βεβαίωση κατοικίας",
+      "Στρίψτε δεξιά"
+    ],
+    "correctAnswer": "Με λένε Άννα",
+    "explanation": "Для первого everyday contact полезно сразу держать в голове короткую модель самопрезентации.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_daily_life",
+      "lesson:gr_lesson_001",
+      "quiz:mini",
+      "skill:speaking",
+      "level:a1",
+      "context:daily_life",
+      "status:seed"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_104",
+    "trackId": "exam_prep",
+    "question": "Как лучше всего попросить запись на приём в сервисе?",
+    "options": [
+      "Θέλω να κλείσω ραντεβού",
+      "Μένω στη Λάρνακα",
+      "Θα ήθελα έναν χυμό",
+      "Πηγαίνετε ευθεία"
+    ],
+    "correctAnswer": "Θέλω να κλείσω ραντεβού",
+    "explanation": "Эта фраза нужна для старта service-scenario: запись, визит и подтверждение времени.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_documents_services",
+      "lesson:gr_lesson_029",
+      "quiz:mini",
+      "skill:speaking",
+      "level:a2",
+      "context:services",
+      "status:seed"
+    ],
+    "difficulty": "a2",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
+  },
+  {
+    "id": "quiz_gr_105",
+    "trackId": "exam_prep",
+    "question": "Что чаще всего означает поле 'Όνομα' в короткой анкете?",
+    "options": [
+      "адрес",
+      "индекс",
+      "имя",
+      "подпись"
+    ],
+    "correctAnswer": "имя",
+    "explanation": "В базовой форме поле 'Όνομα' означает имя и относится к самым первым данным, которые нужно узнать без паузы.",
+    "tags": [
+      "track:exam_prep",
+      "track:greek_b1",
+      "module:gr_b1_exam_reading",
+      "lesson:gr_lesson_021",
+      "quiz:mini",
+      "skill:reading",
+      "level:a1",
+      "context:documents",
+      "status:seed"
+    ],
+    "difficulty": "a1",
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный учебный вопрос; подходит для тренировки и самопроверки. Изменяемые факты и процедуры нужно перепроверять отдельно."
   }
 ]

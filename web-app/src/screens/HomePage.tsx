@@ -13,7 +13,7 @@ import {
   getTrackCycleSummary,
   isModuleCompleted
 } from "@/src/content/progress";
-import { LessonPreviewCard, StatCard } from "@/src/components/shared-ui";
+import { ActionCard, LessonPreviewCard } from "@/src/components/shared-ui";
 
 function getStepDurationLabel(
   kind: "lesson" | "flashcards" | "quiz" | "next_module" | "done",
@@ -156,37 +156,32 @@ export function HomePage(props: HomePageProps) {
     props.passedModuleQuizIds.length === 0 &&
     reviewSummaries.length === 0;
   const currentLevelLabel = getCurrentLevelLabel(completedGreekA1Lessons, nextGreekModule?.id);
-  const nextCheckpointLessons =
-    completedGreekA1Lessons < 6
-      ? Math.max(6 - completedGreekA1Lessons, 0)
-      : Math.max(12 - completedGreekA1Lessons, 0);
   const nextStepCard = isNewUser
     ? {
         status: "Новый старт",
         title: continueA1Lesson ? `${continueA1Lesson.order}. ${continueA1Lesson.title}` : "Первый шаг",
         description:
-          "Начни с одного короткого урока, а дальше маршрут сам поведёт к карточкам и мини-проверке.",
+          "Лучше идти через Лёгкий старт: один урок, затем карточки и мини-проверка без ручного выбора режимов.",
         duration: `${continueA1Lesson?.estimatedMinutes ?? 7} минут`,
-        level: "Для новичка",
-        result: "После шага появится понятный следующий переход",
-        ctaLabel: "Продолжить",
-        ctaTo: continueA1Lesson ? `/lessons/${continueA1Lesson.id}` : "/easy-start",
-        secondaryLabel: "Открыть учёбу",
-        secondaryTo: "/lessons"
+        level: "Первый заход",
+        result: "Первый полезный шаг закроется без лишних развилок",
+        ctaLabel: "Открыть лёгкий старт",
+        ctaTo: "/easy-start",
+        secondaryLabel: continueA1Lesson ? "Сразу к первому уроку" : "Открыть программу",
+        secondaryTo: continueA1Lesson ? `/lessons/${continueA1Lesson.id}?source=easy_start` : "/lessons"
       }
     : topWeakModules[0] && reviewPlan[0]
       ? {
           status: "Пора повторить",
-          title: reviewPlan[0].moduleTitle ?? topReviewSummary?.title ?? "Повторение ошибок",
-          description:
-            "Здесь уже собран короткий путь назад в слабую тему: урок, карточки и повтор ошибок.",
+          title: reviewPlan[0].packTitle,
+          description: reviewPlan[0].packSummary,
           duration: getStepDurationLabel("quiz", true),
           level: "Повторение",
-          result: `${totalWrongQuestions} вопросов ждут повтора`,
-          ctaLabel: "Повторить",
-          ctaTo: reviewPlan[0].lessonLink ?? reviewPlan[0].retryLink,
-          secondaryLabel: "Открыть проверку",
-          secondaryTo: topReviewSummary ? `/quiz?mode=${topReviewSummary.modeId}` : "/quiz"
+          result: "Сначала quick return, потом full lesson только если тема всё ещё шатается",
+          ctaLabel: "Открыть quick return",
+          ctaTo: reviewPlan[0].retryLink,
+          secondaryLabel: "Открыть full lesson",
+          secondaryTo: reviewPlan[0].lessonLink ?? (topReviewSummary ? `/quiz?mode=${topReviewSummary.modeId}` : "/quiz")
         }
       : nextGreekAction
         ? {
@@ -215,6 +210,82 @@ export function HomePage(props: HomePageProps) {
               secondaryTo: "/lessons"
             }
           : null;
+  const quickReturnCards = isNewUser
+    ? [
+        {
+          actionLabel: "Открыть первый урок",
+          description: "Стартовый урок без каталога и без развилок между режимами.",
+          eyebrow: "Первый вход",
+          title: `${continueA1Lesson?.estimatedMinutes ?? 7} минут на первый шаг`,
+          to: continueA1Lesson ? `/lessons/${continueA1Lesson.id}` : "/easy-start"
+        },
+        {
+          actionLabel: nextCyprusLesson ? "Открыть урок по Кипру" : "Открыть программу",
+          description: nextCyprusLesson
+            ? `${nextCyprusLesson.order}. ${nextCyprusLesson.title}`
+            : "Отдельный вход в программу по Кипру, если нужен не язык, а страна и экзаменационный контекст.",
+          eyebrow: "Отдельный трек",
+          title: "Один шаг по Cyprus Reality",
+          to: nextCyprusLesson ? `/lessons/${nextCyprusLesson.id}` : "/cyprus"
+        },
+        {
+          actionLabel: "Открыть сценарии",
+          description: "Короткие бытовые фразы и self-check, если нужен ultra-light вход перед первым уроком.",
+          eyebrow: "Практика",
+          title: "Быстрые сценарии everyday Greek",
+          to: "/phrasebook?pack=scenario_001_greet_introduce"
+        }
+      ]
+    : [
+        topReviewSummary
+          ? {
+              actionLabel: "Открыть quick return",
+              description:
+                reviewPlan[0]?.quickReturnDescription ??
+                `${topReviewSummary.wrongQuestionIds.length} вопросов уже сохранено для возврата в слабую тему.`,
+              eyebrow: "Quick return",
+              title: reviewPlan[0]?.quickReturnTitle ?? "Короткий corrective pass",
+              to: reviewPlan[0]?.retryLink ?? `/quiz?mode=${topReviewSummary.modeId}&retry=mistakes`
+            }
+          : {
+              actionLabel: "Открыть карточки",
+              description: "Низкий порог входа, если нужно просто вернуться в учебный ритм без полного каталога.",
+              eyebrow: "5-6 минут",
+              title: "Быстрое повторение карточками",
+              to: "/flashcards?track=greek_b1"
+            },
+        topReviewSummary && reviewPlan[0]?.lessonLink
+          ? {
+              actionLabel: "Открыть full lesson",
+              description: reviewPlan[0].fullLessonDescription,
+              eyebrow: "Full lesson",
+              title: reviewPlan[0].fullLessonTitle,
+              to: reviewPlan[0].lessonLink
+            }
+          : {
+              actionLabel: nextCyprusLesson ? "Открыть урок" : "Открыть программу",
+              description: nextCyprusLesson
+                ? `${nextCyprusLesson.order}. ${nextCyprusLesson.title}`
+                : "Отдельный короткий вход в Cyprus Reality без смешивания с основной языковой линией.",
+              eyebrow: "Отдельный трек",
+              title: "Один шаг по Cyprus Reality",
+              to: nextCyprusLesson ? `/lessons/${nextCyprusLesson.id}` : "/cyprus"
+            },
+        {
+          actionLabel: nextCyprusLesson ? "Открыть урок" : "Открыть программу",
+          description: nextCyprusLesson
+            ? `${nextCyprusLesson.order}. ${nextCyprusLesson.title}`
+            : "Отдельный короткий вход в Cyprus Reality без смешивания с основной языковой линией.",
+          eyebrow: "Отдельный трек",
+          title: "Один шаг по Cyprus Reality",
+          to: nextCyprusLesson ? `/lessons/${nextCyprusLesson.id}` : "/cyprus"
+        }
+      ];
+  const heroLead = isNewUser
+    ? "Если это первый заход, начни с одного короткого шага. Остальные разделы остаются ниже и не спорят с первым действием."
+    : topReviewSummary
+      ? "Главный полезный возврат уже собран: сначала один повтор, а уже потом полный каталог и соседние направления."
+      : "Сначала сделай одно ближайшее действие. Прогресс, повторение и соседние программы остаются ниже как вторичный слой.";
   const upcomingLessons = [
     ...greekLessons
       .filter((lesson) => !props.completedLessonIds.includes(lesson.id))
@@ -232,10 +303,7 @@ export function HomePage(props: HomePageProps) {
         <div className="hero-copy">
           <p className="eyebrow">Дашборд</p>
           <h1>Ваш следующий шаг уже готов</h1>
-          <p className="lead">
-            Сначала сделай одно ближайшее действие. Прогресс, повторение и следующие уроки остаются
-            ниже, чтобы не спорить с главным шагом.
-          </p>
+          <p className="lead">{heroLead}</p>
           <div className="actions-row">
             {nextStepCard ? (
               <Link className="primary-link-button" to={nextStepCard.ctaTo}>
@@ -278,40 +346,33 @@ export function HomePage(props: HomePageProps) {
               <span className="hero-gamification-label">После шага</span>
               <p className="hero-goal-text">{nextStepCard?.result ?? "Открой следующий учебный шаг"}</p>
             </div>
-            {nextStepCard ? (
-              <Link className="text-link-button dashboard-hero-link" to={nextStepCard.secondaryTo}>
-                {nextStepCard.secondaryLabel}
-              </Link>
-            ) : null}
           </div>
         </div>
       </section>
 
-      <section className="stats-grid dashboard-stats-grid">
-        <StatCard
-          label="Текущий уровень"
-          value={currentLevelLabel}
-          to="/lessons?stage=a1&source=dashboard"
-          hint="Открыть актуальный учебный модуль"
-        />
-        <StatCard
-          label="Сегодня"
-          value={nextStepCard?.duration ?? "1 следующий шаг"}
-          to={nextStepCard?.ctaTo ?? "/lessons"}
-          hint="Продолжить с ближайшего действия"
-        />
-        <StatCard
-          label="На повторении"
-          value={totalWrongQuestions > 0 ? `${totalWrongQuestions} вопросов` : "Пока пусто"}
-          to={topReviewSummary ? `/quiz?mode=${topReviewSummary.modeId}&retry=mistakes` : "/flashcards"}
-          hint={totalWrongQuestions > 0 ? "Повторить ошибки" : "Сначала пройди урок и мини-проверку"}
-        />
-        <StatCard
-          label="До рубежа"
-          value={nextCheckpointLessons > 0 ? `${nextCheckpointLessons} урока` : "Следующий уровень"}
-          to="/lessons?stage=a1&source=dashboard"
-          hint={nextCheckpointLessons > 0 ? "Осталось до следующего рубежа" : "A1-линия уже собрана"}
-        />
+      <section className="panel dashboard-micro-panel">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Короткий вход</p>
+            <h2>Если есть только 5-7 минут</h2>
+            <p className="section-copy">
+              Главный шаг уже собран выше. Ниже только два коротких входа: быстрый возврат в ритм и отдельный шаг по Cyprus Reality.
+            </p>
+          </div>
+        </div>
+
+        <div className="dashboard-micro-grid">
+          {quickReturnCards.map((card) => (
+            <ActionCard
+              actionLabel={card.actionLabel}
+              description={card.description}
+              eyebrow={card.eyebrow}
+              key={card.title}
+              title={card.title}
+              to={card.to}
+            />
+          ))}
+        </div>
       </section>
 
       <section className="panel">
@@ -369,31 +430,33 @@ export function HomePage(props: HomePageProps) {
           <div className="quiz-review-grid">
             {topReviewSummary ? (
               <article className="trail-helper-card">
-                <strong>Главный повтор</strong>
+                <strong>Remediation pack</strong>
                 <p>
-                  {topReviewSummary.title}: {topReviewSummary.lastPercent}% последний результат,{" "}
-                  {topReviewSummary.wrongQuestionIds.length} ошибок для повтора.
+                  {reviewPlan[0]?.packSummary ??
+                    `${topReviewSummary.title}: ${topReviewSummary.lastPercent}% последний результат, ${topReviewSummary.wrongQuestionIds.length} ошибок для повтора.`}
                 </p>
                 <div className="actions-row">
-                  <Link className="primary-link-button" to={reviewPlan[0]?.lessonLink ?? `/quiz?mode=${topReviewSummary.modeId}&retry=mistakes`}>
-                    Повторить
+                  <Link className="primary-link-button" to={reviewPlan[0]?.retryLink ?? `/quiz?mode=${topReviewSummary.modeId}&retry=mistakes`}>
+                    Открыть quick return
                   </Link>
-                  <Link className="secondary-link-button" to={`/quiz?mode=${topReviewSummary.modeId}`}>
-                    Открыть
-                  </Link>
+                  {reviewPlan[0]?.lessonLink ? (
+                    <Link className="secondary-link-button" to={reviewPlan[0].lessonLink}>
+                      Открыть full lesson
+                    </Link>
+                  ) : (
+                    <Link className="secondary-link-button" to={`/quiz?mode=${topReviewSummary.modeId}`}>
+                      Открыть проверку
+                    </Link>
+                  )}
                 </div>
               </article>
             ) : null}
 
-            {reviewPlan[0]?.moduleTitle ? (
+            {reviewPlan[0] ? (
               <article className="trail-helper-card">
-                <strong>Слабая тема</strong>
-                <p>{reviewPlan[0].moduleTitle}</p>
-                <div className="actions-row">
-                  <Link className="secondary-link-button" to={reviewPlan[0].lessonLink ?? "/lessons"}>
-                    Открыть
-                  </Link>
-                </div>
+                <strong>Quick return vs full lesson</strong>
+                <p>{reviewPlan[0].quickReturnDescription}</p>
+                <p>{reviewPlan[0].fullLessonDescription}</p>
               </article>
             ) : null}
 

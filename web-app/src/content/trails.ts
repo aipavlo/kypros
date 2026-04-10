@@ -276,6 +276,24 @@ export const trailDefinitions = [
     ]
   },
   {
+    id: "trail_home_setup_no_drama",
+    title: "Home Setup, No Drama",
+    subtitle: "Адрес, квартира и бытовые вопросы без лишней паники",
+    tone: "mixed",
+    icon: "map",
+    art: "road",
+    result: "После прохождения ты сможешь спокойно назвать адрес, заполнить базовые поля о проживании, объяснить бытовую проблему, подтвердить контакт и поддержать короткий разговор о районе и соседях.",
+    strategyNote: "Маршрут собран как practical settling-in layer: сначала адрес и формы, потом квартира и бытовые трения, а в конце короткий everyday small talk, чтобы переезд не ощущался набором несвязанных задач.",
+    focus: ["адрес", "проживание", "квартира", "контакт", "район"],
+    lessonIds: [
+      "gr_lesson_012",
+      "gr_lesson_021",
+      "gr_lesson_025",
+      "gr_lesson_037",
+      "gr_lesson_073"
+    ]
+  },
+  {
     id: "trail_no_english_pls",
     title: "No English, Please",
     subtitle: "Вежливо, спокойно и всё ещё по-гречески",
@@ -291,6 +309,24 @@ export const trailDefinitions = [
       "gr_lesson_040",
       "gr_lesson_041",
       "gr_lesson_042"
+    ]
+  },
+  {
+    id: "trail_doctor_pharmacy_follow_up",
+    title: "Doctor, Pharmacy, Follow-Up",
+    subtitle: "Самочувствие, запись и уточнения без выпадения в английский",
+    tone: "language",
+    icon: "compass",
+    art: "speech",
+    result: "После прохождения ты сможешь описать самочувствие, договориться о времени, понять короткий сервисный звонок и вежливо уточнить детали у врача, в аптеке или на регистрации.",
+    strategyNote: "Это low-pressure medical-and-service trail: он не требует идеального языка, а собирает самые частые фразы вокруг самочувствия, записи, follow-up вопросов и коротких бытовых реплик на слух.",
+    focus: ["врач", "аптека", "запись", "уточнения", "слух"],
+    lessonIds: [
+      "gr_lesson_026",
+      "gr_lesson_027",
+      "gr_lesson_037",
+      "gr_lesson_041",
+      "gr_lesson_054"
     ]
   },
   {
@@ -311,6 +347,24 @@ export const trailDefinitions = [
       "cy_lesson_004",
       "cy_lesson_009",
       "cy_lesson_030"
+    ]
+  },
+  {
+    id: "trail_kep_to_resolution",
+    title: "KEP to Resolution",
+    subtitle: "Не просто подать бумагу, а довести вопрос до ясности",
+    tone: "mixed",
+    icon: "document",
+    art: "stamp",
+    result: "После прохождения ты сможешь пройти путь от формы и записи до уточнения требований, справок и сроков в KEP и других сервисах, не теряясь в следующем шаге.",
+    strategyNote: "Этот маршрут продолжает service layer дальше стартового survival-mode: он нужен тем, кому мало просто записаться, а важно понять, что принести, что спросить и как дочитать инструкцию до конца.",
+    focus: ["KEP", "справки", "требования", "сроки", "инструкции"],
+    lessonIds: [
+      "gr_lesson_021",
+      "gr_lesson_029",
+      "gr_lesson_037",
+      "gr_lesson_071",
+      "gr_lesson_072"
     ]
   },
   {

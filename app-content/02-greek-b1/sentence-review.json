@@ -1,0 +1,282 @@
+[
+  {
+    "id": "gr_sentence_review_001",
+    "trackId": "greek_b1",
+    "moduleId": "gr_b1_daily_life",
+    "lessonId": "gr_lesson_001",
+    "title": "Приветствие и личная информация",
+    "focus": "Собрать короткую самопрезентацию из рабочих фраз, а не повторять отдельные слова.",
+    "difficulty": "a1",
+    "exercises": [
+      {
+        "id": "gr_sentence_review_001_a",
+        "type": "cloze",
+        "prompt": "Γεια σας. Με λένε ____.",
+        "translation": "Здравствуйте. Меня зовут ...",
+        "answer": "Άννα",
+        "options": ["Άννα", "Λεμεσό", "καφέ"],
+        "note": "Сначала закрой имя, потом произнеси всю фразу целиком без паузы."
+      },
+      {
+        "id": "gr_sentence_review_001_b",
+        "type": "rebuild",
+        "prompt": "Собери фразу: Я живу в Лимассоле.",
+        "translation": "Я живу в Лимассоле.",
+        "answer": "Μένω στη Λεμεσό",
+        "parts": ["Λεμεσό", "στη", "Μένω"],
+        "note": "Здесь важно удержать связку глагол + предлог + город."
+      },
+      {
+        "id": "gr_sentence_review_001_c",
+        "type": "cloze",
+        "prompt": "____ στη Λάρνακα.",
+        "translation": "Я живу в Ларнаке.",
+        "answer": "Μένω",
+        "options": ["Μένω", "Έχω", "Θέλω"],
+        "note": "Повтори с другим городом, чтобы модель стала переносимой."
+      }
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный sentence-review pack: короткая контекстная практика поверх lesson и flashcards без отдельного quiz engine."
+  },
+  {
+    "id": "gr_sentence_review_006",
+    "trackId": "greek_b1",
+    "moduleId": "gr_b1_daily_life",
+    "lessonId": "gr_lesson_006",
+    "title": "Семья, страна и язык",
+    "focus": "Удержать в одной связке страну, язык и базовую информацию о семье.",
+    "difficulty": "a1",
+    "exercises": [
+      {
+        "id": "gr_sentence_review_006_a",
+        "type": "cloze",
+        "prompt": "Είμαι από τη ____.",
+        "translation": "Я из России.",
+        "answer": "Ρωσία",
+        "options": ["Ρωσία", "Κύπρο", "Τετάρτη"],
+        "note": "Потом подставь свою страну и проговори фразу вслух."
+      },
+      {
+        "id": "gr_sentence_review_006_b",
+        "type": "rebuild",
+        "prompt": "Собери фразу: Я говорю по-русски и по-английски.",
+        "translation": "Я говорю по-русски и по-английски.",
+        "answer": "Μιλάω ρωσικά και αγγλικά",
+        "parts": ["αγγλικά", "Μιλάω", "και", "ρωσικά"],
+        "note": "Сначала собери опорный порядок, затем замени языки на свои."
+      },
+      {
+        "id": "gr_sentence_review_006_c",
+        "type": "cloze",
+        "prompt": "Έχω έναν γιο και μία ____.",
+        "translation": "У меня есть сын и дочь.",
+        "answer": "κόρη",
+        "options": ["κόρη", "κουζίνα", "αίτηση"],
+        "note": "Это полезно для короткого family small talk без длинного рассказа."
+      }
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный sentence-review pack: короткая контекстная практика поверх lesson и flashcards без отдельного quiz engine."
+  },
+  {
+    "id": "gr_sentence_review_011",
+    "trackId": "greek_b1",
+    "moduleId": "gr_b1_home_address",
+    "lessonId": "gr_lesson_011",
+    "title": "Дом и комнаты",
+    "focus": "Перевести лексику о жилье в короткие описательные предложения.",
+    "difficulty": "a1",
+    "exercises": [
+      {
+        "id": "gr_sentence_review_011_a",
+        "type": "cloze",
+        "prompt": "Μένω σε ____.",
+        "translation": "Я живу в квартире.",
+        "answer": "διαμέρισμα",
+        "options": ["διαμέρισμα", "νερό", "βράδυ"],
+        "note": "Проговори фразу и замени жильё на σπίτι, если хочешь вторую версию."
+      },
+      {
+        "id": "gr_sentence_review_011_b",
+        "type": "rebuild",
+        "prompt": "Собери фразу: В доме две комнаты.",
+        "translation": "В доме две комнаты.",
+        "answer": "Το σπίτι έχει δύο δωμάτια",
+        "parts": ["δύο", "δωμάτια", "Το σπίτι", "έχει"],
+        "note": "Эта модель помогает не застревать на отдельном словаре комнат."
+      },
+      {
+        "id": "gr_sentence_review_011_c",
+        "type": "cloze",
+        "prompt": "Η κουζίνα είναι ____.",
+        "translation": "Кухня маленькая.",
+        "answer": "μικρή",
+        "options": ["μικρή", "φτηνό", "αύριο"],
+        "note": "После этого подставь другое прилагательное и повтори весь шаблон."
+      }
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный sentence-review pack: короткая контекстная практика поверх lesson и flashcards без отдельного quiz engine."
+  },
+  {
+    "id": "gr_sentence_review_013",
+    "trackId": "greek_b1",
+    "moduleId": "gr_b1_time_routine",
+    "lessonId": "gr_lesson_013",
+    "title": "Дни недели и части дня",
+    "focus": "Собрать время и действие в одну рабочую фразу для расписания и бытовых ответов.",
+    "difficulty": "a1",
+    "exercises": [
+      {
+        "id": "gr_sentence_review_013_a",
+        "type": "cloze",
+        "prompt": "Τη ____ έχω μάθημα.",
+        "translation": "В понедельник у меня урок.",
+        "answer": "Δευτέρα",
+        "options": ["Δευτέρα", "Λάρνακα", "γάλα"],
+        "note": "Потом подставь другой день недели и повтори без перевода."
+      },
+      {
+        "id": "gr_sentence_review_013_b",
+        "type": "rebuild",
+        "prompt": "Собери фразу: Вечером я дома.",
+        "translation": "Вечером я дома.",
+        "answer": "Το βράδυ είμαι σπίτι",
+        "parts": ["είμαι", "σπίτι", "Το βράδυ"],
+        "note": "Здесь sentence-review связывает время суток с базовым состоянием."
+      },
+      {
+        "id": "gr_sentence_review_013_c",
+        "type": "cloze",
+        "prompt": "Το ____ δουλεύω.",
+        "translation": "Утром я работаю.",
+        "answer": "πρωί",
+        "options": ["πρωί", "νερό", "κόρη"],
+        "note": "После этого скажи ещё одну фразу про вечер или полдень."
+      }
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный sentence-review pack: короткая контекстная практика поверх lesson и flashcards без отдельного quiz engine."
+  },
+  {
+    "id": "gr_sentence_review_015",
+    "trackId": "greek_b1",
+    "moduleId": "gr_b1_food_shopping",
+    "lessonId": "gr_lesson_015",
+    "title": "Еда и продукты",
+    "focus": "Не просто узнавать продукты, а сразу собирать покупку и короткий заказ.",
+    "difficulty": "a1",
+    "exercises": [
+      {
+        "id": "gr_sentence_review_015_a",
+        "type": "cloze",
+        "prompt": "Θέλω ψωμί και ____.",
+        "translation": "Я хочу хлеб и воду.",
+        "answer": "νερό",
+        "options": ["νερό", "Τρίτη", "μπάνιο"],
+        "note": "Собери затем свой собственный мини-список покупки по этой модели."
+      },
+      {
+        "id": "gr_sentence_review_015_b",
+        "type": "rebuild",
+        "prompt": "Собери фразу: Я пью кофе утром.",
+        "translation": "Я пью кофе утром.",
+        "answer": "Πίνω καφέ το πρωί",
+        "parts": ["καφέ", "το πρωί", "Πίνω"],
+        "note": "Это уже не отдельное слово, а готовая короткая бытовая реплика."
+      },
+      {
+        "id": "gr_sentence_review_015_c",
+        "type": "cloze",
+        "prompt": "Το γάλα είναι στο ____.",
+        "translation": "Молоко в холодильнике.",
+        "answer": "ψυγείο",
+        "options": ["ψυγείο", "λεωφορείο", "βιβλίο"],
+        "note": "Используй ту же форму с другим продуктом, чтобы закрепить порядок слов."
+      }
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный sentence-review pack: короткая контекстная практика поверх lesson и flashcards без отдельного quiz engine."
+  },
+  {
+    "id": "gr_sentence_review_022",
+    "trackId": "greek_b1",
+    "moduleId": "gr_b1_core_grammar",
+    "lessonId": "gr_lesson_022",
+    "title": "Личные местоимения и глагол είμαι",
+    "focus": "Проверить, что форма глагола держится внутри реальной фразы, а не только в таблице.",
+    "difficulty": "a1",
+    "exercises": [
+      {
+        "id": "gr_sentence_review_022_a",
+        "type": "cloze",
+        "prompt": "Εγώ ____ από τη Ρωσία.",
+        "translation": "Я из России.",
+        "answer": "είμαι",
+        "options": ["είμαι", "έχω", "μένω"],
+        "note": "Это sentence-level проверка после grammar table, а не новый quiz."
+      },
+      {
+        "id": "gr_sentence_review_022_b",
+        "type": "rebuild",
+        "prompt": "Собери фразу: Мы друзья.",
+        "translation": "Мы друзья.",
+        "answer": "Είμαστε φίλοι",
+        "parts": ["φίλοι", "Είμαστε"],
+        "note": "Сначала собери, потом проговори ещё одну фразу с είσαι или είναι."
+      },
+      {
+        "id": "gr_sentence_review_022_c",
+        "type": "cloze",
+        "prompt": "Είσαι από την ____;",
+        "translation": "Ты с Кипра?",
+        "answer": "Κύπρο",
+        "options": ["Κύπρο", "κουζίνα", "Τετάρτη"],
+        "note": "Так grammar layer сразу переходит в рабочий вопрос."
+      }
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный sentence-review pack: короткая контекстная практика поверх lesson и flashcards без отдельного quiz engine."
+  },
+  {
+    "id": "gr_sentence_review_039",
+    "trackId": "greek_b1",
+    "moduleId": "gr_b1_work_society",
+    "lessonId": "gr_lesson_039",
+    "title": "Сравнение, предпочтения и простое мнение",
+    "focus": "Удержать сравнение и объяснение причины в одной короткой аргументирующей связке.",
+    "difficulty": "a2",
+    "exercises": [
+      {
+        "id": "gr_sentence_review_039_a",
+        "type": "cloze",
+        "prompt": "Προτιμώ το λεωφορείο γιατί είναι πιο ____.",
+        "translation": "Я предпочитаю автобус, потому что он дешевле.",
+        "answer": "φτηνό",
+        "options": ["φτηνό", "μικρή", "πρωί"],
+        "note": "Это уже sentence-review под opinion layer, а не только под словарь."
+      },
+      {
+        "id": "gr_sentence_review_039_b",
+        "type": "rebuild",
+        "prompt": "Собери фразу: Для меня это решение лучше.",
+        "translation": "Для меня это решение лучше.",
+        "answer": "Για μένα αυτή η λύση είναι καλύτερη",
+        "parts": ["καλύτερη", "Για μένα", "είναι", "αυτή η λύση"],
+        "note": "Полезно для коротких practical answers в service и daily-life теме."
+      },
+      {
+        "id": "gr_sentence_review_039_c",
+        "type": "cloze",
+        "prompt": "Νομίζω ότι αυτό είναι πιο ____.",
+        "translation": "Я думаю, что это практичнее.",
+        "answer": "πρακτικό",
+        "options": ["πρακτικό", "νερό", "κόρη"],
+        "note": "После этого попробуй заменить adjective и сохранить остальной каркас."
+      }
+    ],
+    "sourceStatus": "editorial",
+    "sourceNote": "Редакционный sentence-review pack: короткая контекстная практика поверх lesson и flashcards без отдельного quiz engine."
+  }
+]

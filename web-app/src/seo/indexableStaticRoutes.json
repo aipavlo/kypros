@@ -1,0 +1,37 @@
+[
+  {
+    "pathname": "/",
+    "changeFrequency": "weekly",
+    "priority": 1
+  },
+  {
+    "pathname": "/easy-start",
+    "changeFrequency": "monthly",
+    "priority": 0.8
+  },
+  {
+    "pathname": "/phrasebook",
+    "changeFrequency": "monthly",
+    "priority": 0.8
+  },
+  {
+    "pathname": "/lessons",
+    "changeFrequency": "monthly",
+    "priority": 0.9
+  },
+  {
+    "pathname": "/cyprus",
+    "changeFrequency": "monthly",
+    "priority": 0.9
+  },
+  {
+    "pathname": "/trails",
+    "changeFrequency": "monthly",
+    "priority": 0.8
+  },
+  {
+    "pathname": "/humor",
+    "changeFrequency": "monthly",
+    "priority": 0.8
+  }
+]

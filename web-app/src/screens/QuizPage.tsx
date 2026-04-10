@@ -12,7 +12,9 @@ import {
   quizModes
 } from "@/src/content/quizData";
 import {
+  getCompactRetryQuestionIds,
   getReviewPlan,
+  getRetrySelfCheckItems,
   type StoredQuizProgress
 } from "@/src/content/review";
 import { transliterateGreekToLatinWithStress } from "@/src/content/transliteration";
@@ -90,10 +92,19 @@ export function QuizPage(props: QuizPageProps) {
   const requestedModuleId = searchParams.get("module");
   const requestedLessonId = searchParams.get("lesson");
   const requestedSource = searchParams.get("source");
+  const requestedTrailId = searchParams.get("trail");
   const shouldRetryMistakes = searchParams.get("retry") === "mistakes";
-  const [retryQuestionIds, setRetryQuestionIds] = useState<string[] | null>(null);
-  const [wrongQuestionIds, setWrongQuestionIds] = useState<string[]>([]);
+  const shouldShowRetrySelfCheck = searchParams.get("self_check") !== "off";
   const activeMode = getQuizModeById(requestedModeId) ?? quizModes[0];
+  const storedModeProgress = props.quizProgress[activeMode.id];
+  const initialRetryQuestionIds = shouldRetryMistakes
+    ? getCompactRetryQuestionIds(
+        storedModeProgress?.wrongQuestionIds ?? [],
+        getQuizQuestionsByMode(activeMode.id)
+      )
+    : null;
+  const [retryQuestionIds, setRetryQuestionIds] = useState<string[] | null>(initialRetryQuestionIds);
+  const [wrongQuestionIds, setWrongQuestionIds] = useState<string[]>([]);
   const requestedLesson = requestedLessonId ? getLessonById(requestedLessonId) : undefined;
   const mutableCyprusFacts = getMutableCyprusFacts();
   const activeQuestions = useMemo(() => {
@@ -135,28 +146,19 @@ export function QuizPage(props: QuizPageProps) {
     setSelectedAnswer(null);
     setScore(0);
     setWrongQuestionIds([]);
-    setRetryQuestionIds(null);
-  }, [activeMode?.id, requestedModuleId, shouldRetryMistakes]);
-
-  useEffect(() => {
-    if (!shouldRetryMistakes) {
-      return;
-    }
-
-    const storedWrongIds = props.quizProgress[activeMode.id]?.wrongQuestionIds ?? [];
-
-    if (storedWrongIds.length === 0) {
-      return;
-    }
-
-    setRetryQuestionIds(storedWrongIds);
-  }, [activeMode.id, props.quizProgress, shouldRetryMistakes]);
+    setRetryQuestionIds(initialRetryQuestionIds);
+  }, [activeMode?.id, requestedModuleId, shouldRetryMistakes, initialRetryQuestionIds]);
 
   const activeQuiz = activeQuestions[activeIndex];
   const isAnswered = selectedAnswer !== null;
   const isFinished = activeIndex >= activeQuestions.length;
   const isRetryMode = retryQuestionIds !== null;
-  const storedModeProgress = props.quizProgress[activeMode.id];
+  const retrySelfCheckItems = isRetryMode
+    ? getRetrySelfCheckItems(
+        storedModeProgress?.wrongQuestionIds ?? wrongQuestionIds,
+        getQuizQuestionsByMode(activeMode.id)
+      )
+    : [];
   const requestedModule = requestedModuleId ? getModuleById(requestedModuleId) : undefined;
   const isLessonFlow = requestedSource === "lesson" && Boolean(requestedLessonId);
   const requestedModuleStageId =
@@ -208,11 +210,25 @@ export function QuizPage(props: QuizPageProps) {
           requestedModuleStageId
         )
       : false;
+  const currentReviewPlan = storedModeProgress
+    ? getReviewPlan(props.quizProgress, 2).find((item) => item.modeId === activeMode.id) ??
+      getReviewPlan(props.quizProgress, 2)[0] ??
+      null
+    : null;
 
   const progressLabel = useMemo(() => {
     return `${Math.min(activeIndex + 1, activeQuestions.length)} / ${activeQuestions.length}`;
   }, [activeIndex, activeQuestions.length]);
-  const lessonBackLink = requestedLessonId ? `/lessons/${requestedLessonId}${requestedSource ? `?source=${requestedSource}` : ""}` : "/lessons";
+  const lessonBackLink = requestedLessonId
+    ? `/lessons/${requestedLessonId}?${new URLSearchParams(
+        Object.fromEntries(
+          [
+            requestedSource ? ["source", requestedSource] : null,
+            requestedTrailId ? ["trail", requestedTrailId] : null
+          ].filter((entry): entry is [string, string] => Boolean(entry))
+        )
+      ).toString()}`
+    : "/lessons";
 
   function selectMode(modeId: string) {
     setRetryQuestionIds(null);
@@ -297,7 +313,7 @@ export function QuizPage(props: QuizPageProps) {
       return;
     }
 
-    setRetryQuestionIds(questionIds);
+    setRetryQuestionIds(getCompactRetryQuestionIds(questionIds, getQuizQuestionsByMode(activeMode.id)));
     setActiveIndex(0);
     setSelectedAnswer(null);
     setScore(0);
@@ -361,9 +377,13 @@ export function QuizPage(props: QuizPageProps) {
         <section className="panel page-banner">
           <div className="section-head">
             <div>
-              <p className="eyebrow">Режим</p>
-              <h2>{activeMode.title}</h2>
-              <p className="section-copy">{activeMode.description}</p>
+              <p className="eyebrow">{isRetryMode ? "Коррекция" : "Режим"}</p>
+              <h2>{isRetryMode ? "Коррекция завершена" : activeMode.title}</h2>
+              <p className="section-copy">
+                {isRetryMode
+                  ? "Это был короткий повтор только по слабым местам, без полного прохода режима."
+                  : activeMode.description}
+              </p>
             </div>
             <span className="meta-pill">{activeQuestions.length} вопросов</span>
           </div>
@@ -393,10 +413,12 @@ export function QuizPage(props: QuizPageProps) {
         </section>
 
         <section className="panel">
-          <p className="eyebrow">Готово</p>
-          <h2>Результат</h2>
+          <p className="eyebrow">{isRetryMode ? "Коррекция" : "Готово"}</p>
+          <h2>{isRetryMode ? "Повтор слабых мест" : "Результат"}</h2>
           <p className="lead">
-            Правильных ответов: {score} из {activeQuestions.length}.
+            {isRetryMode
+              ? `Это короткий повтор только по слабым вопросам: ${score} из ${activeQuestions.length} правильных.`
+              : `Правильных ответов: ${score} из ${activeQuestions.length}.`}
           </p>
           <p className="result-score">{percent}%</p>
           {requestedModuleId || storedModeProgress ? (
@@ -429,7 +451,7 @@ export function QuizPage(props: QuizPageProps) {
               ) : null}
               {storedModeProgress ? (
                 <article className="trail-helper-card">
-                  <strong>Лучший / последний результат</strong>
+                  <strong>Лучшая / последняя коррекция</strong>
                   <p>
                     {storedModeProgress.bestPercent}% лучший · {storedModeProgress.lastPercent}% последний
                   </p>
@@ -443,15 +465,40 @@ export function QuizPage(props: QuizPageProps) {
               ) : null}
               {activeReviewPlan ? (
                 <article className="trail-helper-card">
-                  <strong>Что повторить дальше</strong>
-                  <p>
-                    {activeReviewPlan.moduleTitle
-                      ? `${activeReviewPlan.moduleTitle} · ${activeReviewPlan.wrongQuestionCount} ошибок`
-                      : `${activeReviewPlan.modeTitle} · ${activeReviewPlan.wrongQuestionCount} ошибок`}
-                  </p>
-                  {activeReviewPlan.weakSkills.length > 0 ? (
-                    <p>Слабые навыки: {activeReviewPlan.weakSkills.join(" · ")}</p>
+                  <strong>Quick return</strong>
+                  <p>{activeReviewPlan.quickReturnDescription}</p>
+                  <div className="actions-row">
+                    <Link className="secondary-link-button" to={activeReviewPlan.retryLink}>
+                      Открыть коррекцию
+                    </Link>
+                  </div>
+                </article>
+              ) : null}
+              {activeReviewPlan ? (
+                <article className="trail-helper-card">
+                  <strong>Full lesson revisit</strong>
+                  <p>{activeReviewPlan.fullLessonDescription}</p>
+                  {activeReviewPlan.lessonLink ? (
+                    <div className="actions-row">
+                      <Link className="secondary-link-button" to={activeReviewPlan.lessonLink}>
+                        Открыть full lesson
+                      </Link>
+                      {activeReviewPlan.flashcardsLink ? (
+                        <Link className="secondary-link-button" to={activeReviewPlan.flashcardsLink}>
+                          Открыть карточки темы
+                        </Link>
+                      ) : null}
+                    </div>
                   ) : null}
+                </article>
+              ) : null}
+              {wrongQuestionIds.length > 0 ? (
+                <article className="trail-helper-card">
+                  <strong>Ближайшая self-check</strong>
+                  <p>
+                    Вместо полного дубля открой короткую self-check по {Math.min(wrongQuestionIds.length, 3)} слабым вопросам,
+                    а потом уже переходи в суженный повтор.
+                  </p>
                 </article>
               ) : null}
             </div>
@@ -476,7 +523,7 @@ export function QuizPage(props: QuizPageProps) {
             )}
             {storedModeProgress?.wrongQuestionIds?.length ? (
               <button className="secondary-button" onClick={retryMistakes} type="button">
-                Повторить только ошибки
+                Открыть коррекцию
               </button>
             ) : null}
             {!isLessonFlow && activeReviewPlan?.lessonLink ? (
@@ -552,13 +599,13 @@ export function QuizPage(props: QuizPageProps) {
           <div className="meta-inline">
             <span className="meta-pill">Рекомендуемо: {activeMode.uiHints.recommendedQuestionCount} вопросов</span>
             <span className="meta-pill">{activeQuestions.length} доступно в банке</span>
-            {isRetryMode ? <span className="meta-pill meta-pill-success">Повтор ошибок</span> : null}
+            {isRetryMode ? <span className="meta-pill meta-pill-success">Коррекция</span> : null}
           </div>
 
           {storedModeProgress ? (
             <div className="quiz-review-grid">
               <article className="trail-helper-card">
-                <strong>Последний результат</strong>
+                <strong>Лучшая / последняя коррекция</strong>
                 <p>{storedModeProgress.lastPercent}% · {storedModeProgress.attempts} попыток всего</p>
               </article>
               {storedModeProgress.weakModules.length > 0 ? (
@@ -573,11 +620,17 @@ export function QuizPage(props: QuizPageProps) {
               ) : null}
               {storedModeProgress.wrongQuestionIds.length > 0 ? (
                 <article className="trail-helper-card">
-                  <strong>Повтор ошибок</strong>
-                  <p>{storedModeProgress.wrongQuestionIds.length} вопросов сохранено для повтора ошибок.</p>
+                  <strong>Ближайшая self-check</strong>
+                  <p>
+                    {Math.min(storedModeProgress.wrongQuestionIds.length, 3)} вопроса попадут в короткую self-check,
+                    чтобы повтор не был один в один.
+                  </p>
                   <div className="actions-row">
-                    <Link className="secondary-link-button" to={`/quiz?mode=${activeMode.id}&retry=mistakes`}>
-                      Открыть только ошибки
+                    <Link
+                      className="secondary-link-button"
+                      to={`/quiz?mode=${activeMode.id}&retry=mistakes`}
+                    >
+                      Открыть self-check и коррекцию
                     </Link>
                   </div>
                 </article>
@@ -637,17 +690,28 @@ export function QuizPage(props: QuizPageProps) {
             </div>
 
             <div className="quiz-entry-actions">
-              {storedModeProgress?.wrongQuestionIds.length ? (
-                <Link className="action-card" to={`/quiz?mode=${activeMode.id}&retry=mistakes`}>
-                  <p className="chip">Быстрое действие</p>
-                  <h3>Повторить только ошибки</h3>
-                  <p>{storedModeProgress.wrongQuestionIds.length} вопросов уже сохранено для повтора.</p>
-                  <span className="action-link">Открыть повтор</span>
-                </Link>
-              ) : null}
-              {isLessonFlow ? (
-                <Link className="action-card" to={lessonBackLink}>
-                  <p className="chip">Маршрут урока</p>
+            {storedModeProgress?.wrongQuestionIds.length ? (
+              <Link className="action-card" to={`/quiz?mode=${activeMode.id}&retry=mistakes`}>
+                <p className="chip">Quick return</p>
+                <h3>Открыть compact retry</h3>
+                <p>
+                  {Math.min(storedModeProgress.wrongQuestionIds.length, 3)} слабых вопроса соберутся в короткий self-check,
+                  а не в полный дубль всей сессии.
+                </p>
+                <span className="action-link">Открыть коррекцию</span>
+              </Link>
+            ) : null}
+            {!isLessonFlow && currentReviewPlan?.lessonLink ? (
+              <Link className="action-card" to={currentReviewPlan.lessonLink}>
+                <p className="chip">Full lesson</p>
+                <h3>Открыть full lesson revisit</h3>
+                <p>{currentReviewPlan.fullLessonDescription}</p>
+                <span className="action-link">Открыть тему целиком</span>
+              </Link>
+            ) : null}
+            {isLessonFlow ? (
+              <Link className="action-card" to={lessonBackLink}>
+                <p className="chip">Маршрут урока</p>
                   <h3>Вернуться к уроку</h3>
                   <p>Проверка встроена в flow урока, поэтому назад возвращаться тоже должно быть легко.</p>
                   <span className="action-link">Открыть урок</span>
@@ -711,6 +775,27 @@ export function QuizPage(props: QuizPageProps) {
           </div>
 
           <p className="eyebrow">Текущий вопрос</p>
+          {isRetryMode && shouldShowRetrySelfCheck && retrySelfCheckItems.length > 0 ? (
+            <article className="info-note-card quiz-self-check-card">
+              <p className="eyebrow">Self-check</p>
+              <h3>Self-check before retry</h3>
+              <p>
+                Этот суженный повтор держится на {retrySelfCheckItems.length} слабых вопросах и
+                меняет ритм: сначала вспоминаешь правильную опору, потом проходишь коррекцию.
+              </p>
+              <div className="quiz-review-grid">
+                {retrySelfCheckItems.map((item) => (
+                  <article className="trail-helper-card" key={item.questionId}>
+                    <strong>{item.question}</strong>
+                    <p>Опора: {renderTextWithPronunciation(item.correctAnswer)}</p>
+                    <p>{renderTextWithPronunciation(item.explanation)}</p>
+                    {item.weakModuleTitle ? <p>Тема: {item.weakModuleTitle}</p> : null}
+                    {item.weakSkills.length > 0 ? <p>Навык: {item.weakSkills.join(" · ")}</p> : null}
+                  </article>
+                ))}
+              </div>
+            </article>
+          ) : null}
           <h2>{renderTextWithPronunciation(activeQuiz.question)}</h2>
 
           <div className="option-list">
@@ -750,6 +835,11 @@ export function QuizPage(props: QuizPageProps) {
 
           <div className="actions-row">
             <span className="muted">Текущий счёт: {score}</span>
+            {isRetryMode ? (
+              <span className="muted">
+                Суженный повтор: {activeQuestions.length} {activeQuestions.length === 1 ? "вопрос" : activeQuestions.length < 5 ? "вопроса" : "вопросов"}
+              </span>
+            ) : null}
             <button
               className="primary-button"
               disabled={!isAnswered}

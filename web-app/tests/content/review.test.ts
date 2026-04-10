@@ -1,7 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { getModulesByTrackAndDifficulty, getModulesByTrack } from "../../src/content/data.js";
-import { getReviewPlan, getReviewSummaries } from "../../src/content/review.js";
+import { getQuizQuestionsByMode } from "../../src/content/quizData.js";
+import {
+  getCompactRetryQuestionIds,
+  getReviewPlan,
+  getReviewSummaries,
+  getRetrySelfCheckItems
+} from "../../src/content/review.js";
 
 const greekModule = getModulesByTrackAndDifficulty("greek_b1", "a1")[0];
 const cyprusModule = getModulesByTrack("cyprus_reality")[0];
@@ -85,4 +91,30 @@ test("getReviewPlan builds direct retry links for greek and cyprus modules", () 
   assert.equal(plan[1].lessonLink, `/lessons?stage=a1&module=${greekModule.id}&source=quiz`);
   assert.equal(plan[1].flashcardsLink, `/flashcards?track=greek_b1&module=${greekModule.id}`);
   assert.equal(plan[1].retryLink, "/quiz?mode=mode_greek_a1&retry=mistakes");
+  assert.match(plan[1].packTitle, /Remediation pack:/);
+  assert.match(plan[1].quickReturnDescription, /короткий corrective pass|Короткий corrective pass/);
+  assert.match(plan[1].fullLessonDescription, /полный учебный путь/);
+});
+
+test("compact retry keeps only a short focused subset of wrong questions", () => {
+  const greekQuestions = getQuizQuestionsByMode("mode_greek_a1");
+  const compactIds = getCompactRetryQuestionIds(
+    ["quiz_gr_012", "quiz_gr_013", "quiz_gr_014", "quiz_gr_015"],
+    greekQuestions
+  );
+
+  assert.deepEqual(compactIds, ["quiz_gr_012", "quiz_gr_013", "quiz_gr_014"]);
+});
+
+test("retry self-check builds correction cards from saved weak questions", () => {
+  const greekQuestions = getQuizQuestionsByMode("mode_greek_a1");
+  const selfCheckItems = getRetrySelfCheckItems(
+    ["quiz_gr_012", "quiz_gr_014"],
+    greekQuestions
+  );
+
+  assert.equal(selfCheckItems.length, 2);
+  assert.match(selfCheckItems[0].question, /Как переводится форма|Что означает/);
+  assert.ok(selfCheckItems[0].correctAnswer.length > 0);
+  assert.ok(selfCheckItems[0].explanation.length > 0);
 });
