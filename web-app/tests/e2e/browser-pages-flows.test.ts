@@ -213,11 +213,11 @@ test("pages-mode keeps pill and chip surfaces inside the viewport on narrow mobi
     await assertViewportHasNoHorizontalOverflow(page, ".stage-chip, .meta-pill, .flashcard-state-pill, .chip");
 
     await gotoHashPath(page, "/quiz?mode=mode_greek_a1&module=gr_b1_core_grammar&lesson=gr_lesson_022&source=lesson");
-    await waitForText(page, "Что открыть первым");
+    await waitForText(page, "Текущий счёт: 0");
     await assertViewportHasNoHorizontalOverflow(page, ".meta-pill, .badge-chip, .chip");
 
     await gotoHashPath(page, "/humor");
-    await waitForText(page, "Подборка для разбора");
+    await waitForText(page, "Мемы, шутки и анекдоты как короткая учебная практика");
     await assertViewportHasNoHorizontalOverflow(page, ".humor-filter-chip, .meta-pill, .chip");
   } finally {
     await closeIsolatedPage(context);
