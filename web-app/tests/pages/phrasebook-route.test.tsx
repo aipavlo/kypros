@@ -10,15 +10,19 @@ test("phrasebook route keeps compact practical scenarios readable and tied back 
     element: <PhrasebookPage />
   });
 
-  assert.match(markup, /Практические фразы и бытовые сценарии без режима справочника/);
-  assert.match(markup, /Открытый сценарий/);
+  assert.match(markup, /Практические сценарии как guided mini-routes, а не как справочник/);
+  assert.match(markup, /Открытый mini-route/);
   assert.match(markup, /Заказать кофе/);
-  assert.match(markup, /Phrase pack/);
+  assert.match(markup, /Mini-route script/);
   assert.match(markup, /Self-check/);
   assert.match(markup, /Production prompt/);
+  assert.match(markup, /Как проходить practical scenario за 5-7 минут/);
+  assert.match(markup, /Выбери бытовую задачу и открой один компактный маршрут/);
+  assert.match(markup, /Если нужен похожий intent, а не новый большой раздел/);
+  assert.match(markup, /Открыть следующий mini-route/);
+  assert.match(markup, /Пройти этот mini-route/);
   assert.match(markup, /Открыть опорный урок/);
-  assert.match(markup, /Открыть связанный маршрут/);
   assert.match(markup, /scenario_006_coffee_order/);
   assert.match(markup, /lessons\/gr_lesson_015\?source=phrasebook&amp;pack=scenario_006_coffee_order/);
-  assert.ok(countClass(markup, "trail-catalog-card") >= 6);
+  assert.ok(countClass(markup, "trail-catalog-card") >= 5);
 });

@@ -40,6 +40,10 @@ export function TrailsPage(props: TrailsPageProps) {
   const selectedTrailId = searchParams.get("trail");
   const selectedTrail =
     trails.find((trail) => trail.id === selectedTrailId) ?? recommendedTrails[0] ?? trails[0];
+  const neighboringTrails = trails
+    .filter((trail) => trail.id !== selectedTrail.id && trail.tone === selectedTrail.tone)
+    .slice(0, 3);
+  const additionalTrails = trails.filter((trail) => trail.id !== selectedTrail.id).slice(0, 6);
 
   function getTrailLink(trailId: string) {
     return `/trails?trail=${trailId}`;
@@ -191,46 +195,84 @@ export function TrailsPage(props: TrailsPageProps) {
         </div>
       </section>
 
+      {neighboringTrails.length > 0 ? (
+        <section className="panel trails-catalog-panel">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Соседние маршруты</p>
+              <h2>Если нужен похожий маршрут, а не новый большой каталог</h2>
+              <p className="section-copy">
+                Сначала держим под рукой только несколько близких вариантов, чтобы не возвращать
+                пользователя в длинное сравнение всех маршрутов.
+              </p>
+            </div>
+          </div>
+
+          <div className="trail-catalog-grid">
+            {neighboringTrails.map((trail) => (
+              <Link
+                className={`trail-catalog-card trail-catalog-card-${trail.tone}`}
+                key={trail.id}
+                to={getTrailLink(trail.id)}
+              >
+                <div className="trail-catalog-top">
+                  <TrailBadge icon={trail.icon} label="Похожий маршрут" tone={trail.tone} />
+                  <span className="meta-pill meta-pill-success">{trail.percent}% пройдено</span>
+                </div>
+                <TrailMiniArt art={trail.art} tone={trail.tone} />
+                <h3>{trail.title}</h3>
+                <p className="trail-subtitle">{trail.subtitle}</p>
+                <p>{trail.result}</p>
+                <span className="action-link">Открыть рядом</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="panel trails-catalog-panel">
         <div className="section-head">
           <div>
             <p className="eyebrow">Полный каталог</p>
-            <h2>Все маршруты по цели</h2>
+            <h2>Все маршруты по цели открываются только по запросу</h2>
             <p className="section-copy">
               Полный каталог нужен, только если shortlist выше не подошёл или нужна более точная
-              тема.
+              тема. По умолчанию он остаётся свёрнутым, чтобы не спорить с открытым маршрутом.
             </p>
           </div>
         </div>
 
-        <div className="trail-catalog-grid">
-          {trails.map((trail, index) => (
-            <Link
-              className={`trail-catalog-card trail-catalog-card-${trail.tone}`}
-              key={trail.id}
-              to={getTrailLink(trail.id)}
-            >
-              <div className="trail-catalog-top">
-                <TrailBadge
-                  icon={trail.icon}
-                  label={`Маршрут ${index + 1}`}
-                  tone={trail.tone}
-                />
-                <span className="meta-pill meta-pill-success">{trail.percent}% пройдено</span>
-              </div>
-              <TrailMiniArt art={trail.art} tone={trail.tone} />
-              <h3>{trail.title}</h3>
-              <p className="trail-subtitle">{trail.subtitle}</p>
-              <p>{trail.result}</p>
-              <p className="muted">
-                {trail.completedCount} / {trail.lessons.length} уроков пройдено
-              </p>
-              <span className="action-link">
-                {trail.id === selectedTrail.id ? "Маршрут открыт" : "Открыть детали"}
-              </span>
-            </Link>
-          ))}
-        </div>
+        <details className="content-disclosure">
+          <summary>Показать полный каталог маршрутов</summary>
+          <div className="content-disclosure-body">
+            <div className="trail-catalog-grid">
+              {additionalTrails.map((trail, index) => (
+                <Link
+                  className={`trail-catalog-card trail-catalog-card-${trail.tone}`}
+                  key={trail.id}
+                  to={getTrailLink(trail.id)}
+                >
+                  <div className="trail-catalog-top">
+                    <TrailBadge
+                      icon={trail.icon}
+                      label={`Маршрут ${index + 1}`}
+                      tone={trail.tone}
+                    />
+                    <span className="meta-pill meta-pill-success">{trail.percent}% пройдено</span>
+                  </div>
+                  <TrailMiniArt art={trail.art} tone={trail.tone} />
+                  <h3>{trail.title}</h3>
+                  <p className="trail-subtitle">{trail.subtitle}</p>
+                  <p>{trail.result}</p>
+                  <p className="muted">
+                    {trail.completedCount} / {trail.lessons.length} уроков пройдено
+                  </p>
+                  <span className="action-link">Открыть детали</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </details>
       </section>
     </div>
   );

@@ -160,6 +160,10 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
   const sessionProgressPercent = cards.length > 0 ? Math.round((visitedCardCount / cards.length) * 100) : 0;
   const masteryProgressPercent = cards.length > 0 ? Math.round((knownCardCount / cards.length) * 100) : 0;
   const sessionScope = getSessionScope(cards, selectedTrack, requestedLesson?.title, activeModule?.title);
+  const compactSessionLabel =
+    visitedCardCount === 0
+      ? "Только начинаешь сессию"
+      : `${visitedCardCount} из ${cards.length} карточек уже просмотрено`;
   const lessonBackLink = requestedLessonId
     ? `/lessons/${requestedLessonId}?${new URLSearchParams(
         Object.fromEntries(
@@ -279,26 +283,28 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
           </div>
         </div>
 
-        <div className="stage-switcher" role="tablist" aria-label="Трек карточек">
-          <button
-            aria-selected={selectedTrack === "greek_b1"}
-            className={selectedTrack === "greek_b1" ? "stage-chip stage-chip-active" : "stage-chip"}
-            onClick={() => selectTrack("greek_b1")}
-            role="tab"
-            type="button"
-          >
-            Греческий язык
-          </button>
-          <button
-            aria-selected={selectedTrack === "cyprus_reality"}
-            className={selectedTrack === "cyprus_reality" ? "stage-chip stage-chip-active" : "stage-chip"}
-            onClick={() => selectTrack("cyprus_reality")}
-            role="tab"
-            type="button"
-          >
-            Cyprus Reality
-          </button>
-        </div>
+        {!isLessonFlow ? (
+          <div className="stage-switcher" role="tablist" aria-label="Трек карточек">
+            <button
+              aria-selected={selectedTrack === "greek_b1"}
+              className={selectedTrack === "greek_b1" ? "stage-chip stage-chip-active" : "stage-chip"}
+              onClick={() => selectTrack("greek_b1")}
+              role="tab"
+              type="button"
+            >
+              Греческий язык
+            </button>
+            <button
+              aria-selected={selectedTrack === "cyprus_reality"}
+              className={selectedTrack === "cyprus_reality" ? "stage-chip stage-chip-active" : "stage-chip"}
+              onClick={() => selectTrack("cyprus_reality")}
+              role="tab"
+              type="button"
+            >
+              Cyprus Reality
+            </button>
+          </div>
+        ) : null}
 
         <div className="study-layout flashcards-focus-layout">
           <div className="study-main-panel flashcards-main-column">
@@ -309,18 +315,12 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
                 <p>{sessionScope.description}</p>
               </article>
               <article className="flashcards-session-card">
-                <strong>По сессии</strong>
-                <p>{sessionProgressPercent}% пройдено</p>
+                <strong>Ритм сессии</strong>
+                <p>{compactSessionLabel}</p>
                 <div className="progress-rail progress-rail-compact">
                   <span className="progress-fill" style={{ width: `${sessionProgressPercent}%` }} />
                 </div>
-              </article>
-              <article className="flashcards-session-card">
-                <strong>По закреплению</strong>
                 <p>{masteryProgressPercent}% уже закреплено</p>
-                <div className="progress-rail progress-rail-compact">
-                  <span className="progress-fill" style={{ width: `${masteryProgressPercent}%` }} />
-                </div>
               </article>
             </div>
 
@@ -446,6 +446,13 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
                           : activeLoopAction?.title ?? "Продолжить"}
                     </Link>
                   )}
+                </div>
+                <div className="flashcards-correction-note">
+                  <strong>Correction loop</strong>
+                  <p>
+                    После карточек маршрут один: короткая self-check, потом quick return по ошибкам и
+                    только потом full lesson, если тема всё ещё шатается.
+                  </p>
                 </div>
               </article>
             ) : null}

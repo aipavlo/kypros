@@ -81,20 +81,14 @@ export function EasyStartPage(props: EasyStartPageProps) {
                 Открыть следующий урок
               </Link>
             ) : null}
-            <Link className="secondary-link-button" to="/lessons">
-              Вся программа Greek Core
-            </Link>
           </div>
           {nextLesson ? (
             <p className="easy-start-current-line">
               Сейчас: шаг {nextLessonIndex + 1} · {nextLesson.title}
             </p>
           ) : null}
-          <Link className="inline-link easy-start-secondary-link" to="/trails">
-            Если нужен не стартовый путь, а сценарий под задачу, открой готовые маршруты
-          </Link>
-          <Link className="inline-link easy-start-secondary-link" to="/phrasebook?pack=scenario_001_greet_introduce">
-            Если нужен быстрый бытовой сценарий, открой compact phrasebook layer
+          <Link className="inline-link easy-start-secondary-link" to="/lessons">
+            Нужен не короткий старт, а вся программа Greek Core
           </Link>
         </div>
       </section>
@@ -141,8 +135,8 @@ export function EasyStartPage(props: EasyStartPageProps) {
                 </div>
                 {isCurrent ? (
                   <div className="actions-row">
-                    <Link className="primary-link-button" to={getEasyStartLessonLink(lesson.id)}>
-                      Открыть следующий урок
+                    <Link className="secondary-link-button" to={getEasyStartLessonLink(lesson.id)}>
+                      Открыть этот шаг
                     </Link>
                   </div>
                 ) : null}

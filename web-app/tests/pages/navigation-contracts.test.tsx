@@ -15,10 +15,10 @@ test("EasyStartPage keeps one obvious next-step route while leaving the wider ca
   assert.match(markup, /Лёгкий старт/);
   assert.match(markup, /Открой один короткий шаг и не выбирай маршрут вручную/);
   assert.match(markup, /Открыть следующий урок/);
-  assert.match(markup, /Вся программа Greek Core/);
+  assert.match(markup, /Нужен не короткий старт, а вся программа Greek Core/);
   assert.match(markup, /Сейчас: шаг 1/);
-  assert.match(markup, /готовые маршруты/);
-  assert.equal(countClass(markup, "primary-link-button"), 2);
+  assert.match(markup, /Открыть этот шаг/);
+  assert.equal(countClass(markup, "primary-link-button"), 1);
 });
 
 test("TracksPage keeps route roles explicit between lessons, cyprus and quiz surfaces", () => {
@@ -51,6 +51,8 @@ test("TrailsPage keeps one selected trail actionable and preserves trail-context
   assert.match(markup, /Продолжить маршрут:/);
   assert.match(markup, /Открыть языковую программу/);
   assert.match(markup, /Открыть Cyprus Reality/);
+  assert.match(markup, /Если нужен похожий маршрут, а не новый большой каталог/);
+  assert.match(markup, /Показать полный каталог маршрутов/);
   assert.match(markup, /source=trail/);
   assert.equal(countClass(markup, "primary-link-button"), 2);
 });

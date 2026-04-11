@@ -215,6 +215,7 @@ export function QuizPage(props: QuizPageProps) {
       getReviewPlan(props.quizProgress, 2)[0] ??
       null
     : null;
+  const shouldShowFullModeCatalog = !isLessonFlow;
 
   const progressLabel = useMemo(() => {
     return `${Math.min(activeIndex + 1, activeQuestions.length)} / ${activeQuestions.length}`;
@@ -433,7 +434,7 @@ export function QuizPage(props: QuizPageProps) {
                   </p>
                 </article>
               ) : null}
-              {storedModeProgress?.weakModules.length ? (
+              {!isLessonFlow && storedModeProgress?.weakModules.length ? (
                 <article className="trail-helper-card">
                   <strong>Слабые модули</strong>
                   <p>
@@ -443,13 +444,13 @@ export function QuizPage(props: QuizPageProps) {
                   </p>
                 </article>
               ) : null}
-              {storedModeProgress?.weakSkills.length ? (
+              {!isLessonFlow && storedModeProgress?.weakSkills.length ? (
                 <article className="trail-helper-card">
                   <strong>Слабые навыки</strong>
                   <p>{storedModeProgress.weakSkills.join(" · ")}</p>
                 </article>
               ) : null}
-              {storedModeProgress ? (
+              {!isLessonFlow && storedModeProgress ? (
                 <article className="trail-helper-card">
                   <strong>Лучшая / последняя коррекция</strong>
                   <p>
@@ -463,20 +464,23 @@ export function QuizPage(props: QuizPageProps) {
                   <p>{moduleLoopAction.description}</p>
                 </article>
               ) : null}
-              {activeReviewPlan ? (
+              {!isLessonFlow && activeReviewPlan ? (
                 <article className="trail-helper-card">
-                  <strong>Quick return</strong>
-                  <p>{activeReviewPlan.quickReturnDescription}</p>
+                  <strong>Correction loop</strong>
+                  <p>{activeReviewPlan.packSummary}</p>
                   <div className="actions-row">
+                    <Link className="secondary-link-button" to={activeReviewPlan.selfCheckLink}>
+                      Шаг 1. Self-check
+                    </Link>
                     <Link className="secondary-link-button" to={activeReviewPlan.retryLink}>
-                      Открыть коррекцию
+                      {activeReviewPlan.quickReturnTitle}
                     </Link>
                   </div>
                 </article>
               ) : null}
-              {activeReviewPlan ? (
+              {!isLessonFlow && activeReviewPlan ? (
                 <article className="trail-helper-card">
-                  <strong>Full lesson revisit</strong>
+                  <strong>{activeReviewPlan.fullLessonTitle}</strong>
                   <p>{activeReviewPlan.fullLessonDescription}</p>
                   {activeReviewPlan.lessonLink ? (
                     <div className="actions-row">
@@ -492,12 +496,12 @@ export function QuizPage(props: QuizPageProps) {
                   ) : null}
                 </article>
               ) : null}
-              {wrongQuestionIds.length > 0 ? (
+              {!isLessonFlow && wrongQuestionIds.length > 0 ? (
                 <article className="trail-helper-card">
                   <strong>Ближайшая self-check</strong>
                   <p>
                     Вместо полного дубля открой короткую self-check по {Math.min(wrongQuestionIds.length, 3)} слабым вопросам,
-                    а потом уже переходи в суженный повтор.
+                    потом quick return и только затем full lesson, если это всё ещё нужно.
                   </p>
                 </article>
               ) : null}
@@ -521,9 +525,9 @@ export function QuizPage(props: QuizPageProps) {
                 Пройти ещё раз
               </button>
             )}
-            {storedModeProgress?.wrongQuestionIds?.length ? (
+            {!isLessonFlow && storedModeProgress?.wrongQuestionIds?.length ? (
               <button className="secondary-button" onClick={retryMistakes} type="button">
-                Открыть коррекцию
+                Открыть quick return
               </button>
             ) : null}
             {!isLessonFlow && activeReviewPlan?.lessonLink ? (
@@ -541,7 +545,7 @@ export function QuizPage(props: QuizPageProps) {
             ) : null}
             {!isLessonFlow && activeReviewPlan ? (
               <Link className="secondary-link-button" to={activeReviewPlan.retryLink}>
-                Открыть план повтора
+                Открыть correction loop
               </Link>
             ) : null}
             {requestedModuleId && moduleLoopAction?.kind === "next_module" ? (
@@ -605,8 +609,21 @@ export function QuizPage(props: QuizPageProps) {
           {storedModeProgress ? (
             <div className="quiz-review-grid">
               <article className="trail-helper-card">
-                <strong>Лучшая / последняя коррекция</strong>
-                <p>{storedModeProgress.lastPercent}% · {storedModeProgress.attempts} попыток всего</p>
+                <strong>Correction loop</strong>
+                <p>
+                  {storedModeProgress.lastPercent}% последний результат · {storedModeProgress.attempts} попыток.
+                  Сначала короткая self-check, потом quick return и только потом full lesson.
+                </p>
+                {storedModeProgress.wrongQuestionIds.length > 0 ? (
+                  <div className="actions-row">
+                    <Link
+                      className="secondary-link-button"
+                      to={`/quiz?mode=${activeMode.id}&retry=mistakes`}
+                    >
+                      Открыть self-check и quick return
+                    </Link>
+                  </div>
+                ) : null}
               </article>
               {storedModeProgress.weakModules.length > 0 ? (
                 <article className="trail-helper-card">
@@ -616,23 +633,6 @@ export function QuizPage(props: QuizPageProps) {
                       .map((moduleId) => getModuleById(moduleId)?.title ?? moduleId)
                       .join(" · ")}
                   </p>
-                </article>
-              ) : null}
-              {storedModeProgress.wrongQuestionIds.length > 0 ? (
-                <article className="trail-helper-card">
-                  <strong>Ближайшая self-check</strong>
-                  <p>
-                    {Math.min(storedModeProgress.wrongQuestionIds.length, 3)} вопроса попадут в короткую self-check,
-                    чтобы повтор не был один в один.
-                  </p>
-                  <div className="actions-row">
-                    <Link
-                      className="secondary-link-button"
-                      to={`/quiz?mode=${activeMode.id}&retry=mistakes`}
-                    >
-                      Открыть self-check и коррекцию
-                    </Link>
-                  </div>
                 </article>
               ) : null}
             </div>
@@ -647,6 +647,18 @@ export function QuizPage(props: QuizPageProps) {
           ) : null}
 
           <section className="quiz-modes-shell">
+            {!shouldShowFullModeCatalog ? (
+              <article className="info-note-card">
+                <p className="eyebrow">Lesson-linked self-check</p>
+                <h3>Здесь важнее закончить текущую проверку, чем выбирать режим</h3>
+                <p>
+                  Эта мини-проверка встроена в маршрут урока. Сначала закрой текущий question flow,
+                  а к полному каталогу режимов возвращайся уже вне lesson path.
+                </p>
+              </article>
+            ) : null}
+            {shouldShowFullModeCatalog ? (
+              <>
             <div className="section-head">
               <div>
                 <p className="eyebrow">Рекомендовано</p>
@@ -761,6 +773,8 @@ export function QuizPage(props: QuizPageProps) {
                 );
               })}
             </div>
+              </>
+            ) : null}
           </section>
         </section>
 
