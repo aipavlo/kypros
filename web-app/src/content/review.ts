@@ -170,12 +170,12 @@ function getVariantPrompt(summary: ReviewModeSummary, focus: ReviewWeakFocus) {
         : "mixed";
 
   const promptParts = [
-    `Сначала сделай короткий corrective pass по ${familyLabel}.`,
+    `Сначала сделай короткий self-check по ${familyLabel}.`,
     focus.label ? `Фокус: ${focus.label}.` : null,
     focus.skill ? `Слабой зоной отмечен навык ${focus.skill}.` : null,
     summary.wrongQuestionIds.length > 0
-      ? `После этого проверь себя на ${summary.wrongQuestionIds.length} вопрос(ах) в более сжатом self-check формате.`
-      : "Потом проверь себя в более сжатом self-check формате."
+      ? `После этого открой quick return по ${summary.wrongQuestionIds.length} слабым вопрос(ам).`
+      : "Потом открой quick return по слабой теме."
   ];
 
   return promptParts.filter((part): part is string => Boolean(part)).join(" ");
@@ -186,21 +186,21 @@ function buildRemediationPackCopy(summary: ReviewModeSummary, focus: ReviewWeakF
   const wrongQuestionCount = summary.wrongQuestionIds.length;
 
   return {
-    packTitle: `Remediation pack: ${focusLabel}`,
+    packTitle: `Correction loop: ${focusLabel}`,
     packSummary:
       wrongQuestionCount > 0
-        ? `Сначала короткий quick return по ${wrongQuestionCount} слабым вопросам, потом при необходимости полный возврат в тему ${focusLabel}.`
-        : `Сначала короткий quick return, потом при необходимости полный возврат в тему ${focusLabel}.`,
-    quickReturnTitle: "Quick return",
+        ? `Сначала короткий self-check по ${Math.min(wrongQuestionCount, 3)} вопросам, потом quick return и только при необходимости полный возврат в тему ${focusLabel}.`
+        : `Сначала короткий self-check, потом quick return и только при необходимости полный возврат в тему ${focusLabel}.`,
+    quickReturnTitle: "Шаг 2. Quick return",
     quickReturnDescription:
       wrongQuestionCount > 0
-        ? `${Math.min(wrongQuestionCount, 3)} вопроса собраны в короткий corrective pass без полного урока, карточек и каталога режимов.`
-        : "Короткий corrective pass помогает быстро вернуться в тему без полного урока и длинного маршрута.",
-    fullLessonTitle: "Full lesson revisit",
+        ? `${Math.min(wrongQuestionCount, 3)} вопроса собраны в короткий corrective pass после self-check, без полного урока и каталога режимов.`
+        : "Короткий corrective pass идёт после self-check и помогает быстро вернуться в тему без полного урока.",
+    fullLessonTitle: "Шаг 3. Full lesson revisit",
     fullLessonDescription:
       focus.moduleTitle != null
-        ? `Если быстрый возврат не хватает, открой полный учебный путь по теме ${focus.moduleTitle}: урок, карточки и ближайшая self-check.`
-        : `Если быстрый возврат не хватает, открой полный учебный путь по слабой теме: урок, карточки и ближайшая self-check.`
+        ? `Если self-check и quick return не хватило, открой полный учебный путь по теме ${focus.moduleTitle}: урок, карточки и ближайшая self-check.`
+        : `Если self-check и quick return не хватило, открой полный учебный путь по слабой теме: урок, карточки и ближайшая self-check.`
   };
 }
 

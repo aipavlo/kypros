@@ -100,64 +100,6 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="panel landing-search-links-panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Важные страницы</p>
-            <h2>Короткие входы в основные разделы</h2>
-            <p className="section-copy">
-              Ниже собраны priority URLs, к которым стоит вести и пользователя, и поисковый вход без
-              длинного блуждания по каталогу.
-            </p>
-          </div>
-        </div>
-
-        <div className="landing-cta-grid">
-          <Link className="landing-cta-card card-link-panel" to="/easy-start">
-            <p className="chip">Старт</p>
-            <h3>Лёгкий старт по греческому</h3>
-            <p>Первый учебный вход без перегрузки и без ручного выбора модуля.</p>
-            <span className="action-link">Открыть easy start</span>
-          </Link>
-          <Link className="landing-cta-card card-link-panel" to="/lessons">
-            <p className="chip">Язык</p>
-            <h3>Полная программа Greek Core</h3>
-            <p>Уроки по уровням, карточки и мини-проверки для жизни на Кипре.</p>
-            <span className="action-link">Открыть lessons</span>
-          </Link>
-          <Link className="landing-cta-card card-link-panel" to="/cyprus">
-            <p className="chip">Кипр</p>
-            <h3>Программа Cyprus Reality</h3>
-            <p>История, культура, институты и база для экзаменационной подготовки.</p>
-            <span className="action-link">Открыть cyprus</span>
-          </Link>
-          <Link className="landing-cta-card card-link-panel" to="/trails">
-            <p className="chip">Маршруты</p>
-            <h3>Guided сценарии под задачу</h3>
-            <p>Разговор, сервисы, бытовые ситуации и тематический повтор без лишнего выбора.</p>
-            <span className="action-link">Открыть trails</span>
-          </Link>
-          <Link className="landing-cta-card card-link-panel" to="/phrasebook">
-            <p className="chip">Фразы</p>
-            <h3>Практические бытовые сценарии</h3>
-            <p>Компактный phrasebook-layer: приветствие, кафе, магазин, дорога и сервисные фразы.</p>
-            <span className="action-link">Открыть phrasebook</span>
-          </Link>
-          <Link className="landing-cta-card card-link-panel" to={firstGreekLesson ? `/lessons/${firstGreekLesson.id}` : "/lessons"}>
-            <p className="chip">Урок</p>
-            <h3>{firstGreekLesson ? `${firstGreekLesson.order}. ${firstGreekLesson.title}` : "Первый урок греческого"}</h3>
-            <p>{firstGreekLesson?.objective ?? "Базовый вход в языковую программу."}</p>
-            <span className="action-link">Открыть lesson page</span>
-          </Link>
-          <Link className="landing-cta-card card-link-panel" to={firstCyprusLesson ? `/lessons/${firstCyprusLesson.id}` : "/cyprus"}>
-            <p className="chip">Cyprus lesson</p>
-            <h3>{firstCyprusLesson ? `${firstCyprusLesson.order}. ${firstCyprusLesson.title}` : "Первый урок по Кипру"}</h3>
-            <p>{firstCyprusLesson?.objective ?? "Прямой вход в базовый урок по Cyprus Reality."}</p>
-            <span className="action-link">Открыть lesson page</span>
-          </Link>
-        </div>
-      </section>
-
       <section className="panel landing-overview-panel">
         <div className="section-head">
           <div>
@@ -200,79 +142,129 @@ export function LandingPage() {
       <section className="panel landing-cta-panel">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Структура программы</p>
-            <h2>Как устроен учебный путь</h2>
+            <p className="eyebrow">Раскрываемые обзоры</p>
+            <h2>Остальные входы и объём продукта открываются только по запросу</h2>
             <p className="section-copy">
-              Здесь две основные программы: греческий язык для повседневной жизни на Кипре и Cyprus Reality
-              для подготовки по истории, культуре и устройству страны.
-            </p>
-          </div>
-          <Link className="inline-link" to="/tracks">
-            Открыть каталог программ
-          </Link>
-        </div>
-
-        <div className="landing-level-stats-grid">
-          <article className="landing-level-stat">
-            <p className="chip">Греческий язык</p>
-            <h3>{languageLessonCount} уроков от A1 до B2 + дополнительный C1</h3>
-            <p>От простых бытовых тем до уверенной речи, текстов, аргументации и дополнительного продвинутого блока.</p>
-          </article>
-          <article className="landing-level-stat">
-            <p className="chip">Трек по Кипру</p>
-            <h3>{cyprusRealityCount} уроков по стране</h3>
-            <p>История, институты, праздники, культура и базовые экзаменационные темы.</p>
-          </article>
-          <article className="landing-level-stat">
-            <p className="chip">Маршруты</p>
-            <h3>{trailCount} готовых сценариев</h3>
-            <p>Разговор, сервисы, повторение, история и другие маршруты под конкретную задачу.</p>
-          </article>
-        </div>
-      </section>
-
-      <section className="panel landing-summary-panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Объём материалов</p>
-            <h2>Что уже собрано внутри</h2>
-            <p className="section-copy">
-              Ниже спокойная сводка по контенту. Это статистика, а не точки входа.
+              Главный выбор уже сделан выше. Ниже оставляем обзорные и каталожные слои в компактном
+              disclosure-формате, чтобы первый экран не превращался в длинный scroll-архив.
             </p>
           </div>
         </div>
 
-        <div className="stats-grid landing-stats-grid">
-          <article className="stat-card">
-            <p>Учебных программ и подборок</p>
-            <strong>{trackCount}</strong>
-            <span className="stat-card-hint">Язык, Кипр, проверка и спецмаршруты</span>
-          </article>
-          <article className="stat-card">
-            <p>Уроков по греческому</p>
-            <strong>{languageLessonCount}</strong>
-            <span className="stat-card-hint">A1-B2 + дополнительный C1</span>
-          </article>
-          <article className="stat-card">
-            <p>Уроков по Кипру</p>
-            <strong>{cyprusRealityCount}</strong>
-            <span className="stat-card-hint">История, культура, институты</span>
-          </article>
-          <article className="stat-card">
-            <p>Карточек</p>
-            <strong>{FLASHCARD_TOTAL_COUNT}</strong>
-            <span className="stat-card-hint">Для повторения слов, дат и терминов</span>
-          </article>
-          <article className="stat-card">
-            <p>Вопросов</p>
-            <strong>{QUIZ_TOTAL_COUNT}</strong>
-            <span className="stat-card-hint">Язык, Кипр и пробные режимы</span>
-          </article>
-          <article className="stat-card">
-            <p>Юмор и заметки</p>
-            <strong>{humorCount}</strong>
-            <span className="stat-card-hint">Лёгкий культурный слой без дублей</span>
-          </article>
+        <div className="content-disclosure-list">
+          <details className="content-disclosure">
+            <summary>Показать важные страницы и прямые входы</summary>
+            <div className="content-disclosure-body">
+              <div className="landing-cta-grid">
+                <Link className="landing-cta-card card-link-panel" to="/easy-start">
+                  <p className="chip">Старт</p>
+                  <h3>Лёгкий старт по греческому</h3>
+                  <p>Первый учебный вход без перегрузки и без ручного выбора модуля.</p>
+                  <span className="action-link">Открыть easy start</span>
+                </Link>
+                <Link className="landing-cta-card card-link-panel" to="/lessons">
+                  <p className="chip">Язык</p>
+                  <h3>Полная программа Greek Core</h3>
+                  <p>Уроки по уровням, карточки и мини-проверки для жизни на Кипре.</p>
+                  <span className="action-link">Открыть lessons</span>
+                </Link>
+                <Link className="landing-cta-card card-link-panel" to="/cyprus">
+                  <p className="chip">Кипр</p>
+                  <h3>Программа Cyprus Reality</h3>
+                  <p>История, культура, институты и база для экзаменационной подготовки.</p>
+                  <span className="action-link">Открыть cyprus</span>
+                </Link>
+                <Link className="landing-cta-card card-link-panel" to="/trails">
+                  <p className="chip">Маршруты</p>
+                  <h3>Guided сценарии под задачу</h3>
+                  <p>Разговор, сервисы, бытовые ситуации и тематический повтор без лишнего выбора.</p>
+                  <span className="action-link">Открыть trails</span>
+                </Link>
+                <Link className="landing-cta-card card-link-panel" to="/phrasebook">
+                  <p className="chip">Фразы</p>
+                  <h3>Практические бытовые сценарии</h3>
+                  <p>Компактный phrasebook-layer: приветствие, кафе, магазин, дорога и сервисные фразы.</p>
+                  <span className="action-link">Открыть phrasebook</span>
+                </Link>
+                <Link className="landing-cta-card card-link-panel" to={firstGreekLesson ? `/lessons/${firstGreekLesson.id}` : "/lessons"}>
+                  <p className="chip">Урок</p>
+                  <h3>{firstGreekLesson ? `${firstGreekLesson.order}. ${firstGreekLesson.title}` : "Первый урок греческого"}</h3>
+                  <p>{firstGreekLesson?.objective ?? "Базовый вход в языковую программу."}</p>
+                  <span className="action-link">Открыть lesson page</span>
+                </Link>
+                <Link className="landing-cta-card card-link-panel" to={firstCyprusLesson ? `/lessons/${firstCyprusLesson.id}` : "/cyprus"}>
+                  <p className="chip">Cyprus lesson</p>
+                  <h3>{firstCyprusLesson ? `${firstCyprusLesson.order}. ${firstCyprusLesson.title}` : "Первый урок по Кипру"}</h3>
+                  <p>{firstCyprusLesson?.objective ?? "Прямой вход в базовый урок по Cyprus Reality."}</p>
+                  <span className="action-link">Открыть lesson page</span>
+                </Link>
+              </div>
+            </div>
+          </details>
+
+          <details className="content-disclosure">
+            <summary>Показать структуру программы</summary>
+            <div className="content-disclosure-body stack">
+              <Link className="inline-link" to="/tracks">
+                Открыть каталог программ
+              </Link>
+              <div className="landing-level-stats-grid">
+                <article className="landing-level-stat">
+                  <p className="chip">Греческий язык</p>
+                  <h3>{languageLessonCount} уроков от A1 до B2 + дополнительный C1</h3>
+                  <p>От простых бытовых тем до уверенной речи, текстов, аргументации и дополнительного продвинутого блока.</p>
+                </article>
+                <article className="landing-level-stat">
+                  <p className="chip">Трек по Кипру</p>
+                  <h3>{cyprusRealityCount} уроков по стране</h3>
+                  <p>История, институты, праздники, культура и базовые экзаменационные темы.</p>
+                </article>
+                <article className="landing-level-stat">
+                  <p className="chip">Маршруты</p>
+                  <h3>{trailCount} готовых сценариев</h3>
+                  <p>Разговор, сервисы, повторение, история и другие маршруты под конкретную задачу.</p>
+                </article>
+              </div>
+            </div>
+          </details>
+
+          <details className="content-disclosure">
+            <summary>Показать объём материалов</summary>
+            <div className="content-disclosure-body">
+              <div className="stats-grid landing-stats-grid">
+                <article className="stat-card">
+                  <p>Учебных программ и подборок</p>
+                  <strong>{trackCount}</strong>
+                  <span className="stat-card-hint">Язык, Кипр, проверка и спецмаршруты</span>
+                </article>
+                <article className="stat-card">
+                  <p>Уроков по греческому</p>
+                  <strong>{languageLessonCount}</strong>
+                  <span className="stat-card-hint">A1-B2 + дополнительный C1</span>
+                </article>
+                <article className="stat-card">
+                  <p>Уроков по Кипру</p>
+                  <strong>{cyprusRealityCount}</strong>
+                  <span className="stat-card-hint">История, культура, институты</span>
+                </article>
+                <article className="stat-card">
+                  <p>Карточек</p>
+                  <strong>{FLASHCARD_TOTAL_COUNT}</strong>
+                  <span className="stat-card-hint">Для повторения слов, дат и терминов</span>
+                </article>
+                <article className="stat-card">
+                  <p>Вопросов</p>
+                  <strong>{QUIZ_TOTAL_COUNT}</strong>
+                  <span className="stat-card-hint">Язык, Кипр и пробные режимы</span>
+                </article>
+                <article className="stat-card">
+                  <p>Юмор и заметки</p>
+                  <strong>{humorCount}</strong>
+                  <span className="stat-card-hint">Лёгкий культурный слой без дублей</span>
+                </article>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 

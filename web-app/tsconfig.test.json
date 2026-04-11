@@ -24,6 +24,7 @@
     "app/api/app/access/route.ts",
     "app/api/app/progress/route.ts",
     "app/api/app/context/last-opened/route.ts",
+    "app/api/app/session/route.ts",
     "app/api/auth/login/route.ts",
     "app/api/auth/logout/route.ts",
     "tests/**/*.ts",

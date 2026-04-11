@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AppEntry } from "@/src/AppEntry";
+import { PublicRouteSnapshot } from "@/src/seo/PublicRouteSnapshot";
 import { getPageStructuredData } from "@/src/seo/pageSchema";
 import { getAllRouteSlugs } from "@/src/seo/routes";
 import { getRouteMetadataFromSlug } from "@/src/seo/siteMetadata";
@@ -25,6 +26,7 @@ export default async function CatchAllPage({ params }: CatchAllPageProps) {
 
   return (
     <>
+      <PublicRouteSnapshot slug={slug} />
       {structuredData.map((entry, index) => (
         <script
           key={`${slug.join("/") || "root"}-${index}`}

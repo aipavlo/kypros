@@ -91,8 +91,8 @@ test("getReviewPlan builds direct retry links for greek and cyprus modules", () 
   assert.equal(plan[1].lessonLink, `/lessons?stage=a1&module=${greekModule.id}&source=quiz`);
   assert.equal(plan[1].flashcardsLink, `/flashcards?track=greek_b1&module=${greekModule.id}`);
   assert.equal(plan[1].retryLink, "/quiz?mode=mode_greek_a1&retry=mistakes");
-  assert.match(plan[1].packTitle, /Remediation pack:/);
-  assert.match(plan[1].quickReturnDescription, /короткий corrective pass|Короткий corrective pass/);
+  assert.match(plan[1].packTitle, /Correction loop:/);
+  assert.match(plan[1].quickReturnDescription, /self-check/);
   assert.match(plan[1].fullLessonDescription, /полный учебный путь/);
 });
 

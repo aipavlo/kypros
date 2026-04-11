@@ -166,9 +166,7 @@ export function HomePage(props: HomePageProps) {
         level: "Первый заход",
         result: "Первый полезный шаг закроется без лишних развилок",
         ctaLabel: "Открыть лёгкий старт",
-        ctaTo: "/easy-start",
-        secondaryLabel: continueA1Lesson ? "Сразу к первому уроку" : "Открыть программу",
-        secondaryTo: continueA1Lesson ? `/lessons/${continueA1Lesson.id}?source=easy_start` : "/lessons"
+        ctaTo: "/easy-start"
       }
     : topWeakModules[0] && reviewPlan[0]
       ? {
@@ -179,9 +177,7 @@ export function HomePage(props: HomePageProps) {
           level: "Повторение",
           result: "Сначала quick return, потом full lesson только если тема всё ещё шатается",
           ctaLabel: "Открыть quick return",
-          ctaTo: reviewPlan[0].retryLink,
-          secondaryLabel: "Открыть full lesson",
-          secondaryTo: reviewPlan[0].lessonLink ?? (topReviewSummary ? `/quiz?mode=${topReviewSummary.modeId}` : "/quiz")
+          ctaTo: reviewPlan[0].retryLink
         }
       : nextGreekAction
         ? {
@@ -192,9 +188,7 @@ export function HomePage(props: HomePageProps) {
             level: nextGreekModule ? getModuleStage(nextGreekModule.id).toUpperCase() : "Учёба",
             result: getStepResultLabel(nextGreekAction.kind),
             ctaLabel: "Продолжить",
-            ctaTo: nextGreekAction.to,
-            secondaryLabel: "Открыть учёбу",
-            secondaryTo: "/lessons"
+            ctaTo: nextGreekAction.to
           }
         : continueGreekLesson
           ? {
@@ -205,9 +199,7 @@ export function HomePage(props: HomePageProps) {
               level: continueGreekLesson.difficulty.toUpperCase(),
               result: getStepResultLabel("lesson"),
               ctaLabel: "Продолжить",
-              ctaTo: `/lessons/${continueGreekLesson.id}`,
-              secondaryLabel: "Открыть учёбу",
-              secondaryTo: "/lessons"
+              ctaTo: `/lessons/${continueGreekLesson.id}`
             }
           : null;
   const quickReturnCards = isNewUser
@@ -220,15 +212,6 @@ export function HomePage(props: HomePageProps) {
           to: continueA1Lesson ? `/lessons/${continueA1Lesson.id}` : "/easy-start"
         },
         {
-          actionLabel: nextCyprusLesson ? "Открыть урок по Кипру" : "Открыть программу",
-          description: nextCyprusLesson
-            ? `${nextCyprusLesson.order}. ${nextCyprusLesson.title}`
-            : "Отдельный вход в программу по Кипру, если нужен не язык, а страна и экзаменационный контекст.",
-          eyebrow: "Отдельный трек",
-          title: "Один шаг по Cyprus Reality",
-          to: nextCyprusLesson ? `/lessons/${nextCyprusLesson.id}` : "/cyprus"
-        },
-        {
           actionLabel: "Открыть сценарии",
           description: "Короткие бытовые фразы и self-check, если нужен ultra-light вход перед первым уроком.",
           eyebrow: "Практика",
@@ -237,15 +220,13 @@ export function HomePage(props: HomePageProps) {
         }
       ]
     : [
-        topReviewSummary
+        topReviewSummary && reviewPlan[0]?.lessonLink
           ? {
-              actionLabel: "Открыть quick return",
-              description:
-                reviewPlan[0]?.quickReturnDescription ??
-                `${topReviewSummary.wrongQuestionIds.length} вопросов уже сохранено для возврата в слабую тему.`,
-              eyebrow: "Quick return",
-              title: reviewPlan[0]?.quickReturnTitle ?? "Короткий corrective pass",
-              to: reviewPlan[0]?.retryLink ?? `/quiz?mode=${topReviewSummary.modeId}&retry=mistakes`
+              actionLabel: "Открыть full lesson",
+              description: reviewPlan[0].fullLessonDescription,
+              eyebrow: "Если нужен полный возврат",
+              title: reviewPlan[0].fullLessonTitle,
+              to: reviewPlan[0].lessonLink
             }
           : {
               actionLabel: "Открыть карточки",
@@ -253,23 +234,6 @@ export function HomePage(props: HomePageProps) {
               eyebrow: "5-6 минут",
               title: "Быстрое повторение карточками",
               to: "/flashcards?track=greek_b1"
-            },
-        topReviewSummary && reviewPlan[0]?.lessonLink
-          ? {
-              actionLabel: "Открыть full lesson",
-              description: reviewPlan[0].fullLessonDescription,
-              eyebrow: "Full lesson",
-              title: reviewPlan[0].fullLessonTitle,
-              to: reviewPlan[0].lessonLink
-            }
-          : {
-              actionLabel: nextCyprusLesson ? "Открыть урок" : "Открыть программу",
-              description: nextCyprusLesson
-                ? `${nextCyprusLesson.order}. ${nextCyprusLesson.title}`
-                : "Отдельный короткий вход в Cyprus Reality без смешивания с основной языковой линией.",
-              eyebrow: "Отдельный трек",
-              title: "Один шаг по Cyprus Reality",
-              to: nextCyprusLesson ? `/lessons/${nextCyprusLesson.id}` : "/cyprus"
             },
         {
           actionLabel: nextCyprusLesson ? "Открыть урок" : "Открыть программу",
@@ -308,11 +272,6 @@ export function HomePage(props: HomePageProps) {
             {nextStepCard ? (
               <Link className="primary-link-button" to={nextStepCard.ctaTo}>
                 {nextStepCard.ctaLabel}
-              </Link>
-            ) : null}
-            {nextStepCard ? (
-              <Link className="secondary-link-button" to={nextStepCard.secondaryTo}>
-                {nextStepCard.secondaryLabel}
               </Link>
             ) : null}
           </div>
@@ -356,7 +315,9 @@ export function HomePage(props: HomePageProps) {
             <p className="eyebrow">Короткий вход</p>
             <h2>Если есть только 5-7 минут</h2>
             <p className="section-copy">
-              Главный шаг уже собран выше. Ниже только два коротких входа: быстрый возврат в ритм и отдельный шаг по Cyprus Reality.
+              {isNewUser
+                ? "Главный старт уже собран выше. Ниже только два ultra-light входа: прямой первый урок и один бытовой сценарий без перегруза."
+                : "Главный шаг уже собран выше. Ниже только два коротких входа: один аккуратный fallback и отдельный шаг по Cyprus Reality."}
             </p>
           </div>
         </div>
@@ -375,122 +336,126 @@ export function HomePage(props: HomePageProps) {
         </div>
       </section>
 
-      <section className="panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Прогресс</p>
-            <h2>Что уже собрано по полному циклу</h2>
-            <p className="section-copy">
-              Здесь только короткий срез по двум программам, без полного каталога и без длинного маршрута.
-            </p>
-          </div>
-        </div>
-
-        <div className="quiz-review-grid">
-          <article className="trail-helper-card">
-            <strong>{greekTrack?.title}</strong>
-            <p>
-              Закрыто {greekTrackCycleSummary.completedModules} из {greekTrackCycleSummary.totalModules} модулей.
-              В работе: {greekTrackCycleSummary.startedModules}.
-            </p>
-            <div className="actions-row">
-              <Link className="secondary-link-button" to="/lessons">
-                Открыть
-              </Link>
-            </div>
-          </article>
-
-          <article className="trail-helper-card">
-            <strong>{cyprusTrack?.title}</strong>
-            <p>
-              Закрыто {cyprusTrackCycleSummary.completedModules} из {cyprusTrackCycleSummary.totalModules} модулей.
-              В работе: {cyprusTrackCycleSummary.startedModules}.
-            </p>
-            <div className="actions-row">
-              <Link className="secondary-link-button" to="/cyprus">
-                Открыть
-              </Link>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section className="panel">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">Повторение</p>
-            <h2>Что повторить сейчас</h2>
-            <p className="section-copy">
-              Только ближайшие слабые темы и прямой возврат в нужный контент без ручного поиска.
-            </p>
-          </div>
-        </div>
-
-        {reviewSummaries.length > 0 ? (
-          <div className="quiz-review-grid">
-            {topReviewSummary ? (
-              <article className="trail-helper-card">
-                <strong>Remediation pack</strong>
-                <p>
-                  {reviewPlan[0]?.packSummary ??
-                    `${topReviewSummary.title}: ${topReviewSummary.lastPercent}% последний результат, ${topReviewSummary.wrongQuestionIds.length} ошибок для повтора.`}
-                </p>
-                <div className="actions-row">
-                  <Link className="primary-link-button" to={reviewPlan[0]?.retryLink ?? `/quiz?mode=${topReviewSummary.modeId}&retry=mistakes`}>
-                    Открыть quick return
-                  </Link>
-                  {reviewPlan[0]?.lessonLink ? (
-                    <Link className="secondary-link-button" to={reviewPlan[0].lessonLink}>
-                      Открыть full lesson
-                    </Link>
-                  ) : (
-                    <Link className="secondary-link-button" to={`/quiz?mode=${topReviewSummary.modeId}`}>
-                      Открыть проверку
-                    </Link>
-                  )}
-                </div>
-              </article>
-            ) : null}
-
-            {reviewPlan[0] ? (
-              <article className="trail-helper-card">
-                <strong>Quick return vs full lesson</strong>
-                <p>{reviewPlan[0].quickReturnDescription}</p>
-                <p>{reviewPlan[0].fullLessonDescription}</p>
-              </article>
-            ) : null}
-
-            <article className="trail-helper-card">
-              <strong>Общий сигнал</strong>
-              <p>
-                {totalWrongQuestions} вопросов сохранено для повтора
-                {topWeakSkills.length > 0 ? ` · слабые навыки: ${topWeakSkills.join(" · ")}` : "."}
+      {!isNewUser ? (
+        <section className="panel">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Прогресс</p>
+              <h2>Что уже собрано по полному циклу</h2>
+              <p className="section-copy">
+                Здесь только короткий срез по двум программам, без полного каталога и без длинного маршрута.
               </p>
-              {topWeakModules.length > 0 ? (
-                <div className="module-step-pills">
-                  {topWeakModules.map((moduleId) => (
-                    <span className="badge-chip" key={moduleId}>
-                      {getModuleById(moduleId)?.title ?? moduleId}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-            </article>
+            </div>
           </div>
-        ) : (
+
           <div className="quiz-review-grid">
             <article className="trail-helper-card">
-              <strong>Пока пусто</strong>
-              <p>Когда появятся первые ошибки в мини-проверках, здесь соберётся короткий путь назад в нужную тему.</p>
+              <strong>{greekTrack?.title}</strong>
+              <p>
+                Закрыто {greekTrackCycleSummary.completedModules} из {greekTrackCycleSummary.totalModules} модулей.
+                В работе: {greekTrackCycleSummary.startedModules}.
+              </p>
               <div className="actions-row">
-                <Link className="secondary-link-button" to="/quiz">
+                <Link className="secondary-link-button" to="/lessons">
+                  Открыть
+                </Link>
+              </div>
+            </article>
+
+            <article className="trail-helper-card">
+              <strong>{cyprusTrack?.title}</strong>
+              <p>
+                Закрыто {cyprusTrackCycleSummary.completedModules} из {cyprusTrackCycleSummary.totalModules} модулей.
+                В работе: {cyprusTrackCycleSummary.startedModules}.
+              </p>
+              <div className="actions-row">
+                <Link className="secondary-link-button" to="/cyprus">
                   Открыть
                 </Link>
               </div>
             </article>
           </div>
-        )}
-      </section>
+        </section>
+      ) : null}
+
+      {!isNewUser ? (
+        <section className="panel">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Повторение</p>
+              <h2>Что повторить сейчас</h2>
+              <p className="section-copy">
+                Только ближайшие слабые темы и прямой возврат в нужный контент без ручного поиска.
+              </p>
+            </div>
+          </div>
+
+          {reviewSummaries.length > 0 ? (
+            <div className="quiz-review-grid">
+              {topReviewSummary ? (
+                <article className="trail-helper-card">
+                  <strong>Remediation pack</strong>
+                  <p>
+                    {reviewPlan[0]?.packSummary ??
+                      `${topReviewSummary.title}: ${topReviewSummary.lastPercent}% последний результат, ${topReviewSummary.wrongQuestionIds.length} ошибок для повтора.`}
+                  </p>
+                  <div className="actions-row">
+                    <Link className="primary-link-button" to={reviewPlan[0]?.retryLink ?? `/quiz?mode=${topReviewSummary.modeId}&retry=mistakes`}>
+                      Открыть quick return
+                    </Link>
+                    {reviewPlan[0]?.lessonLink ? (
+                      <Link className="secondary-link-button" to={reviewPlan[0].lessonLink}>
+                        Открыть full lesson
+                      </Link>
+                    ) : (
+                      <Link className="secondary-link-button" to={`/quiz?mode=${topReviewSummary.modeId}`}>
+                        Открыть проверку
+                      </Link>
+                    )}
+                  </div>
+                </article>
+              ) : null}
+
+              {reviewPlan[0] ? (
+                <article className="trail-helper-card">
+                  <strong>Quick return vs full lesson</strong>
+                  <p>{reviewPlan[0].quickReturnDescription}</p>
+                  <p>{reviewPlan[0].fullLessonDescription}</p>
+                </article>
+              ) : null}
+
+              <article className="trail-helper-card">
+                <strong>Общий сигнал</strong>
+                <p>
+                  {totalWrongQuestions} вопросов сохранено для повтора
+                  {topWeakSkills.length > 0 ? ` · слабые навыки: ${topWeakSkills.join(" · ")}` : "."}
+                </p>
+                {topWeakModules.length > 0 ? (
+                  <div className="module-step-pills">
+                    {topWeakModules.map((moduleId) => (
+                      <span className="badge-chip" key={moduleId}>
+                        {getModuleById(moduleId)?.title ?? moduleId}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
+              </article>
+            </div>
+          ) : (
+            <div className="quiz-review-grid">
+              <article className="trail-helper-card">
+                <strong>Пока пусто</strong>
+                <p>Когда появятся первые ошибки в мини-проверках, здесь соберётся короткий путь назад в нужную тему.</p>
+                <div className="actions-row">
+                  <Link className="secondary-link-button" to="/quiz">
+                    Открыть
+                  </Link>
+                </div>
+              </article>
+            </div>
+          )}
+        </section>
+      ) : null}
 
       <section className="panel">
         <div className="section-head">

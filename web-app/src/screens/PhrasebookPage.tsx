@@ -15,50 +15,46 @@ function getScenarioTrailLink(trailId: string, packId: string) {
   return `/trails?trail=${trailId}&pack=${packId}`;
 }
 
+function getAlternativeScenarioPacks(packId: string) {
+  return scenarioPacks.filter((pack) => pack.id !== packId);
+}
+
 export function PhrasebookPage() {
   const [searchParams] = useSearchParams();
   const selectedPack = getScenarioPackById(searchParams.get("pack"));
   const selectedLesson = getLessonById(selectedPack.linkedLessonId);
-  const groupedScenarioPacks = [
-    {
-      id: "first_week",
-      title: "Первая неделя",
-      description: "Входы для первых бытовых контактов после приезда или на старте языка.",
-      items: scenarioPacks.filter((pack) => pack.category === "first_week")
-    },
-    {
-      id: "daily_runs",
-      title: "Ежедневные дела",
-      description: "Кофе, магазин, дорога, оплата и другие короткие сценарии на каждый день.",
-      items: scenarioPacks.filter((pack) => pack.category === "daily_runs")
-    },
-    {
-      id: "services",
-      title: "Сервисы и организация",
-      description: "Запись, документы, звонки, аптека и короткие office-style разговоры.",
-      items: scenarioPacks.filter((pack) => pack.category === "services")
-    }
-  ];
   const primaryLessonLink = selectedLesson
     ? getScenarioEntryLink(selectedPack.id, selectedLesson.id)
     : "/lessons";
   const recommendedTrailLink = selectedPack.linkedTrailId
     ? getScenarioTrailLink(selectedPack.linkedTrailId, selectedPack.id)
     : "/trails";
+  const currentCategoryPacks = scenarioPacks.filter((pack) => pack.category === selectedPack.category);
+  const alternativeScenarioPacks = getAlternativeScenarioPacks(selectedPack.id);
+  const miniRouteShortlist = [
+    selectedPack,
+    ...alternativeScenarioPacks.filter((pack) => pack.category !== selectedPack.category)
+  ].slice(0, 4);
+  const neighboringRoutes = currentCategoryPacks.filter((pack) => pack.id !== selectedPack.id).slice(0, 3);
+  const nextRoutePick =
+    neighboringRoutes[0] ??
+    alternativeScenarioPacks.find((pack) => pack.linkedTrailId) ??
+    alternativeScenarioPacks[0];
 
   return (
     <div className="stack">
       <section className="hero-panel phrasebook-hero">
         <div className="hero-copy">
           <p className="eyebrow">Everyday Greek</p>
-          <h1>Практические фразы и бытовые сценарии без режима справочника</h1>
+          <h1>Практические сценарии как guided mini-routes, а не как справочник</h1>
           <p className="lead">
-            Здесь сценарии собраны как guided mini-routes: один intent, несколько рабочих фраз,
-            короткий self-check и понятный переход в урок или маршрут.
+            Один бытовой intent, несколько рабочих фраз, короткий self-check и один понятный
+            следующий шаг. Здесь не нужно читать длинный словарь или вручную сравнивать весь
+            каталог.
           </p>
           <div className="actions-row">
             <Link className="primary-link-button" to={primaryLessonLink}>
-              Открыть опорный урок
+              Пройти этот mini-route
             </Link>
             <Link className="secondary-link-button" to={recommendedTrailLink}>
               Открыть связанный маршрут
@@ -83,7 +79,9 @@ export function PhrasebookPage() {
               ))}
             </div>
             <p className="hero-goal-text">
-              {selectedLesson ? `Опора: ${selectedLesson.order}. ${selectedLesson.title}` : "Опора в уроке и практическом маршруте."}
+              {selectedLesson
+                ? `Опора: ${selectedLesson.order}. ${selectedLesson.title}`
+                : "Опора в уроке и практическом маршруте."}
             </p>
           </article>
         </div>
@@ -92,17 +90,17 @@ export function PhrasebookPage() {
       <section className="panel phrasebook-recommended-panel">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Быстрый вход</p>
-            <h2>С чего начать по самой частой бытовой задаче</h2>
+            <p className="eyebrow">Быстрый shortlist</p>
+            <h2>Выбери бытовую задачу и открой один компактный маршрут</h2>
             <p className="section-copy">
-              Здесь не большой phrasebook-catalog, а короткий shortlist из практических входов,
-              которые реально нужны в первую очередь.
+              Сверху только несколько сильных practical entries. Остальные сценарии остаются ниже
+              как соседние варианты, а не как длинный архив карточек.
             </p>
           </div>
         </div>
 
         <div className="trail-catalog-grid">
-          {scenarioPacks.slice(0, 6).map((pack) => (
+          {miniRouteShortlist.map((pack) => (
             <Link
               className={`trail-catalog-card trail-catalog-card-${pack.tone} phrasebook-pack-card`}
               key={pack.id}
@@ -116,16 +114,49 @@ export function PhrasebookPage() {
               <h3>{pack.title}</h3>
               <p className="trail-subtitle">{pack.subtitle}</p>
               <p>{pack.promise}</p>
-              <span className="action-link">Открыть сценарий</span>
+              <span className="action-link">
+                {pack.id === selectedPack.id ? "Маршрут открыт" : "Открыть mini-route"}
+              </span>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="panel">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">Route logic</p>
+            <h2>Как проходить practical scenario за 5-7 минут</h2>
+            <p className="section-copy">
+              Этот слой работает как guided mini-route: сначала быстрое сканирование, потом
+              проговаривание, затем один следующий шаг без лишней навигации.
+            </p>
+          </div>
+        </div>
+
+        <div className="infographic-grid">
+          <article className="content-block-card">
+            <p className="eyebrow">Шаг 1</p>
+            <h3>Просканируй 3-4 опорные фразы</h3>
+            <p>Посмотри на короткий script, не пытаясь выучить всё подряд. Здесь важнее intent, а не длинный список слов.</p>
+          </article>
+          <article className="content-block-card">
+            <p className="eyebrow">Шаг 2</p>
+            <h3>Скажи сценарий вслух</h3>
+            <p>Transliteration остаётся рядом как мягкая опора, но не перетягивает на себя весь экран и не превращает слой в таблицу.</p>
+          </article>
+          <article className="content-block-card">
+            <p className="eyebrow">Шаг 3</p>
+            <h3>Переходи дальше по готовому маршруту</h3>
+            <p>Если сценарий держится, открывай урок или trail. Если нет, оставайся на этом intent и проговори его ещё один короткий круг.</p>
+          </article>
         </div>
       </section>
 
       <section className={`panel phrasebook-detail-panel phrasebook-detail-panel-${selectedPack.tone}`}>
         <div className="section-head">
           <div>
-            <p className="eyebrow">Открытый сценарий</p>
+            <p className="eyebrow">Открытый mini-route</p>
             <TrailBadge icon={selectedPack.icon} label="Сейчас в фокусе" tone={selectedPack.tone} />
             <h2>{selectedPack.title}</h2>
             <p className="trail-subtitle">{selectedPack.subtitle}</p>
@@ -143,7 +174,7 @@ export function PhrasebookPage() {
               <div className="phrasebook-copy">
                 <div className="section-head">
                   <div>
-                    <p className="eyebrow">Phrase pack</p>
+                    <p className="eyebrow">Mini-route script</p>
                     <h2>Один практический intent вместо длинного словаря</h2>
                     <p className="section-copy">
                       Прочитай, проговори и сразу проверь, можешь ли ты удержать сценарий вслух.
@@ -182,8 +213,19 @@ export function PhrasebookPage() {
 
           <aside className="study-sticky-panel phrasebook-side-panel">
             <article className="study-sidecard">
-              <strong>Как использовать этот слой</strong>
-              <p>Сначала просканируй 3-4 фразы, потом проговори их вслух и только после этого переходи в урок или маршрут.</p>
+              <strong>Один следующий шаг</strong>
+              <p>
+                Не переходи в полный каталог. Сначала закрой этот intent, затем иди в урок или trail
+                как в следующий слой того же маршрута.
+              </p>
+              <div className="actions-row">
+                <Link className="primary-link-button" to={primaryLessonLink}>
+                  Открыть опорный урок
+                </Link>
+                <Link className="secondary-link-button" to={recommendedTrailLink}>
+                  Открыть trail
+                </Link>
+              </div>
             </article>
 
             <article className="study-sidecard">
@@ -193,31 +235,31 @@ export function PhrasebookPage() {
                   ? `Опорный урок: ${selectedLesson.order}. ${selectedLesson.title}.`
                   : "Сценарий связан с основной учебной программой."}
               </p>
-              <div className="actions-row">
-                <Link className="primary-link-button" to={primaryLessonLink}>
-                  Открыть опорный урок
-                </Link>
-                <Link className="secondary-link-button" to={recommendedTrailLink}>
-                  Открыть связанный маршрут
-                </Link>
-              </div>
+              <p>
+                {selectedPack.linkedTrailId
+                  ? "Если нужен более длинный бытовой прогон, соседний trail уже подобран."
+                  : "Если нужен более длинный прогон, этот сценарий всё равно ведёт обратно в основной learning flow."}
+              </p>
             </article>
           </aside>
         </div>
       </section>
 
-      {groupedScenarioPacks.map((group) => (
-        <section className="panel phrasebook-group-panel" key={group.id}>
+      {neighboringRoutes.length > 0 ? (
+        <section className="panel phrasebook-group-panel">
           <div className="section-head">
             <div>
-              <p className="eyebrow">Категория</p>
-              <h2>{group.title}</h2>
-              <p className="section-copy">{group.description}</p>
+              <p className="eyebrow">Соседние маршруты</p>
+              <h2>Если нужен похожий intent, а не новый большой раздел</h2>
+              <p className="section-copy">
+                Ниже только ближайшие сценарии из того же бытового контекста, чтобы переключение
+                оставалось быстрым и не превращалось в browsing.
+              </p>
             </div>
           </div>
 
           <div className="trail-catalog-grid">
-            {group.items.map((pack) => (
+            {neighboringRoutes.map((pack) => (
               <Link
                 className={`trail-catalog-card trail-catalog-card-${pack.tone}`}
                 key={pack.id}
@@ -236,12 +278,45 @@ export function PhrasebookPage() {
                     </span>
                   ))}
                 </div>
-                <span className="action-link">Открыть</span>
+                <span className="action-link">Открыть mini-route</span>
               </Link>
             ))}
           </div>
         </section>
-      ))}
+      ) : null}
+
+      {nextRoutePick ? (
+        <section className="panel">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Next practical entry</p>
+              <h2>Когда этот сценарий уже держится, куда идти дальше</h2>
+              <p className="section-copy">
+                Вместо общего phrasebook-архива оставляем один соседний entry, который логично
+                продолжает бытовой ритм.
+              </p>
+            </div>
+          </div>
+
+          <article className={`trail-catalog-card trail-catalog-card-${nextRoutePick.tone}`}>
+            <div className="trail-catalog-top">
+              <TrailBadge icon={nextRoutePick.icon} label={nextRoutePick.categoryLabel} tone={nextRoutePick.tone} />
+              <span className="meta-pill">{nextRoutePick.estimatedMinutes} минут</span>
+            </div>
+            <h3>{nextRoutePick.title}</h3>
+            <p className="trail-subtitle">{nextRoutePick.subtitle}</p>
+            <p>{nextRoutePick.promise}</p>
+            <div className="actions-row">
+              <Link className="primary-link-button" to={getScenarioPackLink(nextRoutePick.id)}>
+                Открыть следующий mini-route
+              </Link>
+              <Link className="secondary-link-button" to="/trails">
+                Открыть все trails
+              </Link>
+            </div>
+          </article>
+        </section>
+      ) : null}
     </div>
   );
 }

@@ -275,11 +275,8 @@ export function LessonsPage(props: LessonsPageProps) {
               <Link className="secondary-link-button" to="/tracks">
                 Открыть обзор линий
               </Link>
-              <Link className="secondary-link-button" to="/lessons">
+              <Link className="action-link" to="/lessons">
                 Вернуться к Greek Core
-              </Link>
-              <Link className="action-link" to="/trails?trail=trail_fact_not_panic">
-                Маршрут повтора по Кипру
               </Link>
             </>
           ) : (
@@ -287,11 +284,8 @@ export function LessonsPage(props: LessonsPageProps) {
               <Link className="secondary-link-button" to="/tracks">
                 Посмотреть все линии
               </Link>
-              <Link className="secondary-link-button" to="/cyprus">
+              <Link className="action-link" to="/cyprus">
                 Перейти в Cyprus Reality
-              </Link>
-              <Link className="action-link" to="/trails?trail=trail_souvlaki_starter">
-                Guided маршрут под задачу
               </Link>
             </>
           )}
@@ -509,11 +503,6 @@ export function LessonsPage(props: LessonsPageProps) {
                           >
                             Мини-проверка
                           </Link>
-                          {track.id === "cyprus_reality" ? (
-                            <Link className="action-link" to="/trails?trail=trail_fact_not_panic">
-                              Маршрут тематического повтора
-                            </Link>
-                          ) : null}
                         </div>
                       </div>
                       <aside className="lesson-module-sidecard">
@@ -554,92 +543,98 @@ export function LessonsPage(props: LessonsPageProps) {
                   <div className="section-head lesson-program-secondary-head">
                     <div>
                       <p className="eyebrow">Все модули</p>
-                      <h3>Каталог программы</h3>
+                      <h3>Полный каталог программы открывается по запросу</h3>
                       <p className="section-copy">
-                        Ниже полный обзор модулей. Сначала лучше закончить активный шаг выше.
+                        Сначала лучше закончить активный шаг выше. Полный обзор модулей оставляем
+                        свёрнутым, чтобы он не спорил с рабочим next step.
                       </p>
                     </div>
                   </div>
 
-                  <div className="module-overview-grid module-overview-grid-secondary">
-                    {modulesForTrack.map((module) => {
-                      const moduleCycleStatus = getModuleCycleStatus(
-                        module.id,
-                        props.completedLessonIds,
-                        props.reviewedModuleIds,
-                        props.passedModuleQuizIds,
-                        track.id,
-                        track.id === "greek_b1" ? selectedLanguageStage : undefined
-                      );
-                      const moduleProgressPercent = moduleCycleStatus.progressPercent;
-                      const isUnlocked = unlockedModuleIds.includes(module.id);
-                      const isCompletedModule = moduleCycleStatus.completed;
-                      const isActiveModule = module.id === activeModule?.id;
-                      const moduleStateLabel = getModuleStateLabel(
-                        moduleCycleStatus,
-                        isUnlocked,
-                        isActiveModule
-                      );
-                      const moduleStatusTone = getModuleStatusTone(
-                        moduleCycleStatus,
-                        isUnlocked,
-                        isActiveModule
-                      );
-
-                      return (
-                        <button
-                          className={
+                  <details className="content-disclosure">
+                    <summary>Показать каталог модулей</summary>
+                    <div className="content-disclosure-body">
+                      <div className="module-overview-grid module-overview-grid-secondary">
+                        {modulesForTrack.map((module) => {
+                          const moduleCycleStatus = getModuleCycleStatus(
+                            module.id,
+                            props.completedLessonIds,
+                            props.reviewedModuleIds,
+                            props.passedModuleQuizIds,
+                            track.id,
+                            track.id === "greek_b1" ? selectedLanguageStage : undefined
+                          );
+                          const moduleProgressPercent = moduleCycleStatus.progressPercent;
+                          const isUnlocked = unlockedModuleIds.includes(module.id);
+                          const isCompletedModule = moduleCycleStatus.completed;
+                          const isActiveModule = module.id === activeModule?.id;
+                          const moduleStateLabel = getModuleStateLabel(
+                            moduleCycleStatus,
+                            isUnlocked,
                             isActiveModule
-                              ? isUnlocked
-                                ? openedFromExternalFlow && requestedModuleId === module.id
-                                  ? `module-overview-card module-overview-card-active module-overview-card-opened module-overview-card-${moduleStatusTone}`
-                                  : `module-overview-card module-overview-card-active module-overview-card-${moduleStatusTone}`
-                                : "module-overview-card module-overview-card-locked"
-                              : isUnlocked
-                                ? `module-overview-card module-overview-card-${moduleStatusTone}`
-                                : "module-overview-card module-overview-card-locked"
-                          }
-                          disabled={!isUnlocked}
-                          key={module.id}
-                          onClick={() => {
-                            if (!isUnlocked) {
-                              return;
-                            }
-                            selectModule(track.id, module.id);
-                          }}
-                          type="button"
-                        >
-                          <div className="module-overview-meta">
-                            <span className={`module-status-badge module-status-badge-${moduleStatusTone}`}>
-                              {moduleStateLabel}
-                            </span>
-                            <span className="meta-pill">Модуль</span>
-                          </div>
-                          <h3>{module.title}</h3>
-                          <p>{module.description}</p>
-                          <p className="module-overview-status">
-                            {getModuleStatusSummary(moduleCycleStatus, isUnlocked)}
-                          </p>
-                          <div className="progress-rail module-progress-rail">
-                            <span
-                              className="progress-fill"
-                              style={{ width: `${moduleProgressPercent}%` }}
-                            />
-                          </div>
-                          <div className="module-badge-line">
-                            <span className="module-progress-note">
-                              {isUnlocked ? `${moduleProgressPercent}% по модулю` : "Откроется по порядку"}
-                            </span>
-                            {isCompletedModule ? (
-                              <span className="badge-chip badge-chip-earned">
-                                {getModuleBadgeLabel(module.title)}
-                              </span>
-                            ) : null}
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
+                          );
+                          const moduleStatusTone = getModuleStatusTone(
+                            moduleCycleStatus,
+                            isUnlocked,
+                            isActiveModule
+                          );
+
+                          return (
+                            <button
+                              className={
+                                isActiveModule
+                                  ? isUnlocked
+                                    ? openedFromExternalFlow && requestedModuleId === module.id
+                                      ? `module-overview-card module-overview-card-active module-overview-card-opened module-overview-card-${moduleStatusTone}`
+                                      : `module-overview-card module-overview-card-active module-overview-card-${moduleStatusTone}`
+                                    : "module-overview-card module-overview-card-locked"
+                                  : isUnlocked
+                                    ? `module-overview-card module-overview-card-${moduleStatusTone}`
+                                    : "module-overview-card module-overview-card-locked"
+                              }
+                              disabled={!isUnlocked}
+                              key={module.id}
+                              onClick={() => {
+                                if (!isUnlocked) {
+                                  return;
+                                }
+                                selectModule(track.id, module.id);
+                              }}
+                              type="button"
+                            >
+                              <div className="module-overview-meta">
+                                <span className={`module-status-badge module-status-badge-${moduleStatusTone}`}>
+                                  {moduleStateLabel}
+                                </span>
+                                <span className="meta-pill">Модуль</span>
+                              </div>
+                              <h3>{module.title}</h3>
+                              <p>{module.description}</p>
+                              <p className="module-overview-status">
+                                {getModuleStatusSummary(moduleCycleStatus, isUnlocked)}
+                              </p>
+                              <div className="progress-rail module-progress-rail">
+                                <span
+                                  className="progress-fill"
+                                  style={{ width: `${moduleProgressPercent}%` }}
+                                />
+                              </div>
+                              <div className="module-badge-line">
+                                <span className="module-progress-note">
+                                  {isUnlocked ? `${moduleProgressPercent}% по модулю` : "Откроется по порядку"}
+                                </span>
+                                {isCompletedModule ? (
+                                  <span className="badge-chip badge-chip-earned">
+                                    {getModuleBadgeLabel(module.title)}
+                                  </span>
+                                ) : null}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </details>
                 </div>
               </>
             );

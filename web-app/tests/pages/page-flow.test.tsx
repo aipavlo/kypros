@@ -46,6 +46,9 @@ test("LandingPage keeps the main dashboard scenario readable and leaves alternat
   assert.match(markup, /У меня уже есть прогресс/);
   assert.match(markup, /Открыть программу по Кипру/);
   assert.match(markup, /Два альтернативных входа/);
+  assert.match(markup, /Остальные входы и объём продукта открываются только по запросу/);
+  assert.match(markup, /Показать важные страницы и прямые входы/);
+  assert.match(markup, /Показать структуру программы/);
   assert.match(markup, /Лёгкий старт по греческому/);
   assert.match(markup, /уроков/);
   assert.ok(countClass(markup, "primary-link-button") >= 1);
@@ -82,20 +85,22 @@ test("HomePage gives a clear next step for a new user and switches to review mod
   assert.match(newUserMarkup, /Ваш следующий шаг уже готов/);
   assert.match(newUserMarkup, /Новый старт/);
   assert.match(newUserMarkup, /Открыть лёгкий старт/);
-  assert.match(newUserMarkup, /Сразу к первому уроку/);
+  assert.match(newUserMarkup, /Быстрые сценарии everyday Greek/);
   assert.match(newUserMarkup, /На повторении/);
-  assert.match(newUserMarkup, /Что повторить сейчас/);
   assert.match(newUserMarkup, /Ближайшие уроки/);
   assert.match(newUserMarkup, /Если есть только 5-7 минут/);
+  assert.doesNotMatch(newUserMarkup, /Что повторить сейчас/);
+  assert.doesNotMatch(newUserMarkup, /Что уже собрано по полному циклу/);
   assert.doesNotMatch(newUserMarkup, /Альтернативные входы/);
   assert.doesNotMatch(newUserMarkup, /Что добавлено в программу/);
   assert.doesNotMatch(newUserMarkup, /Примеры вопросов/);
 
   assert.match(reviewMarkup, /Пора повторить/);
-  assert.match(reviewMarkup, /Remediation pack:/);
+  assert.match(reviewMarkup, /Correction loop:/);
   assert.match(reviewMarkup, /Открыть quick return/);
   assert.match(reviewMarkup, /Открыть full lesson/);
-  assert.match(reviewMarkup, /Quick return vs full lesson/);
+  assert.match(reviewMarkup, /Correction loop/);
+  assert.doesNotMatch(reviewMarkup, /Быстрое повторение карточками/);
 });
 
 test("LessonsPage renders one main CTA per visible program and keeps cyprus banner clean", () => {
@@ -113,11 +118,16 @@ test("LessonsPage renders one main CTA per visible program and keeps cyprus bann
   assert.match(lessonsMarkup, /Языковая программа Greek Core/);
   assert.match(lessonsMarkup, /Активный модуль/);
   assert.match(lessonsMarkup, /Открыть урок:/);
+  assert.match(lessonsMarkup, /Полный каталог программы открывается по запросу/);
+  assert.match(lessonsMarkup, /Показать каталог модулей/);
   assert.equal(countClass(lessonsMarkup, "primary-link-button"), 1);
+  assert.doesNotMatch(lessonsMarkup, /Guided маршрут под задачу/);
 
   assert.match(cyprusMarkup, /Программа Cyprus Reality/);
+  assert.match(cyprusMarkup, /Показать каталог модулей/);
   assert.doesNotMatch(cyprusMarkup, /Линейная языковая траектория/);
   assert.equal(countClass(cyprusMarkup, "primary-link-button"), 1);
+  assert.doesNotMatch(cyprusMarkup, /Маршрут повтора по Кипру/);
 });
 
 test("LessonDetailPage shows one current CTA and only reveals post-study actions after completion", () => {
@@ -272,6 +282,8 @@ test("FlashcardsPage keeps lesson context and exposes the lesson-flow actions", 
   assert.match(lessonFlowMarkup, /К мини-проверке после sentence review/);
   assert.match(lessonFlowMarkup, /Назад к уроку/);
   assert.match(lessonFlowMarkup, /Шаг 3\. Мини-проверка урока/);
+  assert.match(lessonFlowMarkup, /Correction loop/);
+  assert.doesNotMatch(lessonFlowMarkup, /Трек карточек/);
   assert.equal(countClass(lessonFlowMarkup, "primary-button"), 2);
 });
 
@@ -366,11 +378,12 @@ test("QuizPage keeps lesson context in active state and shows stored progress co
   assert.match(activeMarkup, /Текущий счёт: 0/);
   assert.match(activeMarkup, /Как переводится форма/);
   assert.match(activeMarkup, /Назад к уроку/);
+  assert.match(activeMarkup, /Lesson-linked self-check/);
+  assert.doesNotMatch(activeMarkup, /Полный каталог проверок/);
 
-  assert.match(progressAwareMarkup, /Лучшая \/ последняя коррекция/);
-  assert.match(progressAwareMarkup, /80% · 1 попыток всего/);
-  assert.match(progressAwareMarkup, /Ближайшая self-check/);
-  assert.match(progressAwareMarkup, /Открыть compact retry/);
+  assert.match(progressAwareMarkup, /Correction loop/);
+  assert.match(progressAwareMarkup, /80% последний результат · 1 попыток\./);
+  assert.match(progressAwareMarkup, /Открыть self-check и quick return/);
   assert.doesNotMatch(progressAwareMarkup, /Открыть full lesson revisit/);
 });
 
@@ -401,8 +414,8 @@ test("QuizPage can reopen in retry mistakes mode without losing the focused retr
   assert.match(markup, /Self-check/);
   assert.match(markup, /Self-check before retry/);
   assert.match(markup, /1 \/ 3|1 \/ 2|1 \/ 1/);
-  assert.match(markup, /Лучшая \/ последняя коррекция/);
-  assert.match(markup, /Открыть коррекцию/);
+  assert.match(markup, /Correction loop/);
+  assert.match(markup, /Открыть self-check и quick return/);
 });
 
 test("QuizPage shows a soft pronunciation hint for greek text inside quiz prompts", () => {
@@ -529,6 +542,8 @@ test("ContentPage leads with one curated decision before dropping into the wider
   assert.match(markup, /Перейти к короткой проверке/);
   assert.match(markup, /Вторичные разделы/);
   assert.match(markup, /Перейти к модулям программы/);
+  assert.match(markup, /Разверни только тот слой библиотеки, который нужен сейчас/);
+  assert.match(markup, /Показать примеры маршрутов/);
 
   const curatedEntryIndex = markup.indexOf("Что открыть первым");
   const libraryIndex = markup.indexOf("Вторичные разделы");
@@ -573,8 +588,9 @@ test("HomePage keeps review-heavy and non-empty learner state readable without l
   assert.match(markup, />4 \/ \d+</);
   assert.match(markup, /На повторении/);
   assert.match(markup, /3 вопросов/);
-  assert.match(markup, /Remediation pack/);
+  assert.match(markup, /Correction loop/);
   assert.match(markup, /Общий сигнал/);
-  assert.match(markup, /Quick return vs full lesson/);
+  assert.match(markup, /Шаг 3\. Full lesson revisit/);
   assert.match(markup, /Что уже собрано по полному циклу/);
+  assert.equal(countClass(markup, "action-card"), 2);
 });
