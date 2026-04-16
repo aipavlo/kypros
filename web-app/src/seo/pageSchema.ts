@@ -202,6 +202,13 @@ export function getPageStructuredData(slug: string[] = []): StructuredData[] {
     ];
   }
 
+  if (pathname === "/sitemap") {
+    return [
+      breadcrumb,
+      buildCollectionPageSchema(pathname, routeSeo.title, routeSeo.description)
+    ];
+  }
+
   if (pathname === "/humor") {
     return [
       breadcrumb,

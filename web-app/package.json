@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "ci:install": "npm ci",
+    "clean": "node ./scripts/clean-generated.mjs",
     "dev": "next dev",
     "build": "next build",
     "build:pages": "node ./scripts/build-pages.mjs",
@@ -12,8 +13,8 @@
     "lint:types": "tsc --noEmit",
     "lint:hygiene": "node ./scripts/lint-hygiene.mjs",
     "lint": "npm run lint:types && npm run lint:hygiene",
-    "test:build": "tsc -p tsconfig.test.json",
-    "test:run": "node --experimental-loader ./tests/support/alias-loader.mjs --test ./.test-dist/tests/adapters ./.test-dist/tests/content ./.test-dist/tests/pages ./.test-dist/tests/platform ./.test-dist/tests/routes",
+    "test:build": "node ./scripts/clean-test-dist.mjs && tsc -p tsconfig.test.json",
+    "test:run": "node --experimental-loader ./tests/support/alias-loader.mjs --test ./.test-dist/tests/adapters ./.test-dist/tests/content ./.test-dist/tests/pages ./.test-dist/tests/platform",
     "test:pages:artifacts:run": "node --experimental-loader ./tests/support/alias-loader.mjs --test ./.test-dist/tests/release",
     "test:pages:artifacts": "npm run test:build && npm run build:pages && npm run test:pages:artifacts:run",
     "test:e2e:run": "node --experimental-loader ./tests/support/alias-loader.mjs --test ./.test-dist/tests/e2e",

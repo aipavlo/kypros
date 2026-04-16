@@ -6,6 +6,7 @@ import { PublicRouteSnapshot } from "../../src/seo/PublicRouteSnapshot.js";
 test("PublicRouteSnapshot renders crawlable HTML for public entry routes and lesson pages", () => {
   const homeMarkup = renderToStaticMarkup(<PublicRouteSnapshot slug={[]} />);
   const lessonsMarkup = renderToStaticMarkup(<PublicRouteSnapshot slug={["lessons"]} />);
+  const sitemapMarkup = renderToStaticMarkup(<PublicRouteSnapshot slug={["sitemap"]} />);
   const lessonMarkup = renderToStaticMarkup(<PublicRouteSnapshot slug={["lessons", "gr_lesson_022"]} />);
 
   assert.match(homeMarkup, /data-seo-route="\/"/);
@@ -15,6 +16,10 @@ test("PublicRouteSnapshot renders crawlable HTML for public entry routes and les
   assert.match(lessonsMarkup, /data-seo-route="\/lessons"/);
   assert.match(lessonsMarkup, /Уроки Greek Core для жизни на Кипре/);
   assert.match(lessonsMarkup, /href="\/phrasebook"/);
+
+  assert.match(sitemapMarkup, /data-seo-route="\/sitemap"/);
+  assert.match(sitemapMarkup, /Карта сайта Kypros Path/);
+  assert.match(sitemapMarkup, /href="\/cyprus"/);
 
   assert.match(lessonMarkup, /data-seo-route="\/lessons\/gr_lesson_022"/);
   assert.match(lessonMarkup, /Продолжить путь/);

@@ -185,6 +185,30 @@ dd {
   color: rgba(36, 53, 61, 0.68);
 }
 
+.html-sitemap-hero,
+.html-sitemap-panel {
+  display: grid;
+  gap: 22px;
+}
+
+.html-sitemap-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.html-sitemap-card {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.html-sitemap-card h3,
+.html-sitemap-card p,
+.html-sitemap-card .action-link {
+  margin: 0;
+}
+
 .sidebar-note {
   margin-top: 4px;
   padding: 14px;
@@ -2099,6 +2123,73 @@ article.infographic-card:hover,
   gap: 14px;
 }
 
+.remediation-family-panel {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+  padding: 22px 24px 24px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(201, 134, 53, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(255, 251, 244, 0.96) 0%, rgba(245, 236, 220, 0.94) 100%);
+  border: 1px solid rgba(166, 98, 33, 0.12);
+  box-shadow: 0 10px 24px rgba(58, 48, 30, 0.05);
+}
+
+.remediation-family-panel-lesson-end {
+  background:
+    radial-gradient(circle at top right, rgba(59, 138, 160, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(247, 252, 253, 0.98) 0%, rgba(232, 242, 245, 0.96) 100%);
+  border-color: rgba(35, 64, 79, 0.1);
+}
+
+.remediation-family-grid,
+.remediation-step-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.remediation-step-list-compact {
+  margin-top: 10px;
+}
+
+.remediation-step-card {
+  display: grid;
+  gap: 10px;
+  padding: 18px 18px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(30, 49, 58, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.remediation-step-card h4,
+.remediation-step-card p {
+  margin: 0;
+}
+
+.remediation-step-card p:last-child {
+  color: #57656e;
+}
+
+.remediation-step-card-entry {
+  background:
+    linear-gradient(180deg, rgba(249, 251, 252, 0.98) 0%, rgba(238, 243, 245, 0.96) 100%);
+}
+
+.remediation-step-card-current,
+.remediation-step-card-quick {
+  background:
+    radial-gradient(circle at top right, rgba(201, 134, 53, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(255, 248, 236, 0.98) 0%, rgba(244, 232, 205, 0.96) 100%);
+  border-color: rgba(166, 98, 33, 0.16);
+}
+
+.remediation-step-card-deep {
+  background:
+    linear-gradient(180deg, rgba(250, 248, 244, 0.98) 0%, rgba(241, 238, 231, 0.96) 100%);
+}
+
 .quiz-retry-banner,
 .quiz-self-check-card {
   display: grid;
@@ -3444,6 +3535,18 @@ article.infographic-card::before {
 
 .flashcards-route-card {
   background: linear-gradient(180deg, rgba(248, 252, 253, 0.98) 0%, rgba(230, 241, 245, 0.95) 100%);
+}
+
+.flashcards-correction-note {
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(35, 64, 79, 0.08);
+}
+
+.flashcards-correction-note strong {
+  margin: 0;
 }
 
 .flashcards-metric-list {

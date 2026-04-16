@@ -70,7 +70,6 @@ jobs:
       - name: Build static export
         working-directory: web-app
         env:
-          NEXT_PUBLIC_APP_MODE: no-db
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           NEXT_PUBLIC_DEPLOY_TARGET: github-pages
           NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.site_url }}

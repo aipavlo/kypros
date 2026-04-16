@@ -186,6 +186,12 @@ export function LandingPage() {
                   <p>Компактный phrasebook-layer: приветствие, кафе, магазин, дорога и сервисные фразы.</p>
                   <span className="action-link">Открыть phrasebook</span>
                 </Link>
+                <Link className="landing-cta-card card-link-panel" to="/sitemap">
+                  <p className="chip">Навигация</p>
+                  <h3>HTML sitemap со всеми ключевыми входами</h3>
+                  <p>Обычная страница со ссылками на главные разделы и стартовые lesson pages.</p>
+                  <span className="action-link">Открыть карту сайта</span>
+                </Link>
                 <Link className="landing-cta-card card-link-panel" to={firstGreekLesson ? `/lessons/${firstGreekLesson.id}` : "/lessons"}>
                   <p className="chip">Урок</p>
                   <h3>{firstGreekLesson ? `${firstGreekLesson.order}. ${firstGreekLesson.title}` : "Первый урок греческого"}</h3>

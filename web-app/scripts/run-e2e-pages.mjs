@@ -139,7 +139,6 @@ async function main() {
     await runCommand("npm", ["run", "build:pages"], {
       env: {
         ...process.env,
-        NEXT_PUBLIC_APP_MODE: "no-db",
         NEXT_PUBLIC_DEPLOY_TARGET: "github-pages",
         NEXT_PUBLIC_BASE_PATH: BASE_PATH,
         NEXT_PUBLIC_SITE_URL: canonicalSiteUrl

@@ -1,6 +1,6 @@
 # Kypros
 
-Сайт на `Next.js` для изучения греческого языка и подготовки по Кипру. Один код обслуживает два режима: основной hosted-вариант с backend/БД и статическую публикацию в `GitHub Pages`.
+Сайт на `Next.js` для изучения греческого языка и подготовки по Кипру. Текущий runtime работает в `local-first` режиме без публичного backend/auth слоя; отдельный export-проход используется для публикации в `GitHub Pages`.
 
 ## Быстрый старт
 
@@ -25,6 +25,18 @@ make up
 - `make restart` — перезапуск локальной среды
 - `make docker-build` — пересборка локального docker-образа сайта
 
+Для локальной очистки generated output в `web-app`:
+
+- `npm run clean` — удаляет `.next`, `.test-dist`, `out`, `build`, `dist`, `coverage`, `.turbo`, `storybook-static` и `tsconfig.tsbuildinfo`
+
+Перед первым локальным запуском создай infra env-файл:
+
+```bash
+cp infra/web-app-local/.env.example infra/web-app-local/.env
+```
+
+После этого при необходимости подставь свои локальные значения в `infra/web-app-local/.env`. Этот файл не коммитится.
+
 Если менялись `package.json`, `package-lock.json`, `.npmrc` или версия `Node.js/npm` в Dockerfile, сначала пересобери образ:
 
 ```bash
@@ -42,13 +54,14 @@ make up
 
 ## Режимы запуска
 
-### 1. Основной хостинг с БД
+### 1. Основной runtime
 
 Это основной runtime-сценарий:
 
 - используется обычный `next build`
-- доступны `app/api/*`, cookies, сессии и серверные интеграции
-- в data-access слое работает `dbAppClient`
+- клиентское состояние и прогресс работают через `localAppClient`
+- публичный hosted/db auth режим удалён из runtime-кода
+- локальная docker infra читает DB credentials из `infra/web-app-local/.env`, а не из tracked config
 
 Локально:
 
@@ -61,10 +74,9 @@ make up
 Для `GitHub Pages` используется отдельный export-режим:
 
 - включается `NEXT_PUBLIC_DEPLOY_TARGET=github-pages`
-- приложение переключается в `no-db`
 - используется `localAppClient`
 - клиентский роутинг переводится на `HashRouter`
-- после сборки дополнительно создаются `robots.txt` и `sitemap.xml`
+- после сборки дополнительно создаётся `sitemap.xml`
 
 Локальная проверка Pages-сборки:
 
@@ -72,7 +84,6 @@ make up
 cd web-app
 NEXT_PUBLIC_BASE_PATH=/REPOSITORY_NAME \
 NEXT_PUBLIC_SITE_URL=https://USERNAME.github.io/REPOSITORY_NAME \
-NEXT_PUBLIC_APP_MODE=no-db \
 NEXT_PUBLIC_DEPLOY_TARGET=github-pages \
 npm run build:pages
 ```
@@ -91,6 +102,15 @@ Workflow: `.github/workflows/deploy-pages.yml`
 - запускает `test`
 - собирает `GitHub Pages`-вариант сайта
 - публикует артефакт в `GitHub Pages`
+
+Дополнительные CI security-gates:
+
+- `.github/workflows/dependency-review.yml` проверяет изменения зависимостей в `pull_request`
+- `.github/workflows/secret-scanning.yml` запускает `Gitleaks` на новых коммитах и PR-диффе, чтобы не пропускать свежие секреты в репозиторий
+
+Правило для репозитория:
+
+- build artifacts и generated output не коммитятся в git; `GitHub Pages` публикуется через upload артефакта из CI, а не через хранение `out/` в репозитории
 
 Для репозитория `USERNAME/REPOSITORY_NAME` итоговый URL такой:
 
@@ -124,10 +144,7 @@ git push origin v0.0.4
 - контент из `app-content` и `web-app/app-content`
 - клиентская логика прогресса, маршрутов, карточек, квизов и библиотеки
 
-Различается только слой доступа к данным:
-
-- hosted-режим — `dbAppClient`
-- `GitHub Pages` — `localAppClient`
+Во всех поддерживаемых режимах используется `localAppClient`; Pages-сборка отличается только export-настройками, canonical/basePath и статическими SEO-артефактами.
 
 ## Структура проекта
 
@@ -170,7 +187,6 @@ SEO и metadata лежат здесь:
 
 - `title`, `description`, `canonical`
 - `Open Graph` и `Twitter Card`
-- `robots.txt`
 - `sitemap.xml`
 - `site.webmanifest`
 - favicon/icon

@@ -464,48 +464,71 @@ export function QuizPage(props: QuizPageProps) {
                   <p>{moduleLoopAction.description}</p>
                 </article>
               ) : null}
-              {!isLessonFlow && activeReviewPlan ? (
-                <article className="trail-helper-card">
-                  <strong>Correction loop</strong>
-                  <p>{activeReviewPlan.packSummary}</p>
-                  <div className="actions-row">
-                    <Link className="secondary-link-button" to={activeReviewPlan.selfCheckLink}>
-                      Шаг 1. Self-check
-                    </Link>
-                    <Link className="secondary-link-button" to={activeReviewPlan.retryLink}>
-                      {activeReviewPlan.quickReturnTitle}
-                    </Link>
-                  </div>
+            </div>
+          ) : null}
+          {!isLessonFlow && activeReviewPlan ? (
+            <section className="remediation-family-panel">
+              <div className="section-head">
+                <div>
+                  <p className="eyebrow">Recovery family</p>
+                  <h3>Как возвращаться без лишнего полного круга</h3>
+                  <p className="section-copy">{activeReviewPlan.packSummary}</p>
+                </div>
+              </div>
+
+              <div className="remediation-family-grid">
+                <article className="remediation-step-card remediation-step-card-entry">
+                  <p className="eyebrow">Remediation entry</p>
+                  <h4>{activeReviewPlan.selfCheckTitle}</h4>
+                  <p>{activeReviewPlan.selfCheckDescription}</p>
+                  <Link className="secondary-link-button" to={activeReviewPlan.selfCheckLink}>
+                    Открыть remediation-entry
+                  </Link>
                 </article>
-              ) : null}
-              {!isLessonFlow && activeReviewPlan ? (
-                <article className="trail-helper-card">
-                  <strong>{activeReviewPlan.fullLessonTitle}</strong>
+
+                <article className="remediation-step-card remediation-step-card-quick">
+                  <p className="eyebrow">Быстрый возврат</p>
+                  <h4>{activeReviewPlan.quickReturnTitle}</h4>
+                  <p>{activeReviewPlan.quickReturnDescription}</p>
+                  <Link className="primary-link-button" to={activeReviewPlan.retryLink}>
+                    Открыть quick return
+                  </Link>
+                </article>
+
+                <article className="remediation-step-card remediation-step-card-deep">
+                  <p className="eyebrow">Глубокий возврат</p>
+                  <h4>{activeReviewPlan.fullLessonTitle}</h4>
                   <p>{activeReviewPlan.fullLessonDescription}</p>
-                  {activeReviewPlan.lessonLink ? (
-                    <div className="actions-row">
+                  <div className="actions-row">
+                    {activeReviewPlan.lessonLink ? (
                       <Link className="secondary-link-button" to={activeReviewPlan.lessonLink}>
                         Открыть full lesson
                       </Link>
-                      {activeReviewPlan.flashcardsLink ? (
-                        <Link className="secondary-link-button" to={activeReviewPlan.flashcardsLink}>
-                          Открыть карточки темы
-                        </Link>
-                      ) : null}
-                    </div>
-                  ) : null}
+                    ) : null}
+                    {activeReviewPlan.flashcardsLink ? (
+                      <Link className="secondary-link-button" to={activeReviewPlan.flashcardsLink}>
+                        Открыть карточки темы
+                      </Link>
+                    ) : null}
+                  </div>
                 </article>
-              ) : null}
-              {!isLessonFlow && wrongQuestionIds.length > 0 ? (
-                <article className="trail-helper-card">
-                  <strong>Ближайшая self-check</strong>
-                  <p>
-                    Вместо полного дубля открой короткую self-check по {Math.min(wrongQuestionIds.length, 3)} слабым вопросам,
-                    потом quick return и только затем full lesson, если это всё ещё нужно.
+              </div>
+            </section>
+          ) : null}
+          {isLessonFlow ? (
+            <section className="remediation-family-panel remediation-family-panel-lesson-end">
+              <div className="section-head">
+                <div>
+                  <p className="eyebrow">Lesson end</p>
+                  <h3>Сейчас важнее не потерять lesson context</h3>
+                  <p className="section-copy">
+                    Этот экран завершает только lesson-linked self-check. Главный следующий шаг —
+                    вернуться в урок и закрыть маршрут. Quick return и full lesson нужны позже,
+                    только если correction loop отдельно покажет, что тема всё ещё просела.
                   </p>
-                </article>
-              ) : null}
-            </div>
+                </div>
+              </div>
+            </section>
           ) : null}
           <div className="actions-row">
             {isLessonFlow ? (
@@ -525,28 +548,10 @@ export function QuizPage(props: QuizPageProps) {
                 Пройти ещё раз
               </button>
             )}
-            {!isLessonFlow && storedModeProgress?.wrongQuestionIds?.length ? (
+            {!isLessonFlow && storedModeProgress?.wrongQuestionIds?.length && !activeReviewPlan ? (
               <button className="secondary-button" onClick={retryMistakes} type="button">
                 Открыть quick return
               </button>
-            ) : null}
-            {!isLessonFlow && activeReviewPlan?.lessonLink ? (
-              <Link
-                className="secondary-link-button"
-                to={activeReviewPlan.lessonLink}
-              >
-                Повторить слабую тему
-              </Link>
-            ) : null}
-            {!isLessonFlow && activeReviewPlan?.flashcardsLink ? (
-              <Link className="secondary-link-button" to={activeReviewPlan.flashcardsLink}>
-                Повторить карточки
-              </Link>
-            ) : null}
-            {!isLessonFlow && activeReviewPlan ? (
-              <Link className="secondary-link-button" to={activeReviewPlan.retryLink}>
-                Открыть correction loop
-              </Link>
             ) : null}
             {requestedModuleId && moduleLoopAction?.kind === "next_module" ? (
               <Link className="secondary-link-button" to={moduleLoopAction.to}>

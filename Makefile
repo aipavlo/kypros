@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 INFRA_DIR := infra/web-app-local
-COMPOSE := docker compose -f $(INFRA_DIR)/docker-compose.yml
+COMPOSE := docker compose --env-file $(INFRA_DIR)/.env -f $(INFRA_DIR)/docker-compose.yml
 
 .PHONY: help lint test test-build test-e2e up down logs ps restart docker-build
 

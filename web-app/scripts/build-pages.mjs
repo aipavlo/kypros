@@ -1,4 +1,4 @@
-import { readFile, rename, writeFile } from "node:fs/promises";
+import { access, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { spawn } from "node:child_process";
@@ -15,10 +15,6 @@ const parkedEntries = [
   {
     from: path.join(appDir, "api"),
     to: path.join(appDir, "__api_pages_disabled__")
-  },
-  {
-    from: path.join(appDir, "robots.ts"),
-    to: path.join(appDir, "__robots_pages_disabled__.ts")
   },
   {
     from: path.join(appDir, "sitemap.ts"),
@@ -46,8 +42,7 @@ function runNextBuild() {
       stdio: "inherit",
       env: {
         ...process.env,
-        NEXT_PUBLIC_DEPLOY_TARGET: "github-pages",
-        NEXT_PUBLIC_APP_MODE: "no-db"
+        NEXT_PUBLIC_DEPLOY_TARGET: "github-pages"
       }
     });
 
@@ -64,6 +59,10 @@ function runNextBuild() {
 }
 
 export function getAbsoluteUrl(pathname = "/") {
+  if (pathname === "/") {
+    return siteUrl;
+  }
+
   const normalizedPath = pathname === "/" ? "" : pathname.replace(/\/+$/, "") || "";
   const fullPath = `${siteBasePath}${normalizedPath}` || "/";
 
@@ -84,16 +83,6 @@ async function readLessons() {
 
 async function readIndexableStaticRoutes() {
   return JSON.parse(await readFile(indexableStaticRoutesPath, "utf8"));
-}
-
-export function buildRobotsTxt() {
-  return [
-    "User-agent: *",
-    "Allow: /",
-    "",
-    `Sitemap: ${getAbsoluteUrl("/sitemap.xml")}`,
-    ""
-  ].join("\n");
 }
 
 export function buildSitemapEntries(staticRoutes, lessons) {
@@ -132,8 +121,16 @@ ${entries}
 }
 
 async function writeSeoArtifacts() {
-  await writeFile(path.join(outDir, "robots.txt"), buildRobotsTxt(), "utf8");
   await writeFile(path.join(outDir, "sitemap.xml"), await buildSitemapXml(), "utf8");
+}
+
+async function pathExists(targetPath) {
+  try {
+    await access(targetPath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export async function main() {
@@ -143,6 +140,10 @@ export async function main() {
 
   try {
     for (const entry of parkedEntries) {
+      if (!(await pathExists(entry.from))) {
+        continue;
+      }
+
       await rename(entry.from, entry.to);
       movedEntries.push(entry);
     }

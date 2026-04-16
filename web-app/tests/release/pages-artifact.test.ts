@@ -4,7 +4,7 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { lessons } from "../../src/content/catalogData.js";
 import { getPageStructuredData } from "../../src/seo/pageSchema.js";
-import { buildRobotsTxt, buildSitemapXml } from "../../src/seo/siteFiles.js";
+import { buildSitemapXml } from "../../src/seo/siteFiles.js";
 import {
   ALL_STATIC_ROUTE_PATHS,
   INDEXABLE_STATIC_ROUTE_PATHS,
@@ -19,12 +19,12 @@ const requiredArtifacts = [
   "easy-start/index.html",
   "phrasebook/index.html",
   "lessons/index.html",
+  "sitemap/index.html",
   "lessons/gr_lesson_022/index.html",
   "lessons/cy_lesson_001/index.html",
   "cyprus/index.html",
   "trails/index.html",
   "humor/index.html",
-  "robots.txt",
   "sitemap.xml",
   "site.webmanifest",
   "social-preview.svg",
@@ -120,19 +120,7 @@ test("sitemap keeps indexable routes and lesson pages aligned with source route 
   }
 });
 
-test("robots.txt points to the exported sitemap on the canonical host", () => {
-  const robotsTxt = readArtifact("robots.txt");
-
-  assert.match(robotsTxt, /^User-agent: \*/m);
-  assert.match(robotsTxt, /^Allow: \//m);
-  assert.match(
-    robotsTxt,
-    new RegExp(`^Sitemap: ${getAbsoluteUrl("/sitemap.xml").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "m")
-  );
-});
-
-test("published robots.txt and sitemap.xml stay byte-equal to source builders", () => {
-  assert.equal(readArtifact("robots.txt"), buildRobotsTxt());
+test("published sitemap.xml stays byte-equal to source builder", () => {
   assert.equal(normalizeSitemapXml(readArtifact("sitemap.xml")), normalizeSitemapXml(buildSitemapXml()));
 });
 
@@ -152,6 +140,11 @@ test("public export pages keep canonical and social metadata in the HTML artifac
       routePath: "/trails",
       expectedCopy: "Маршруты по греческому и Cyprus Reality",
       expectedTitle: "Маршруты по греческому и Cyprus Reality | Kypros Path"
+    },
+    {
+      routePath: "/sitemap",
+      expectedCopy: "Карта сайта Kypros Path",
+      expectedTitle: "HTML sitemap: ключевые страницы и lesson pages | Kypros Path"
     },
     {
       routePath: "/lessons/gr_lesson_022",
@@ -200,6 +193,7 @@ test("published structured data stays aligned with source builders without extra
     ["lessons"],
     ["cyprus"],
     ["trails"],
+    ["sitemap"],
     ["humor"],
     ["lessons", "gr_lesson_022"],
     ["lessons", "cy_lesson_001"]

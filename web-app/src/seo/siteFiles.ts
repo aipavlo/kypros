@@ -14,16 +14,6 @@ const indexableStaticRouteEntries = indexableStaticRoutes as IndexableStaticRout
 export const INDEXABLE_STATIC_ROUTE_PATHS = indexableStaticRouteEntries.map((entry) => entry.pathname);
 export const INDEXABLE_STATIC_ROUTE_ENTRIES = indexableStaticRouteEntries;
 
-export function getRobotsMetadata(): MetadataRoute.Robots {
-  return {
-    rules: {
-      userAgent: "*",
-      allow: "/"
-    },
-    sitemap: getAbsoluteUrl("/sitemap.xml")
-  };
-}
-
 export function getSitemapMetadata(): MetadataRoute.Sitemap {
   const staticEntries: MetadataRoute.Sitemap = INDEXABLE_STATIC_ROUTE_ENTRIES.map((entry) => ({
     url: getAbsoluteUrl(entry.pathname),
@@ -38,16 +28,6 @@ export function getSitemapMetadata(): MetadataRoute.Sitemap {
   }));
 
   return [...staticEntries, ...lessonEntries];
-}
-
-export function buildRobotsTxt() {
-  return [
-    "User-agent: *",
-    "Allow: /",
-    "",
-    `Sitemap: ${getAbsoluteUrl("/sitemap.xml")}`,
-    ""
-  ].join("\n");
 }
 
 export function buildSitemapXml() {

@@ -49,6 +49,7 @@ const SECONDARY_NAVIGATION_ITEMS: NavigationItem[] = [
 ];
 
 const EXTRA_NAVIGATION_ITEMS: NavigationItem[] = [
+  { label: "Карта сайта", to: "/sitemap", isActive: (pathname) => pathname.startsWith("/sitemap") },
   { label: "Юмор", to: "/humor", isActive: (pathname) => pathname.startsWith("/humor") },
   { label: "Библиотека", to: "/content", isActive: (pathname) => pathname.startsWith("/content") }
 ];
