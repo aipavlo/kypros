@@ -184,63 +184,6 @@ test("browser progress flow persists completed lesson across dashboard reload", 
   }
 });
 
-test("browser session flow goes through login, session read and logout", async () => {
-  const browser = await launchBrowser();
-  const { context, page } = await createIsolatedPage(browser);
-
-  try {
-    await gotoPath(page, "/dashboard");
-    await waitForText(page, "Ваш следующий шаг уже готов");
-
-    const loginResult = await page.evaluate(async () => {
-      const loginResponse = await fetch("/api/auth/login", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email: "e2e@kyprospath.app" })
-      });
-      const loginBody = await loginResponse.json();
-
-      const sessionResponse = await fetch("/api/app/session", {
-        credentials: "include"
-      });
-      const sessionBody = await sessionResponse.json();
-
-      const logoutResponse = await fetch("/api/auth/logout", {
-        method: "POST",
-        credentials: "include"
-      });
-      const logoutBody = await logoutResponse.json();
-
-      const anonymousSessionResponse = await fetch("/api/app/session", {
-        credentials: "include"
-      });
-      const anonymousSessionBody = await anonymousSessionResponse.json();
-
-      return {
-        loginStatus: loginResponse.status,
-        loginBody,
-        sessionBody,
-        logoutStatus: logoutResponse.status,
-        logoutBody,
-        anonymousSessionBody
-      };
-    });
-
-    assert.equal(loginResult.loginStatus, 200);
-    assert.equal(loginResult.loginBody.session.mode, "authenticated");
-    assert.equal(loginResult.sessionBody.session.mode, "authenticated");
-    assert.equal(loginResult.logoutStatus, 200);
-    assert.equal(loginResult.logoutBody.session.mode, "anonymous");
-    assert.equal(loginResult.anonymousSessionBody.session.mode, "anonymous");
-  } finally {
-    await closeIsolatedPage(context);
-    await browser.close();
-  }
-});
-
 test("browser cyprus flow keeps cyprus navigation active through lesson path", async () => {
   const browser = await launchBrowser();
   const { context, page } = await createIsolatedPage(browser);

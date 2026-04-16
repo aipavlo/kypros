@@ -42,6 +42,16 @@ test("sitemap keeps only indexable static routes", () => {
   assert.ok(!sitemap.includes(getAbsoluteUrl("/content")));
 });
 
+test("sitemap URLs stay inside the /kypros/ URL prefix", () => {
+  const sitemapUrls = getSitemapMetadata().map((entry) => entry.url);
+
+  assert.ok(sitemapUrls.length > 0);
+
+  for (const url of sitemapUrls) {
+    assert.match(url, /^https:\/\/aipavlo\.github\.io\/kypros(\/|$)/);
+  }
+});
+
 test("structured data covers courses, collections and lesson pages", () => {
   const homeSchema = getPageStructuredData([]);
   const easyStartSchema = getPageStructuredData(["easy-start"]);

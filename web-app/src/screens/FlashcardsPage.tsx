@@ -448,11 +448,24 @@ export function FlashcardsPage(props: FlashcardsPageProps) {
                   )}
                 </div>
                 <div className="flashcards-correction-note">
-                  <strong>Correction loop</strong>
-                  <p>
-                    После карточек маршрут один: короткая self-check, потом quick return по ошибкам и
-                    только потом full lesson, если тема всё ещё шатается.
-                  </p>
+                  <strong>После карточек</strong>
+                  <div className="remediation-step-list remediation-step-list-compact">
+                    <article className="remediation-step-card remediation-step-card-current">
+                      <p className="eyebrow">Сейчас</p>
+                      <h4>Шаг 3. Мини-проверка урока</h4>
+                      <p>Это ближайший и нормальный следующий шаг после карточек в lesson flow.</p>
+                    </article>
+                    <article className="remediation-step-card remediation-step-card-quick">
+                      <p className="eyebrow">Если ошибки останутся</p>
+                      <h4>Quick return</h4>
+                      <p>Короткий corrective pass подключается только после self-check, а не вместо неё.</p>
+                    </article>
+                    <article className="remediation-step-card remediation-step-card-deep">
+                      <p className="eyebrow">Только при необходимости</p>
+                      <h4>Full lesson</h4>
+                      <p>Полный возврат в тему нужен лишь тогда, когда короткая коррекция не помогла.</p>
+                    </article>
+                  </div>
                 </div>
               </article>
             ) : null}

@@ -30,6 +30,11 @@
     "priority": 0.8
   },
   {
+    "pathname": "/sitemap",
+    "changeFrequency": "monthly",
+    "priority": 0.6
+  },
+  {
     "pathname": "/humor",
     "changeFrequency": "monthly",
     "priority": 0.8

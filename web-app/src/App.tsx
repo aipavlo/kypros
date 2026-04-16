@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { AppShell } from "@/src/components/AppShell";
-import { AnalyticsPageTracker } from "@/src/components/AnalyticsPageTracker";
 import { ScrollToTop } from "@/src/components/ScrollToTop";
 import { useLearningProgressState } from "@/src/hooks/useLearningProgressState";
 import { ContentPage } from "@/src/screens/ContentPage";
@@ -16,6 +15,7 @@ import { TrailsPage } from "@/src/screens/TrailsPage";
 import { FlashcardsPage } from "@/src/screens/FlashcardsPage";
 import { QuizPage } from "@/src/screens/QuizPage";
 import { AchievementsPage } from "@/src/screens/AchievementsPage";
+import { HtmlSitemapPage } from "@/src/screens/HtmlSitemapPage";
 
 export function App() {
   const {
@@ -31,7 +31,6 @@ export function App() {
 
   return (
     <AppShell>
-      <AnalyticsPageTracker />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -51,6 +50,7 @@ export function App() {
         <Route path="/phrasebook" element={<PhrasebookPage />} />
         <Route path="/trails" element={<TrailsPage completedLessonIds={completedLessonIds} />} />
         <Route path="/tracks" element={<TracksPage />} />
+        <Route path="/sitemap" element={<HtmlSitemapPage />} />
         <Route path="/humor" element={<GreekHumorPage />} />
         <Route
           path="/achievements"

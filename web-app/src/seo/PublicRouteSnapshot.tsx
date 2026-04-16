@@ -1,4 +1,5 @@
 import { getLessonById, getLessonsByTrack, getNextLesson, lessons } from "@/src/content/catalogData";
+import { getHtmlSitemapSections } from "@/src/seo/htmlSitemap";
 import { getRouteSeoEntry } from "@/src/seo/siteMetadata";
 
 type PublicRouteSnapshotProps = {
@@ -320,6 +321,21 @@ export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
           <h1>Греческий юмор для короткой практики чтения и разбора</h1>
           <p>Короткие мемы, jokes и anecdotes как учебный вход: прочитать, понять смысл, заметить культурный контекст и вернуться к языковой практике.</p>
           <SnapshotLinks items={getSnapshotLinks(routePath)} />
+        </section>
+      </main>
+    );
+  }
+
+  if (routePath === "/sitemap") {
+    const sitemapLinks = getHtmlSitemapSections().flatMap((section) => section.links);
+
+    return (
+      <main className="seo-route-snapshot" data-seo-route={routePath}>
+        <section className="seo-route-snapshot-section">
+          <p className="eyebrow">HTML sitemap</p>
+          <h1>Карта сайта Kypros Path</h1>
+          <p>Обычная HTML-страница со ссылками на главные search-entry routes и стартовые lesson pages по греческому и Cyprus Reality.</p>
+          <SnapshotLinks items={sitemapLinks} />
         </section>
       </main>
     );

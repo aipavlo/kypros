@@ -9,7 +9,18 @@ Thumbs.db
 /web-app/.next/
 /web-app/.test-dist/
 /web-app/out/
+/web-app/build/
+/web-app/dist/
+/web-app/coverage/
+/web-app/.turbo/
+/web-app/storybook-static/
 /web-app/tsconfig.tsbuildinfo
+/web-app/**/*.tsbuildinfo
+/web-app/**/__next.*.txt
 /web-app/.env
 /web-app/.env.*
 /web-app/npm-debug.log*
+
+# Local infra secrets
+/infra/web-app-local/.env
+/infra/web-app-local/.env.*

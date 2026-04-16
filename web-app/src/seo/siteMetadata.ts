@@ -15,6 +15,10 @@ export const DEFAULT_DESCRIPTION =
 const MAX_TITLE_LENGTH = 70;
 
 export function getAbsoluteUrl(pathname = "/") {
+  if (pathname === "/") {
+    return SITE_URL;
+  }
+
   const normalizedPath = pathname === "/" ? "" : pathname.replace(/\/+$/, "") || "";
   const basePath = SITE_BASE_PATH || "";
   const fullPath = `${basePath}${normalizedPath}` || "/";
@@ -165,6 +169,17 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
       "маршруты обучения греческий",
       "сценарии подготовки Кипр",
       "повторение Cyprus Reality"
+    ]
+  },
+  "/sitemap": {
+    title: "HTML sitemap: ключевые страницы и lesson pages",
+    description:
+      "HTML sitemap Kypros Path: главные разделы, стартовые входы и lesson pages по греческому и Cyprus Reality на одной обычной странице.",
+    indexable: true,
+    keywords: [
+      "html sitemap kypros path",
+      "карта сайта кипр греческий",
+      "страницы и уроки kypros path"
     ]
   },
   "/flashcards": {

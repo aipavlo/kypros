@@ -1,6 +1,14 @@
 node_modules/
 .next/
+.test-dist/
+out/
+build/
+dist/
+coverage/
+.turbo/
+storybook-static/
 tsconfig.tsbuildinfo
+*.tsbuildinfo
 .env
 .env.*
 npm-debug.log*

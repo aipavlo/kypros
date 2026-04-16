@@ -58,6 +58,8 @@ export type ReviewPlanItem = {
   variantPrompt: string;
   packTitle: string;
   packSummary: string;
+  selfCheckTitle: string;
+  selfCheckDescription: string;
   quickReturnTitle: string;
   quickReturnDescription: string;
   fullLessonTitle: string;
@@ -189,8 +191,13 @@ function buildRemediationPackCopy(summary: ReviewModeSummary, focus: ReviewWeakF
     packTitle: `Correction loop: ${focusLabel}`,
     packSummary:
       wrongQuestionCount > 0
-        ? `Сначала короткий self-check по ${Math.min(wrongQuestionCount, 3)} вопросам, потом quick return и только при необходимости полный возврат в тему ${focusLabel}.`
-        : `Сначала короткий self-check, потом quick return и только при необходимости полный возврат в тему ${focusLabel}.`,
+        ? `Сначала короткий self-check по ${Math.min(wrongQuestionCount, 3)} вопросам. Затем quick return по ошибкам. Полный возврат в тему ${focusLabel} нужен только если после этого опора всё ещё шатается.`
+        : `Сначала короткий self-check, затем quick return по ошибкам. Полный возврат в тему ${focusLabel} нужен только если после этого опора всё ещё шатается.`,
+    selfCheckTitle: "Шаг 1. Self-check",
+    selfCheckDescription:
+      wrongQuestionCount > 0
+        ? `${Math.min(wrongQuestionCount, 3)} вопроса собираются в короткий remediation-entry без полного повтора режима.`
+        : "Короткий remediation-entry помогает быстро проверить опору до возврата в тему.",
     quickReturnTitle: "Шаг 2. Quick return",
     quickReturnDescription:
       wrongQuestionCount > 0

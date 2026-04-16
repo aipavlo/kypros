@@ -282,7 +282,9 @@ test("FlashcardsPage keeps lesson context and exposes the lesson-flow actions", 
   assert.match(lessonFlowMarkup, /К мини-проверке после sentence review/);
   assert.match(lessonFlowMarkup, /Назад к уроку/);
   assert.match(lessonFlowMarkup, /Шаг 3\. Мини-проверка урока/);
-  assert.match(lessonFlowMarkup, /Correction loop/);
+  assert.match(lessonFlowMarkup, /После карточек/);
+  assert.match(lessonFlowMarkup, /Если ошибки останутся/);
+  assert.match(lessonFlowMarkup, /Только при необходимости/);
   assert.doesNotMatch(lessonFlowMarkup, /Трек карточек/);
   assert.equal(countClass(lessonFlowMarkup, "primary-button"), 2);
 });
