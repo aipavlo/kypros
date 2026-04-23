@@ -76,7 +76,7 @@ make up
 - включается `NEXT_PUBLIC_DEPLOY_TARGET=github-pages`
 - используется `localAppClient`
 - клиентский роутинг переводится на `HashRouter`
-- после сборки дополнительно создаётся `sitemap.xml`
+- после сборки дополнительно создаются `sitemap.xml` и `robots.txt`
 
 Локальная проверка Pages-сборки:
 
@@ -188,6 +188,7 @@ SEO и metadata лежат здесь:
 - `title`, `description`, `canonical`
 - `Open Graph` и `Twitter Card`
 - `sitemap.xml`
+- `robots.txt`
 - `site.webmanifest`
 - favicon/icon
 - `WebSite` JSON-LD

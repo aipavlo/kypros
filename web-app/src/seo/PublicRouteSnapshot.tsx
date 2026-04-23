@@ -1,6 +1,6 @@
 import { getLessonById, getLessonsByTrack, getNextLesson, lessons } from "@/src/content/catalogData";
 import { getHtmlSitemapSections } from "@/src/seo/htmlSitemap";
-import { getRouteSeoEntry } from "@/src/seo/siteMetadata";
+import { getInternalHref, getRouteSeoEntry } from "@/src/seo/siteMetadata";
 
 type PublicRouteSnapshotProps = {
   slug: string[];
@@ -166,7 +166,7 @@ function SnapshotLinks(props: { items: Array<{ href: string; label: string }> })
     <ul>
       {props.items.map((item) => (
         <li key={`${item.href}-${item.label}`}>
-          <a href={item.href}>{item.label}</a>
+          <a href={getInternalHref(item.href)}>{item.label}</a>
         </li>
       ))}
     </ul>
@@ -358,7 +358,7 @@ export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
           <h2>Продолжить путь</h2>
           <SnapshotLinks items={getSnapshotLinks(routePath)} />
           <p>
-            <a href={lesson.trackId === "cyprus_reality" ? "/cyprus" : "/lessons"}>Вернуться к списку уроков</a>
+            <a href={getInternalHref(lesson.trackId === "cyprus_reality" ? "/cyprus" : "/lessons")}>Вернуться к списку уроков</a>
           </p>
         </section>
       </main>

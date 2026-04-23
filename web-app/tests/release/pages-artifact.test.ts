@@ -4,11 +4,12 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { lessons } from "../../src/content/catalogData.js";
 import { getPageStructuredData } from "../../src/seo/pageSchema.js";
-import { buildSitemapXml } from "../../src/seo/siteFiles.js";
+import { buildRobotsTxt, buildSitemapXml } from "../../src/seo/siteFiles.js";
 import {
   ALL_STATIC_ROUTE_PATHS,
   INDEXABLE_STATIC_ROUTE_PATHS,
   getAbsoluteUrl,
+  getInternalHref,
   getRouteMetadataFromSlug,
   getRouteSeoEntry
 } from "../../src/seo/siteMetadata.js";
@@ -26,6 +27,7 @@ const requiredArtifacts = [
   "trails/index.html",
   "humor/index.html",
   "sitemap.xml",
+  "robots.txt",
   "site.webmanifest",
   "social-preview.svg",
   "googleb5479b34beac57bf.html"
@@ -124,6 +126,18 @@ test("published sitemap.xml stays byte-equal to source builder", () => {
   assert.equal(normalizeSitemapXml(readArtifact("sitemap.xml")), normalizeSitemapXml(buildSitemapXml()));
 });
 
+test("published robots.txt stays aligned with source builder and project-site sitemap", () => {
+  const robotsTxt = readArtifact("robots.txt");
+
+  assert.equal(robotsTxt, buildRobotsTxt());
+  assert.match(robotsTxt, /^User-agent: \*/m);
+  assert.match(robotsTxt, /^Allow: \//m);
+  assert.match(
+    robotsTxt,
+    new RegExp(`^Sitemap: ${getAbsoluteUrl("/sitemap.xml").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "m")
+  );
+});
+
 test("public export pages keep canonical and social metadata in the HTML artifact", () => {
   const samples = [
     {
@@ -167,7 +181,7 @@ test("public export pages keep canonical and social metadata in the HTML artifac
     assert.match(html, new RegExp(sample.expectedCopy.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
     assert.match(
       html,
-      new RegExp(`<link rel="canonical" href="${canonicalUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}/?"`)
+      new RegExp(`<link rel="canonical" href="${canonicalUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`)
     );
     assert.match(html, /<meta property="og:image" content="https:\/\/aipavlo\.github\.io\/kypros\/social-preview\.svg"/);
     assert.match(html, /<meta name="twitter:image" content="https:\/\/aipavlo\.github\.io\/kypros\/social-preview\.svg"/);
@@ -260,7 +274,7 @@ test("published artifacts keep route metadata, snippets and social-preview field
     );
     assert.match(
       html,
-      new RegExp(`<link rel="canonical" href="${canonical.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}/?"`)
+      new RegExp(`<link rel="canonical" href="${canonical.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`)
     );
     assert.match(
       html,
@@ -274,7 +288,7 @@ test("published artifacts keep route metadata, snippets and social-preview field
     );
     assert.match(
       html,
-      new RegExp(`<meta property="og:url" content="${ogUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}/?"`)
+      new RegExp(`<meta property="og:url" content="${ogUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`)
     );
     assert.match(
       html,
@@ -385,8 +399,14 @@ test("high-intent public snapshots keep crawlable links to related hubs and repr
     const hrefs = getInternalHrefs(html);
 
     for (const href of sample.requiredLinks) {
-      assert.ok(hrefs.includes(href), `Expected crawl link ${href} in ${sample.routePath}`);
+      assert.ok(hrefs.includes(getInternalHref(href)), `Expected crawl link ${href} in ${sample.routePath}`);
     }
+
+    assert.equal(
+      hrefs.some((href) => /^\/(?!kypros\/|$)/.test(href)),
+      false,
+      `Expected no root-relative internal hrefs without /kypros in ${sample.routePath}`
+    );
   }
 });
 
@@ -407,8 +427,14 @@ test("representative lesson snapshots keep backlinks and onward crawl paths", ()
     const hrefs = getInternalHrefs(html);
 
     for (const href of sample.requiredLinks) {
-      assert.ok(hrefs.includes(href), `Expected lesson crawl link ${href} in ${sample.routePath}`);
+      assert.ok(hrefs.includes(getInternalHref(href)), `Expected lesson crawl link ${href} in ${sample.routePath}`);
     }
+
+    assert.equal(
+      hrefs.some((href) => /^\/(?!kypros\/|$)/.test(href)),
+      false,
+      `Expected no root-relative internal hrefs without /kypros in ${sample.routePath}`
+    );
   }
 });
 
@@ -446,7 +472,7 @@ test("noindex utility pages stay out of sitemap but keep noindex metadata in the
     assert.match(html, /<meta name="robots" content="noindex, follow"/);
     assert.match(
       html,
-      new RegExp(`<link rel="canonical" href="${expectedCanonicalUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}/?"`)
+      new RegExp(`<link rel="canonical" href="${expectedCanonicalUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`)
     );
     assert.equal(
       sitemapUrls.includes(getAbsoluteUrl(sample.routePath)),
