@@ -1,9 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { lessons } from "../../src/content/catalogData.js";
-import { getSitemapMetadata } from "../../src/seo/siteFiles.js";
+import { buildRobotsTxt, getSitemapMetadata } from "../../src/seo/siteFiles.js";
 import { getPageStructuredData } from "../../src/seo/pageSchema.js";
-import { getAbsoluteUrl, getRouteMetadataFromSlug } from "../../src/seo/siteMetadata.js";
+import { getAbsoluteUrl, getRouteMetadataFromSlug, SITE_URL } from "../../src/seo/siteMetadata.js";
 
 function getResolvedTitle(metadata: { title?: unknown }) {
   if (typeof metadata.title === "string") {
@@ -50,6 +50,15 @@ test("sitemap URLs stay inside the /kypros/ URL prefix", () => {
   for (const url of sitemapUrls) {
     assert.match(url, /^https:\/\/aipavlo\.github\.io\/kypros(\/|$)/);
   }
+});
+
+test("robots.txt points to the published project-site sitemap", () => {
+  const robotsTxt = buildRobotsTxt();
+
+  assert.match(robotsTxt, /^User-agent: \*/m);
+  assert.match(robotsTxt, /^Allow: \//m);
+  assert.match(robotsTxt, new RegExp(`^Sitemap: ${getAbsoluteUrl("/sitemap.xml").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "m"));
+  assert.match(robotsTxt, new RegExp(`^Sitemap: ${new URL("sitemap.xml", SITE_URL).toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "m"));
 });
 
 test("structured data covers courses, collections and lesson pages", () => {

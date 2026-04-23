@@ -14,6 +14,13 @@ export const DEFAULT_DESCRIPTION =
   "Уроки греческого, Cyprus Reality, маршруты, карточки и короткие проверки для жизни и подготовки по Кипру.";
 const MAX_TITLE_LENGTH = 70;
 
+function pathLooksLikeFile(pathname: string) {
+  const [pathWithoutQueryOrHash] = pathname.split(/[?#]/, 1);
+  const lastSegment = pathWithoutQueryOrHash.split("/").filter(Boolean).at(-1) ?? "";
+
+  return lastSegment.includes(".");
+}
+
 export function getAbsoluteUrl(pathname = "/") {
   if (pathname === "/") {
     return SITE_URL;
@@ -21,9 +28,21 @@ export function getAbsoluteUrl(pathname = "/") {
 
   const normalizedPath = pathname === "/" ? "" : pathname.replace(/\/+$/, "") || "";
   const basePath = SITE_BASE_PATH || "";
-  const fullPath = `${basePath}${normalizedPath}` || "/";
+  const fullPath = `${basePath}${normalizedPath}${pathLooksLikeFile(normalizedPath) ? "" : "/"}` || "/";
 
   return new URL(fullPath, `${parsedSiteUrl.origin}/`).toString();
+}
+
+export function getInternalHref(pathname = "/") {
+  if (!pathname.startsWith("/")) {
+    return pathname;
+  }
+
+  if (pathname === "/") {
+    return SITE_BASE_PATH ? `${SITE_BASE_PATH}/` : "/";
+  }
+
+  return `${SITE_BASE_PATH}${pathname}`;
 }
 
 export function getAssetUrl(assetPath: string) {

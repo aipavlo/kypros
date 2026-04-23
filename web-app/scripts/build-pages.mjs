@@ -26,6 +26,13 @@ function isUnsafeCanonicalHost(hostname) {
   return hostname === "localhost" || hostname === "127.0.0.1" || hostname.endsWith(".local");
 }
 
+function pathLooksLikeFile(pathname) {
+  const [pathWithoutQueryOrHash] = pathname.split(/[?#]/, 1);
+  const lastSegment = pathWithoutQueryOrHash.split("/").filter(Boolean).at(-1) ?? "";
+
+  return lastSegment.includes(".");
+}
+
 export function assertValidCanonicalSiteUrl(url) {
   const parsedUrl = new URL(url);
 
@@ -64,7 +71,7 @@ export function getAbsoluteUrl(pathname = "/") {
   }
 
   const normalizedPath = pathname === "/" ? "" : pathname.replace(/\/+$/, "") || "";
-  const fullPath = `${siteBasePath}${normalizedPath}` || "/";
+  const fullPath = `${siteBasePath}${normalizedPath}${pathLooksLikeFile(normalizedPath) ? "" : "/"}` || "/";
 
   return new URL(fullPath, `${new URL(siteUrl).origin}/`).toString();
 }
@@ -120,8 +127,17 @@ ${entries}
 `;
 }
 
+export function buildRobotsTxt() {
+  return `User-agent: *
+Allow: /
+
+Sitemap: ${new URL("sitemap.xml", siteUrl).toString()}
+`;
+}
+
 async function writeSeoArtifacts() {
   await writeFile(path.join(outDir, "sitemap.xml"), await buildSitemapXml(), "utf8");
+  await writeFile(path.join(outDir, "robots.txt"), buildRobotsTxt(), "utf8");
 }
 
 async function pathExists(targetPath) {

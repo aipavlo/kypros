@@ -1629,6 +1629,27 @@ article.infographic-card:hover,
     linear-gradient(180deg, rgba(250, 248, 244, 0.9) 0%, rgba(255, 255, 255, 0.96) 100%);
 }
 
+.phrasebook-hero-badge {
+  color: #21313b;
+  border: 1px solid rgba(30, 49, 58, 0.12);
+  box-shadow: 0 14px 26px rgba(35, 64, 79, 0.12);
+}
+
+.phrasebook-hero-badge p,
+.phrasebook-hero-badge .hero-goal-text {
+  color: #516168;
+}
+
+.phrasebook-hero-badge .hero-step-status {
+  color: #8d5f26;
+  background: rgba(209, 157, 84, 0.16);
+}
+
+.phrasebook-hero-badge .hero-step-meta .badge-chip {
+  background: rgba(35, 64, 79, 0.08);
+  color: #23404f;
+}
+
 .phrasebook-layout {
   align-items: start;
 }
