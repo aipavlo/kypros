@@ -10,6 +10,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aipavlo.github.io/k
 const siteBasePath =
   process.env.NEXT_PUBLIC_BASE_PATH ??
   (new URL(siteUrl).pathname === "/" ? "" : new URL(siteUrl).pathname.replace(/\/$/, ""));
+const normalizedSiteRootPath =
+  new URL(siteUrl).pathname === "/" ? "/" : `${new URL(siteUrl).pathname.replace(/\/$/, "")}/`;
 const indexableStaticRoutesPath = path.resolve("./src/seo/indexableStaticRoutes.json");
 const parkedEntries = [
   {
@@ -67,7 +69,7 @@ function runNextBuild() {
 
 export function getAbsoluteUrl(pathname = "/") {
   if (pathname === "/") {
-    return siteUrl;
+    return new URL(normalizedSiteRootPath, `${new URL(siteUrl).origin}/`).toString();
   }
 
   const normalizedPath = pathname === "/" ? "" : pathname.replace(/\/+$/, "") || "";
@@ -131,7 +133,7 @@ export function buildRobotsTxt() {
   return `User-agent: *
 Allow: /
 
-Sitemap: ${new URL("sitemap.xml", siteUrl).toString()}
+Sitemap: ${getAbsoluteUrl("/sitemap.xml")}
 `;
 }
 

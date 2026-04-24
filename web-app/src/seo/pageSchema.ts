@@ -1,7 +1,6 @@
 import { getLessonById } from "@/src/content/catalogData";
 import {
   SITE_NAME,
-  SITE_URL,
   getAbsoluteUrl,
   getRouteSeoEntry
 } from "@/src/seo/siteMetadata";
@@ -43,7 +42,7 @@ function buildCourseSchema(
     provider: {
       "@type": "Organization",
       name: SITE_NAME,
-      url: SITE_URL
+      url: getAbsoluteUrl("/")
     },
     teaches
   };
@@ -64,7 +63,7 @@ function buildWebPageSchema(
     isPartOf: {
       "@type": "WebSite",
       name: SITE_NAME,
-      url: SITE_URL
+      url: getAbsoluteUrl("/")
     },
     ...extra
   };
@@ -80,7 +79,7 @@ function buildCollectionPageSchema(pathname: string, name: string, description: 
     isPartOf: {
       "@type": "WebSite",
       name: SITE_NAME,
-      url: SITE_URL
+      url: getAbsoluteUrl("/")
     }
   };
 }

@@ -6,6 +6,8 @@ export const SITE_NAME = "Kypros Path";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aipavlo.github.io/kypros/";
 export const DEFAULT_SOCIAL_IMAGE_PATH = "/social-preview.svg";
 const parsedSiteUrl = new URL(SITE_URL);
+const normalizedSiteRootPath = parsedSiteUrl.pathname === "/" ? "/" : `${parsedSiteUrl.pathname.replace(/\/$/, "")}/`;
+export const SITE_ROOT_URL = new URL(normalizedSiteRootPath, `${parsedSiteUrl.origin}/`).toString();
 export const SITE_BASE_PATH =
   process.env.NEXT_PUBLIC_BASE_PATH ??
   (parsedSiteUrl.pathname === "/" ? "" : parsedSiteUrl.pathname.replace(/\/$/, ""));
@@ -23,7 +25,7 @@ function pathLooksLikeFile(pathname: string) {
 
 export function getAbsoluteUrl(pathname = "/") {
   if (pathname === "/") {
-    return SITE_URL;
+    return SITE_ROOT_URL;
   }
 
   const normalizedPath = pathname === "/" ? "" : pathname.replace(/\/+$/, "") || "";
