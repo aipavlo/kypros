@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { lessons } from "@/src/content/catalogData";
 import indexableStaticRoutes from "./indexableStaticRoutes.json";
-import { getAbsoluteUrl, SITE_URL } from "@/src/seo/siteMetadata";
+import { getAbsoluteUrl } from "@/src/seo/siteMetadata";
 
 type IndexableStaticRouteEntry = {
   pathname: string;
@@ -52,6 +52,6 @@ export function buildRobotsTxt() {
   return `User-agent: *
 Allow: /
 
-Sitemap: ${new URL("sitemap.xml", SITE_URL).toString()}
+Sitemap: ${getAbsoluteUrl("/sitemap.xml")}
 `;
 }

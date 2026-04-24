@@ -25,6 +25,7 @@ test("lesson metadata uses a lesson-specific canonical instead of the site root"
 });
 
 test("getAbsoluteUrl keeps trailing slash for route pages but not for file paths", () => {
+  assert.equal(getAbsoluteUrl("/"), "https://aipavlo.github.io/kypros/");
   assert.equal(getAbsoluteUrl("/lessons"), "https://aipavlo.github.io/kypros/lessons/");
   assert.equal(getAbsoluteUrl("/lessons/gr_lesson_020"), "https://aipavlo.github.io/kypros/lessons/gr_lesson_020/");
   assert.equal(getAbsoluteUrl("/sitemap.xml"), "https://aipavlo.github.io/kypros/sitemap.xml");
