@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import { getHtmlSitemapSections } from "@/src/seo/htmlSitemap";
 
 export function HtmlSitemapPage() {
@@ -8,7 +8,7 @@ export function HtmlSitemapPage() {
     <div className="stack">
       <section className="panel page-banner html-sitemap-hero">
         <p className="eyebrow">HTML sitemap</p>
-        <h1>Карта сайта Kypros Path</h1>
+        <h1>Карта сайта: ключевые страницы и уроки</h1>
         <p className="section-copy">
           Обычная HTML-страница со ссылками на главные search-entry routes и стартовые lesson pages,
           чтобы по сайту можно было пройтись без XML sitemap и без длинного ручного поиска.

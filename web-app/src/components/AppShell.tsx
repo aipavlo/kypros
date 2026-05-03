@@ -1,5 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
+import { appRoutes } from "@/src/lib/routes";
 
 type AppShellProps = {
   children: ReactNode;
@@ -24,34 +26,34 @@ function isEasyStartContext(pathname: string, search: string) {
 }
 
 const PRIMARY_NAVIGATION_ITEMS: NavigationItem[] = [
-  { label: "Главная", to: "/", isActive: (pathname) => pathname === "/" },
+  { label: "Главная", to: appRoutes.home(), isActive: (pathname) => pathname === "/" },
   {
     label: "Учу греческий",
-    to: "/lessons",
+    to: appRoutes.lessons(),
     isActive: (pathname, search) => pathname.startsWith("/lessons") && !isEasyStartContext(pathname, search)
   },
-  { label: "Изучаю Кипр", to: "/cyprus", isActive: (pathname) => pathname.startsWith("/cyprus") },
-  { label: "Повторение карточек", to: "/flashcards", isActive: (pathname) => pathname.startsWith("/flashcards") },
-  { label: "Квиз: проверка знаний", to: "/quiz", isActive: (pathname) => pathname.startsWith("/quiz") },
-  { label: "Прогресс", to: "/achievements", isActive: (pathname) => pathname.startsWith("/achievements") }
+  { label: "Изучаю Кипр", to: appRoutes.cyprus(), isActive: (pathname) => pathname.startsWith("/cyprus") },
+  { label: "Повторение карточек", to: appRoutes.flashcards(), isActive: (pathname) => pathname.startsWith("/flashcards") },
+  { label: "Квиз: проверка знаний", to: appRoutes.quiz(), isActive: (pathname) => pathname.startsWith("/quiz") },
+  { label: "Прогресс", to: appRoutes.achievements(), isActive: (pathname) => pathname.startsWith("/achievements") }
 ];
 
 const SECONDARY_NAVIGATION_ITEMS: NavigationItem[] = [
   {
     label: "Лёгкий старт",
-    to: "/easy-start",
+    to: appRoutes.easyStart(),
     isActive: (pathname, search) => isEasyStartContext(pathname, search)
   },
-  { label: "Сценарии", to: "/phrasebook", isActive: (pathname) => pathname.startsWith("/phrasebook") },
-  { label: "Маршруты", to: "/trails", isActive: (pathname) => pathname.startsWith("/trails") },
-  { label: "Программа", to: "/tracks", isActive: (pathname) => pathname.startsWith("/tracks") },
-  { label: "О сервисе", to: "/welcome", isActive: (pathname) => pathname.startsWith("/welcome") }
+  { label: "Сценарии", to: appRoutes.phrasebook(), isActive: (pathname) => pathname.startsWith("/phrasebook") },
+  { label: "Маршруты", to: appRoutes.trails(), isActive: (pathname) => pathname.startsWith("/trails") },
+  { label: "Программа", to: appRoutes.tracks(), isActive: (pathname) => pathname.startsWith("/tracks") },
+  { label: "О сервисе", to: appRoutes.welcome(), isActive: (pathname) => pathname.startsWith("/welcome") }
 ];
 
 const EXTRA_NAVIGATION_ITEMS: NavigationItem[] = [
-  { label: "Карта сайта", to: "/sitemap", isActive: (pathname) => pathname.startsWith("/sitemap") },
-  { label: "Юмор", to: "/humor", isActive: (pathname) => pathname.startsWith("/humor") },
-  { label: "Библиотека", to: "/content", isActive: (pathname) => pathname.startsWith("/content") }
+  { label: "Карта сайта", to: appRoutes.sitemap(), isActive: (pathname) => pathname.startsWith("/sitemap") },
+  { label: "Юмор", to: appRoutes.humor(), isActive: (pathname) => pathname.startsWith("/humor") },
+  { label: "Библиотека", to: appRoutes.content(), isActive: (pathname) => pathname.startsWith("/content") }
 ];
 
 function renderNavigationLinks(items: NavigationItem[], pathname: string, search: string) {

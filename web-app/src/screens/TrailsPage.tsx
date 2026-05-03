@@ -1,8 +1,10 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import { getLessonById } from "@/src/content/catalogData";
 import { trailDefinitions } from "@/src/content/trails";
 import { getCompletedCount } from "@/src/content/progress";
 import { InfographicCard, TrailBadge, TrailLessonItem, TrailMiniArt } from "@/src/components/shared-ui";
+import { appRoutes } from "@/src/lib/routes";
 
 type TrailsPageProps = {
   completedLessonIds: string[];
@@ -46,27 +48,27 @@ export function TrailsPage(props: TrailsPageProps) {
   const additionalTrails = trails.filter((trail) => trail.id !== selectedTrail.id).slice(0, 6);
 
   function getTrailLink(trailId: string) {
-    return `/trails?trail=${trailId}`;
+    return appRoutes.trails({ trail: trailId });
   }
 
   function getTrailLessonLink(trailId: string, lessonId: string) {
-    return `/lessons/${lessonId}?trail=${trailId}&source=trail`;
+    return appRoutes.lesson(lessonId, { trail: trailId, source: "trail" });
   }
 
   return (
     <div className="stack">
       <section className="panel page-banner trails-hero-panel">
         <p className="eyebrow">Маршруты</p>
-        <h1>Готовые маршруты обучения</h1>
+        <h1>Маршруты по греческому и Cyprus Reality</h1>
         <p className="section-copy">
           Выбери один сценарий под текущую задачу и открой его как рабочий маршрут, без длинного
           сравнения всего каталога подряд.
         </p>
         <div className="actions-row">
-          <Link className="primary-link-button" to="/lessons">
+          <Link className="primary-link-button" to={appRoutes.lessons()}>
             Открыть языковую программу
           </Link>
-          <Link className="secondary-link-button" to="/cyprus">
+          <Link className="secondary-link-button" to={appRoutes.cyprus()}>
             Открыть Cyprus Reality
           </Link>
         </div>
@@ -173,7 +175,7 @@ export function TrailsPage(props: TrailsPageProps) {
               Продолжить маршрут: {selectedTrail.nextLesson.order}. {selectedTrail.nextLesson.title}
             </Link>
           ) : null}
-          <Link className="secondary-link-button" to="/lessons">
+          <Link className="secondary-link-button" to={appRoutes.lessons()}>
             Посмотреть все уроки
           </Link>
         </div>

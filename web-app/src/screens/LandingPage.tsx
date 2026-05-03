@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import {
   getLessonById,
   getLessonsByTrack,
@@ -13,6 +13,7 @@ import {
 } from "@/src/content/contentCounts";
 import { easyStartLessonIds } from "@/src/content/trails";
 import { TrailBadge, TrailMiniArt } from "@/src/components/shared-ui";
+import { appRoutes } from "@/src/lib/routes";
 
 export function LandingPage() {
   const greekTrack = tracks.find((track) => track.id === "greek_b1");
@@ -32,16 +33,16 @@ export function LandingPage() {
       <section className="landing-hero panel">
         <div className="landing-copy">
           <p className="eyebrow">Kypros Path</p>
-          <h1>Начни с одного короткого шага и не блуждай по разделам</h1>
+          <h1>Греческий и Cyprus Reality для жизни на Кипре</h1>
           <p className="lead">
             Если это первый заход, лучше идти через Лёгкий старт: один короткий урок, затем
             карточки и мини-проверка. Если прогресс уже есть, дашборд сразу покажет ближайший возврат.
           </p>
           <div className="actions-row">
-            <Link className="primary-link-button" to="/easy-start">
+            <Link className="primary-link-button" to={appRoutes.easyStart()}>
               Начать с короткого шага
             </Link>
-            <Link className="secondary-link-button" to="/dashboard">
+            <Link className="secondary-link-button" to={appRoutes.dashboard()}>
               У меня уже есть прогресс
             </Link>
           </div>
@@ -85,13 +86,13 @@ export function LandingPage() {
         </div>
 
         <div className="landing-cta-grid">
-          <Link className="landing-cta-card card-link-panel" to="/dashboard">
+          <Link className="landing-cta-card card-link-panel" to={appRoutes.dashboard()}>
             <p className="chip">Если уже что-то проходил</p>
             <h3>Вернуться к одному следующему действию</h3>
             <p>Дашборд покажет ближайший полезный возврат: продолжение, повтор или слабую тему.</p>
             <span className="action-link">Открыть дашборд</span>
           </Link>
-          <Link className="landing-cta-card card-link-panel" to="/cyprus">
+          <Link className="landing-cta-card card-link-panel" to={appRoutes.cyprus()}>
             <p className="chip">Если нужен трек по Кипру</p>
             <h3>История, культура и устройство страны</h3>
             <p>Отдельная программа по Кипру: даты, институты, праздники и базовые факты.</p>

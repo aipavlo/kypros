@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import {
   getLessonsByTrackAndDifficulty,
   getModulesByTrack,

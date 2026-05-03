@@ -41,7 +41,7 @@ test("LandingPage keeps the main dashboard scenario readable and leaves alternat
     element: <LandingPage />
   });
 
-  assert.match(markup, /Начни с одного короткого шага и не блуждай по разделам/);
+  assert.match(markup, /Греческий и Cyprus Reality для жизни на Кипре/);
   assert.match(markup, /Начать с короткого шага/);
   assert.match(markup, /У меня уже есть прогресс/);
   assert.match(markup, /Открыть программу по Кипру/);
@@ -115,7 +115,7 @@ test("LessonsPage renders one main CTA per visible program and keeps cyprus bann
     element: <LessonsPage {...emptyProgressProps} forcedTrackId="cyprus_reality" />
   });
 
-  assert.match(lessonsMarkup, /Языковая программа Greek Core/);
+  assert.match(lessonsMarkup, /Уроки греческого для жизни на Кипре/);
   assert.match(lessonsMarkup, /Активный модуль/);
   assert.match(lessonsMarkup, /Открыть урок:/);
   assert.match(lessonsMarkup, /Полный каталог программы открывается по запросу/);
@@ -123,7 +123,7 @@ test("LessonsPage renders one main CTA per visible program and keeps cyprus bann
   assert.equal(countClass(lessonsMarkup, "primary-link-button"), 1);
   assert.doesNotMatch(lessonsMarkup, /Guided маршрут под задачу/);
 
-  assert.match(cyprusMarkup, /Программа Cyprus Reality/);
+  assert.match(cyprusMarkup, /Cyprus Reality: история и культура Кипра/);
   assert.match(cyprusMarkup, /Показать каталог модулей/);
   assert.doesNotMatch(cyprusMarkup, /Линейная языковая траектория/);
   assert.equal(countClass(cyprusMarkup, "primary-link-button"), 1);
@@ -511,7 +511,7 @@ test("GreekHumorPage keeps one focused material with compact filters and study a
     element: <GreekHumorPage />
   });
 
-  assert.match(markup, /Мемы, шутки и анекдоты как короткая учебная практика/);
+  assert.match(markup, /Греческий юмор и мемы для изучения языка/);
   assert.match(markup, /Открыть следующий материал/);
   assert.match(markup, /Все/);
   assert.match(markup, /Популярное/);

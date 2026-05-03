@@ -8,6 +8,8 @@
     "clean": "node ./scripts/clean-generated.mjs",
     "dev": "next dev",
     "build": "next build",
+    "analyze": "ANALYZE=true next build --webpack",
+    "analyze:pages": "ANALYZE=true NEXT_PUBLIC_DEPLOY_TARGET=github-pages NEXT_PUBLIC_BASE_PATH=/kypros NEXT_PUBLIC_SITE_URL=https://aipavlo.github.io/kypros/ next build --webpack",
     "build:pages": "node ./scripts/build-pages.mjs",
     "start": "next start",
     "lint:types": "tsc --noEmit",
@@ -34,6 +36,7 @@
     "react-router-dom": "6.30.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "16.2.4",
     "@types/node": "22.19.15",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",

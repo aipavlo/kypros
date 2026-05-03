@@ -72,10 +72,10 @@ test("structured data covers courses, collections and lesson pages", () => {
   const utilitySchema = getPageStructuredData(["dashboard"]);
 
   assert.deepEqual(homeSchema.map((entry) => entry["@type"]), ["WebPage"]);
-  assert.deepEqual(easyStartSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "WebPage"]);
-  assert.deepEqual(lessonsSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "Course"]);
+  assert.deepEqual(easyStartSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "CollectionPage"]);
+  assert.deepEqual(lessonsSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "CollectionPage"]);
   assert.deepEqual(phrasebookSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "CollectionPage"]);
-  assert.deepEqual(cyprusSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "WebPage"]);
+  assert.deepEqual(cyprusSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "CollectionPage"]);
   assert.deepEqual(trailsSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "CollectionPage"]);
   assert.deepEqual(humorSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "CollectionPage"]);
   assert.deepEqual(lessonSchema.map((entry) => entry["@type"]), ["BreadcrumbList", "LearningResource"]);

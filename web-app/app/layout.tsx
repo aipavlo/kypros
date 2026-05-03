@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import {
+  SITE_URL,
+  absoluteUrl,
+  assetUrl
+} from "@/src/lib/url";
+import {
   DEFAULT_DESCRIPTION,
   DEFAULT_SOCIAL_IMAGE_PATH,
   DEFAULT_TITLE,
   SITE_NAME,
-  SITE_URL,
-  getAbsoluteUrl,
-  getAssetUrl,
   getSocialImageMetadata
 } from "@/src/seo/siteMetadata";
 import "../src/styles.css";
@@ -21,11 +23,11 @@ export const metadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
   category: "education",
-  manifest: getAssetUrl("/site.webmanifest"),
+  manifest: assetUrl("/site.webmanifest"),
   icons: {
-    icon: getAssetUrl("/icon.svg"),
-    shortcut: getAssetUrl("/icon.svg"),
-    apple: getAssetUrl("/icon.svg")
+    icon: assetUrl("/icon.svg"),
+    shortcut: assetUrl("/icon.svg"),
+    apple: assetUrl("/icon.svg")
   },
   keywords: [
     "греческий язык",
@@ -40,17 +42,17 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     type: "website",
     locale: "ru_RU",
-    url: SITE_URL,
+    url: absoluteUrl("/"),
     images: getSocialImageMetadata()
   },
   twitter: {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [getAbsoluteUrl(DEFAULT_SOCIAL_IMAGE_PATH)]
+    images: [absoluteUrl(DEFAULT_SOCIAL_IMAGE_PATH)]
   },
   alternates: {
-    canonical: SITE_URL
+    canonical: absoluteUrl("/")
   },
   robots: {
     index: true,
@@ -81,7 +83,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: SITE_NAME,
     url: SITE_URL,
-    logo: getAbsoluteUrl("/icon.svg"),
+    logo: absoluteUrl("/icon.svg"),
     description: DEFAULT_DESCRIPTION
   };
 

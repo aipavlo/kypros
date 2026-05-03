@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import {
   getLessonsByModule,
   getMutableCyprusFacts,
@@ -7,6 +7,7 @@ import {
   tracks
 } from "@/src/content/catalogData";
 import { getModuleStage, getTrackCountCopy, getTrackPresentation } from "@/src/content/presentation";
+import { appRoutes } from "@/src/lib/routes";
 
 export function TracksPage() {
   const greekA1Lessons = getLessonsByTrackAndDifficulty("greek_b1", "a1");
@@ -27,7 +28,7 @@ export function TracksPage() {
         title: "No English, Please",
         description:
           "Маршрут про разговор под давлением, удержание разговора на греческом и живое восприятие речи.",
-        to: "/trails?trail=trail_no_english_pls",
+        to: appRoutes.trails({ trail: "trail_no_english_pls" }),
         pill: "Разговорный маршрут",
         action: "Перейти к маршруту"
       },
@@ -35,7 +36,7 @@ export function TracksPage() {
         title: "Athena Small Talk Forge",
         description:
           "Стартовый разговорный маршрут: представиться, рассказать о себе и спокойно поддержать простой диалог.",
-        to: "/trails?trail=trail_athena_small_talk",
+        to: appRoutes.trails({ trail: "trail_athena_small_talk" }),
         pill: "Стартовый маршрут",
         action: "Перейти к маршруту"
       }
@@ -45,7 +46,7 @@ export function TracksPage() {
         title: "KEP Survival Mode",
         description:
           "Маршрут по заявлениям, формам, записи, курсам и сервисным сценариям вокруг документов и услуг.",
-        to: "/trails?trail=trail_kep_survival_mode",
+        to: appRoutes.trails({ trail: "trail_kep_survival_mode" }),
         pill: "Сервисный маршрут",
         action: "Перейти к маршруту"
       },
@@ -53,7 +54,7 @@ export function TracksPage() {
         title: "Fact, Not Panic",
         description:
           "Маршрут по тематическому повторению Cyprus Reality и перепроверке изменяемых фактов перед экзаменом.",
-        to: "/trails?trail=trail_fact_not_panic",
+        to: appRoutes.trails({ trail: "trail_fact_not_panic" }),
         pill: "Экзаменационная стратегия",
         action: "Перейти к маршруту"
       }
@@ -63,7 +64,7 @@ export function TracksPage() {
         title: "Greek Memes and Anecdotes",
         description:
           "Отдельная лёгкая подборка про короткие разговорные шутки, мемы и культурные наблюдения.",
-        to: "/humor",
+        to: appRoutes.humor(),
         pill: "Юмористическая подборка",
         action: "Открыть раздел"
       },
@@ -71,7 +72,7 @@ export function TracksPage() {
         title: "Local jokes with votes",
         description:
           "Смотри самые удачные шутки, ставь оценки и находи самые просматриваемые культурные заметки.",
-        to: "/humor",
+        to: appRoutes.humor(),
         pill: "Рейтинг",
         action: "Смотреть рейтинг"
       }

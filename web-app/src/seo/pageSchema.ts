@@ -1,7 +1,7 @@
 import { getLessonById } from "@/src/content/catalogData";
+import { absoluteUrl } from "@/src/lib/url";
 import {
   SITE_NAME,
-  getAbsoluteUrl,
   getRouteSeoEntry
 } from "@/src/seo/siteMetadata";
 
@@ -15,37 +15,13 @@ function buildBreadcrumbList(items: Array<{ name: string; pathname: string }>): 
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: getAbsoluteUrl(item.pathname)
+      item: absoluteUrl(item.pathname)
     }))
   };
 }
 
 function getPagePathname(slug: string[] = []) {
   return slug.length === 0 ? "/" : `/${slug.join("/")}`;
-}
-
-function buildCourseSchema(
-  pathname: string,
-  name: string,
-  description: string,
-  teaches: string[],
-  educationalLevel: string
-): StructuredData {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    name,
-    description,
-    url: getAbsoluteUrl(pathname),
-    inLanguage: ["ru", "el"],
-    educationalLevel,
-    provider: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: getAbsoluteUrl("/")
-    },
-    teaches
-  };
 }
 
 function buildWebPageSchema(
@@ -59,28 +35,34 @@ function buildWebPageSchema(
     "@type": "WebPage",
     name,
     description,
-    url: getAbsoluteUrl(pathname),
+    url: absoluteUrl(pathname),
     isPartOf: {
       "@type": "WebSite",
       name: SITE_NAME,
-      url: getAbsoluteUrl("/")
+      url: absoluteUrl("/")
     },
     ...extra
   };
 }
 
-function buildCollectionPageSchema(pathname: string, name: string, description: string): StructuredData {
+function buildCollectionPageSchema(
+  pathname: string,
+  name: string,
+  description: string,
+  extra: StructuredData = {}
+): StructuredData {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name,
     description,
-    url: getAbsoluteUrl(pathname),
+    url: absoluteUrl(pathname),
     isPartOf: {
       "@type": "WebSite",
       name: SITE_NAME,
-      url: getAbsoluteUrl("/")
-    }
+      url: absoluteUrl("/")
+    },
+    ...extra
   };
 }
 
@@ -124,14 +106,14 @@ export function getPageStructuredData(slug: string[] = []): StructuredData[] {
         "@type": "LearningResource",
         name: lesson.title,
         description: lesson.objective,
-        url: getAbsoluteUrl(pathname),
+        url: absoluteUrl(pathname),
         inLanguage: lesson.trackId === "cyprus_reality" ? "ru" : "el",
         learningResourceType: "Lesson",
         educationalLevel: lesson.difficulty.toUpperCase(),
         isPartOf: {
           "@type": "Course",
           name: parentName,
-          url: getAbsoluteUrl(parentPath)
+          url: absoluteUrl(parentPath)
         }
       }
     ];
@@ -149,12 +131,14 @@ export function getPageStructuredData(slug: string[] = []): StructuredData[] {
   if (pathname === "/lessons") {
     return [
       breadcrumb,
-      buildCourseSchema(
+      buildCollectionPageSchema(
         pathname,
         "Greek Core: греческий язык для жизни на Кипре",
         routeSeo.description,
-        ["бытовой греческий", "сервисные ситуации", "чтение", "разговорная практика"],
-        "A1-B2"
+        {
+          about: ["бытовой греческий", "сервисные ситуации", "чтение", "разговорная практика"],
+          inLanguage: ["ru", "el"]
+        }
       )
     ];
   }
@@ -162,7 +146,7 @@ export function getPageStructuredData(slug: string[] = []): StructuredData[] {
   if (pathname === "/easy-start") {
     return [
       breadcrumb,
-      buildWebPageSchema(
+      buildCollectionPageSchema(
         pathname,
         "Лёгкий старт: греческий язык с нуля на Кипре",
         routeSeo.description,
@@ -183,7 +167,7 @@ export function getPageStructuredData(slug: string[] = []): StructuredData[] {
   if (pathname === "/cyprus") {
     return [
       breadcrumb,
-      buildWebPageSchema(
+      buildCollectionPageSchema(
         pathname,
         "Cyprus Reality: история, культура и устройство Кипра",
         routeSeo.description,

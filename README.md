@@ -88,6 +88,16 @@ NEXT_PUBLIC_DEPLOY_TARGET=github-pages \
 npm run build:pages
 ```
 
+Bundle analyzer:
+
+```bash
+cd web-app
+npm run analyze
+npm run analyze:pages
+```
+
+Отчёты пишутся в `.next/analyze/` и используются как baseline для JS budget.
+
 ## GitHub Pages CI
 
 Workflow: `.github/workflows/deploy-pages.yml`

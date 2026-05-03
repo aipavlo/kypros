@@ -1,4 +1,5 @@
 import scenarioPacksJson from "@content/07-everyday-greek/scenario-packs.json";
+import { appRoutes } from "@/src/lib/routes";
 import type { ScenarioPackItem } from "@/src/content/types";
 import { transliterateGreekToLatin } from "@/src/content/transliteration";
 
@@ -292,5 +293,5 @@ export function getScenarioPackById(packId?: string | null) {
 }
 
 export function getScenarioPackLink(packId: string) {
-  return `/phrasebook?pack=${packId}`;
+  return appRoutes.phrasebook({ pack: packId });
 }
