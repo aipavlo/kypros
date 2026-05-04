@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import learningPathsJson from "@content/05-seed-data/learning-paths.json";
 import {
   getLessonsByModule,
@@ -10,6 +10,7 @@ import {
 import { getHumorItems } from "@/src/content/humorData";
 import { getQuizHighlights } from "@/src/content/quizData";
 import { getModuleStage, getTrackCountCopy, getTrackPresentation } from "@/src/content/presentation";
+import { appRoutes } from "@/src/lib/routes";
 
 export function ContentPage() {
   const learningPaths = learningPathsJson as Array<{
@@ -93,28 +94,28 @@ export function ContentPage() {
       chip: "Самый простой вход",
       description: "Если не хочется выбирать вручную, начни с готовой учебной линии и двигайся по одному следующему шагу.",
       title: "Открыть программу по греческому",
-      to: "/lessons?stage=a1&source=library",
+      to: appRoutes.lessons({ stage: "a1", source: "library" }),
       toneClass: "track-card-language"
     },
     {
       chip: "Под задачу",
       description: "Если нужен не каталог, а сценарий, переходи в маршруты: разговор, сервисы, история, тематический повтор.",
       title: "Выбрать готовый маршрут",
-      to: "/trails",
+      to: appRoutes.trails(),
       toneClass: "track-card"
     },
     {
       chip: "Быстрые фразы",
       description: "Если нужен practical entry без длинного урока, открой бытовые сценарии с transliteration и short self-check.",
       title: "Открыть phrasebook-сценарии",
-      to: "/phrasebook",
+      to: appRoutes.phrasebook(),
       toneClass: "track-card-language"
     },
     {
       chip: "Быстрая проверка",
       description: "Если хочешь не читать всё подряд, а проверить, что уже держится в голове, открой квиз.",
       title: "Перейти к короткой проверке",
-      to: "/quiz",
+      to: appRoutes.quiz(),
       toneClass: "track-card-history"
     }
   ];
@@ -124,7 +125,7 @@ export function ContentPage() {
       chip: "Маршруты",
       description: "Готовые сценарии под разговор, сервисы, Cyprus Reality и бытовые задачи.",
       title: "Открыть guided catalog",
-      to: "/trails",
+      to: appRoutes.trails(),
       toneClass: "track-card",
       meta: `${learningPaths.length} готовых входов`
     },
@@ -132,7 +133,7 @@ export function ContentPage() {
       chip: "Фразы",
       description: "Компактные бытовые intents: приветствие, кафе, магазин, дорога, документы и короткие сервисные сценарии.",
       title: "Открыть practical scenarios",
-      to: "/phrasebook",
+      to: appRoutes.phrasebook(),
       toneClass: "track-card-language",
       meta: "12 сценариев"
     },
@@ -140,7 +141,7 @@ export function ContentPage() {
       chip: "Модули",
       description: "Точечный вход, если уже известно, какую тему или уровень нужно открыть.",
       title: "Перейти к модулям программы",
-      to: "/lessons",
+      to: appRoutes.lessons(),
       toneClass: "track-card-language",
       meta: `${modules.length} модулей в библиотеке`
     },
@@ -148,7 +149,7 @@ export function ContentPage() {
       chip: "Проверка",
       description: "Короткая самопроверка после учебного шага без долгого просмотра каталога.",
       title: "Открыть банк вопросов",
-      to: "/quiz",
+      to: appRoutes.quiz(),
       toneClass: "track-card-history",
       meta: `${previewQuizzes.length}+ быстрых вопросов`
     },
@@ -156,22 +157,22 @@ export function ContentPage() {
       chip: "Культура",
       description: "Лёгкий дополнительный слой: юмор, разговорные наблюдения и культурные заметки.",
       title: "Открыть культурные подборки",
-      to: "/humor",
+      to: appRoutes.humor(),
       toneClass: "track-card-language",
       meta: `${humorThemeCards.length} тематических подборок`
     }
   ];
 
   function getTrailLibraryLink(trailId: string) {
-    return `/trails?trail=${trailId}`;
+    return appRoutes.trails({ trail: trailId });
   }
 
   function getModuleLibraryLink(moduleId: string, trackId: string) {
     if (trackId === "greek_b1") {
-      return `/lessons?stage=${getModuleStage(moduleId)}&module=${moduleId}&source=library`;
+      return appRoutes.lessons({ stage: getModuleStage(moduleId), module: moduleId, source: "library" });
     }
 
-    return `/cyprus?module=${moduleId}&source=library`;
+    return appRoutes.cyprus({ module: moduleId, source: "library" });
   }
 
   function getPathLibraryLink(pathId: string, steps: string[]) {
@@ -204,7 +205,7 @@ export function ContentPage() {
     }
 
     const firstLessonStep = steps.find((step) => step.startsWith("gr_") || step.startsWith("cy_"));
-    return firstLessonStep ? `/lessons/${firstLessonStep}` : "/trails";
+    return firstLessonStep ? appRoutes.lesson(firstLessonStep) : appRoutes.trails();
   }
 
   return (

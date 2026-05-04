@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import {
   getLessonsByModule,
   getLessonsByTrack,
@@ -19,13 +20,14 @@ import {
   getUnlockedModuleIds
 } from "@/src/content/progress";
 import { TrailLessonItem } from "@/src/components/shared-ui";
+import { appRoutes } from "@/src/lib/routes";
 
 function getModuleQuizLink(trackId: string, moduleId: string, stageId?: string) {
   if (trackId === "cyprus_reality") {
-    return `/quiz?mode=mode_cyprus_reality&module=${moduleId}`;
+    return appRoutes.quiz({ mode: "mode_cyprus_reality", module: moduleId });
   }
 
-  return `/quiz?mode=mode_greek_${stageId ?? getModuleStage(moduleId)}&module=${moduleId}`;
+  return appRoutes.quiz({ mode: `mode_greek_${stageId ?? getModuleStage(moduleId)}`, module: moduleId });
 }
 
 function getModuleBadgeLabel(moduleTitle: string) {
@@ -244,7 +246,7 @@ export function LessonsPage(props: LessonsPageProps) {
     <div className="stack">
       <section className={`panel page-banner ${props.forcedTrackId === "cyprus_reality" ? "cyprus-hero-panel" : "lessons-hero-panel"}`}>
         <p className="eyebrow">{props.forcedTrackId === "cyprus_reality" ? "Кипр" : "Уроки"}</p>
-        <h1>{props.forcedTrackId === "cyprus_reality" ? "Программа Cyprus Reality" : "Языковая программа Greek Core"}</h1>
+        <h1>{props.forcedTrackId === "cyprus_reality" ? "Cyprus Reality: история и культура Кипра" : "Уроки греческого для жизни на Кипре"}</h1>
         <p className="section-copy">
           {props.forcedTrackId === "cyprus_reality"
             ? "Здесь собраны уроки по истории Кипра, культуре, институтам, общественной жизни и экзаменационным темам Cyprus Reality."

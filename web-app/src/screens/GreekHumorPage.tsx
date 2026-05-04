@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import { localHumorStatsAdapter } from "@/src/adapters/localHumorStatsAdapter";
 import { localHumorStudyAdapter } from "@/src/adapters/localHumorStudyAdapter";
 import { getHumorItems, HUMOR_ITEM_COUNT } from "@/src/content/humorData";
@@ -121,7 +121,7 @@ export function GreekHumorPage() {
       <section className="panel page-banner track-language humor-banner">
         <div className="humor-banner-copy">
           <p className="eyebrow">Греческий юмор</p>
-          <h1>Мемы, шутки и анекдоты как короткая учебная практика</h1>
+          <h1>Греческий юмор и мемы для изучения языка</h1>
           <p className="section-copy">
             Откройте один материал, разберите, как он звучит и почему он смешной, а потом сохраните его в повторение.
           </p>

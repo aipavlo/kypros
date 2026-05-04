@@ -17,10 +17,6 @@ const parkedEntries = [
   {
     from: path.join(appDir, "api"),
     to: path.join(appDir, "__api_pages_disabled__")
-  },
-  {
-    from: path.join(appDir, "sitemap.ts"),
-    to: path.join(appDir, "__sitemap_pages_disabled__.ts")
   }
 ];
 

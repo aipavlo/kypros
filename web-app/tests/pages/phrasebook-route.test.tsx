@@ -10,7 +10,7 @@ test("phrasebook route keeps compact practical scenarios readable and tied back 
     element: <PhrasebookPage />
   });
 
-  assert.match(markup, /Практические сценарии как guided mini-routes, а не как справочник/);
+  assert.match(markup, /Бытовые фразы на греческом для жизни на Кипре/);
   assert.match(markup, /Открытый mini-route/);
   assert.match(markup, /Заказать кофе/);
   assert.match(markup, /Mini-route script/);

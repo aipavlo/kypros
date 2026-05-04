@@ -90,15 +90,25 @@ function getContentType(filePath) {
 }
 
 async function resolveStaticFile(urlPathname) {
+  if (urlPathname.startsWith("/_next/")) {
+    try {
+      const body = await readFile(path.join(OUT_DIR, urlPathname.replace(/^\/+/, "")));
+      return {
+        body,
+        contentType: getContentType(urlPathname)
+      };
+    } catch {
+      return null;
+    }
+  }
+
   if (urlPathname === BASE_PATH) {
     return { redirect: `${BASE_PATH}/` };
   }
 
-  if (!urlPathname.startsWith(`${BASE_PATH}/`)) {
-    return null;
-  }
-
-  const relativePath = urlPathname.slice(BASE_PATH.length) || "/";
+  const relativePath = urlPathname.startsWith(`${BASE_PATH}/`)
+    ? urlPathname.slice(BASE_PATH.length) || "/"
+    : urlPathname;
   const normalizedRelativePath = relativePath.replace(/^\/+/, "");
   const candidates = normalizedRelativePath.endsWith("/")
     ? [path.join(OUT_DIR, normalizedRelativePath, "index.html")]

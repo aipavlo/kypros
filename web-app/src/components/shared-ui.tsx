@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 
 type TrailIconName =
   | "arrow"

@@ -1,14 +1,15 @@
-import { Link } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import { getLessonById } from "@/src/content/catalogData";
 import { easyStartLessonIds } from "@/src/content/trails";
 import { getCompletedCount } from "@/src/content/progress";
+import { appRoutes } from "@/src/lib/routes";
 
 type EasyStartPageProps = {
   completedLessonIds: string[];
 };
 
 function getEasyStartLessonLink(lessonId: string) {
-  return `/lessons/${lessonId}?source=easy_start`;
+  return appRoutes.lesson(lessonId, { source: "easy_start" });
 }
 
 function getLessonStateLabel(isCompleted: boolean, isCurrent: boolean) {
@@ -56,7 +57,7 @@ export function EasyStartPage(props: EasyStartPageProps) {
       <section className="easy-start-hero panel">
         <div className="easy-start-primary">
           <p className="eyebrow">Лёгкий старт</p>
-          <h1>Открой один короткий шаг и не выбирай маршрут вручную</h1>
+          <h1>Греческий с нуля на Кипре: лёгкий старт</h1>
           <p className="section-copy">
             Это стартовый путь для первого захода: сначала один урок, затем карточки, потом мини-проверка
             и только после этого следующий шаг.
@@ -87,7 +88,7 @@ export function EasyStartPage(props: EasyStartPageProps) {
               Сейчас: шаг {nextLessonIndex + 1} · {nextLesson.title}
             </p>
           ) : null}
-          <Link className="inline-link easy-start-secondary-link" to="/lessons">
+          <Link className="inline-link easy-start-secondary-link" to={appRoutes.lessons()}>
             Нужен не короткий старт, а вся программа Greek Core
           </Link>
         </div>

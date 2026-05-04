@@ -205,7 +205,7 @@ test("pages-mode keeps pill and chip surfaces inside the viewport on narrow mobi
     await page.setViewport({ width: 390, height: 844 });
 
     await gotoHashPath(page, "/lessons?stage=a1&module=gr_b1_core_grammar");
-    await waitForText(page, "Языковая программа Greek Core");
+    await waitForText(page, "Уроки греческого для жизни на Кипре");
     await assertViewportHasNoHorizontalOverflow(page, ".stage-chip, .meta-pill, .badge-chip, .source-pill");
 
     await gotoHashPath(page, `/flashcards?track=greek_b1&module=gr_b1_core_grammar&lesson=${GREEK_LESSON_ID}&source=lesson&returnTo=${GREEK_LESSON_ID}`);
@@ -217,7 +217,7 @@ test("pages-mode keeps pill and chip surfaces inside the viewport on narrow mobi
     await assertViewportHasNoHorizontalOverflow(page, ".meta-pill, .badge-chip, .chip");
 
     await gotoHashPath(page, "/humor");
-    await waitForText(page, "Мемы, шутки и анекдоты как короткая учебная практика");
+    await waitForText(page, "Греческий юмор и мемы для изучения языка");
     await assertViewportHasNoHorizontalOverflow(page, ".humor-filter-chip, .meta-pill, .chip");
   } finally {
     await closeIsolatedPage(context);

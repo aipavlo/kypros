@@ -1,15 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { lessons } from "../../src/content/catalogData.js";
+import { absoluteUrl, withBasePath } from "../../src/lib/url.js";
 import { getPageStructuredData } from "../../src/seo/pageSchema.js";
 import { buildRobotsTxt, buildSitemapXml } from "../../src/seo/siteFiles.js";
 import {
   ALL_STATIC_ROUTE_PATHS,
   INDEXABLE_STATIC_ROUTE_PATHS,
-  getAbsoluteUrl,
-  getInternalHref,
   getRouteMetadataFromSlug,
   getRouteSeoEntry
 } from "../../src/seo/siteMetadata.js";
@@ -35,6 +34,10 @@ const requiredArtifacts = [
 
 function readArtifact(relativePath: string) {
   return readFileSync(path.join(outDir, relativePath), "utf8");
+}
+
+function getArtifactSize(relativePath: string) {
+  return statSync(path.join(outDir, relativePath)).size;
 }
 
 function getRouteArtifactPath(routePath: string) {
@@ -104,8 +107,8 @@ test("pages export keeps release-critical artifacts in out/", () => {
 
 test("sitemap keeps indexable routes and lesson pages aligned with source route policy", () => {
   const sitemapUrls = getSitemapUrls();
-  const expectedStaticUrls = INDEXABLE_STATIC_ROUTE_PATHS.map((routePath) => getAbsoluteUrl(routePath));
-  const expectedLessonUrls = lessons.map((lesson) => getAbsoluteUrl(`/lessons/${lesson.id}`));
+  const expectedStaticUrls = INDEXABLE_STATIC_ROUTE_PATHS.map((routePath) => absoluteUrl(routePath));
+  const expectedLessonUrls = lessons.map((lesson) => absoluteUrl(`/lessons/${lesson.id}`));
 
   for (const url of [...expectedStaticUrls, ...expectedLessonUrls]) {
     assert.ok(sitemapUrls.includes(url), `Expected sitemap URL: ${url}`);
@@ -115,7 +118,7 @@ test("sitemap keeps indexable routes and lesson pages aligned with source route 
     (candidate) => !INDEXABLE_STATIC_ROUTE_PATHS.includes(candidate)
   )) {
     assert.equal(
-      sitemapUrls.includes(getAbsoluteUrl(routePath)),
+      sitemapUrls.includes(absoluteUrl(routePath)),
       false,
       `Sitemap should exclude noindex route: ${routePath}`
     );
@@ -134,7 +137,7 @@ test("published robots.txt stays aligned with source builder and project-site si
   assert.match(robotsTxt, /^Allow: \//m);
   assert.match(
     robotsTxt,
-    new RegExp(`^Sitemap: ${getAbsoluteUrl("/sitemap.xml").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "m")
+    new RegExp(`^Sitemap: ${absoluteUrl("/sitemap.xml").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "m")
   );
 });
 
@@ -157,8 +160,8 @@ test("public export pages keep canonical and social metadata in the HTML artifac
     },
     {
       routePath: "/sitemap",
-      expectedCopy: "Карта сайта Kypros Path",
-      expectedTitle: "HTML sitemap: ключевые страницы и lesson pages | Kypros Path"
+      expectedCopy: "Карта сайта: ключевые страницы и уроки",
+      expectedTitle: "Карта сайта: ключевые страницы и уроки | Kypros Path"
     },
     {
       routePath: "/lessons/gr_lesson_022",
@@ -171,7 +174,7 @@ test("public export pages keep canonical and social metadata in the HTML artifac
     const html = readArtifact(getRouteArtifactPath(sample.routePath));
     const seoEntry =
       sample.routePath.startsWith("/lessons/") ? null : getRouteSeoEntry(sample.routePath);
-    const canonicalUrl = getAbsoluteUrl(sample.routePath);
+    const canonicalUrl = absoluteUrl(sample.routePath);
 
     assert.match(html, /<title>/);
     assert.match(
@@ -317,7 +320,7 @@ test("published utility and public titles stay compact and avoid brand duplicati
     },
     {
       artifactPath: "phrasebook/index.html",
-      expectedTitle: "Практические фразы и бытовые сценарии на греческом | Kypros Path"
+      expectedTitle: "Бытовые фразы на греческом для жизни на Кипре | Kypros Path"
     }
   ];
 
@@ -330,6 +333,43 @@ test("published utility and public titles stay compact and avoid brand duplicati
     assert.ok(title.length <= 70, `artifact title too long for ${sample.artifactPath}: ${title.length}`);
     assert.equal(title.includes("Kypros Path | Kypros Path"), false);
   }
+});
+
+test("manifest, icon and social-preview assets stay linked and within lightweight transfer budgets", () => {
+  const homeHtml = readArtifact("index.html");
+  const manifest = JSON.parse(readArtifact("site.webmanifest")) as {
+    icons?: Array<{ purpose?: string; sizes?: string; src?: string; type?: string }>;
+    scope?: string;
+    start_url?: string;
+  };
+
+  assert.match(homeHtml, /<link rel="manifest" href="\/kypros\/site\.webmanifest"/);
+  assert.match(homeHtml, /<link rel="shortcut icon" href="\/kypros\/icon\.svg"/);
+  assert.match(homeHtml, /<link rel="icon" href="\/kypros\/icon\.svg"/);
+  assert.match(homeHtml, /<link rel="apple-touch-icon" href="\/kypros\/icon\.svg"/);
+  assert.equal(manifest.start_url, ".");
+  assert.equal(manifest.scope, ".");
+  assert.deepEqual(manifest.icons, [
+    {
+      src: "icon.svg",
+      sizes: "any",
+      type: "image/svg+xml",
+      purpose: "any"
+    }
+  ]);
+  assert.ok(getArtifactSize("icon.svg") <= 1024, "icon.svg should stay under 1 KB");
+  assert.ok(getArtifactSize("site.webmanifest") <= 1024, "site.webmanifest should stay under 1 KB");
+  assert.ok(getArtifactSize("social-preview.svg") <= 4096, "social-preview.svg should stay under 4 KB");
+});
+
+test("published surface stays on system fonts without remote font providers or emitted font files", () => {
+  const homeHtml = readArtifact("index.html");
+  const emittedTopLevelAssets = readFileSync(path.join(outDir, "index.html"), "utf8");
+
+  assert.doesNotMatch(homeHtml, /fonts\.googleapis\.com|fonts\.gstatic\.com|typekit|fontshare/i);
+  assert.doesNotMatch(homeHtml, /rel="preconnect"[^>]+fonts/i);
+  assert.doesNotMatch(homeHtml, /href="[^"]+\.(woff2?|ttf|otf|eot)"/i);
+  assert.doesNotMatch(emittedTopLevelAssets, /\.woff2?|\.ttf|\.otf|\.eot/i);
 });
 
 test("public export pages include crawlable snapshot HTML before client hydration", () => {
@@ -399,7 +439,7 @@ test("high-intent public snapshots keep crawlable links to related hubs and repr
     const hrefs = getInternalHrefs(html);
 
     for (const href of sample.requiredLinks) {
-      assert.ok(hrefs.includes(getInternalHref(href)), `Expected crawl link ${href} in ${sample.routePath}`);
+      assert.ok(hrefs.includes(withBasePath(href)), `Expected crawl link ${href} in ${sample.routePath}`);
     }
 
     assert.equal(
@@ -427,7 +467,7 @@ test("representative lesson snapshots keep backlinks and onward crawl paths", ()
     const hrefs = getInternalHrefs(html);
 
     for (const href of sample.requiredLinks) {
-      assert.ok(hrefs.includes(getInternalHref(href)), `Expected lesson crawl link ${href} in ${sample.routePath}`);
+      assert.ok(hrefs.includes(withBasePath(href)), `Expected lesson crawl link ${href} in ${sample.routePath}`);
     }
 
     assert.equal(
@@ -467,7 +507,7 @@ test("noindex utility pages stay out of sitemap but keep noindex metadata in the
 
   for (const sample of utilitySamples) {
     const html = readArtifact(getRouteArtifactPath(sample.routePath));
-    const expectedCanonicalUrl = getAbsoluteUrl(sample.expectedCanonicalPath ?? sample.routePath);
+    const expectedCanonicalUrl = absoluteUrl(sample.expectedCanonicalPath ?? sample.routePath);
 
     assert.match(html, /<meta name="robots" content="noindex, follow"/);
     assert.match(
@@ -475,7 +515,7 @@ test("noindex utility pages stay out of sitemap but keep noindex metadata in the
       new RegExp(`<link rel="canonical" href="${expectedCanonicalUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`)
     );
     assert.equal(
-      sitemapUrls.includes(getAbsoluteUrl(sample.routePath)),
+      sitemapUrls.includes(absoluteUrl(sample.routePath)),
       false,
       `Sitemap should exclude noindex utility route: ${sample.routePath}`
     );

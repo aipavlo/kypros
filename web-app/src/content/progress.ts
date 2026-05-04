@@ -4,6 +4,7 @@ import {
   getModulesByTrack,
   getModulesByTrackAndDifficulty
 } from "@/src/content/catalogData";
+import { appRoutes } from "@/src/lib/routes";
 import { getModuleStage } from "@/src/content/presentation";
 import type { LessonItem } from "@/src/content/types";
 
@@ -43,18 +44,18 @@ export function hasModuleProgress(
 
 function getModuleLessonsLink(trackId: string, moduleId: string, stageId?: string) {
   if (trackId === "greek_b1") {
-    return `/lessons?stage=${stageId ?? "a1"}&module=${moduleId}&source=loop`;
+    return appRoutes.lessons({ stage: stageId ?? "a1", module: moduleId, source: "loop" });
   }
 
-  return `/lessons?module=${moduleId}&source=loop`;
+  return appRoutes.lessons({ module: moduleId, source: "loop" });
 }
 
 function getModuleQuizLink(trackId: string, moduleId: string, stageId?: string) {
   if (trackId === "cyprus_reality") {
-    return `/quiz?mode=mode_cyprus_reality&module=${moduleId}`;
+    return appRoutes.quiz({ mode: "mode_cyprus_reality", module: moduleId });
   }
 
-  return `/quiz?mode=mode_greek_${stageId ?? "a1"}&module=${moduleId}`;
+  return appRoutes.quiz({ mode: `mode_greek_${stageId ?? "a1"}`, module: moduleId });
 }
 
 function getModulesForLoop(trackId: string, stageId?: string) {
@@ -126,7 +127,7 @@ export function getModuleNextLearningAction(
       kind: "lesson",
       title: `Открыть урок: ${nextLesson.order}. ${nextLesson.title}`,
       description: "Следующий шаг в цикле: пройти ближайший урок этого модуля.",
-      to: `/lessons/${nextLesson.id}?source=loop`
+      to: appRoutes.lesson(nextLesson.id, { source: "loop" })
     };
   }
 
@@ -135,7 +136,7 @@ export function getModuleNextLearningAction(
       kind: "flashcards",
       title: "Перейти к карточкам модуля",
       description: "Уроки завершены. Теперь закрепи модуль карточками.",
-      to: `/flashcards?track=${trackId}&module=${moduleId}`
+      to: appRoutes.flashcards({ track: trackId, module: moduleId })
     };
   }
 
@@ -175,7 +176,7 @@ export function getModuleNextLearningAction(
         ? `Следующий шаг: ${nextModuleLesson.order}. ${nextModuleLesson.title}.`
         : "Текущий модуль закрыт. Можно переходить к следующему модулю.",
       to: nextModuleLesson
-        ? `/lessons/${nextModuleLesson.id}?source=loop`
+        ? appRoutes.lesson(nextModuleLesson.id, { source: "loop" })
         : getModuleLessonsLink(trackId, nextModule.id, stageId)
     };
   }
@@ -184,7 +185,7 @@ export function getModuleNextLearningAction(
     kind: "done",
     title: module ? `${module.title}: цикл завершён` : "Цикл завершён",
     description: "Уроки, карточки и мини-проверка завершены. Можно перейти к обзору прогресса.",
-    to: "/dashboard"
+    to: appRoutes.dashboard()
   };
 }
 

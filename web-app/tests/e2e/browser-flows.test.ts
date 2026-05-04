@@ -190,7 +190,7 @@ test("browser cyprus flow keeps cyprus navigation active through lesson path", a
 
   try {
     await gotoPath(page, "/cyprus");
-    await waitForText(page, "Программа Cyprus Reality");
+    await waitForText(page, "Cyprus Reality: история и культура Кипра");
 
     const activePrimaryNavLabel = await page.$eval(".nav a.active", (element) =>
       element.textContent?.trim() ?? ""

@@ -1,5 +1,6 @@
 import { getModuleById } from "@/src/content/catalogData";
 import { getLessonById } from "@/src/content/catalogData";
+import { appRoutes } from "@/src/lib/routes";
 import { getQuizModeById, quizzes } from "@/src/content/quizData";
 import { getModuleStage } from "@/src/content/presentation";
 import type { QuizQuestionItem } from "@/src/content/types";
@@ -226,24 +227,24 @@ function getModuleLessonLink(moduleId: string) {
   const module = getModuleById(moduleId);
 
   if (!module) {
-    return "/lessons";
+    return appRoutes.lessons();
   }
 
   if (module.trackId === "greek_b1") {
-    return `/lessons?stage=${getModuleStage(moduleId)}&module=${moduleId}&source=quiz`;
+    return appRoutes.lessons({ stage: getModuleStage(moduleId), module: moduleId, source: "quiz" });
   }
 
-  return `/lessons?module=${moduleId}&source=quiz`;
+  return appRoutes.lessons({ module: moduleId, source: "quiz" });
 }
 
 function getModuleFlashcardsLink(moduleId: string) {
   const module = getModuleById(moduleId);
 
   if (!module) {
-    return "/flashcards";
+    return appRoutes.flashcards();
   }
 
-  return `/flashcards?track=${module.trackId}&module=${moduleId}`;
+  return appRoutes.flashcards({ track: module.trackId, module: moduleId });
 }
 
 export function getReviewSummaries(quizProgress: StoredQuizProgress): ReviewModeSummary[] {

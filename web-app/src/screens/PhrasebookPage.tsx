@@ -1,4 +1,5 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import { TrailBadge, TrailMiniArt } from "@/src/components/shared-ui";
 import { getLessonById } from "@/src/content/catalogData";
 import {
@@ -6,13 +7,14 @@ import {
   getScenarioPackLink,
   scenarioPacks
 } from "@/src/content/scenarioPacks";
+import { appRoutes } from "@/src/lib/routes";
 
 function getScenarioEntryLink(packId: string, lessonId: string) {
-  return `/lessons/${lessonId}?source=phrasebook&pack=${packId}`;
+  return appRoutes.lesson(lessonId, { source: "phrasebook", pack: packId });
 }
 
 function getScenarioTrailLink(trailId: string, packId: string) {
-  return `/trails?trail=${trailId}&pack=${packId}`;
+  return appRoutes.trails({ trail: trailId, pack: packId });
 }
 
 function getAlternativeScenarioPacks(packId: string) {
@@ -25,10 +27,10 @@ export function PhrasebookPage() {
   const selectedLesson = getLessonById(selectedPack.linkedLessonId);
   const primaryLessonLink = selectedLesson
     ? getScenarioEntryLink(selectedPack.id, selectedLesson.id)
-    : "/lessons";
+    : appRoutes.lessons();
   const recommendedTrailLink = selectedPack.linkedTrailId
     ? getScenarioTrailLink(selectedPack.linkedTrailId, selectedPack.id)
-    : "/trails";
+    : appRoutes.trails();
   const currentCategoryPacks = scenarioPacks.filter((pack) => pack.category === selectedPack.category);
   const alternativeScenarioPacks = getAlternativeScenarioPacks(selectedPack.id);
   const miniRouteShortlist = [
@@ -46,7 +48,7 @@ export function PhrasebookPage() {
       <section className="hero-panel phrasebook-hero">
         <div className="hero-copy">
           <p className="eyebrow">Everyday Greek</p>
-          <h1>Практические сценарии как guided mini-routes, а не как справочник</h1>
+          <h1>Бытовые фразы на греческом для жизни на Кипре</h1>
           <p className="lead">
             Один бытовой intent, несколько рабочих фраз, короткий self-check и один понятный
             следующий шаг. Здесь не нужно читать длинный словарь или вручную сравнивать весь

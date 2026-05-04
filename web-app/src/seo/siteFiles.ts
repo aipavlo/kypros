@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { lessons } from "@/src/content/catalogData";
+import { absoluteUrl } from "@/src/lib/url";
 import indexableStaticRoutes from "./indexableStaticRoutes.json";
-import { getAbsoluteUrl } from "@/src/seo/siteMetadata";
 
 type IndexableStaticRouteEntry = {
   pathname: string;
@@ -16,13 +16,13 @@ export const INDEXABLE_STATIC_ROUTE_ENTRIES = indexableStaticRouteEntries;
 
 export function getSitemapMetadata(): MetadataRoute.Sitemap {
   const staticEntries: MetadataRoute.Sitemap = INDEXABLE_STATIC_ROUTE_ENTRIES.map((entry) => ({
-    url: getAbsoluteUrl(entry.pathname),
+    url: absoluteUrl(entry.pathname),
     changeFrequency: entry.changeFrequency,
     priority: entry.priority
   }));
 
   const lessonEntries: MetadataRoute.Sitemap = lessons.map((lesson) => ({
-    url: getAbsoluteUrl(`/lessons/${lesson.id}`),
+    url: absoluteUrl(`/lessons/${lesson.id}`),
     changeFrequency: "monthly" as const,
     priority: lesson.trackId === "cyprus_reality" ? 0.8 : 0.7
   }));
@@ -52,6 +52,6 @@ export function buildRobotsTxt() {
   return `User-agent: *
 Allow: /
 
-Sitemap: ${getAbsoluteUrl("/sitemap.xml")}
+Sitemap: ${absoluteUrl("/sitemap.xml")}
 `;
 }

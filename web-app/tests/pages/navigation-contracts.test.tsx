@@ -13,7 +13,7 @@ test("EasyStartPage keeps one obvious next-step route while leaving the wider ca
   });
 
   assert.match(markup, /Лёгкий старт/);
-  assert.match(markup, /Открой один короткий шаг и не выбирай маршрут вручную/);
+  assert.match(markup, /Греческий с нуля на Кипре: лёгкий старт/);
   assert.match(markup, /Открыть следующий урок/);
   assert.match(markup, /Нужен не короткий старт, а вся программа Greek Core/);
   assert.match(markup, /Сейчас: шаг 1/);
@@ -45,7 +45,7 @@ test("TrailsPage keeps one selected trail actionable and preserves trail-context
     element: <TrailsPage completedLessonIds={[]} />
   });
 
-  assert.match(markup, /Готовые маршруты обучения/);
+  assert.match(markup, /Маршруты по греческому и Cyprus Reality/);
   assert.match(markup, /С чего начать по самой частой задаче/);
   assert.match(markup, /Souvlaki Starter Pack/);
   assert.match(markup, /Продолжить маршрут:/);

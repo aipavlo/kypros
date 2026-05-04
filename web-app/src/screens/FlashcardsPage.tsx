@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import {
   getLessonById,
   getModuleById

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { AppLink as Link } from "@/src/components/AppLink";
 import {
   getLessonsByTrack,
   getLessonsByTrackAndDifficulty,
@@ -14,6 +14,7 @@ import {
   isModuleCompleted
 } from "@/src/content/progress";
 import { ActionCard, LessonPreviewCard } from "@/src/components/shared-ui";
+import { appRoutes } from "@/src/lib/routes";
 
 function getStepDurationLabel(
   kind: "lesson" | "flashcards" | "quiz" | "next_module" | "done",
@@ -166,7 +167,7 @@ export function HomePage(props: HomePageProps) {
         level: "Первый заход",
         result: "Первый полезный шаг закроется без лишних развилок",
         ctaLabel: "Открыть лёгкий старт",
-        ctaTo: "/easy-start"
+        ctaTo: appRoutes.easyStart()
       }
     : topWeakModules[0] && reviewPlan[0]
       ? {
@@ -199,7 +200,7 @@ export function HomePage(props: HomePageProps) {
               level: continueGreekLesson.difficulty.toUpperCase(),
               result: getStepResultLabel("lesson"),
               ctaLabel: "Продолжить",
-              ctaTo: `/lessons/${continueGreekLesson.id}`
+              ctaTo: appRoutes.lesson(continueGreekLesson.id)
             }
           : null;
   const quickReturnCards = isNewUser
@@ -209,14 +210,14 @@ export function HomePage(props: HomePageProps) {
           description: "Стартовый урок без каталога и без развилок между режимами.",
           eyebrow: "Первый вход",
           title: `${continueA1Lesson?.estimatedMinutes ?? 7} минут на первый шаг`,
-          to: continueA1Lesson ? `/lessons/${continueA1Lesson.id}` : "/easy-start"
+          to: continueA1Lesson ? appRoutes.lesson(continueA1Lesson.id) : appRoutes.easyStart()
         },
         {
           actionLabel: "Открыть сценарии",
           description: "Короткие бытовые фразы и self-check, если нужен ultra-light вход перед первым уроком.",
           eyebrow: "Практика",
           title: "Быстрые сценарии everyday Greek",
-          to: "/phrasebook?pack=scenario_001_greet_introduce"
+          to: appRoutes.phrasebook({ pack: "scenario_001_greet_introduce" })
         }
       ]
     : [
@@ -233,7 +234,7 @@ export function HomePage(props: HomePageProps) {
               description: "Низкий порог входа, если нужно просто вернуться в учебный ритм без полного каталога.",
               eyebrow: "5-6 минут",
               title: "Быстрое повторение карточками",
-              to: "/flashcards?track=greek_b1"
+              to: appRoutes.flashcards({ track: "greek_b1" })
             },
         {
           actionLabel: nextCyprusLesson ? "Открыть урок" : "Открыть программу",
@@ -242,7 +243,7 @@ export function HomePage(props: HomePageProps) {
             : "Отдельный короткий вход в Cyprus Reality без смешивания с основной языковой линией.",
           eyebrow: "Отдельный трек",
           title: "Один шаг по Cyprus Reality",
-          to: nextCyprusLesson ? `/lessons/${nextCyprusLesson.id}` : "/cyprus"
+          to: nextCyprusLesson ? appRoutes.lesson(nextCyprusLesson.id) : appRoutes.cyprus()
         }
       ];
   const heroLead = isNewUser

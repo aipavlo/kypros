@@ -1,26 +1,11 @@
 import { getLessonById, getLessonsByTrack, getNextLesson, lessons } from "@/src/content/catalogData";
+import { withBasePath } from "@/src/lib/url";
 import { getHtmlSitemapSections } from "@/src/seo/htmlSitemap";
-import { getInternalHref, getRouteSeoEntry } from "@/src/seo/siteMetadata";
+import { getRoutePathFromSlug, isIndexableRoutePath } from "@/src/seo/publicRoutePolicy";
 
 type PublicRouteSnapshotProps = {
   slug: string[];
 };
-
-function getRoutePathFromSlug(slug: string[]) {
-  if (slug.length === 0) {
-    return "/";
-  }
-
-  return `/${slug.join("/")}`;
-}
-
-function isIndexableSnapshotRoute(routePath: string) {
-  if (routePath.startsWith("/lessons/")) {
-    return Boolean(getLessonById(routePath.replace("/lessons/", "")));
-  }
-
-  return getRouteSeoEntry(routePath).indexable;
-}
 
 function getSnapshotLinks(routePath: string) {
   const firstGreekLesson = getLessonsByTrack("greek_b1")[0];
@@ -166,7 +151,7 @@ function SnapshotLinks(props: { items: Array<{ href: string; label: string }> })
     <ul>
       {props.items.map((item) => (
         <li key={`${item.href}-${item.label}`}>
-          <a href={getInternalHref(item.href)}>{item.label}</a>
+          <a href={withBasePath(item.href)}>{item.label}</a>
         </li>
       ))}
     </ul>
@@ -215,7 +200,7 @@ function LessonPreview(props: { lessonId: string }) {
 export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
   const routePath = getRoutePathFromSlug(props.slug);
 
-  if (!isIndexableSnapshotRoute(routePath)) {
+  if (!isIndexableRoutePath(routePath)) {
     return null;
   }
 
@@ -226,8 +211,8 @@ export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
           <p className="eyebrow">Kypros Path</p>
           <h1>Греческий и Cyprus Reality для жизни на Кипре</h1>
           <p>
-            Короткие учебные входы для старта, language lessons, Cyprus Reality, guided trails и lesson
-            pages с практическими сценариями и exam-oriented темами.
+            Уроки греческого, Cyprus Reality, бытовые фразы, маршруты и короткие проверки для жизни
+            и подготовки на Кипре.
           </p>
           <nav aria-label="Public entry routes">
             <SnapshotLinks items={getSnapshotLinks(routePath)} />
@@ -259,8 +244,8 @@ export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
       <main className="seo-route-snapshot" data-seo-route={routePath}>
         <section className="seo-route-snapshot-section">
           <p className="eyebrow">Уроки</p>
-          <h1>Уроки Greek Core для жизни на Кипре</h1>
-          <p>Языковая программа с уровнями, lesson pages, flashcards и mini quiz по бытовым, service и public-life темам.</p>
+          <h1>Уроки греческого для жизни на Кипре</h1>
+          <p>Программа Greek Core: уроки от A1 до B2, карточки по модулям и короткие проверки для жизни на Кипре.</p>
           <h2>Первые уроки</h2>
           <SnapshotLinks items={links.slice(0, 6)} />
           <h2>Связанные входы</h2>
@@ -275,8 +260,8 @@ export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
       <main className="seo-route-snapshot" data-seo-route={routePath}>
         <section className="seo-route-snapshot-section">
           <p className="eyebrow">Phrasebook</p>
-          <h1>Everyday Greek phrasebook для бытовых ситуаций на Кипре</h1>
-          <p>Короткие practical phrases для приветствия, кафе, магазина, дороги и сервисных сценариев, которые можно открыть без длинного lesson flow.</p>
+          <h1>Бытовые фразы на греческом для жизни на Кипре</h1>
+          <p>Короткие бытовые сценарии для приветствия, кафе, магазина, дороги и сервисов с одним понятным следующим шагом.</p>
           <SnapshotLinks items={getSnapshotLinks(routePath)} />
         </section>
       </main>
@@ -289,8 +274,8 @@ export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
       <main className="seo-route-snapshot" data-seo-route={routePath}>
         <section className="seo-route-snapshot-section">
           <p className="eyebrow">Кипр</p>
-          <h1>Cyprus Reality: история, культура и устройство страны</h1>
-          <p>Отдельный учебный вход по Республике Кипр: базовые факты, институты, общественная жизнь и exam-oriented topics.</p>
+          <h1>Cyprus Reality: история и культура Кипра</h1>
+          <p>Отдельный учебный вход по истории, институтам, культуре и общественной жизни Кипра для Cyprus Reality.</p>
           <h2>Стартовые темы</h2>
           <SnapshotLinks items={links.slice(0, 6)} />
           <h2>Связанные страницы</h2>
@@ -318,8 +303,8 @@ export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
       <main className="seo-route-snapshot" data-seo-route={routePath}>
         <section className="seo-route-snapshot-section">
           <p className="eyebrow">Юмор</p>
-          <h1>Греческий юмор для короткой практики чтения и разбора</h1>
-          <p>Короткие мемы, jokes и anecdotes как учебный вход: прочитать, понять смысл, заметить культурный контекст и вернуться к языковой практике.</p>
+          <h1>Греческий юмор и мемы для изучения языка</h1>
+          <p>Мемы, шутки и короткие тексты на греческом с переводом и культурным контекстом для живого чтения и языковой практики.</p>
           <SnapshotLinks items={getSnapshotLinks(routePath)} />
         </section>
       </main>
@@ -333,8 +318,8 @@ export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
       <main className="seo-route-snapshot" data-seo-route={routePath}>
         <section className="seo-route-snapshot-section">
           <p className="eyebrow">HTML sitemap</p>
-          <h1>Карта сайта Kypros Path</h1>
-          <p>Обычная HTML-страница со ссылками на главные search-entry routes и стартовые lesson pages по греческому и Cyprus Reality.</p>
+          <h1>Карта сайта: ключевые страницы и уроки</h1>
+          <p>Главные разделы, стартовые входы и уроки по греческому и Cyprus Reality на одной HTML-странице.</p>
           <SnapshotLinks items={sitemapLinks} />
         </section>
       </main>
@@ -358,7 +343,7 @@ export function PublicRouteSnapshot(props: PublicRouteSnapshotProps) {
           <h2>Продолжить путь</h2>
           <SnapshotLinks items={getSnapshotLinks(routePath)} />
           <p>
-            <a href={getInternalHref(lesson.trackId === "cyprus_reality" ? "/cyprus" : "/lessons")}>Вернуться к списку уроков</a>
+            <a href={withBasePath(lesson.trackId === "cyprus_reality" ? "/cyprus" : "/lessons")}>Вернуться к списку уроков</a>
           </p>
         </section>
       </main>
